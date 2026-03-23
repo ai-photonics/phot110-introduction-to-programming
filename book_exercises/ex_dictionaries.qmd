@@ -1,0 +1,39 @@
+# Dictionaries
+
+## Creating a dictionary (Spring 2025)
+
+You can create a dictionary using curly brackets
+
+``` {python}
+#| echo: true
+position = {"x": 1, "y": 1}
+```
+
+Perform the following tasks:
+
+- Create a dictionary with four variables (position in space-time): "x": 0, "y": 1, "z": 0, "t": 0. 
+- Add this dictionary to an empty list.
+- Then create a function that allows to add another dictionary of space-time coordinates
+- Afterwards, create another function that allows you to convert the list of space-time coordinates to a single dictionary of 4 arrays x, y, z, and t, containing the coordinates. 
+
+## Convert to a module (Spring 2025)
+
+Put the functionality of previous exercise in a module. Remember to use a separate script-file for the module. 
+
+- Test each of the functions of the module. 
+- Afterwards, try to import the module in a main script which plots the space-time coordinates in a 3D parametric curve plot.
+
+```{.python}
+def add_position(positions, x, y, z, t):
+  # ...
+  # code to add extend the list 
+  # ...
+  return positions
+
+def convert_to_dict(positions):
+  # ...
+  # code to convert the list of 
+  # dictionaries into a dictionary of lists 
+  # ...
+  return coords
+```

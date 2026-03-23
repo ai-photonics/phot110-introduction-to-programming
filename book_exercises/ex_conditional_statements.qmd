@@ -1,0 +1,49 @@
+# Conditional Statements
+
+## Check login
+
+Prompt the user to give his/her username and password. Verify whether the username is `amapirate` and his/her password is `greenbeans`. If correct, tell the user that he the login was successful. Example output:
+
+```
+Please provide your login credentials:
+username: Micky
+password: redbeans
+Sorry, your username or password is incorrect.
+```
+
+## Roots of a quadratic equation
+
+The roots of a quadratic equation: $a x^2 + bx + c = 0$ are given by: 
+$$
+x_\pm = \frac{-b \pm \sqrt{D}}{2a} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}, \qquad \textrm{with discriminant }D = b^2 - 4ac
+$$ 
+
+The number of roots is determined by the value of the discriminant $D$:
+
+- $D > 0$: two roots, $x_-$ and $x_+$,
+- $D = 0$: one root, $x = x_- = x_+$,
+- $D < 0$: no real roots, $x_-$ and $x_+$ become complex.
+
+Prompt the user for parameters a, b, and c of the quadratic equation, then calculate the number of roots by calculating first the discriminant $D = b^2 - 4ac$. Afterwards print the (real-valued) roots. Example output:
+
+``` {python}
+from math import sqrt
+
+print(f"--- Roots of the equation ax^2 + bx + c = 0 ---")
+a = 2
+b = 3
+c = -5
+print(f"Parameter a: {a}")
+print(f"Parameter b: {b}")
+print(f"Parameter c: {c}")
+D = b**2 - 4 * a * c
+if D > 0:
+    xm = (-b - sqrt(D)) / (2 * a)
+    xp = (-b + sqrt(D)) / (2 * a)
+    print(f"The discriminant D = {D} > 0, two roots x = {xm}, {xp}")
+elif D == 0:
+    x = -b / (2 * a)
+    print(f"The discriminant D = {D} = 0, one root x = {x}")
+else:
+    print(f"The discriminant D = {D} < 0, no real roots!")
+```

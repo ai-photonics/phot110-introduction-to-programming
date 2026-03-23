@@ -1,0 +1,42 @@
+# Expressions in the Python console
+
+## Commando-style calculations
+
+Calculate the final value for $y$ for each the three columns, start at the top where $x$ is defined, then perform the assignments in each next row.
+
+$$
+\begin{aligned}
+x & = 4               \qquad\qquad & x & = 20         \qquad\qquad & x & = -5 \\
+y & = x^2             \qquad\qquad & y & = x / 4      \qquad\qquad & y & = x^{(x+3)}  \\
+y & = 5 \times y      \qquad\qquad & y & = y + 2      \qquad\qquad & y & = \frac{y}{5 - y} \\
+y & = y - 23          \qquad\qquad & y & = 3/2 \, y      \qquad\qquad & y & = 4.5 \, y  \\
+y & = \frac{y}{2}     \qquad\qquad & y & = \sqrt{y} = y^{0.5}   \qquad\qquad & y & = \frac{1}{y} \\
+y & = \,\, ?          \qquad\qquad & y & =  \,\, ?    \qquad\qquad & y & = \,\, ? \\
+\end{aligned}
+$$
+
+## Expressions using functions of the math package
+
+Calculate the values $y$ of following expressions, where $a = 3$, $b = 3/7$, $c = 3.00 \times 10^8$. First assign the parameters a, b, c, and import the functions you need from the `math` package. For the complex exponential function import `exp` from `cmath` instead of `math`. To use the imaginary unit $i$ type `1j`. The results are given in blue so you can compare:
+
+$$
+\begin{aligned}
+&y = 3 a^5 - b^2 {\quad\color{Blue}\approx 728.8} \qquad\qquad &y &= \frac{i a b}{a-b} {\quad\color{Blue} = 0.5 i}\\
+&y = (40 / c)^4 {\quad\color{Blue}\approx 3.16\times 10^{-28}}\qquad\qquad &y &= \sqrt{5} / b^2 {\quad\color{Blue}\approx 12.2} \\ 
+&y = \sin(b \pi) \times \frac{1 + b^2}{a^2} {\quad\color{Blue}\approx 0.13} \qquad\qquad &y &= \arctan(a) {\quad\color{Blue}\approx  1.25}\\
+&y = \frac{\sinh(1)}{2} {\quad\color{Blue}\approx  0.59} \qquad\qquad &y &= \frac{e^{i\pi/4}}{\sqrt{2}} {\quad\color{Blue} = \frac{1+i}{2}}\\ 
+&y = \frac{6!}{10!} {\quad\color{Blue}\approx 1.98\times 10^{-4}}\qquad\qquad &y &= e^{ia\pi} {\quad\color{Blue} = -1} 
+\end{aligned}
+$$
+
+More expressions, put $x = 4$, $a = 2$, $b = 10$ and calculate the following expressions:
+
+$$
+\begin{aligned}
+y & = 4 \, \frac{a \, x}{1 + \sin(x)}            \qquad\qquad & y & = \sinh(a \, x) \\
+y & = \tan(x^2)                                 \qquad\qquad & y & = x / \textrm{erf}(x/b) \\
+y & = 5 \times \exp(\sin(b \, x)/x^a)              \qquad\qquad & y & = x + 2\, \sqrt{a - x/b}  \\
+y & = \sqrt{i x + a}                     \qquad\qquad & y & = \cos(2 \pi \, a\, x) \\
+y & = \frac{x^{i a + 1}}{b}     \qquad\qquad & y & = \cos(x) \times \sqrt{\sin(x)} \\
+\end{aligned}
+$$

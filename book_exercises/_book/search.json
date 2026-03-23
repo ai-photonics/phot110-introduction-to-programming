@@ -1,0 +1,362 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PHOT 110: Introduction to programming",
+    "section": "",
+    "text": "Preface\nThis document contains the exercises of the PHOT110 - Introduction to Programming course, given at Izmir Institute of Technology to the students of the Photonics Department. The solutions for the problems can be found at the end of the book.\nFor other course materials of the PHOT110 course please visit https://web.iyte.edu.tr/michaelbarbier/education_phot110.html.\nKnuth (1984)\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "ex_python_console.html",
+    "href": "ex_python_console.html",
+    "title": "1  Expressions in the Python console",
+    "section": "",
+    "text": "1.1 Commando-style calculations\nCalculate the final value for \\(y\\) for each the three columns, start at the top where \\(x\\) is defined, then perform the assignments in each next row.\n\\[\n\\begin{aligned}\nx & = 4               \\qquad\\qquad & x & = 20         \\qquad\\qquad & x & = -5 \\\\\ny & = x^2             \\qquad\\qquad & y & = x / 4      \\qquad\\qquad & y & = x^{(x+3)}  \\\\\ny & = 5 \\times y      \\qquad\\qquad & y & = y + 2      \\qquad\\qquad & y & = \\frac{y}{5 - y} \\\\\ny & = y - 23          \\qquad\\qquad & y & = 3/2 \\, y      \\qquad\\qquad & y & = 4.5 \\, y  \\\\\ny & = \\frac{y}{2}     \\qquad\\qquad & y & = \\sqrt{y} = y^{0.5}   \\qquad\\qquad & y & = \\frac{1}{y} \\\\\ny & = \\,\\, ?          \\qquad\\qquad & y & =  \\,\\, ?    \\qquad\\qquad & y & = \\,\\, ? \\\\\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Expressions in the Python console</span>"
+    ]
+  },
+  {
+    "objectID": "ex_python_console.html#expressions-using-functions-of-the-math-package",
+    "href": "ex_python_console.html#expressions-using-functions-of-the-math-package",
+    "title": "1  Expressions in the Python console",
+    "section": "1.2 Expressions using functions of the math package",
+    "text": "1.2 Expressions using functions of the math package\nCalculate the values \\(y\\) of following expressions, where \\(a = 3\\), \\(b = 3/7\\), \\(c = 3.00 \\times 10^8\\). First assign the parameters a, b, c, and import the functions you need from the math package. For the complex exponential function import exp from cmath instead of math. To use the imaginary unit \\(i\\) type 1j. The results are given in blue so you can compare:\n\\[\n\\begin{aligned}\n&y = 3 a^5 - b^2 {\\quad\\color{Blue}\\approx 728.8} \\qquad\\qquad &y &= \\frac{i a b}{a-b} {\\quad\\color{Blue} = 0.5 i}\\\\\n&y = (40 / c)^4 {\\quad\\color{Blue}\\approx 3.16\\times 10^{-28}}\\qquad\\qquad &y &= \\sqrt{5} / b^2 {\\quad\\color{Blue}\\approx 12.2} \\\\\n&y = \\sin(b \\pi) \\times \\frac{1 + b^2}{a^2} {\\quad\\color{Blue}\\approx 0.13} \\qquad\\qquad &y &= \\arctan(a) {\\quad\\color{Blue}\\approx  1.25}\\\\\n&y = \\frac{\\sinh(1)}{2} {\\quad\\color{Blue}\\approx  0.59} \\qquad\\qquad &y &= \\frac{e^{i\\pi/4}}{\\sqrt{2}} {\\quad\\color{Blue} = \\frac{1+i}{2}}\\\\\n&y = \\frac{6!}{10!} {\\quad\\color{Blue}\\approx 1.98\\times 10^{-4}}\\qquad\\qquad &y &= e^{ia\\pi} {\\quad\\color{Blue} = -1}\n\\end{aligned}\n\\]\nMore expressions, put \\(x = 4\\), \\(a = 2\\), \\(b = 10\\) and calculate the following expressions:\n\\[\n\\begin{aligned}\ny & = 4 \\, \\frac{a \\, x}{1 + \\sin(x)}            \\qquad\\qquad & y & = \\sinh(a \\, x) \\\\\ny & = \\tan(x^2)                                 \\qquad\\qquad & y & = x / \\textrm{erf}(x/b) \\\\\ny & = 5 \\times \\exp(\\sin(b \\, x)/x^a)              \\qquad\\qquad & y & = x + 2\\, \\sqrt{a - x/b}  \\\\\ny & = \\sqrt{i x + a}                     \\qquad\\qquad & y & = \\cos(2 \\pi \\, a\\, x) \\\\\ny & = \\frac{x^{i a + 1}}{b}     \\qquad\\qquad & y & = \\cos(x) \\times \\sqrt{\\sin(x)} \\\\\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Expressions in the Python console</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html",
+    "href": "ex_io_and_scripts.html",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "",
+    "text": "2.1 Body Mass Index calculator\nPrompt a user for his/her height and length, then calculate his/her body mass index and print it to the screen. The body mass index is a rather inaccurate measure for body fat and is given by the formula: \\(\\textrm{BMI} = \\textrm{weight}/\\textrm{height}^2 \\textrm{kg}/\\textrm{m}^2\\) where the weight is in kilograms and height in meters.\nHeight (in cm): 179\nWeight (in kg): 75\nYour BMI = 23.41",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#text-transformations",
+    "href": "ex_io_and_scripts.html#text-transformations",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.2 Text transformations",
+    "text": "2.2 Text transformations\nPrompt the user for a sentence. The perform the following tasks:\n\nMake all characters in the sentence upper case.\nSurround the sentence by double quotes.\nAppend a question mark “?” to the sentence and print it \\(n\\) times on the same line (where \\(n\\) is a parameter).\nPrint the words of the sentence on separate lines by replacing spaces by \\n as a line separator (\\n is the escape code to start a new line)\n\n\n\nPlease provide a sentence: Apples are sometimes green\n(a) Uppercase sentence: APPLES ARE SOMETIMES GREEN\n(b) With quotes: \"Apples are sometimes green\"\n(c) Repeated 4 times: Apples are sometimes green? Apples are sometimes green? Apples are sometimes green? Apples are sometimes green? \n(d) On separate lines:\nApples\nare\nsometimes\ngreen",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#tsiolkovsky-rocket-equation",
+    "href": "ex_io_and_scripts.html#tsiolkovsky-rocket-equation",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.3 Tsiolkovsky rocket equation",
+    "text": "2.3 Tsiolkovsky rocket equation\nTo launch a satelite into a Lower Earth Orbit (LEO) a space rocket needs to reach an orbit velocity \\(\\Delta v\\) of approximately \\(\\Delta v \\approx 7.8\\) km/s or \\(28,080\\) km/h. The amount of fuel required depends on the mass of the empty rocket plus satelite and fuel via the Tsiolkovsky rocket equation:\n\\[\n\\Delta v = v_e \\ln \\frac{m_0}{m_f} \\qquad\\Rightarrow\\qquad \\frac{m_0}{m_f} = \\frac{m_\\textrm{rocket} + m_\\textrm{satelite} + m_\\textrm{fuel}}{m_\\textrm{rocket} + m_\\textrm{satelite}} = e^{\\Delta v/v_e}\n\\]\nWhere \\(m_0\\) is the initial mass of the rocket (and satelite) including propellant (fuel), \\(m_f\\) is the final mass of the empty rocket (with satelite), and \\(v_e = 2.5\\) km/s the effective exhaust velocity for this specific rocket.\nPrompt the user to give a masses of the satelite and the empty rocket to be launched (\\(m_f\\)) and respond with the required fuel to reach the required \\(\\Delta v = 7.8\\) km/s.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#formatted-table-unit-conversion",
+    "href": "ex_io_and_scripts.html#formatted-table-unit-conversion",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.4 Formatted table: unit conversion",
+    "text": "2.4 Formatted table: unit conversion\nPrompt the user for a distance in meters. Then print a table with the distance in units of inches, feet, yard, and mile on the different rows. The units can be converted to metric units by: 1 inch = 2.54 cm, 1 foot = 12 inches, 1 yard = 3 feet, and 1 mile = 1,760 yards. Column 1 should represent the distance with two digits after the decimal point, in column 2 with scientific notation with 2 significant figures, and the last column the units. Use formatted strings to make sure the columns are equally wide.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#glorifier-spring-2025",
+    "href": "ex_io_and_scripts.html#glorifier-spring-2025",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.5 Glorifier (Spring 2025)",
+    "text": "2.5 Glorifier (Spring 2025)\nPrompt a user for his/her name. Print the sentence: “All hail [name of the user]” as a response.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#repeat-words-spring-2025",
+    "href": "ex_io_and_scripts.html#repeat-words-spring-2025",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.6 Repeat words (Spring 2025)",
+    "text": "2.6 Repeat words (Spring 2025)\nPrompt the user for a word. Print the word 8 times on one line with spaces in between and put an exclamation mark at the end.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#braking-distance-spring-2025",
+    "href": "ex_io_and_scripts.html#braking-distance-spring-2025",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.7 Braking distance (Spring 2025)",
+    "text": "2.7 Braking distance (Spring 2025)\nPrompt a user for the speed of a car. Calculate the braking distance on asfalt and concrete roads and print them. The (kinetic) friction constants for concrete and asphalt are given in following table:\n\n\n\nMaterial\nKinetic\nStatic\n\n\n\n\nRubber on concrete (dry)\n0.68\n0.90\n\n\nRubber on concrete (wet)\n0.58\n-.–\n\n\nRubber on asphalt (dry)\n0.72\n0.68\n\n\nRubber on asphalt (wet)\n0.53\n-.–\n\n\nRubber on ice\n0.15\n0.15\n\n\n\nThe braking distance \\(D\\) for a car driving at a speed \\(v\\) is determined by the perception-reaction time \\(t_r \\approx 1\\) of the driver and the friction coefficient of the road \\(\\mu\\) according to the following formula (\\(g = 9.81\\,m/s^2\\)):\n\\[\nD = v t_r + \\frac{v^{2}}{2 \\mu g}\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#velocity-measurement-by-radar-gun-spring-2025",
+    "href": "ex_io_and_scripts.html#velocity-measurement-by-radar-gun-spring-2025",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.8 Velocity measurement by radar gun (Spring 2025)",
+    "text": "2.8 Velocity measurement by radar gun (Spring 2025)\nTraffic police officers can use a radar gun to measure the speed of a car. The difference in frequency \\(f_t\\) send out by the radar gun and the received echo \\(f_e\\) gives the Doppler frequency \\(f_d = f_t - f_e\\). This frequency is related to the velocity of the car by:\n\\[\nf_{d} \\approx 2 v \\frac{f_t}{c'}\n\\]\nwhere \\(c' = c / 1.0003\\). Suppose the radar device is operated in the K-band: \\(f_t = 24\\) GHz. Calculate the Doppler beating frequency \\(f_{d}\\) measured by the officer if you pass him with a speed \\(v = 200\\) km/h.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#chevaux-vapeur-car-tax-calculator-spring-2025",
+    "href": "ex_io_and_scripts.html#chevaux-vapeur-car-tax-calculator-spring-2025",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.9 Chevaux-Vapeur car tax calculator (Spring 2025)",
+    "text": "2.9 Chevaux-Vapeur car tax calculator (Spring 2025)\nAutomatically calculate the tax on cars in France (before 1957). For this, ask a user following properties of his/her car:\n\nCylinder capacity of his/her car \\(C\\) (e.g. 1.3 liters)\nMaximum revolutions/minute \\(\\omega\\)\n\nThen print the amount that the user should pay for his/her car. To calculate the tax use the following formula:\n\\[\n  CV =  C K (60 \\omega)\n\\]\nwhere \\(K\\) is for a four-cylinder engine: \\(1.5 \\times 10^{-4}\\).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_io_and_scripts.html#formatted-table-of-numbers-spring-2025",
+    "href": "ex_io_and_scripts.html#formatted-table-of-numbers-spring-2025",
+    "title": "2  Input, formatting output, and expressions in Python scripts",
+    "section": "2.10 Formatted table of numbers (Spring 2025)",
+    "text": "2.10 Formatted table of numbers (Spring 2025)\nPrompt the user for two floating point numbers and print a table with on the rows the numbers the number itself, the square, and the square root of the number and as columns the two resulting numbers and their sum. Use formatted strings to set the number of digits after the decimal point.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Input, formatting output, and expressions in Python scripts</span>"
+    ]
+  },
+  {
+    "objectID": "ex_conditional_statements.html",
+    "href": "ex_conditional_statements.html",
+    "title": "3  Conditional Statements",
+    "section": "",
+    "text": "3.1 Check login\nPrompt the user to give his/her username and password. Verify whether the username is amapirate and his/her password is greenbeans. If correct, tell the user that he the login was successful. Example output:",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Conditional Statements</span>"
+    ]
+  },
+  {
+    "objectID": "ex_conditional_statements.html#check-login",
+    "href": "ex_conditional_statements.html#check-login",
+    "title": "3  Conditional Statements",
+    "section": "",
+    "text": "Please provide your login credentials:\nusername: Micky\npassword: redbeans\nSorry, your username or password is incorrect.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Conditional Statements</span>"
+    ]
+  },
+  {
+    "objectID": "ex_conditional_statements.html#roots-of-a-quadratic-equation",
+    "href": "ex_conditional_statements.html#roots-of-a-quadratic-equation",
+    "title": "3  Conditional Statements",
+    "section": "3.2 Roots of a quadratic equation",
+    "text": "3.2 Roots of a quadratic equation\nThe roots of a quadratic equation: \\(a x^2 + bx + c = 0\\) are given by: \\[\nx_\\pm = \\frac{-b \\pm \\sqrt{D}}{2a} = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}, \\qquad \\textrm{with discriminant }D = b^2 - 4ac\n\\]\nThe number of roots is determined by the value of the discriminant \\(D\\):\n\n\\(D &gt; 0\\): two roots, \\(x_-\\) and \\(x_+\\),\n\\(D = 0\\): one root, \\(x = x_- = x_+\\),\n\\(D &lt; 0\\): no real roots, \\(x_-\\) and \\(x_+\\) become complex.\n\nPrompt the user for parameters a, b, and c of the quadratic equation, then calculate the number of roots by calculating first the discriminant \\(D = b^2 - 4ac\\). Afterwards print the (real-valued) roots. Example output:\n\n\n--- Roots of the equation ax^2 + bx + c = 0 ---\nParameter a: 2\nParameter b: 3\nParameter c: -5\nThe discriminant D = 49 &gt; 0, two roots x = -2.5, 1.0",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Conditional Statements</span>"
+    ]
+  },
+  {
+    "objectID": "ex_for_and_while_loops.html",
+    "href": "ex_for_and_while_loops.html",
+    "title": "4  For and While loops",
+    "section": "",
+    "text": "4.1 Number series\nPrint the values of \\(1/n\\) for \\(n \\in [5, 10]\\), each on a separate line. Use first a while loop, then try to use a for loop (which one is easier?). The output should look as follows:\n1/5 = 0.2\n1/6 = 0.167\n1/7 = 0.143\n1/8 = 0.125\n1/9 = 0.111\n1/10 = 0.1",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
+    ]
+  },
+  {
+    "objectID": "ex_for_and_while_loops.html#power-series",
+    "href": "ex_for_and_while_loops.html#power-series",
+    "title": "4  For and While loops",
+    "section": "4.2 Power series",
+    "text": "4.2 Power series\nConsider the approximation of Eulers constant \\(e = \\sum_{n=0}^\\infty \\frac{1}{n!}\\). Print the consecutive approximations where you only take the first \\(1, 2, 3, 4, ...\\) terms into account and print each of them on a separate line to the console. Stop when the approximation only differs by \\(0.001\\) or less from the real value of \\(e = 2.7183\\) (make use of math.e, math.factorial(), and math.fabs()). The output should look as follows:\n\n\nEuler's e = 2.7183 approximated to 1 terms =   1.0\nEuler's e = 2.7183 approximated to 2 terms =   2.0\nEuler's e = 2.7183 approximated to 3 terms =   2.5\nEuler's e = 2.7183 approximated to 4 terms = 2.6667\nEuler's e = 2.7183 approximated to 5 terms = 2.7083\nEuler's e = 2.7183 approximated to 6 terms = 2.7167\nEuler's e = 2.7183 approximated to 7 terms = 2.7181",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
+    ]
+  },
+  {
+    "objectID": "ex_for_and_while_loops.html#printing-numbers-spring-2025",
+    "href": "ex_for_and_while_loops.html#printing-numbers-spring-2025",
+    "title": "4  For and While loops",
+    "section": "4.3 Printing numbers (Spring 2025)",
+    "text": "4.3 Printing numbers (Spring 2025)\n\nUse a while loop to print the numbers from 1 to 10 to the screen.\nThen use a for loop for the same task. Make use of the range() function for this.\nFinally, use a for loop to print the odd numbers from 1 to 10 to the screen.\n\nAs an example, the output of the last part should give:\n\n\nPrint odd numbers 1-10 using a for loop\n1\n3\n5\n7\n9",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
+    ]
+  },
+  {
+    "objectID": "ex_for_and_while_loops.html#decreasing-series-spring-2025",
+    "href": "ex_for_and_while_loops.html#decreasing-series-spring-2025",
+    "title": "4  For and While loops",
+    "section": "4.4 Decreasing series (Spring 2025)",
+    "text": "4.4 Decreasing series (Spring 2025)\n\nUse a while loop to print the terms of series \\(\\sum_{n=1}^{\\infty}\\frac{1}{n^4}\\) for which \\(\\frac{1}{n^4} \\geq 0.0001\\).\nRepeat the same task but using a for loop (combine with a conditional statement). Remark that here the lazy evaluation of the range() function is also a benefit.\n\nOutput of either script should have following output:\n\n\n1.0\n0.0625\n0.012345679012345678\n0.00390625\n0.0016\n0.0007716049382716049\n0.00041649312786339027\n0.000244140625\n0.00015241579027587258",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
+    ]
+  },
+  {
+    "objectID": "ex_for_and_while_loops.html#prime-numbers",
+    "href": "ex_for_and_while_loops.html#prime-numbers",
+    "title": "4  For and While loops",
+    "section": "5.1 Prime numbers",
+    "text": "5.1 Prime numbers\nPrompt the user for a positive integer number \\(n\\). Verify whether this number is prime (does not have any integer divisors except 1 and \\(n\\)). For this you can loop over all numbers \\(m \\leq \\sqrt{n}\\) and check whether \\(n/m\\) is a natural number. Use math.sqrt() for the square root and the modulo operator % which gives the rest after division (e.g. 13 % 5 = 3) to verify whether \\(n\\) can be divided by \\(m = 2, 3, 4, ...\\). The output should look as follows:\n\n\nGive a positive integer n: 169\nThe number 169 can be divided by 13\nThe number 169 is not prime",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
+    ]
+  },
+  {
+    "objectID": "ex_for_and_while_loops.html#play-rock-paper-scissors",
+    "href": "ex_for_and_while_loops.html#play-rock-paper-scissors",
+    "title": "4  For and While loops",
+    "section": "5.2 Play rock-paper-scissors",
+    "text": "5.2 Play rock-paper-scissors\nPrompt the player repetitively to choose from: [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game. Award points for winning (+1), losing (-1), or a draw (0). Use the function randint(1, 3) from package random to obtain random integers from the set \\(\\{1, 2, 3\\}\\). Stop the script when the choice was 4. Example output:\n--- Let's play Rock-Paper-Scissors ---\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 3\nI had the same, score: 0\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 2\nYou lose, I had Scissors, score: -1\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 1\nYou win, I had Scissors, score: 0\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 4\n\nStopping game!",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
+    ]
+  },
+  {
+    "objectID": "ex_for_and_while_loops.html#game-of-higher-lower-spring-2025",
+    "href": "ex_for_and_while_loops.html#game-of-higher-lower-spring-2025",
+    "title": "4  For and While loops",
+    "section": "5.3 Game of higher-lower (Spring 2025)",
+    "text": "5.3 Game of higher-lower (Spring 2025)\nCreate a simple version of the higher-lower game where a person thinks of a number and the other has to guess it. Generate a random number using following code:\nimport random\nn = random.randint(0, 100)\nAfterwards, prompt the user repetitively to make a guess, and tell each time whether the number is higher or lower than the guess. If the user guesses the actual number, stop the game. See following example output of a correct working script:\nGuess the number [0, 100]: game started!\nWhat is the number? 45\nThe number is lower, try again.\nWhat is the number? 10\nThe number is lower, try again.\nWhat is the number? 4\nThe number is higher, try again.\nWhat is the number? 7\nYes, that is the number! Congratulations, you guessed it in 4 guesses.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
+    ]
+  },
+  {
+    "objectID": "ex_lists.html",
+    "href": "ex_lists.html",
+    "title": "5  Lists",
+    "section": "",
+    "text": "5.1 Fibonacci sequence\nCalculate the first 10 numbers of the Fibonacci sequence, put them in a list and print the list to the screen. The Fibonacci sequence is defined as follows: \\(F_0 = 0\\), \\(F_1 = 1\\), and \\(F_n = F_{n-1} + F_{n-2}\\) for \\(n \\geq 2\\). More information about the Fibonacci sequence can be found on Wikipedia.\n[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Lists</span>"
+    ]
+  },
+  {
+    "objectID": "ex_lists.html#printing-elements-of-a-list-spring-2025",
+    "href": "ex_lists.html#printing-elements-of-a-list-spring-2025",
+    "title": "5  Lists",
+    "section": "5.2 Printing elements of a list (Spring 2025)",
+    "text": "5.2 Printing elements of a list (Spring 2025)\nCreate the following list:\n[“yellow”, “green”, “blue”, “red”, “white”, “orange”, “black”]\n\nPrint the last element to the screen\nPrint the sublist containing the colors of the Turkish flag\nPrint the sublist with the colors of the rainbow (ignore black and white) and order them according to increasing wavelengths\nPrint all the elements one by one to the screen using a loop.\nPrompt the user to tell his favorite color which is not in the list. If not in the list, append it to the list. Otherwise reply that it is already in the list.\n\nExample output for tasks (a) and (b):\n\n\nLast color in the list:\nblack\nList of colors of the Turkish flag:\n['red', 'white']",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Lists</span>"
+    ]
+  },
+  {
+    "objectID": "ex_lists.html#list-of-soccer-players-spring-2025",
+    "href": "ex_lists.html#list-of-soccer-players-spring-2025",
+    "title": "5  Lists",
+    "section": "5.3 List of soccer players (Spring 2025)",
+    "text": "5.3 List of soccer players (Spring 2025)\nDefine a list containing the names of some of the soccer players from the Kazakhstan national football team (men):\n[“Maksim”, “Abat”, “Oralkhan”, “Ramazan”, “Vyacheslav”]\nThen perform the following tasks:\n\nPrint the names of the list to the screen line-by-line by using a for loop.\nPrint the names in reversed order to the screen. Hint: You can use len() and range() functions.\nAppend the name “Dastan” to the list. Print the list, did it change?\nSelect the second player from the list and print: “[players_name] is the best player!” to the screen.\nRemove player “Abat” from the list.\n\nExample output for the second subtask:\n\n\nPlayers in reverse order:\nVyacheslav\nRamazan\nOralkhan\nAbat\nMaksim",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Lists</span>"
+    ]
+  },
+  {
+    "objectID": "ex_lists.html#selling-fruit-spring-2025",
+    "href": "ex_lists.html#selling-fruit-spring-2025",
+    "title": "5  Lists",
+    "section": "5.4 Selling fruit (Spring 2025)",
+    "text": "5.4 Selling fruit (Spring 2025)\nA salesperson sells fruit on the market. Create a list with the following pieces of fruit that he has initially:\n[“banana”, “apple”, “kiwi”, “banana”, “banana”, “orange”, “apple”, “kiwi”, “strawberry”, “peach”]\nCreate an empty list/basket for a customer. Repeatedly prompt the user/customer what he likes to buy. If still available, remove once from the list and add to the basket of the customer. If not in the list (or not an existing word) print that you don’t have that. Stop when the user says: “That’s all”, and print the basket-list of the customer.\nPossible output of a working script:\nWhat do you like to buy: cherry\nSorry, today I don't have any cherry.\nWhat do you like to buy: banana\nHere you go.\nWhat do you like to buy: apple\nHere you go.\nWhat do you like to buy: That's all\nYou bought following fruit: \n[\"banana\", \"apple\"]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Lists</span>"
+    ]
+  },
+  {
+    "objectID": "sol_io_and_scripts.html",
+    "href": "sol_io_and_scripts.html",
+    "title": "Solutions",
+    "section": "",
+    "text": "Input, formatting output, and expressions in Python scripts",
+    "crumbs": [
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "sol_io_and_scripts.html#input-formatting-output-and-expressions-in-python-scripts",
+    "href": "sol_io_and_scripts.html#input-formatting-output-and-expressions-in-python-scripts",
+    "title": "Solutions",
+    "section": "",
+    "text": "[Spring, 2025-2026] Body Mass Index calculator: 2026/ex_2_2.1.py\n\n# Practical 2: Exercise 2.1\nh = float(input(\"Please provide your height in centimeters: \"))\nw = float(input(\"Please provide your weigth in kilograms: \"))\nprint(f\"Your BMI = {w/(h/100)**2:4.4}\")\n\n\n\n[Spring, 2025-2026] Text transformations: 2026/ex_2_2.2.py\n\n# Practical 2: Exercise 2.2\ns = input(\"Please provide a sentence: \")\nprint(f\"(a) Uppercase sentence: {s.upper()}\")\nprint(f\"(b) With quotes: {'\"' + s + '\"'}\")\nn = 4\nprint(f\"(c) Repeated {n} times: {n * (s + \"?\")}\")\nprint(f\"(d) On separate lines:\\n{s.replace(\" \", \"\\n\")}\")\n\n\n\n[Spring, 2025-2026] Tsiolkovsky rocket equation: 2026/ex_2_2.3.py\n\n# Practical 2: Exercise 2.3\n\n# Import statements\nfrom math import exp\n\n# Parameters\ndv = 7.8\nve = 2.5\n\n# Input\nms = float(input(\"Mass of the satelite (kg): \"))\nmr = float(input(\"Mass of the empty rocket (kg): \"))\n\n# Calculate require mass of fuel\nmf = ((ms + mr) - 1) * exp(dv / ve)\n\n# Output\nprint(f\"==&gt; Required fuel = {mf:4.4} kg\")\n\n\n\n[Spring, 2025-2026] Formatted table: unit conversion: 2026/ex_2_2.4.py\n\n# Practical 2: Exercise 2.4\n\n# Parameters\ninch = 0.01 * 2.54\nfoot = 12 * inch\nyard = 3 * foot\nmile = 1760 * yard\n\n# Input\ndistance = float(input(\"Distance (in m): \"))\n\n# Output\nprint(f\"Distance = {distance} m in various units:\")\nprint(60 * \"-\")\nprint(f\"{distance / inch:20.2f} {distance / inch:20.2} {\"inch\":^20}\")\nprint(f\"{distance / foot:20.2f} {distance / foot:20.2} {\"foot\":^20}\")\nprint(f\"{distance / yard:20.2f} {distance / yard:20.2} {\"yard\":^20}\")\nprint(f\"{distance / mile:20.2f} {distance / mile:20.2} {\"mile\":^20}\")\nprint(60 * \"-\")",
+    "crumbs": [
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "sol_io_and_scripts.html#glorifier-spring-2025",
+    "href": "sol_io_and_scripts.html#glorifier-spring-2025",
+    "title": "Solutions",
+    "section": "Glorifier (Spring 2025)",
+    "text": "Glorifier (Spring 2025)\n\n\n[Spring, 2024-2025] Glorifier: 2025/ex_2_glorifier.py\n\n# Exercise 2.1: Glorifier\n\nname = input(\"Please give your name: \")\nprint(f\"All hail {name}\")",
+    "crumbs": [
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "sol_io_and_scripts.html#repeat-words-spring-2025",
+    "href": "sol_io_and_scripts.html#repeat-words-spring-2025",
+    "title": "Solutions",
+    "section": "Repeat words (Spring 2025)",
+    "text": "Repeat words (Spring 2025)\nPrompt the user for a word. Print the word 8 times on one line with spaces in between and put an exclamation mark at the end.",
+    "crumbs": [
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "sol_io_and_scripts.html#braking-distance-spring-2025",
+    "href": "sol_io_and_scripts.html#braking-distance-spring-2025",
+    "title": "Solutions",
+    "section": "Braking distance (Spring 2025)",
+    "text": "Braking distance (Spring 2025)\nPrompt a user for the speed of a car. Calculate the braking distance on asfalt and concrete roads and print them. The (kinetic) friction constants for concrete and asphalt are given in following table:\n\n\n\nMaterial\nKinetic\nStatic\n\n\n\n\nRubber on concrete (dry)\n0.68\n0.90\n\n\nRubber on concrete (wet)\n0.58\n-.–\n\n\nRubber on asphalt (dry)\n0.72\n0.68\n\n\nRubber on asphalt (wet)\n0.53\n-.–\n\n\nRubber on ice\n0.15\n0.15\n\n\n\nThe braking distance \\(D\\) for a car driving at a speed \\(v\\) is determined by the perception-reaction time \\(t_r \\approx 1\\) of the driver and the friction coefficient of the road \\(\\mu\\) according to the following formula (\\(g = 9.81\\,m/s^2\\)):\n\\[\nD = v t_r + \\frac{v^{2}}{2 \\mu g}\n\\]",
+    "crumbs": [
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "sol_io_and_scripts.html#velocity-measurement-by-radar-gun-spring-2025",
+    "href": "sol_io_and_scripts.html#velocity-measurement-by-radar-gun-spring-2025",
+    "title": "Solutions",
+    "section": "Velocity measurement by radar gun (Spring 2025)",
+    "text": "Velocity measurement by radar gun (Spring 2025)\nTraffic police officers can use a radar gun to measure the speed of a car. The difference in frequency \\(f_t\\) send out by the radar gun and the received echo \\(f_e\\) gives the Doppler frequency \\(f_d = f_t - f_e\\). This frequency is related to the velocity of the car by:\n\\[\nf_{d} \\approx 2 v \\frac{f_t}{c'}\n\\]\nwhere \\(c' = c / 1.0003\\). Suppose the radar device is operated in the K-band: \\(f_t = 24\\) GHz. Calculate the Doppler beating frequency \\(f_{d}\\) measured by the officer if you pass him with a speed \\(v = 200\\) km/h.",
+    "crumbs": [
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "sol_io_and_scripts.html#chevaux-vapeur-car-tax-calculator-spring-2025",
+    "href": "sol_io_and_scripts.html#chevaux-vapeur-car-tax-calculator-spring-2025",
+    "title": "Solutions",
+    "section": "Chevaux-Vapeur car tax calculator (Spring 2025)",
+    "text": "Chevaux-Vapeur car tax calculator (Spring 2025)\nAutomatically calculate the tax on cars in France (before 1957). For this, ask a user following properties of his/her car:\n\nCylinder capacity of his/her car \\(C\\) (e.g. 1.3 liters)\nMaximum revolutions/minute \\(\\omega\\)\n\nThen print the amount that the user should pay for his/her car. To calculate the tax use the following formula:\n\\[\n  CV =  C K (60 \\omega)\n\\]\nwhere \\(K\\) is for a four-cylinder engine: \\(1.5 \\times 10^{-4}\\).",
+    "crumbs": [
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "sol_io_and_scripts.html#formatted-table-of-numbers-spring-2025",
+    "href": "sol_io_and_scripts.html#formatted-table-of-numbers-spring-2025",
+    "title": "Solutions",
+    "section": "Formatted table of numbers (Spring 2025)",
+    "text": "Formatted table of numbers (Spring 2025)\nPrompt the user for two floating point numbers and print a table with on the rows the numbers the number itself, the square, and the square root of the number and as columns the two resulting numbers and their sum. Use formatted strings to set the number of digits after the decimal point.",
+    "crumbs": [
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]

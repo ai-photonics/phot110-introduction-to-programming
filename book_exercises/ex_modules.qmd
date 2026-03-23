@@ -1,0 +1,90 @@
+# Python Custom Modules
+
+Modules are separate python script files which contain functions and variables to be imported in other scripts. 
+
+## A simple module for calculations (Spring 2025)
+
+Add the following functions to a separate module script called `my_module.py`
+
+``` {python}
+#| echo: true
+def add(a, b):
+    """ adds a + b """
+    return a + b
+
+
+def mul(a, b):
+    """ multiplies a * b """
+    return a * b
+```
+
+Then import this module into your main script-file and call the module functions
+to perform the following calculations: $x = 6 + 43$ and $y = (3 + 6) * 4$ and 
+print the results to the console.
+
+## A module for light at an interface (Spring 2025)
+
+Create a module to calculate the reflected light rays and refracted light rays at a vertical interface. You can use the following example code: 
+
+```{.python filename="themodule.py"}
+
+def calc_reflection_angle(angle_inc):
+  # ...
+  # code to calculate the reflection at an interface
+  # ...
+  return angle_reflection
+
+def calc_refraction_angle(angle_inc, n1, n2):
+  # ...
+  # code to calculate the refraction at an interface
+  # ...
+  return angle_refraction
+
+```
+
+
+```{.python filename="thescript.py"}
+# Import your module
+import themodule as lm
+
+# Parameters
+angle_inc = 45
+
+# Calculate the angle of reflection at a vertical interface
+angle_reflection = lm.calc_reflection_angle(angle_inc)
+print(angle_reflection)
+
+# Calculate the angle of refraction at a vertical interface 
+# with media n1 = 1, and n2 = 1.5
+angle_refraction = lm.calc_refraction_angle(angle_inc, 1, 1.5)
+print(angle_refraction)
+```
+
+\newpage
+
+## A module for converting text (Spring 2025)
+
+Create a module with a function to convert text into upper-case text with all exclamation marks (`!`) removed. Name the module file `my_io.py`. 
+In your main script do the following: 
+
+  - Import the module
+  - Ask the user for an input sentence
+  - Convert the sentence by using the function of the module
+
+Then add another function to the module to convert text in a text file into a minimal html page. You can use the following example code to convert the text into html: 
+
+``` {.python}
+html_text = """<!doctype html>
+<html lang=en>
+    <head>
+        <meta charset=utf-8>
+        <title>""" + title + """</title>
+    </head>
+    <body>
+        <p>""" + text + """</p>
+    </body>
+</html>
+"""
+```
+
+Provide the main script with a sample text file and after conversion try to open your html-file.

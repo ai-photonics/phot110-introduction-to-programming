@@ -1,0 +1,2 @@
+This is my new file with some text:
+1 ..2 ..3 ..Go! Notice that there is not enter or space before go

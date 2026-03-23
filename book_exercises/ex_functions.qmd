@@ -1,0 +1,183 @@
+# Exercises on functions
+
+We will exercise creating functions and use them within problems similar to the ones we encountered before during recitation. Remember the different elements of the function definition:
+
+![Function definition elements](./figures/slide_function_def.png){width=70%}
+
+At the beginning of the script you should first import the required libraries (numpy and matplotlib):
+
+```{.python}
+# Import numpy and matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+```{python}
+#| echo: false
+# Import numpy and matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+
+## Calculate the factorial of a number (Spring 2024)
+
+Calculate the value of the factorial of a number by defining a new function: `factorial(n)`. Use the following script as basis:
+
+```{python}
+# input parameter
+n = 5
+
+# calculate the factorial
+f = 1
+for i in range(2, n+1):
+  f = i * f
+
+# print the factorial
+print(f"The value of {n}! = {f}")
+```
+
+## Calculate the number of combinations (Spring 2024)
+
+The number of combinations of k items out of a set of n objects is defined in statistics as
+$$
+\mathcal{C}_k^n = \begin{pmatrix}n\\k\end{pmatrix} = \frac{n!}{(n-k)! \, k!}
+$$
+where $k \leq n$.
+
+- Use the function `factorial(n)` which you created in previous exercise 1 to calculate the number of combinations $\mathcal{C}_3^5$.
+- Afterwards create a function `combinations(n, k)` to compute the combinations.
+
+## Intersection of two lines (Spring 2024)
+
+Find the intersection point $p = (x_p, y_p)$ between two lines with equations
+
+$$
+\left\{\begin{aligned}
+y = m_1\, x + c_1\\
+y = m_2\, x + c_2\\
+\end{aligned}\right .
+$$
+To find the intersection we extract the x-value by making use of the fact that at the intersection the y-values should be equal.
+$$
+\begin{aligned}
+m_2\, x_p + c_2 &= m_1\, x_p + c_1\\
+\Rightarrow (m_2 - m_1)\, x_p &= c_1 - c_2\\
+\Rightarrow x_p &= -\frac{c_2 - c_1}{m_2 - m_1}\\
+\end{aligned}
+$$
+then we substitute the found $x_p$ coordinate into one of the equations of the system to obtain the $y_p$ coordinate:
+$$
+y_p = m_1\, x_p + c_1
+$$
+As example parameters of the lines: pick $m_1 = 1/5$ and $m_2 = 7$ as the direction coefficients, and $c_1 = 2$ and $c_2 = -3$ the off-sets at $x = 0$.
+
+Convert the code to calculate the intersection point in following script into a function: `calc_intersection(m1, c1, m2, c2)` which returns `xp, yp`. Afterwards use your new function within this script.
+
+```{python}
+# Parameters of the lines
+m1 = 0.2; c1 = 2
+m2 = 7; c2 = -3
+
+# Calculate the intersection point 
+# (convert the next couple of lines into a function)
+xp = -(c2 - c1) / (m2 - m1)
+yp = m1 * xp + c1
+
+# Calculate the coordinates for the lines to plot
+x = np.linspace(-7, 7, 100)
+y1 = m1 * x + c1
+y2 = m2 * x + c2
+
+# Plot the lines and the intersection point
+fig, ax = plt.subplots()
+ax.plot(x, y1)
+ax.plot(x, y2)
+ax.plot(xp, yp, marker="x")
+ax.set_xlim([-7, 7])
+ax.set_ylim([-5, 5])
+ax.set_aspect("equal")
+plt.show()
+```
+
+## Intersection of many lines (Spring 2024)
+
+Use the function that you created in previous exercise to calculate the intersection of a line with a list of other lines defined by:
+
+```{python}
+# Parameters of the single line:
+m1 = -0.1
+c1 = 2
+
+# Parameters of the other lines:
+m_list = [-3, 2, -1.5, 3,  -1, 10]; 
+c_list = [3,   1, -1,  -2, -1,   0]
+```
+
+The output plot should look as follows:
+
+```{python}
+#| echo: false
+def calc_intersection(m1, c1, m2, c2):
+  xp = -(c2 - c1) / (m2 - m1)
+  yp = m1 * xp + c1
+  return xp, yp
+
+# Parameters of the single line:
+m1 = -0.1
+c1 = 2
+
+# Parameters of the lines:
+m_list = [-3, 2, -1.5, 3,  -1, 10]; 
+c_list = [3,   1, -1,  -2, -1,   0]
+
+# Calculate the coordinates for the first line
+x = np.linspace(-7, 7, 100)
+y1 = m1 * x + c1
+
+# Initialize the plot
+fig, ax = plt.subplots()
+ax.plot(x, y1, linewidth=3)
+
+# Loop over all the other lines
+for i in range(len(m_list)):
+  m2 = m_list[i]
+  c2 = c_list[i]
+  # Calculate the second line
+  y2 = m2 * x + c2
+  # Calculate the intersection point
+  xp, yp = calc_intersection(m1, c1, m2, c2)
+  # Plot the lines and the intersection point
+  ax.plot(x, y2, color="gray")
+  ax.plot(xp, yp, marker="x")
+
+ax.set_xlim([-7, 7])
+ax.set_ylim([-5, 5])
+ax.set_aspect("equal")
+plt.show()
+```
+
+## Drawing the Koch curve (Spring 2025)
+
+Fractals are easiest defined by recursive algorithms. Look at the following code which draws (one side of) the Koch curve. 
+
+- Afterwards try to adapt the code to plot the whole Koch curve (the three sides of the snowflake)
+
+``` {.python}
+import turtle
+
+def koch(a, order):
+    if order > 0:
+        for t in [60, -120, 60, 0]:
+            koch(a/3, order-1)
+            turtle.left(t)
+    else:
+        turtle.forward(a)
+
+# Draw the Koch curve using Turtle
+turtle.setworldcoordinates(-10, -10, 100, 100)
+turtle.pensize(3)
+turtle.pencolor("blue")
+turtle.speed(10) # possible issue
+koch(100, 4)
+```

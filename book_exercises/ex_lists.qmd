@@ -1,0 +1,86 @@
+# Lists
+
+## Fibonacci sequence
+
+Calculate the first 10 numbers of the Fibonacci sequence, put them in a list and print the list to the screen. The Fibonacci sequence is defined as follows: $F_0 = 0$, $F_1 = 1$, and $F_n = F_{n-1} + F_{n-2}$ for $n \geq 2$. More information about the Fibonacci sequence can be found [on Wikipedia](https://en.wikipedia.org/wiki/Fibonacci_number).
+
+```{python}
+fs = [0, 1]
+for i in range(8):
+    fs.append(fs[-1] + fs[-2])
+
+print(fs)
+```
+
+## Printing elements of a list (Spring 2025)
+
+Create the following list:
+
+["yellow", "green", "blue", "red", "white", "orange", "black"]
+
+a. Print the last element to the screen
+a. Print the sublist containing the colors of the Turkish flag
+a. Print the sublist with the colors of the rainbow (ignore black and white) 
+and order them according to increasing wavelengths
+a. Print all the elements one by one to the screen using a loop.
+a. Prompt the user to tell his favorite color which is not in the list. 
+If not in the list, append it to the list. Otherwise reply that it is already in the list.
+
+Example output for tasks (a) and (b):
+
+``` {python}
+#| echo: false
+l = ["yellow", "green", "blue", "red", "white", "orange", "black"]
+print("Last color in the list:")
+print(l[-1])
+print("List of colors of the Turkish flag:")
+print(l[3:5])
+```
+
+## List of soccer players (Spring 2025)
+
+Define a list containing the names of some of the soccer players from the Kazakhstan national football team (men):
+
+["Maksim", "Abat", "Oralkhan", "Ramazan", "Vyacheslav"]
+
+Then perform the following tasks:
+
+- Print the names of the list to the screen line-by-line by using a for loop.
+- Print the names in reversed order to the screen. Hint: You can use `len()` and `range()` functions.
+- Append the name "Dastan" to the list. Print the list, did it change? 
+- Select the second player from the list and print: "[players_name] is the best player!" to the screen.
+- Remove player "Abat" from the list.
+
+Example output for the second subtask:
+
+``` {python}
+#| echo: false
+players = ["Maksim", "Abat", "Oralkhan", "Ramazan", "Vyacheslav"]
+print("Players in reverse order:")
+players.reverse()
+for player in players:
+  print(player)
+```
+
+## Selling fruit (Spring 2025)
+
+A salesperson sells fruit on the market. Create a list with the following pieces of fruit that he has initially:
+
+["banana", "apple", "kiwi", "banana", "banana", "orange", "apple", "kiwi", "strawberry", "peach"]
+
+Create an empty list/basket for a customer.
+Repeatedly prompt the user/customer what he likes to buy. If still available, remove once from the list and add to the basket of the customer. If not in the list (or not an existing word) print that you don't have that. Stop when the user says: "That's all", and print the basket-list of the customer.
+
+Possible output of a working script:
+
+```
+What do you like to buy: cherry
+Sorry, today I don't have any cherry.
+What do you like to buy: banana
+Here you go.
+What do you like to buy: apple
+Here you go.
+What do you like to buy: That's all
+You bought following fruit: 
+["banana", "apple"]
+```

@@ -1,0 +1,82 @@
+# Sequences and operations: Lists, Tuples, Strings
+
+## Making a tuple (Spring 2025)
+
+Tuples are similar to lists but are immutable, i.e. they cannot be changed. You can create a tuple (list) using round (square) brackets.
+
+- Make a tuple containing the odd elements: `1, 3, 5`
+- Make a list containing even elements: `2, 4, 6`
+- Use the `extend()` method on the list to add the elements of the tuple to the list. Print the extended list. There is no extend method for tuples, why not?
+- Order the elements in the list from small to large using the `sort()` method on the list. Print the ordered list. Example output:
+
+``` {python}
+#| echo: false
+t = (1, 3, 5)
+l = [2, 4, 6]
+
+l.extend(t)
+print(f"Extended list: {l}")
+l.sort()
+print(f"After sorting the elements of the list: {l}")
+```
+
+## String chemistry (Spring 2025)
+
+Take a long word such as "Dimethylaminophenyltrimethylpyrazoline" and apply the following string operations (print the result every time):
+
+- Make all letters capital
+- Inverse the order of the letters in the word
+- Split the word into a list of strings whenever you encounter the letter "y" or "Y".
+- Sort the letters alphabetically within each string of the splitted word.
+- Print the second string of the list to the screen
+- Create a string: "Chemistry is hard", add three exclamation marks "!" to the end, and repeat it 20 times (use the multiplication operator). Example output:
+
+``` {python}
+#| echo: false
+
+chemical = "Dimethylaminophenyltrimethylpyrazoline"
+chemical = chemical.upper()
+print(chemical)
+l = chemical.split("Y")
+print(l)
+for i, el in enumerate(l):
+  l[i] = "".join(sorted(el))
+print(l)
+print(l[1])
+
+claim = "chemistry is hard"
+print(20 * (claim + "!!!"))
+```
+
+## Yoda-talk (Spring 2025)
+
+Prompt the user to give a sentence. Change the order of the words and print the new sentence. You can use following technique:
+
+- Split the sentence in words.
+- Mix up the order of the words (list of strings) by flipping every two word
+- Use the `join()` method on the list of words to concatenate all strings in the list, so you obtain a single (mixed up) sentence again.
+- Print this mixed up sentence to the screen.
+- Try to mix up the order of the words more by using the shuffle function of the random module instead, see the example below:
+
+``` {python}
+#| echo: true
+import random
+
+words = ["The", "force", "is", "strong", "in", "him"]
+random.shuffle(words)
+print(words)
+```
+
+Example output:
+
+``` {python}
+#| echo: false
+import random
+
+print("Enter a sentence: The force is strong in him")
+sentence = "The force is strong in him"
+l = sentence.split(" ")
+random.shuffle(l)
+print(" ".join(l))
+```
+

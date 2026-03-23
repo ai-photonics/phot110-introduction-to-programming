@@ -1,0 +1,3 @@
+# Solutions {.unnumbered}
+
+{{< include sol_io_and_scripts.qmd >}}

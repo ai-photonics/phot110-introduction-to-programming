@@ -1,0 +1,3 @@
+This is a small text file.
+This is the second line of text. This is still the second line.
+And now for something totally different: I like banana cake!This and the next part will be appended to the original:

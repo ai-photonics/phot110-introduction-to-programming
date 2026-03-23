@@ -1,0 +1,26 @@
+# Exercises on error handling
+
+
+## User console input (Spring 2024)
+
+When we ask a user to fill in a form or type something at the prompt, we assume a certain format. Let's take the example where we ask how tall a person is. Hereby we expect to get the answer as an integer number in centimeters. However, when prompted with this question, a user can fill in something invalid (e.g. "1m72"). When that happens we want to allow the user to try again and maybe give an extra hint.
+
+A typical manner to arrange this is:
+
+```{.python}
+while True:
+  try:
+    height = int(input("\tYour height (in cm) = "))
+    print(f"You are {height} cm")
+  except ValueError:
+    print(f"Invalid input: please try again")
+
+```
+
+- Adapt the above code so that it accepts decimal input such as "174.7"
+
+## Read from a text file (Spring 2024)
+
+- Adapt the code to read a text file on your computer of exercise one so that it doesn't crash when the file path doesn't exist.
+- Prompt the user to choose the file name.
+

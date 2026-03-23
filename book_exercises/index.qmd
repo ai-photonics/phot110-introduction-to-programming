@@ -1,0 +1,7 @@
+# Preface {.unnumbered}
+
+This document contains the exercises of the PHOT110 - Introduction to Programming course, given at Izmir Institute of Technology to the students of the Photonics Department. The solutions for the problems can be found at the end of the book.
+
+For other course materials of the PHOT110 course please visit <https://web.iyte.edu.tr/michaelbarbier/education_phot110.html>.
+
+@knuth1984

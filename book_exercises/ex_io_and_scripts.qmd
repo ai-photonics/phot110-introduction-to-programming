@@ -1,0 +1,109 @@
+# Input, formatting output, and expressions in Python scripts
+
+## Body Mass Index calculator {#sec-ex-bmi}
+
+Prompt a user for his/her height and length, then calculate his/her body mass index and print it to the screen. The body mass index is a rather inaccurate measure for body fat and is given by the formula: $\textrm{BMI} = \textrm{weight}/\textrm{height}^2 \textrm{kg}/\textrm{m}^2$ where the weight is in kilograms and height in meters.
+
+```{python}
+#| echo: false
+h = 179
+w = 75
+print(f"Height (in cm): {h}")
+print(f"Weight (in kg): {w}")
+#h = float(input("Please provide your height in centimeters: "))
+#w = float(input("Please provide your weigth in kilograms: "))
+print(f"Your BMI = {w/(h/100)**2:4.4}")
+```
+
+
+## Text transformations
+
+Prompt the user for a sentence. The perform the following tasks:
+
+a) Make all characters in the sentence upper case.
+a) Surround the sentence by double quotes. 
+a) Append a question mark "? " to the sentence and print it $n$ times on the same line (where $n$ is a parameter).
+a) Print the words of the sentence on separate lines by replacing spaces by `\n` as a line separator (`\n` is the escape code to start a new line)
+
+```{python}
+#| echo: false
+print("Please provide a sentence: Apples are sometimes green")
+s = "Apples are sometimes green"
+print(f"(a) Uppercase sentence: {s.upper()}")
+print(f"(b) With quotes: {'"' + s + '"'}")
+n = 4
+print(f"(c) Repeated {n} times: {n * (s + "? ")}")
+print(f"(d) On separate lines:\n{s.replace(" ", "\n")}")
+```
+
+## Tsiolkovsky rocket equation
+
+To launch a satelite into a Lower Earth Orbit (LEO) a space rocket needs to reach an orbit velocity $\Delta v$ of approximately $\Delta v \approx 7.8$ km/s or $28,080$ km/h. The amount of fuel required depends on the mass of the empty rocket plus satelite and fuel via the Tsiolkovsky rocket equation:
+
+$$
+\Delta v = v_e \ln \frac{m_0}{m_f} \qquad\Rightarrow\qquad \frac{m_0}{m_f} = \frac{m_\textrm{rocket} + m_\textrm{satelite} + m_\textrm{fuel}}{m_\textrm{rocket} + m_\textrm{satelite}} = e^{\Delta v/v_e}
+$$
+
+Where $m_0$ is the initial mass of the rocket (and satelite) including propellant (fuel), $m_f$ is the final mass of the empty rocket (with satelite), and $v_e = 2.5$ km/s the effective exhaust velocity for this specific rocket.
+
+Prompt the user to give a masses of the satelite and the empty rocket to be launched ($m_f$) and respond with the required fuel to reach the required $\Delta v = 7.8$ km/s.
+
+## Formatted table: unit conversion
+
+Prompt the user for a distance in meters. Then print a table with the distance in units of inches, feet, yard, and mile on the different rows. The units can be converted to metric units by: 1 inch = 2.54 cm, 1 foot = 12 inches, 1 yard = 3 feet, and 1 mile = 1,760 yards. Column 1 should represent the distance with two digits after the decimal point, in column 2 with scientific notation with 2 significant figures, and the last column the units. Use formatted strings to make sure the columns are equally wide.
+
+## Glorifier (Spring 2025)
+
+Prompt a user for his/her name. Print the sentence: "All hail [name of the user]" as a response.
+
+## Repeat words (Spring 2025)
+
+Prompt the user for a word. Print the word 8 times on one line with spaces in between and put an exclamation mark at the end.
+
+## Braking distance (Spring 2025)
+
+Prompt a user for the speed of a car. Calculate the braking distance on asfalt and concrete roads and print them. The (kinetic) friction constants for concrete and asphalt are given in following table:
+
+| Material |	Kinetic |	Static
+| ---- | ---- | ---- |
+| Rubber on concrete (dry) | 0.68 |	0.90 |
+| Rubber on concrete (wet) |	0.58 |	-.-- |
+| Rubber on asphalt (dry) |	0.72 |	0.68 |
+| Rubber on asphalt (wet) |	0.53 |	-.-- |
+| Rubber on ice |	0.15 |	0.15 |
+
+The braking distance $D$ for a car driving at a speed $v$ is determined by the perception-reaction time $t_r \approx 1$ of the driver and the friction coefficient of the road $\mu$ according to the following formula ($g = 9.81\,m/s^2$):
+
+$$
+D = v t_r + \frac{v^{2}}{2 \mu g}
+$$
+
+## Velocity measurement by radar gun (Spring 2025)
+
+Traffic police officers can use a radar gun to measure the speed of a car. The difference in frequency $f_t$ send out by the radar gun and the received echo $f_e$ gives the Doppler frequency $f_d = f_t - f_e$. This frequency is related to the velocity of the car by: 
+
+$$
+f_{d} \approx 2 v \frac{f_t}{c'}
+$$
+
+where $c' = c / 1.0003$. Suppose the radar device is operated in the K-band: $f_t = 24$ GHz. Calculate the Doppler beating frequency $f_{d}$ measured by the officer if you pass him with a speed $v = 200$ km/h.
+
+## Chevaux-Vapeur car tax calculator (Spring 2025)
+
+Automatically calculate the tax on cars in France (before 1957). For this, ask a user following properties of his/her car:
+
+  - Cylinder capacity of his/her car $C$ (e.g. 1.3 liters)
+  - Maximum revolutions/minute $\omega$
+
+Then print the amount that the user should pay for his/her car. To calculate the tax use the following formula:
+
+$$
+  CV =  C K (60 \omega)
+$$
+
+where $K$ is for a four-cylinder engine: $1.5 \times 10^{-4}$.
+
+## Formatted table of numbers (Spring 2025)
+
+Prompt the user for two floating point numbers and print a table with on the rows the numbers the number itself, the square, and the square root of the number and as columns the two resulting numbers and their sum.
+Use formatted strings to set the number of digits after the decimal point.

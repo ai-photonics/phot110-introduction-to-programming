@@ -1,0 +1,3 @@
+# Introduction
+
+This document contains the exercises performed in practical sessions during passed years. The solutions for the problems can be found at the end of the book.

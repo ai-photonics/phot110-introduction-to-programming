@@ -1,0 +1,52 @@
+project:
+  type: book
+
+book:
+  title: "PHOT 110: Introduction to programming"
+  subtitle: "Collected exercises, Spring semester (2024-now)"
+  author: "Michaël Barbier"
+  date: today
+  search: true
+  repo-url: https://github.com/ai-photonics/phot110-intro-programming
+  repo-actions: [source]
+  downloads: [pdf, epub]
+  chapters:
+    - index.qmd
+    #- intro.qmd
+    - ex_python_console.qmd
+    - ex_io_and_scripts.qmd
+    - ex_conditional_statements.qmd
+    - ex_for_and_while_loops.qmd
+    - ex_lists.qmd
+    - solutions.qmd
+    - references.qmd
+
+comments:
+  hypothesis: true
+
+filters:
+  - include-code-files
+
+bibliography: references.bib
+
+execute:
+  echo: false
+  output: true
+  warning: true
+  error: true
+  code-overflow: wrap
+  code:
+    font-size: 48px
+    code-line-numbers: true
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+    highlight-style: tango
+    papersize: A4
+    margin-bottom: 2.5 cm
+    margin-top: 1.5 cm
+    margin-left: 2 cm
+    margin-right: 2 cm

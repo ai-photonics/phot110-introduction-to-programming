@@ -1,0 +1,618 @@
+# Plotting graphs with Matplotlib
+
+Plotting a function is often done by approximating the function by piece-wise 
+straight lines. For this we divide the interval that we want to plot in small pieces and generate (x, y)-coordinates. Suppose we want to plot the function $y=x^2$ over 
+interval $x \in [A, B]$, then first we would create the x-coordinates:
+$$
+x_i = A + i \cdot \frac{B-A}{N} = A + i \cdot\delta x \quad \text{with } i \in \{0, 1, .. , N\}
+$$
+with $\delta x = (B-A)/N$ the distance between the x-coordinates.
+
+![Interval divided in $N$ pieces, i.e. a regularly spaced interval.](./figures/fig_interval.png){width="50%"}
+
+Afterwards we calculate the y-coordinates from the x-coordinates: $y_i = x_i^2$.
+Now that we have both coordinates we can plot the points with a line plot, which 
+will connect the points with line pieces. The following code plots the
+curve $y = x^2$ within interval $[-1, 2]$
+
+```{python}
+# Import statements
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generating the x-coordinates with a list comprehension 
+N = 10
+A = -1; B = 2
+xs = [ A + i*(B-A)/N for i in range(N+1)]
+
+# Calculating the y coordinates from the x coordinates
+ys = [ x**2 for x in xs]
+
+# Creating a Matplotlib figure
+fig, ax = plt.subplots()
+# Plotting the coordinates
+ax.plot(xs, ys, marker='.')
+
+```
+Within this example we used a low number of points, $N = 10$, which is too small to obtain a smooth realistic curve. Normally we plot curves with $N = 100$ or larger. I added dots
+on the curve (provided by the option `marker='.'` in the plot command) to indicate
+where the points are.
+
+**Different ways to generate the x-values**
+
+To create the $N+1$ coordinates $x_i$ in interval $[A, B]$ there are various methods 
+available. First I will list the methods not using the Numpy package:
+
+(1) Using a `while` loop (not optimal when you know the number of divisions):
+```{python}
+N = 10; A = -1; B = 2;
+xs = []
+i = 0
+while i <= N:
+  x = A + i*(B-A)/N
+  xs.append(x)
+  i = i + 1
+```
+(2) Using a `for` loop and a `range`:
+```{python}
+N = 10; A = -1; B = 2;
+xs = []
+for i in range(N+1):
+  x = A + i*(B-A)/N
+  xs.append(x)
+```
+(3) Using list comprehension:
+```{python}
+N = 10; A = -1; B = 2;
+xs = [ A + i*(B-A)/N for i in range(N+1)]
+```
+
+**Different ways to generate the x-values: with Numpy**
+
+Numpy is designed for numerical computations so it has built-in functions for 
+the generation of coordinates within intervals ( see also [https://numpy.org/doc/stable/user/how-to-partition.html#how-to-partition](https://numpy.org/doc/stable/user/how-to-partition.html#how-to-partition)). Numpy functions 
+`arange()` and `linspace()` create regularly spaced coordinates within 1D intervals:
+```{python}
+import numpy as np
+# Numpy: suppress scientific notation for small numbers and use 3 digits
+np.set_printoptions(precision=3, suppress=True) 
+
+N = 10; A = -1; B = 2; dx = 0.25
+x1 = np.arange(A, B, dx)   # x1 = points in interval [A, B[ with step dx
+print(f"x1 = {x1}")
+x2 = np.linspace(A, B, N+1)  # x2 = N points in interval [A, B]
+print(f"x2 = {x2}")
+```
+The created coordinates are in Numpy arrays (not lists). **Numpy arrays are much faster** to access than lists. But lists can change their size easily and contain mixed object types.
+
+Numpy also provides operations and functions on Numpy arrays. We can use this to 
+generate for example the y-coordinates:
+```{python}
+# Numpy arrays provide element-wise operations
+y = x1**2  #  y contains squared array elements
+print(f"y = {y}")
+z = 5 * x1 + 3  #  z contains elements of x multiplied by 5 and increased with 3
+print(f"z = {z}")
+```
+
+**When to use which method ?**
+
+It seems that Numpy is much easier for creating **regularly spaced points within
+an interval**, especially when using the values afterwards within a calculation, so why would we use anything else? There are some details to it though,
+I tried to summarize the PRO's and CON's in the following table:
+
+| type | PRO's | CON's | Use-case |
+| --- | --- | --- | --- |
+| while loop | versatile, only option when number of iterations is unknown | cumbersome | Unknown number of iterations |
+| for loop | Lower memory footprint if used with `range()`, lazy evaluation | Cumbersome | large number of iterations, performing a direct action each iteration |
+| list comprehension |  Clear, easy | Less convenient than Numpy `arange()` | When using Numpy is not desired/possible |
+| Numpy arange |  Easiest method for fixed step, Numpy provides array operations and functions | End of interval is exclusive, no lazy evaluation, slower than Python built-in `Array` | Regularly spaced intervals (fixed step) for computational purposes |
+| Numpy linspace |  Easiest method for fixed number of points, Numpy provides array operations and functions | No lazy evaluation, slower than Python built-in `Array` | Regularly spaced interval (fixed number of points) for computational purposes |
+
+Basically, if you need to create a regularly spaced interval:
+
+- Use a `while` loop when you don't know the number of iterations up front.
+- Use a `for` loop for huge number of iterations which cannot fit into memory, so 
+that the lazy evaluation of `range` can help you there. In this case you would 
+not create the actual list, but
+take an action at each iteration (e.g. save the result to a file).
+- Use list comprehension if you don't want to use Numpy (or it is not available)
+- Use Numpy's `arange` or `linspace` for numerical computations and plotting.
+
+Note that this comparison is specifically for regularly spaced intervals. When iterating 
+over lists of objects, using a `for` loop or list comprehension is more appropriate.
+
+**Before you start**: 
+
+At the beginning of the script you should first import the required libraries (numpy and matplotlib):
+
+```{.python}
+# Import numpy and matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+## Plot a Gaussian and Lorentz distribution (Spring 2025)
+
+Plot the Gaussian and the Lorentz function on one plot to compare them, add a legend and compute the curve of the difference between the two. The Gaussian curve is defined by:
+
+$$
+g(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi}\sigma} e^{- (x-\mu)^2 / 2\sigma^2}
+$$
+
+The Lorentz curve is given by:
+
+$$
+f(x; x_0, \gamma) = \frac{1}{\pi} \frac{\gamma}{(x-x_0)^2 + \gamma^2}
+$$
+
+
+``` {python}
+#| echo: false
+# Plotting functions
+import numpy as np
+import matplotlib.pyplot as plt
+
+sigma = 2
+gamma = 1
+x = np.linspace(-5, 5, 500)
+y1 = 1/np.sqrt(2*np.pi*sigma**2) * np.exp(-x ** 2 / (2*sigma ** 2))
+y2 = 1/np.pi * gamma / (x**2 + gamma**2)
+y3 = y2 - y1
+plt.plot(y1)
+plt.plot(y2)
+plt.plot(y3)
+plt.ylabel("y")
+plt.xlabel("x")
+plt.legend(["Gaussian","Lorentz","Difference"])
+plt.show()
+
+```
+
+## Lissajoux figures (Spring 2024)
+
+Lissajoux figures: sinusoidal signals in x and y.
+
+$$
+\begin{aligned}
+x &= \sin(f_x t + \delta \phi)\\
+y &= \sin(f_y t)
+\end{aligned}
+$$
+
+-   Traversed coordinates in time `t` form shapes
+-   Signal frequencies `fx` and `fy`
+-   Phase difference `dphi`
+
+Lissajoux figures are typically encountered on an oscilloscope (see the figure below).
+In an oscilloscope electric signals are connected to the vertical and horizontal 
+
+```{.python} 
+# Use following parameters
+fx = 3; fy = fx - 1; dphi = pi/2 # or dphi = pi/4
+
+# Hint: Use np.linspace(), np.pi, np.sin()
+#       take time in interval [0, 2*pi], e.g.:
+#           t = np.linspace(0, 2*np.pi, 1000)
+
+```
+
+![An oscilloscope allows to see the correlation between two electric signals, by plotting one signal horizontally and the second vertically.](./figures/fig_lissajoux.jpg){width="70%"}
+
+Output plot example
+
+```{python}
+#| echo: false
+# Import statements
+import matplotlib.pyplot as plt 
+import numpy as np
+
+# Define the time interval
+ts = np.linspace(0, 2*np.pi, 1000) 
+dphi = np.pi/2
+
+fx = 3 
+fy = fx - 1 
+xs = np.sin(fx * ts + dphi)
+ys = np.sin(fy * ts)
+plt.plot(xs, ys)
+plt.title(f"fx = {fx}, fy = {fy}")
+plt.show()
+```
+
+## Refraction at a glass interface (Spring 2024)
+
+Plot the refracted angle $\theta_2$ (using Snell's law) of a ray of light incident at a glass medium, as function of the incoming angle: use the incoming angle $\theta_1 \in [-90, 90]$ degrees medium 1 has $n_1 = 1$, medium 2 has $n_2 = 1.55$.
+
+![Snell's law](./figures/fig_snells_law.png){width="60%"}
+
+Snell's law is given by: 
+$$
+n_1 \sin(\theta_1) = n_2 \sin(\theta_2)
+$$
+If refraction indices $n_1$ and $n_2$ are known, the refracted angle can be calculated as follows:
+$$
+\theta_2 = \arcsin \left( \frac{n_2}{n_1} \sin(\theta_2) \right)
+$$
+Hint: Use Numpy arrays for the angles (np.linspace()),
+and Numpy functions: np.sin(), np.arcsin() (convert to radians by multiplying by a factor pi/180) or use the functions np.rad2deg and np.deg2rad to convert between the two.
+
+The output of your code should be similar to following plot:
+
+```{python}
+#| echo: False
+# First we import the required libraries (numpy and matplotlib)
+# Import numpy and matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+
+# parameters
+n1 = 1      # refraction index of the first medium
+n2 = 1.55   # refraction index of the second medium
+
+# Initialize the incoming angles
+theta_1_degrees = np.linspace(0, 90, 100)
+
+# Calculate the refracted angles
+theta_1 = theta_1_degrees * np.pi/180
+theta_2 = np.arcsin((n1/n2) * np.sin(theta_1))
+theta_2_degrees = theta_2 * 180/np.pi
+
+# Plot the resulting curve
+fig, ax = plt.subplots()
+ax.plot(theta_1_degrees, theta_2_degrees)
+plt.show()
+
+```
+
+## Adapt previous plot to include axis labels, etc. (Spring 2024)
+
+- Add labels to your axes using the `set_xlabel` and `set_ylabel` methods. Put $-symbols around mathematical/Greek letters and double-escaped Greek letters such as theta (the escape symbol is "`\`"). For example: 
+```{.python}
+ax.set_xlabel("$\\theta_1$ (in degrees)")
+```
+- Add a title to your plot (e.g. "Refraction angles") by using the method: `ax.set_title()`
+- Set the intervals to be plotted between 0 and 90 degrees, and set the aspect ratio of the axes equal to one:
+```{.python}
+       ax.set_xlim([0, 90])
+       ax.set_ylim([0, 90])
+       ax.set_aspect('equal', 'box')
+```
+- Save the figure using fig.savefig() as a png figure, for example:
+```{.python}
+       fig.savefig("./ex2_figure.png")
+```
+
+The output should give you a similar plot to the one below:
+```{python}
+#| echo: false
+# parameters
+n1 = 1      # refraction index of the first medium
+n2 = 1.55   # refraction index of the second medium
+
+# Initialize the incoming angles
+theta_1_degrees = np.linspace(0, 90, 100)
+
+# Calculate the refracted angles
+theta_1 = theta_1_degrees * np.pi/180
+theta_2 = np.arcsin((n1/n2) * np.sin(theta_1))
+theta_2_degrees = theta_2 * 180/np.pi
+
+# Plot the resulting curve
+fig, ax = plt.subplots()
+
+# Annotate and adapt the visual appearance of the plot
+ax.plot(theta_1_degrees, theta_2_degrees)
+ax.set_xlim([0, 90])
+ax.set_ylim([0, 90])
+ax.set_aspect('equal', 'box')
+ax.set_title("Refraction at a glass medium")
+ax.set_xlabel("$\\theta_1$ (in degrees)")
+ax.set_ylabel("$\\theta_2$ (in degrees)")
+fig.savefig("./ex2_figure.png")
+plt.show()
+```
+
+
+## Extend previous script to show multiple incident angles (Spring 2024)
+Plot the previous plot but now with multiple values for $n_2 \in [1, 1.8]$
+
+- use the arange function of Numpy to create values for $n_2$ within the interval, for example each value separated by $\delta n = 0.1$ 
+```{.python}
+n2s = np.arange(1, 1.85, 0.1)
+```
+- Plot in the same axis when looping over the values (but initialize the `fig, ax` only once before the loop)
+- add a legend using `plt.legend(n2s)`
+- to remove the extra decimals due to rounding errors, use `plt.legend(np.round(n2s, decimals=2))` to round the numbers before showing the legend.
+
+The output should give the below plot:
+```{python}
+#| echo: false
+# parameters
+n1 = 1                          # refraction index of the first medium
+n2s = np.arange(1, 1.85, 0.1)   # refraction indices of the second medium
+
+# Initialize the incoming angles
+theta_1_degrees = np.linspace(0, 90, 100)
+
+# Initialize the figure and axis to plot
+fig, ax = plt.subplots()
+
+# Calculate the refracted angles for every n2 in n2s
+theta_1 = np.deg2rad(theta_1_degrees)
+for n2 in n2s:
+    theta_2 = np.arcsin((n1/n2) * np.sin(theta_1))
+    theta_2_degrees = np.rad2deg(theta_2)
+    ax.plot(theta_1_degrees, theta_2_degrees)
+
+# Annotate and adapt the visual appearance of the plot
+plt.legend(np.round(n2s, decimals=2))
+ax.set_xlim([0, 90])
+ax.set_ylim([0, 90])
+ax.set_aspect('equal', 'box')
+ax.set_title("Refraction at a glass medium")
+ax.set_xlabel("$\\theta_1$ (in degrees)")
+ax.set_ylabel("$\\theta_2$ (in degrees)")
+fig.savefig("./ex3_figure.png")
+plt.show()
+```
+
+## Plot ellipses with various parameters (Spring 2024)
+Plot ellipses as parametric plots with parameter $t \in [0, 2*\pi]$ and where the (x, y)-curve is given by:
+$$
+\begin{aligned}
+x &= a \cos(t)\\
+y &= b \sin(t)
+\end{aligned}
+$$
+Plot multiple ellipses with different values of $a$ and $b$:
+
+- take parameter $a \in [1, 2]$ and choose a small (e.g. 8) curves using `np.linspace()`, afterwards calculate corresponding value for parameter $b$ from $a$ by using $b = 1/a$
+- give every ellipse a different color and choose the color palette Matplotlib uses by using e.g.:
+```{.python}
+colors = plt.cm.jet(np.linspace(0, 1, n_curves))
+
+# Then afterwards define the line color:
+ax.plot(xs, ys, color=colors[i])
+```
+- use: `ax.set_aspect('equal', 'box')` to set the aspect ratio of the x and y axis equal
+
+The output of the script should give the following plot:
+```{python}
+#| echo: false
+# Parameters of the curves
+a = np.linspace(1, 2, 10)
+b = 1 / a
+n_curves = len(a)
+# Define colors according to the "jet" colormap
+colors = plt.cm.jet(np.linspace(0, 1, n_curves))
+
+# Parameter t in interval [0, pi]
+t = np.linspace(0,2*np.pi, 1000)
+
+# Initialize the axes
+fig, ax = plt.subplots()
+
+for i in range(len(a)):
+    xs = a[i] * np.cos(t)
+    ys = b[i] * np.sin(t)
+    ax.plot(xs, ys, color=colors[i])
+
+# Set the aspect ratio of the axes to equal
+ax.set_aspect('equal', 'box')
+plt.show()
+```
+
+
+## Plot Poinsot's spiral (2nd form) (Spring 2024)
+
+Poinsot's spiral is defined in polar coordinates as:
+$$
+   r = \frac{1}{\cosh(n \theta)}
+$$
+plot with $\theta$ in interval $[-10*pi, 10*pi]$ and convert from polar coordinates to (x,y)-coordinates by
+
+$$
+\begin{aligned}
+x &= r \cos(t)\\
+y &= r \sin(t)
+\end{aligned}
+$$
+- Take the parameter $n$ for example $n = 1/3$ to have a typical curve
+
+The output plot should look as below:
+```{python}
+#| echo: false
+# parameter n of the spiral
+n = 1/3
+
+# Initializing the parameter interval
+theta = np.linspace(-10*np.pi, 10*np.pi, 1000)
+
+# Calculation of the (x,y) coordinates of the curve
+r = 1/np.cosh(n*theta)
+xs = r * np.cos(theta)
+ys = r * np.sin(theta)
+
+# plotting the curve
+fig, ax = plt.subplots()
+ax.plot(xs, ys)
+plt.show()
+```
+
+## Plot a Gaussian distribution (Spring 2024)
+
+Generate 10000 random numbers with a normal distribution and plot the histogram
+- First initialize the random number generator
+```{.python}
+rng = np.random.default_rng(1)
+```
+- use the random number generator we created to generate 10000 random numbers from the standard normal distribution using: 
+```{.python}
+xs = rng.standard_normal(size=10000)
+```
+- plot a histogram using `ax.hist(x_uniform, 100)`
+
+The resulting plot should be:
+
+```{python}
+#| echo: false
+
+# ex 1: Generate 10000 random numbers with a normal distribution and plot the histogram
+#   First initialize the random number generator
+rng = np.random.default_rng(1)
+#   - use the random number generator we created to generate 10000 random numbers from the standard normal distribution:
+#       xs = rng.normal(size=10000)
+#   - plot a histogram
+#       ax.hist(x_uniform, 100)
+
+# with a Gaussian (normal) distribution
+x = rng.standard_normal(size=10000)
+fig, ax = plt.subplots()
+ax.hist(x, 100)
+plt.show()
+
+```
+
+## Make a scatter plot of a Gaussian distribution in 2D (Spring 2024)
+
+- use the random number generator we created to generate 1000 random numbers for both x and y coordinates,
+- Use the normal distribution 
+- fill in `loc(=mean)`, and `scale(=sigma)` as extra parameters:
+```{.python}
+xs = rng.normal(loc=4, scale=0.9, size=1000)
+ys = rng.normal(loc=-2, scale=1.5, size=1000)
+```
+- plot them in a scatter plot using: `ax.scatter(xs, ys)`
+
+The resulting output should look as below:
+
+```{python}
+#| echo: false
+# ex 2: Generate random numbers from a normal distribution for both x and y coordinates and plot them in a scatterplot
+#   - use the random number generator we created to generate 1000 random numbers for both x and y coordinates,
+#     fill in loc(=mean), and scale(=sigma) as extra parameters:
+#       xs = rng.normal(loc=4, scale=0.9, size=1000)
+#       ys = rng.normal(loc=-2, scale=1.5, size=1000)
+#   - plot a scatter plot with these as coordinates
+#       ax.scatter(xs, ys)
+
+# Number of random points
+n_points = 1000
+
+# Generating the x and y coordinates from Gaussian(=normal) distributions
+x_mu = 4; x_sigma = 0.9
+y_mu = -2; y_sigma = 1.5
+xs = rng.normal(loc=x_mu, scale=x_sigma, size=n_points)
+ys = rng.normal(loc=y_mu, scale=y_sigma, size=n_points)
+
+# Plot the points using a scatter plot
+fig, ax = plt.subplots()
+ax.scatter(xs, ys)
+plt.show()
+
+```
+
+## Adapt the scatter plot of previous exercise by specifying the size and color of the dots (Spring 2024)
+
+```{.python}
+ax.scatter(xs, ys, sz, colors, cmap=matplotlib.colormaps["jet"])
+```
+where both `sz` and `colors` can be arrays of the same size as the coordinates or scalars
+
+- for the size use for example 10
+- for the colors create an array containing the distance of the coordinates to the center of the distribution
+- the cmap argument allows us to set the colormap used
+
+The resulting scatter plot should look as below:
+
+```{python}
+#| echo: false
+
+import matplotlib
+# ex 3: Adapt the scatter plot of exercise 2 by specifying the size and color of the dots
+#       ax.scatter(xs, ys, sz, colors, cmap=matplotlib.colormaps["jet"])
+# where both sz and colors can be arrays of the same size as the coordinates or scalars
+#       - for the size use for example 10
+#       - for the colors create an array containing the distance of the coordinates to the center of the distribution
+#       - the cmap argument allows us to set the colormap used
+
+# Number of random points
+n_points = 1000
+
+# Generating the x and y coordinates from Gaussian(=normal) distributions
+x_mu = 4; x_sigma = 0.9
+y_mu = -2; y_sigma = 1.5
+xs = rng.normal(loc=x_mu, scale=x_sigma, size=n_points)
+ys = rng.normal(loc=y_mu, scale=y_sigma, size=n_points)
+
+# The colors will be used in the scatter plot, they automatically will be scaled to the colormap.
+# We use the (Euclidian) distance between the points and the center of the Gaussian distribution.
+colors = np.sqrt((xs - x_mu)**2 + (ys - y_mu)**2)
+
+# Plot the points using a scatter plot
+fig, ax = plt.subplots()
+ax.scatter(xs, ys, 10, colors, cmap=matplotlib.colormaps["jet"])
+ax.set_aspect('equal', 'box')
+
+# Use plt.show() only at the end of the script to prevent blocking the running script when using "WebAgg"
+plt.show()
+```
+
+
+## 2D domains (Spring 2024)
+
+Use Numpy's `arange()` function to create two intervals containing integers with e.g. $x \in [0,10]$ and $y \in [0, 20]$, and make a 2D domain of them using the `xx, yy = np.meshgrid(x, y)` function. Plot the coordinates thus created using a scatter plot (`plt.scatter(xx, yy)`).
+
+The plot should similar to the following:
+
+```{python}
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(11)
+y = np.arange(21)
+xx, yy = np.meshgrid(x, y)
+
+plt.scatter(xx, yy, 20, xx + yy)
+ax = plt.gca()
+ax.set_aspect("equal")
+plt.show()
+
+```
+
+
+## 2D arrays (Spring 2024)
+
+Use a 2D domain/interval using the `np.meshgrid` command such as in exercise 1, but using `np.linspace()` for the intervals with $x \in [-1, 1]$ and $y \in [-1, 1]$ at a finer grid, and plot the function for that domain:
+
+$$
+z = f(x, y) = y \sin(2 \pi\, x) 
+$$
+For the plot use the `plot_surface()` from Matplotlib:
+
+``` {.python}
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+ax.plot_surface(xx, yy, zz, cmap=cm.jet)
+plt.show()
+```
+
+The output should be similar as below:
+
+```{python}
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import cm
+
+
+x = np.linspace(-1, 1, 100)
+y = np.linspace(-1, 1, 100)
+xx, yy = np.meshgrid(x, y)
+zz = yy * np.sin(2*np.pi*xx)
+
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+ax.plot_surface(xx, yy, zz, cmap=cm.jet)
+plt.show()
+```
