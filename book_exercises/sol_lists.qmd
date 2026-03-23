@@ -1,0 +1,25 @@
+## Lists
+
+### 5.1 Fibonacci sequence
+
+```{#lst-ex-bmi .python filename="code/2026/ex_4_1.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_4_1.py >}}
+```
+
+### 5.2 Printing elements of a list (Spring 2025)
+
+```{#lst-ex-bmi .python filename="code/2025/ex_4_4_lists.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_4_4_lists.py >}}
+```
+
+### 5.3 List of soccer players (Spring 2025)
+
+```{#lst-ex-bmi .python filename="code/2025/ex_4_5_soccer_players.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_4_5_soccer_players.py >}}
+```
+
+### 5.4 Selling fruit (Spring 2025)
+
+```{#lst-ex-bmi .python filename="code/2025/ex_4_6_selling_fruit.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_4_6_selling_fruit.py >}}
+```

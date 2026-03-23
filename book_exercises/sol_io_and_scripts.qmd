@@ -1,78 +1,61 @@
 ## Input, formatting output, and expressions in Python scripts
 
-### -@sec-ex-bmi Body Mass Index calculator [Spring, 2025-2026] 
+### 2.1 Body Mass Index calculator [Spring, 2025-2026] 
 
 ```{#lst-ex-bmi .python filename="code/2026/ex_2_2.1.py" code-line-numbers="false" line-height=0.5}
-{{< include code/2026/ex_2_2.1.py >}}
+{{< include ../code/2026/ex_2_2.1.py >}}
 ```
 
-```{.python filename="[Spring, 2025-2026] Text transformations: 2026/ex_2_2.2.py" code-line-numbers="false"}
-{{< include code/2026/ex_2_2.2.py >}}
+### 2.2 Text transformations [Spring, 2025-2026] 
+
+```{.python filename="2026/ex_2_2.2.py" code-line-numbers="false"}
+{{< include ../code/2026/ex_2_2.2.py >}}
 ```
 
-```{.python filename="[Spring, 2025-2026] Tsiolkovsky rocket equation: 2026/ex_2_2.3.py" code-line-numbers="false"}
-{{< include code/2026/ex_2_2.3.py >}}
+### 2.3 Tsiolkovsky rocket equation [Spring, 2025-2026] 
+
+```{.python filename="2026/ex_2_2.3.py" code-line-numbers="false"}
+{{< include ../code/2026/ex_2_2.3.py >}}
 ```
 
-```{.python filename="[Spring, 2025-2026] Formatted table: unit conversion: 2026/ex_2_2.4.py" code-line-numbers="false"}
-{{< include code/2026/ex_2_2.4.py >}}
+### 2.4 Formatted table: unit conversion [Spring, 2025-2026] 
+
+```{.python filename="2026/ex_2_2.4.py" code-line-numbers="false"}
+{{< include ../code/2026/ex_2_2.4.py >}}
 ```
 
+### 2.5 Glorifier [Spring, 2024-2025]
 
-## Glorifier (Spring 2025)
-
-```{.python filename="[Spring, 2024-2025] Glorifier: 2025/ex_2_glorifier.py" code-line-numbers="false"}
-{{< include code/2025/ex_2_glorifier.py >}}
+```{.python filename="code/2025/ex_2_glorifier.py" code-line-numbers="false"}
+{{< include ../code/2025/ex_2_glorifier.py >}}
 ```
 
-## Repeat words (Spring 2025)
+### 2.6 Repeat words [Spring, 2024-2025]
 
-Prompt the user for a word. Print the word 8 times on one line with spaces in between and put an exclamation mark at the end.
+```{.python filename="code/2025/ex_2_repeat_words.py" code-line-numbers="false"}
+{{< include ../code/2025/ex_2_repeat_words.py >}}
+```
 
-## Braking distance (Spring 2025)
+### 2.7 Braking distance [Spring, 2024-2025]
 
-Prompt a user for the speed of a car. Calculate the braking distance on asfalt and concrete roads and print them. The (kinetic) friction constants for concrete and asphalt are given in following table:
+```{.python filename="code/2025/ex_2_braking_distance.py" code-line-numbers="false"}
+{{< include ../code/2025/ex_2_braking_distance.py >}}
+```
 
-| Material |	Kinetic |	Static
-| ---- | ---- | ---- |
-| Rubber on concrete (dry) | 0.68 |	0.90 |
-| Rubber on concrete (wet) |	0.58 |	-.-- |
-| Rubber on asphalt (dry) |	0.72 |	0.68 |
-| Rubber on asphalt (wet) |	0.53 |	-.-- |
-| Rubber on ice |	0.15 |	0.15 |
+### 2.8 Velocity measurement by radar gun [Spring, 2024-2025]
 
-The braking distance $D$ for a car driving at a speed $v$ is determined by the perception-reaction time $t_r \approx 1$ of the driver and the friction coefficient of the road $\mu$ according to the following formula ($g = 9.81\,m/s^2$):
+```{.python filename="code/2025/ex_2_radar.py" code-line-numbers="false"}
+{{< include ../code/2025/ex_2_radar.py >}}
+```
 
-$$
-D = v t_r + \frac{v^{2}}{2 \mu g}
-$$
+### 2.9 Chevaux-Vapeur car tax calculator [Spring, 2024-2025]
 
-## Velocity measurement by radar gun (Spring 2025)
+```{.python filename="code/2025/ex_2_car_tax.py" code-line-numbers="false"}
+{{< include ../code/2025/ex_2_car_tax.py >}}
+```
 
-Traffic police officers can use a radar gun to measure the speed of a car. The difference in frequency $f_t$ send out by the radar gun and the received echo $f_e$ gives the Doppler frequency $f_d = f_t - f_e$. This frequency is related to the velocity of the car by: 
+### 2.10 Formatted table of numbers [Spring, 2024-2025]
 
-$$
-f_{d} \approx 2 v \frac{f_t}{c'}
-$$
-
-where $c' = c / 1.0003$. Suppose the radar device is operated in the K-band: $f_t = 24$ GHz. Calculate the Doppler beating frequency $f_{d}$ measured by the officer if you pass him with a speed $v = 200$ km/h.
-
-## Chevaux-Vapeur car tax calculator (Spring 2025)
-
-Automatically calculate the tax on cars in France (before 1957). For this, ask a user following properties of his/her car:
-
-  - Cylinder capacity of his/her car $C$ (e.g. 1.3 liters)
-  - Maximum revolutions/minute $\omega$
-
-Then print the amount that the user should pay for his/her car. To calculate the tax use the following formula:
-
-$$
-  CV =  C K (60 \omega)
-$$
-
-where $K$ is for a four-cylinder engine: $1.5 \times 10^{-4}$.
-
-## Formatted table of numbers (Spring 2025)
-
-Prompt the user for two floating point numbers and print a table with on the rows the numbers the number itself, the square, and the square root of the number and as columns the two resulting numbers and their sum.
-Use formatted strings to set the number of digits after the decimal point.
+```{.python filename="code/2025/ex_2_format_table.py" code-line-numbers="false"}
+{{< include ../code/2025/ex_2_format_table.py >}}
+```

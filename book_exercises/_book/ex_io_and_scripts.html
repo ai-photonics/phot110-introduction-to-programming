@@ -133,7 +133,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">PHOT 110: Introduction to programming</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/ai-photonics/phot110-introduction-to-programming" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ai-photonics/phot110-intro-programming" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -199,7 +199,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sol_io_and_scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="./solutions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Solutions</span></a>
   </div>
 </li>
@@ -219,7 +219,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#body-mass-index-calculator" id="toc-body-mass-index-calculator" class="nav-link active" data-scroll-target="#body-mass-index-calculator"><span class="header-section-number">2.1</span> Body Mass Index calculator</a></li>
+  <li><a href="#sec-ex-bmi" id="toc-sec-ex-bmi" class="nav-link active" data-scroll-target="#sec-ex-bmi"><span class="header-section-number">2.1</span> Body Mass Index calculator</a></li>
   <li><a href="#text-transformations" id="toc-text-transformations" class="nav-link" data-scroll-target="#text-transformations"><span class="header-section-number">2.2</span> Text transformations</a></li>
   <li><a href="#tsiolkovsky-rocket-equation" id="toc-tsiolkovsky-rocket-equation" class="nav-link" data-scroll-target="#tsiolkovsky-rocket-equation"><span class="header-section-number">2.3</span> Tsiolkovsky rocket equation</a></li>
   <li><a href="#formatted-table-unit-conversion" id="toc-formatted-table-unit-conversion" class="nav-link" data-scroll-target="#formatted-table-unit-conversion"><span class="header-section-number">2.4</span> Formatted table: unit conversion</a></li>
@@ -230,7 +230,7 @@ window.Quarto = {
   <li><a href="#chevaux-vapeur-car-tax-calculator-spring-2025" id="toc-chevaux-vapeur-car-tax-calculator-spring-2025" class="nav-link" data-scroll-target="#chevaux-vapeur-car-tax-calculator-spring-2025"><span class="header-section-number">2.9</span> Chevaux-Vapeur car tax calculator (Spring 2025)</a></li>
   <li><a href="#formatted-table-of-numbers-spring-2025" id="toc-formatted-table-of-numbers-spring-2025" class="nav-link" data-scroll-target="#formatted-table-of-numbers-spring-2025"><span class="header-section-number">2.10</span> Formatted table of numbers (Spring 2025)</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-introduction-to-programming/blob/main/ex_io_and_scripts.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_io_and_scripts.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -254,10 +254,10 @@ window.Quarto = {
 </header>
 
 
-<section id="body-mass-index-calculator" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="body-mass-index-calculator"><span class="header-section-number">2.1</span> Body Mass Index calculator</h2>
+<section id="sec-ex-bmi" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-ex-bmi"><span class="header-section-number">2.1</span> Body Mass Index calculator</h2>
 <p>Prompt a user for his/her height and length, then calculate his/her body mass index and print it to the screen. The body mass index is a rather inaccurate measure for body fat and is given by the formula: <span class="math inline">\(\textrm{BMI} = \textrm{weight}/\textrm{height}^2 \textrm{kg}/\textrm{m}^2\)</span> where the weight is in kilograms and height in meters.</p>
-<div id="7bf0157f" class="cell" data-execution_count="1">
+<div id="c860bb4e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Height (in cm): 179
 Weight (in kg): 75
@@ -274,7 +274,7 @@ Your BMI = 23.41</code></pre>
 <li>Append a question mark “?” to the sentence and print it <span class="math inline">\(n\)</span> times on the same line (where <span class="math inline">\(n\)</span> is a parameter).</li>
 <li>Print the words of the sentence on separate lines by replacing spaces by <code>\n</code> as a line separator (<code>\n</code> is the escape code to start a new line)</li>
 </ol>
-<div id="375b3350" class="cell" data-execution_count="2">
+<div id="a7d1cda0" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Please provide a sentence: Apples are sometimes green
 (a) Uppercase sentence: APPLES ARE SOMETIMES GREEN
@@ -816,4 +816,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ai-photonics/phot110-introduction-to-programming/blob/main/ex_io_and_scripts.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_io_and_scripts.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

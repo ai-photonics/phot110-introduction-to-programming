@@ -1,0 +1,43 @@
+## For and While loops
+
+### 4.1 Number series [Spring, 2025-2026]
+
+```{#lst-ex-bmi .python filename="code/2026/ex_3_2.1.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_3_2.1.py >}}
+```
+
+### 4.2 Power series [Spring, 2025-2026]
+
+```{#lst-ex-bmi .python filename="code/2026/ex_3_2.2.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_3_2.2.py >}}
+```
+
+### 4.3 Printing numbers [Spring, 2024-2025]
+
+```{#lst-ex-bmi .python filename="code/2025/ex_4_1_printing_numbers.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_4_1_printing_numbers.py >}}
+```
+
+### 4.4 Decreasing series [Spring, 2024-2025]
+
+```{#lst-ex-bmi .python filename="code/2025/ex_4_2_series.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_4_2_series.py >}}
+```
+
+### 4.5 Prime numbers [Spring, 2025-2026]
+
+```{#lst-ex-bmi .python filename="code/2026/ex_3_2.3.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_3_2.3.py >}}
+```
+
+### 4.6 Play rock-paper-scissors [Spring, 2025-2026]
+
+```{#lst-ex-bmi .python filename="code/2026/ex_3_2.4.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_3_2.4.py >}}
+```
+
+### 4.7 Game of higher-lower [Spring, 2024-2025]
+
+```{#lst-ex-bmi .python filename="code/2025/ex_4_3_higherlower.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_4_3_higherlower.py >}}
+```

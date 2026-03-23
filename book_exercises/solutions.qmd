@@ -1,3 +1,9 @@
 # Solutions {.unnumbered}
 
 {{< include sol_io_and_scripts.qmd >}}
+
+{{< include sol_conditional_statements.qmd >}}
+
+{{< include sol_for_and_while_loops.qmd >}}
+
+{{< include sol_lists.qmd >}}

@@ -203,8 +203,8 @@
     "objectID": "ex_for_and_while_loops.html#prime-numbers",
     "href": "ex_for_and_while_loops.html#prime-numbers",
     "title": "4  For and While loops",
-    "section": "5.1 Prime numbers",
-    "text": "5.1 Prime numbers\nPrompt the user for a positive integer number \\(n\\). Verify whether this number is prime (does not have any integer divisors except 1 and \\(n\\)). For this you can loop over all numbers \\(m \\leq \\sqrt{n}\\) and check whether \\(n/m\\) is a natural number. Use math.sqrt() for the square root and the modulo operator % which gives the rest after division (e.g. 13 % 5 = 3) to verify whether \\(n\\) can be divided by \\(m = 2, 3, 4, ...\\). The output should look as follows:\n\n\nGive a positive integer n: 169\nThe number 169 can be divided by 13\nThe number 169 is not prime",
+    "section": "4.5 Prime numbers",
+    "text": "4.5 Prime numbers\nPrompt the user for a positive integer number \\(n\\). Verify whether this number is prime (does not have any integer divisors except 1 and \\(n\\)). For this you can loop over all numbers \\(m \\leq \\sqrt{n}\\) and check whether \\(n/m\\) is a natural number. Use math.sqrt() for the square root and the modulo operator % which gives the rest after division (e.g. 13 % 5 = 3) to verify whether \\(n\\) can be divided by \\(m = 2, 3, 4, ...\\). The output should look as follows:\n\n\nGive a positive integer n: 169\nThe number 169 can be divided by 13\nThe number 169 is not prime",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
     ]
@@ -213,8 +213,8 @@
     "objectID": "ex_for_and_while_loops.html#play-rock-paper-scissors",
     "href": "ex_for_and_while_loops.html#play-rock-paper-scissors",
     "title": "4  For and While loops",
-    "section": "5.2 Play rock-paper-scissors",
-    "text": "5.2 Play rock-paper-scissors\nPrompt the player repetitively to choose from: [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game. Award points for winning (+1), losing (-1), or a draw (0). Use the function randint(1, 3) from package random to obtain random integers from the set \\(\\{1, 2, 3\\}\\). Stop the script when the choice was 4. Example output:\n--- Let's play Rock-Paper-Scissors ---\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 3\nI had the same, score: 0\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 2\nYou lose, I had Scissors, score: -1\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 1\nYou win, I had Scissors, score: 0\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 4\n\nStopping game!",
+    "section": "4.6 Play rock-paper-scissors",
+    "text": "4.6 Play rock-paper-scissors\nPrompt the player repetitively to choose from: [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game. Award points for winning (+1), losing (-1), or a draw (0). Use the function randint(1, 3) from package random to obtain random integers from the set \\(\\{1, 2, 3\\}\\). Stop the script when the choice was 4. Example output:\n--- Let's play Rock-Paper-Scissors ---\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 3\nI had the same, score: 0\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 2\nYou lose, I had Scissors, score: -1\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 1\nYou win, I had Scissors, score: 0\n\n  [1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\nChoose 1-4: 4\n\nStopping game!",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
     ]
@@ -223,8 +223,8 @@
     "objectID": "ex_for_and_while_loops.html#game-of-higher-lower-spring-2025",
     "href": "ex_for_and_while_loops.html#game-of-higher-lower-spring-2025",
     "title": "4  For and While loops",
-    "section": "5.3 Game of higher-lower (Spring 2025)",
-    "text": "5.3 Game of higher-lower (Spring 2025)\nCreate a simple version of the higher-lower game where a person thinks of a number and the other has to guess it. Generate a random number using following code:\nimport random\nn = random.randint(0, 100)\nAfterwards, prompt the user repetitively to make a guess, and tell each time whether the number is higher or lower than the guess. If the user guesses the actual number, stop the game. See following example output of a correct working script:\nGuess the number [0, 100]: game started!\nWhat is the number? 45\nThe number is lower, try again.\nWhat is the number? 10\nThe number is lower, try again.\nWhat is the number? 4\nThe number is higher, try again.\nWhat is the number? 7\nYes, that is the number! Congratulations, you guessed it in 4 guesses.",
+    "section": "4.7 Game of higher-lower (Spring 2025)",
+    "text": "4.7 Game of higher-lower (Spring 2025)\nCreate a simple version of the higher-lower game where a person thinks of a number and the other has to guess it. Generate a random number using following code:\nimport random\nn = random.randint(0, 100)\nAfterwards, prompt the user repetitively to make a guess, and tell each time whether the number is higher or lower than the guess. If the user guesses the actual number, stop the game. See following example output of a correct working script:\nGuess the number [0, 100]: game started!\nWhat is the number? 45\nThe number is lower, try again.\nWhat is the number? 10\nThe number is lower, try again.\nWhat is the number? 4\nThe number is higher, try again.\nWhat is the number? 7\nYes, that is the number! Congratulations, you guessed it in 4 guesses.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>For and While loops</span>"
     ]
@@ -270,8 +270,8 @@
     ]
   },
   {
-    "objectID": "sol_io_and_scripts.html",
-    "href": "sol_io_and_scripts.html",
+    "objectID": "solutions.html",
+    "href": "solutions.html",
     "title": "Solutions",
     "section": "",
     "text": "Input, formatting output, and expressions in Python scripts",
@@ -280,71 +280,41 @@
     ]
   },
   {
-    "objectID": "sol_io_and_scripts.html#input-formatting-output-and-expressions-in-python-scripts",
-    "href": "sol_io_and_scripts.html#input-formatting-output-and-expressions-in-python-scripts",
+    "objectID": "solutions.html#input-formatting-output-and-expressions-in-python-scripts",
+    "href": "solutions.html#input-formatting-output-and-expressions-in-python-scripts",
     "title": "Solutions",
     "section": "",
-    "text": "[Spring, 2025-2026] Body Mass Index calculator: 2026/ex_2_2.1.py\n\n# Practical 2: Exercise 2.1\nh = float(input(\"Please provide your height in centimeters: \"))\nw = float(input(\"Please provide your weigth in kilograms: \"))\nprint(f\"Your BMI = {w/(h/100)**2:4.4}\")\n\n\n\n[Spring, 2025-2026] Text transformations: 2026/ex_2_2.2.py\n\n# Practical 2: Exercise 2.2\ns = input(\"Please provide a sentence: \")\nprint(f\"(a) Uppercase sentence: {s.upper()}\")\nprint(f\"(b) With quotes: {'\"' + s + '\"'}\")\nn = 4\nprint(f\"(c) Repeated {n} times: {n * (s + \"?\")}\")\nprint(f\"(d) On separate lines:\\n{s.replace(\" \", \"\\n\")}\")\n\n\n\n[Spring, 2025-2026] Tsiolkovsky rocket equation: 2026/ex_2_2.3.py\n\n# Practical 2: Exercise 2.3\n\n# Import statements\nfrom math import exp\n\n# Parameters\ndv = 7.8\nve = 2.5\n\n# Input\nms = float(input(\"Mass of the satelite (kg): \"))\nmr = float(input(\"Mass of the empty rocket (kg): \"))\n\n# Calculate require mass of fuel\nmf = ((ms + mr) - 1) * exp(dv / ve)\n\n# Output\nprint(f\"==&gt; Required fuel = {mf:4.4} kg\")\n\n\n\n[Spring, 2025-2026] Formatted table: unit conversion: 2026/ex_2_2.4.py\n\n# Practical 2: Exercise 2.4\n\n# Parameters\ninch = 0.01 * 2.54\nfoot = 12 * inch\nyard = 3 * foot\nmile = 1760 * yard\n\n# Input\ndistance = float(input(\"Distance (in m): \"))\n\n# Output\nprint(f\"Distance = {distance} m in various units:\")\nprint(60 * \"-\")\nprint(f\"{distance / inch:20.2f} {distance / inch:20.2} {\"inch\":^20}\")\nprint(f\"{distance / foot:20.2f} {distance / foot:20.2} {\"foot\":^20}\")\nprint(f\"{distance / yard:20.2f} {distance / yard:20.2} {\"yard\":^20}\")\nprint(f\"{distance / mile:20.2f} {distance / mile:20.2} {\"mile\":^20}\")\nprint(60 * \"-\")",
+    "text": "2.1 Body Mass Index calculator [Spring, 2025-2026]\n\n\ncode/2026/ex_2_2.1.py\n\n# Practical 2: Exercise 2.1\nh = float(input(\"Please provide your height in centimeters: \"))\nw = float(input(\"Please provide your weigth in kilograms: \"))\nprint(f\"Your BMI = {w/(h/100)**2:4.4}\")\n\n\n\n\n2.2 Text transformations [Spring, 2025-2026]\n\n\n2026/ex_2_2.2.py\n\n# Practical 2: Exercise 2.2\ns = input(\"Please provide a sentence: \")\nprint(f\"(a) Uppercase sentence: {s.upper()}\")\nprint(f\"(b) With quotes: {'\"' + s + '\"'}\")\nn = 4\nprint(f\"(c) Repeated {n} times: {n * (s + \"?\")}\")\nprint(f\"(d) On separate lines:\\n{s.replace(\" \", \"\\n\")}\")\n\n\n\n\n2.3 Tsiolkovsky rocket equation [Spring, 2025-2026]\n\n\n2026/ex_2_2.3.py\n\n# Practical 2: Exercise 2.3\n\n# Import statements\nfrom math import exp\n\n# Parameters\ndv = 7.8\nve = 2.5\n\n# Input\nms = float(input(\"Mass of the satelite (kg): \"))\nmr = float(input(\"Mass of the empty rocket (kg): \"))\n\n# Calculate require mass of fuel\nmf = ((ms + mr) - 1) * exp(dv / ve)\n\n# Output\nprint(f\"==&gt; Required fuel = {mf:4.4} kg\")\n\n\n\n\n2.4 Formatted table: unit conversion [Spring, 2025-2026]\n\n\n2026/ex_2_2.4.py\n\n# Practical 2: Exercise 2.4\n\n# Parameters\ninch = 0.01 * 2.54\nfoot = 12 * inch\nyard = 3 * foot\nmile = 1760 * yard\n\n# Input\ndistance = float(input(\"Distance (in m): \"))\n\n# Output\nprint(f\"Distance = {distance} m in various units:\")\nprint(60 * \"-\")\nprint(f\"{distance / inch:20.2f} {distance / inch:20.2} {\"inch\":^20}\")\nprint(f\"{distance / foot:20.2f} {distance / foot:20.2} {\"foot\":^20}\")\nprint(f\"{distance / yard:20.2f} {distance / yard:20.2} {\"yard\":^20}\")\nprint(f\"{distance / mile:20.2f} {distance / mile:20.2} {\"mile\":^20}\")\nprint(60 * \"-\")\n\n\n\n\n2.5 Glorifier [Spring, 2024-2025]\n\n\ncode/2025/ex_2_glorifier.py\n\n# Exercise 2.1: Glorifier\n\nname = input(\"Please give your name: \")\nprint(f\"All hail {name}\")\n\n\n\n\n2.6 Repeat words [Spring, 2024-2025]\n\n\ncode/2025/ex_2_repeat_words.py\n\n# Exercise 2.2: Repeat a word\n\nword = input(\"Please provide a word: \")\nprint(8 * (word + \" \") + \"!\")\n\n\n\n\n\n2.7 Braking distance [Spring, 2024-2025]\n\n\ncode/2025/ex_2_braking_distance.py\n\n# Exercise 2.3: Braking distance\n# Calculates the braking distance of a car\n\n# Parameters\ntr = 1\ng = 9.81\nmu_concrete = 0.68\nmu_asphalt = 0.72\nmu_asphalt_wet = 0.53\n\nv = float(input(\"Give the speed of the car in km/h: \"))\nv = v / 3.6\nD_concrete = v * tr + v**2 / (2 * mu_concrete * g)\nD_asphalt = v * tr + v**2 / (2 * mu_asphalt * g)\nD_asphalt_wet = v * tr + v**2 / (2 * mu_asphalt_wet * g)\n\nprint(f\"Braking distance on dry concrete road: {D_concrete} m\")\nprint(f\"Braking distance on dry asphalt road: {D_asphalt} m\")\nprint(f\"Braking distance on wet asphalt road: {D_asphalt_wet} m\")\n\n\n\n\n2.8 Velocity measurement by radar gun [Spring, 2024-2025]\n\n\ncode/2025/ex_2_radar.py\n\n# Exercise 2.4: Velocity measurement by radar gun\n#   Calculate the Doppler beating frequency measured by\n#   a police-radar for a car speeding at 200 km/h\n\n# Parameters\nc = 3e8\ncp = c / 1.0003\nv = 200 / 3.6\nft = 24 * 1e9\n\n# Calculation\nfd = 2 * v * ft / cp\n\n# Output\nprint(f\"Doppler beating frequency = {fd} Hz\")\n\n\n\n\n2.9 Chevaux-Vapeur car tax calculator [Spring, 2024-2025]\n\n\ncode/2025/ex_2_car_tax.py\n\n# Exercise 2.5: Chevaux-Vapeur car tax calculator\n# Calculate the car tax in old France\n\n# Parameters\nK = 1.5e-4\n\n# Input\nC = float(input(\"Cylinder capacity: \"))\nomega = float(input(\"Max revolutions per minute: \"))\n\n# Calculate tax\nCV = C * K * 60 * omega\n\n# Output\nprint(f\"Tax: {CV}\")\n\n\n\n\n2.10 Formatted table of numbers [Spring, 2024-2025]\n\n\ncode/2025/ex_2_format_table.py\n\n# Exercise 2.6: Formatted table\n\n# Import libraries\nfrom math import sqrt\n\n# Input\nf1 = float(input(\"Give a first decimal number: \"))\nf2 = float(input(\"Give a second decimal number: \"))\n\n# Output\nprint(f\"        |  number 1  |  number 2  |    sum    \")\nprint(f\"Number  | {f1:10.2f} | {f2:10.2f} | {f1+f2:10.2f}\")\nprint(f\"Squares | {f1**2:10.2f} | {f2**2:10.2f} | {(f1+f2)**2:10.2f}\")\nprint(f\"Sqrt    | {sqrt(f1):10.2f} | {sqrt(f2):10.2f} | {sqrt(f1+f2):10.2f}\")",
     "crumbs": [
       "Solutions"
     ]
   },
   {
-    "objectID": "sol_io_and_scripts.html#glorifier-spring-2025",
-    "href": "sol_io_and_scripts.html#glorifier-spring-2025",
+    "objectID": "solutions.html#conditional-statements",
+    "href": "solutions.html#conditional-statements",
     "title": "Solutions",
-    "section": "Glorifier (Spring 2025)",
-    "text": "Glorifier (Spring 2025)\n\n\n[Spring, 2024-2025] Glorifier: 2025/ex_2_glorifier.py\n\n# Exercise 2.1: Glorifier\n\nname = input(\"Please give your name: \")\nprint(f\"All hail {name}\")",
+    "section": "Conditional Statements",
+    "text": "Conditional Statements\n\n3.1 Check login [Spring, 2025-2026]\n\n\ncode/2026/ex_3_1.1.py\n\n# Practical 3: Exercise 1.1\n\n# Parameters\nusername = \"amapirate\"\npassword = \"greenbeans\"\n# Input\nprint(\"Please provide your login credentials:\")\nusername_given = input(\"Username: \")\npassword_given = input(\"Password: \")\n# Algorithm\nusername_cond = username == username_given\npassword_cond = password == password_given\nif username_cond and password_cond:\n    print(f\"Login successful.\")\nelse:\n    print(f\"The username or password is wrong!\")\n\n\n\n\n3.2 Roots of a quadratic equation [Spring, 2025-2026]\n\n\ncode/2026/ex_3_1.2.py\n\n# Practical 3: Exercise 1.2\nfrom math import sqrt\n\nprint(f\"--- Roots of the equation ax^2 + bx + c = 0 ---\")\na = 2\nb = 3\nc = -5\na = float(input(\"Parameter a: \"))\nb = float(input(\"Parameter b: \"))\nc = float(input(\"Parameter c: \"))\nD = b**2 - 4 * a * c\nif D &gt; 0:\n    xm = (-b - sqrt(D)) / (2 * a)\n    xp = (-b + sqrt(D)) / (2 * a)\n    print(f\"The discriminant D = {D} &gt; 0, two roots x = {xm}, {xp}\")\nelif D == 0:\n    x = -b / (2 * a)\n    print(f\"The discriminant D = {D} = 0, one root x = {x}\")\nelse:\n    print(f\"The discriminant D = {D} &lt; 0, no real roots!\")",
     "crumbs": [
       "Solutions"
     ]
   },
   {
-    "objectID": "sol_io_and_scripts.html#repeat-words-spring-2025",
-    "href": "sol_io_and_scripts.html#repeat-words-spring-2025",
+    "objectID": "solutions.html#for-and-while-loops",
+    "href": "solutions.html#for-and-while-loops",
     "title": "Solutions",
-    "section": "Repeat words (Spring 2025)",
-    "text": "Repeat words (Spring 2025)\nPrompt the user for a word. Print the word 8 times on one line with spaces in between and put an exclamation mark at the end.",
+    "section": "For and While loops",
+    "text": "For and While loops\n\n4.1 Number series [Spring, 2025-2026]\n\n\ncode/2026/ex_3_2.1.py\n\n# Practical 3: Exercise 2.1\n\n# Using a while loop\nn = 5\nwhile n &lt;= 10:\n    print(f\"1/{n} = {1/n:.3}\")\n    n = n + 1\n\n# Using a for loop\nfor n in range(5, 11):\n    print(f\"1/{n} = {1/n:.3}\")\n\n\n\n\n4.2 Power series [Spring, 2025-2026]\n\n\ncode/2026/ex_3_2.2.py\n\n# Practical 3: Exercise 2.2\nfrom math import e, factorial, fabs\n\nmindiff = 0.001\ne_approx = 0\nn = 0\nwhile fabs(e - e_approx) &gt; mindiff:\n    e_approx = e_approx + 1 / factorial(n)\n    print(f\"Euler's e = {e:5.5} approximated to {n+1} terms = {e_approx:5.5}\")\n    n = n + 1\n\n\n\n\n4.3 Printing numbers [Spring, 2024-2025]\n\n\ncode/2025/ex_4_1_printing_numbers.py\n\n# Exercise 1: Printing numbers 1-10\n\n# Using a while loop\nprint(\"Print 1-10 using a while loop\")\ni = 0\nwhile i &lt; 11:\n    i += 1\n    print(i)\n\n# Using a for loop\nprint(\"Print 1-10 using a for loop\")\nfor i in range(1, 11):\n    print(i)\n\n# Using a for loop, only printing the odd numbers, step in range(begin, end, step)\nprint(\"Print odd numbers 1-10 using a for loop\")\nfor i in range(1, 11, 2):\n    print(i)\n\n\n\n\n4.4 Decreasing series [Spring, 2024-2025]\n\n\ncode/2025/ex_4_2_series.py\n\n# Exercise 2: Decreasing series of numbers\n\n# Parameters\nn = 1\n\n# Loop and output\nt = 1 / n**4\nwhile t &gt; 0.0001:\n    n += 1\n    print(t)\n    t = 1 / n**4\n\n\n\n\n4.5 Prime numbers [Spring, 2025-2026]\n\n\ncode/2026/ex_3_2.3.py\n\n# Practical 3: Exercise 2.3\nfrom math import sqrt, floor\n\nN = int(input(\"Give a positive integer N: \"))\nn_max = sqrt(N)\nis_prime = True\nfor n in range(2, floor(n_max) + 1):\n    if N % n == 0:\n        print(f\"The number {N} can be divided by {n}\")\n        is_prime = False\n\nif is_prime:\n    print(f\"The number {N} is prime\")\nelse:\n    print(f\"The number {N} is not prime\")\n\n\n\n\n4.6 Play rock-paper-scissors [Spring, 2025-2026]\n\n\ncode/2026/ex_3_2.4.py\n\n# Practical 3: Exercise 2.4\nfrom random import randint\n\nc1 = \"rock\"\nc2 = \"paper\"\nc3 = \"scissors\"\nscore = 0\nchoice = 0\nwhile choice != 4:\n    print(\"[1] Rock , [2] Paper, [3] Scissors, or [4] Stop the game\")\n    choice = int(input(\"  Choice: \"))\n    pc_choice = randint(1, 3)\n    if choice == pc_choice:\n        print(\"I had the same, Score: {score}\")\n    if choice == 1:\n        if pc_choice == 2:\n            print(f\"You lose, I had {c2}, Score: {score-1}\")\n        if pc_choice == 3:\n            print(f\"You win, I had {c3}, Score: {score+1}\")\n    if choice == 2:\n        if pc_choice == 3:\n            print(f\"You lose, I had {c3}, Score: {score-1}\")\n        if pc_choice == 1:\n            print(f\"You win, I had {c1}, Score: {score+1}\")\n    if choice == 3:\n        if pc_choice == 1:\n            print(f\"You lose, I had {c1}, Score: {score-1}\")\n        if pc_choice == 2:\n            print(f\"You win, I had {c2}, Score: {score+1}\")\n\nprint(\"Stopping game!\")\n\n\n\n\n4.7 Game of higher-lower [Spring, 2024-2025]\n\n\ncode/2025/ex_4_3_higherlower.py\n\n# Exercise 3: Higher-lower game\n\n# import libraries\nimport random\n\n# Parameters\nn_min = 0\nn_max = 100\nn = random.randint(0, 100)\n\n# Print start of game\nprint(f\"Guess the number [{n_min}, {n_max}]: game started!\")\n\n# Loop\nm = -1\nguess_count = 0\nwhile m != n:\n    guess_count += 1\n    m = int(input(\"What is the number? \"))\n    if m &gt; n:\n        print(\"The number is lower, try again.\")\n    elif m &lt; n:\n        print(\"The number is higher, try again.\")\n\nprint(f\"Yes, that is the number! Congratulations, you guessed it in {guess_count} guesses.\")",
     "crumbs": [
       "Solutions"
     ]
   },
   {
-    "objectID": "sol_io_and_scripts.html#braking-distance-spring-2025",
-    "href": "sol_io_and_scripts.html#braking-distance-spring-2025",
+    "objectID": "solutions.html#lists",
+    "href": "solutions.html#lists",
     "title": "Solutions",
-    "section": "Braking distance (Spring 2025)",
-    "text": "Braking distance (Spring 2025)\nPrompt a user for the speed of a car. Calculate the braking distance on asfalt and concrete roads and print them. The (kinetic) friction constants for concrete and asphalt are given in following table:\n\n\n\nMaterial\nKinetic\nStatic\n\n\n\n\nRubber on concrete (dry)\n0.68\n0.90\n\n\nRubber on concrete (wet)\n0.58\n-.–\n\n\nRubber on asphalt (dry)\n0.72\n0.68\n\n\nRubber on asphalt (wet)\n0.53\n-.–\n\n\nRubber on ice\n0.15\n0.15\n\n\n\nThe braking distance \\(D\\) for a car driving at a speed \\(v\\) is determined by the perception-reaction time \\(t_r \\approx 1\\) of the driver and the friction coefficient of the road \\(\\mu\\) according to the following formula (\\(g = 9.81\\,m/s^2\\)):\n\\[\nD = v t_r + \\frac{v^{2}}{2 \\mu g}\n\\]",
-    "crumbs": [
-      "Solutions"
-    ]
-  },
-  {
-    "objectID": "sol_io_and_scripts.html#velocity-measurement-by-radar-gun-spring-2025",
-    "href": "sol_io_and_scripts.html#velocity-measurement-by-radar-gun-spring-2025",
-    "title": "Solutions",
-    "section": "Velocity measurement by radar gun (Spring 2025)",
-    "text": "Velocity measurement by radar gun (Spring 2025)\nTraffic police officers can use a radar gun to measure the speed of a car. The difference in frequency \\(f_t\\) send out by the radar gun and the received echo \\(f_e\\) gives the Doppler frequency \\(f_d = f_t - f_e\\). This frequency is related to the velocity of the car by:\n\\[\nf_{d} \\approx 2 v \\frac{f_t}{c'}\n\\]\nwhere \\(c' = c / 1.0003\\). Suppose the radar device is operated in the K-band: \\(f_t = 24\\) GHz. Calculate the Doppler beating frequency \\(f_{d}\\) measured by the officer if you pass him with a speed \\(v = 200\\) km/h.",
-    "crumbs": [
-      "Solutions"
-    ]
-  },
-  {
-    "objectID": "sol_io_and_scripts.html#chevaux-vapeur-car-tax-calculator-spring-2025",
-    "href": "sol_io_and_scripts.html#chevaux-vapeur-car-tax-calculator-spring-2025",
-    "title": "Solutions",
-    "section": "Chevaux-Vapeur car tax calculator (Spring 2025)",
-    "text": "Chevaux-Vapeur car tax calculator (Spring 2025)\nAutomatically calculate the tax on cars in France (before 1957). For this, ask a user following properties of his/her car:\n\nCylinder capacity of his/her car \\(C\\) (e.g. 1.3 liters)\nMaximum revolutions/minute \\(\\omega\\)\n\nThen print the amount that the user should pay for his/her car. To calculate the tax use the following formula:\n\\[\n  CV =  C K (60 \\omega)\n\\]\nwhere \\(K\\) is for a four-cylinder engine: \\(1.5 \\times 10^{-4}\\).",
-    "crumbs": [
-      "Solutions"
-    ]
-  },
-  {
-    "objectID": "sol_io_and_scripts.html#formatted-table-of-numbers-spring-2025",
-    "href": "sol_io_and_scripts.html#formatted-table-of-numbers-spring-2025",
-    "title": "Solutions",
-    "section": "Formatted table of numbers (Spring 2025)",
-    "text": "Formatted table of numbers (Spring 2025)\nPrompt the user for two floating point numbers and print a table with on the rows the numbers the number itself, the square, and the square root of the number and as columns the two resulting numbers and their sum. Use formatted strings to set the number of digits after the decimal point.",
+    "section": "Lists",
+    "text": "Lists\n\n5.1 Fibonacci sequence\n\n\ncode/2026/ex_4_1.py\n\n# Practical 4: Exercise 1\nfs = [0, 1]\nfor i in range(8):\n    fs.append(fs[-1] + fs[-2])\n\nprint(fs)\n\n\n\n\n5.2 Printing elements of a list (Spring 2025)\n\n\ncode/2025/ex_4_4_lists.py\n\n# Exercise 4: list of colors\n\n# Define the list\ncolors = [\"yellow\", \"green\", \"blue\", \"red\", \"white\", \"orange\", \"black\"]\n\n# a. Print the last element to the screen\nprint(\"Last color in the list:\")\nprint(colors[-1])\n\n# b. Print the sublist containing the colors of the Turkish flag\nprint(\"List of colors of the Turkish flag:\")\nprint(colors[3:5])\n\n# c. Print the sublist with the colors of the rainbow (ignore black and white)\n# and order them according to increasing wavelengths\nprint([colors[2], colors[1], colors[0], colors[5], colors[3]])\n\n# d. Print all the elements one by one to the screen using a loop.\nprint(\"All colors one-by-one\")\nfor color in colors:\n    print(color)\n\n# e. Prompt the user to tell his favorite color which is not in the list.\n# If not in the list, append it to the list. Otherwise reply that it is already in the list.\nprint(\"Adding a favorite color.\")\ncolor = input(\"What is your favorite color? \")\nif color in colors:\n    print(f\"{color} is already in our list.\")\nelse:\n    colors.append(color)\n    print(f\"The new list: {colors}\")\n\n\n\n\n5.3 List of soccer players (Spring 2025)\n\n\ncode/2025/ex_4_5_soccer_players.py\n\n# Exercise 5: Soccer players from Kazakhstan national football team\n\nplayers = [\"Maksim\", \"Abat\", \"Oralkhan\", \"Ramazan\", \"Vyacheslav\"]\n\n# a. Print the names of the list to the screen line-by-line by using a for loop.\nprint(\"b. Players in order of the list:\")\nfor player in players:\n    print(player)\n\n# b. Print the names in reversed order to the screen. Hint: You can use `len()` and `range()` functions.\nprint(\"b. Players in reverse order:\")\nplayers.reverse()\nfor player in players:\n    print(player)\n# Reverse again for the next tasks\nplayers.reverse()\n\n# c. Append the name \"Dastan\" to the list. Print the list, did it change?\nprint(\"c. Append name Dastan:\")\nplayers.append(\"Dastan\")\nprint(players)\n\n# d. Select the second player from the list and print: \"[players_name] is the best player!\" to the screen.\nprint(\"d. Cheer for the second player of the list:\")\nprint(f\"{players[1]} is the best player!\")\n\n# e. Remove player \"Abat\" from the list.\nprint(\"e. Remove player Abat from the list:\")\nplayers.remove(\"Abat\")\nprint(players)\n\n\n\n\n\n\n5.4 Selling fruit (Spring 2025)\n\n\ncode/2025/ex_4_6_selling_fruit.py\n\n# Exercise 6: Selling fruit\n\n# Initialize the lists of the salesperson on the market and the customers (empty) basket\nmarket = [\"banana\", \"apple\", \"kiwi\", \"banana\", \"banana\", \"orange\", \"apple\", \"kiwi\", \"strawberry\", \"peach\"]\nbasket = []\n\nstop = False\nwhile not stop:\n    fruit = input(\"What do you like to buy? \")\n    if fruit == \"That's all\":\n        stop = True\n    elif fruit not in market:\n        print(f\"Sorry, today I don't have any {fruit}.\")\n    else:\n        print(\"Here you go.\")\n        market.remove(fruit)\n        basket.append(fruit)\n\nprint(f\"You bought following fruit: {basket}\")",
     "crumbs": [
       "Solutions"
     ]

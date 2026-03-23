@@ -76,8 +76,6 @@ while t > 0.0001:
   t = 1 / n**4
 ```
 
-# Combining loops and conditional branching
-
 ## Prime numbers 
 
 Prompt the user for a positive integer number $n$. Verify whether this number is prime (does not have any integer divisors except 1 and $n$). For this you can loop over all numbers $m \leq \sqrt{n}$ and check whether $n/m$ is a natural number. Use `math.sqrt()` for the square root and the modulo operator `%` which gives the rest after division (e.g. `13 % 5 = 3`) to verify whether $n$ can be divided by $m = 2, 3, 4, ...$. The output should look as follows:

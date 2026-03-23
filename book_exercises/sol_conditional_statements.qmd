@@ -1,0 +1,13 @@
+## Conditional Statements
+
+### 3.1 Check login [Spring, 2025-2026]
+
+```{#lst-ex-bmi .python filename="code/2026/ex_3_1.1.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_3_1.1.py >}}
+```
+
+### 3.2 Roots of a quadratic equation [Spring, 2025-2026]
+
+```{#lst-ex-bmi .python filename="code/2026/ex_3_1.2.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_3_1.2.py >}}
+```
