@@ -107,3 +107,4 @@ where $K$ is for a four-cylinder engine: $1.5 \times 10^{-4}$.
 
 Prompt the user for two floating point numbers and print a table with on the rows the numbers the number itself, the square, and the square root of the number and as columns the two resulting numbers and their sum.
 Use formatted strings to set the number of digits after the decimal point.
+

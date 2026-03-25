@@ -60,8 +60,6 @@ angle_refraction = lm.calc_refraction_angle(angle_inc, 1, 1.5)
 print(angle_refraction)
 ```
 
-\newpage
-
 ## A module for converting text (Spring 2025)
 
 Create a module with a function to convert text into upper-case text with all exclamation marks (`!`) removed. Name the module file `my_io.py`. 

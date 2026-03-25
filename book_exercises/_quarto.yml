@@ -14,12 +14,12 @@ book:
     - index.qmd
     #- intro.qmd
     - ex_python_console.qmd
-    - ex_io_and_scripts.qmd
-    - ex_conditional_statements.qmd
-    - ex_for_and_while_loops.qmd
-    - ex_lists.qmd
+    #- ex_io_and_scripts.qmd
+    #- ex_conditional_statements.qmd
+    #- ex_for_and_while_loops.qmd
+    #- ex_lists.qmd
     - solutions.qmd
-    - references.qmd
+    #- references.qmd
 
 comments:
   hypothesis: true
@@ -50,3 +50,7 @@ format:
     margin-top: 1.5 cm
     margin-left: 2 cm
     margin-right: 2 cm
+
+#    include-in-header:
+#      - text: |
+#          \lstset{breaklines=true,frame=single,framesep=1em}
