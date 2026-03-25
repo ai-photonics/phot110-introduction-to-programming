@@ -1,4 +1,4 @@
-# Dictionaries
+# Dictionaries & data tables (Pandas dataframes)
 
 ## Creating a dictionary (Spring 2025)
 
@@ -36,4 +36,23 @@ def convert_to_dict(positions):
   # dictionaries into a dictionary of lists 
   # ...
   return coords
+```
+
+## More advanced datasets: Pandas package
+
+## Download a dataset
+
+For this exercise you first need to install the python package `scikit-learn` (via `pip install scikit-learn`). Be aware that the module name inside the package is different, importing the package is via `import sklearn`. Then perform the following steps: 
+
+- Go to the [Scikit-learn](https://scikit-learn.org/stable/index.html) website:
+
+``` {python}
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+iris.head()
+iris.info()
+
+iris_df = load_iris(as_frame=True)
+iris_df.info()
 ```

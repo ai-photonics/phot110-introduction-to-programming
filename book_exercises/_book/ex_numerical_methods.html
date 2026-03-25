@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Michaël Barbier">
-<meta name="dcterms.date" content="2026-03-25">
 
-<title>PHOT 110: Introduction to programming</title>
+<title>15&nbsp; Numerical algorithms – PHOT 110: Introduction to programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -52,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ex_python_console.html" rel="next">
+<link href="./solutions.html" rel="next">
+<link href="./ex_classes.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -96,6 +75,35 @@ div.csl-indent {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -108,7 +116,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ex_numerical_methods.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Numerical algorithms</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +163,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -245,7 +253,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex_numerical_methods.html" class="sidebar-item-text sidebar-link">
+  <a href="./ex_numerical_methods.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Numerical algorithms</span></span></a>
   </div>
 </li>
@@ -265,36 +273,25 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#compute-an-integral-numerically-spring-2024" id="toc-compute-an-integral-numerically-spring-2024" class="nav-link active" data-scroll-target="#compute-an-integral-numerically-spring-2024"><span class="header-section-number">15.1</span> Compute an integral numerically (Spring 2024)</a></li>
+  <li><a href="#compute-derivatives-numerically-spring-2024" id="toc-compute-derivatives-numerically-spring-2024" class="nav-link" data-scroll-target="#compute-derivatives-numerically-spring-2024"><span class="header-section-number">15.2</span> Compute derivatives numerically (Spring 2024)</a></li>
+  <li><a href="#solve-a-system-of-equations" id="toc-solve-a-system-of-equations" class="nav-link" data-scroll-target="#solve-a-system-of-equations"><span class="header-section-number">15.3</span> Solve a system of equations</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_numerical_methods.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PHOT 110: Introduction to programming</h1>
-<p class="subtitle lead">Collected exercises, Spring semester (2024-now)</p>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Numerical algorithms</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Michaël Barbier </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 25, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -304,18 +301,135 @@ div.csl-indent {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This document contains the exercises of the PHOT110 - Introduction to Programming course, given at Izmir Institute of Technology to the students of the Photonics Department. The solutions for the problems can be found at the end of the book.</p>
-<p>For other course materials of the PHOT110 course please visit <a href="https://web.iyte.edu.tr/michaelbarbier/education_phot110.html" class="uri">https://web.iyte.edu.tr/michaelbarbier/education_phot110.html</a>.</p>
-<p><span class="citation" data-cites="knuth1984">Knuth (<a href="#ref-knuth1984" role="doc-biblioref">1984</a>)</span></p>
+<section id="compute-an-integral-numerically-spring-2024" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="compute-an-integral-numerically-spring-2024"><span class="header-section-number">15.1</span> Compute an integral numerically (Spring 2024)</h2>
+<p>Numerically integrate the following integral</p>
+<p><span class="math display">\[
+\int_0^2 \text{dx}\, (x^3 - x/3)
+\]</span></p>
+<ol type="1">
+<li>As a first approximation try to use the rectangular approximation (Riemann sum). Therefore, divide the interval <span class="math inline">\([0, 2]\)</span> in <span class="math inline">\(N\)</span> parts and approximate the area surrounding each point by a thin rectangle. The sum of all rectangle areas then approximates the total area under the curve (see the figure below), i.e.&nbsp;the integral. For a general interval <span class="math inline">\([A, B]\)</span> and function <span class="math inline">\(y = f(x)\)</span> we can numerically calculate the integral using: <span class="math display">\[
+\int_A^B \text{dx}\, f(x) \approx \sum_{i = 1}^N f(x_i) \delta x
+\]</span> With <span class="math inline">\(x_i = A + (i - 1/2)\times \delta x\)</span>, and <span class="math inline">\(\delta x = (B - A) / N\)</span>. This sum is also called <strong>Riemann sum</strong>. In principle, we should take the limit <span class="math inline">\(N\rightarrow \infty\)</span> to obtain the analytic result or actual Riemann integral, but as an approximation we take <span class="math inline">\(N\)</span> a finite (large number).</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/fig_integration.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Numerical integration of a definite integral over interval <span class="math inline">\([A, B]\)</span> interval. The <strong>left</strong> panel illustrates the Riemann sum, where the area under the curve is approximated by rectangles. On the <strong>right</strong> the Trapezium rule is illustrated where the area is approximated by trapeziums instead of rectangles, increasing the accuracy.</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>Compare the result with the analytic result: <span class="math display">\[
+[x^4/4 - x^2/6 \, ]_0^2 = 10/3
+\]</span></li>
+<li>Then use the <strong>trapezium rule</strong>, see the figure above, in which instead of rectangles we use trapeziums, following the curve more accurately. The area of a trapezium with two vertical sides and one horizontal bottom side is given the width times the average length of the vertical sides.</li>
+</ol>
+<p><span class="math display">\[
+\int_A^B \text{d}x\, f(x) \approx \sum_{i = 1}^N \frac{f(x_i) + f(x_{i-1})}{2} \delta x
+\]</span> With <span class="math inline">\(x_i = A + i\times \delta x\)</span>, and <span class="math inline">\(\delta x = (B - A) / N\)</span>. This sum should more accurately reflect the area under the curve (the integral) than the Riemann sum.</p>
+<ol start="4" type="1">
+<li>This formula is used so often that Numpy has a function for it: <code>np.trapz(y, x)</code>. Compare your result with the result of this function.</li>
+</ol>
+</section>
+<section id="compute-derivatives-numerically-spring-2024" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="compute-derivatives-numerically-spring-2024"><span class="header-section-number">15.2</span> Compute derivatives numerically (Spring 2024)</h2>
+<p>The derivative of a function in a point can be numerically approximated by finite difference methods. The following formula gives us the <strong>forward finite difference</strong>: <span class="math display">\[
+\frac{\text{d} f(x)}{\text{d} x} \approx \frac{f(x_{i+1}) - f(x_{i})}{\delta x}
+\]</span> If we would take the limit of <span class="math inline">\(\delta x \rightarrow 0\)</span> then we would obtain the actual derivative. Here however we will approximate the derivative with a finite-sized <span class="math inline">\(\delta x\)</span>. We we want to calculate the derivative over an interval we will as we did for the integral divide the interval in <span class="math inline">\(N\)</span> pieces and set <span class="math inline">\(\delta x = (B-A)/N\)</span>. Thereby we can plot the derivative over the whole interval <span class="math inline">\([A, B]\)</span> (except of the last point at B, for which we can’t compute the forward derivative). Similarly, the <strong>backward finite difference</strong> is defined as: <span class="math display">\[
+\frac{\text{d} f(x)}{\text{d} x} \approx \frac{f(x_{i}) - f(x_{i-1})}{\delta x}
+\]</span> And the mean of the two becomes the <strong>central difference</strong>: <span class="math display">\[
+\frac{\text{d} f(x)}{\text{d} x} \approx \frac{1}{2}\left( \frac{f(x_{i+1}) - f(x_{i})}{\delta x} + \frac{f(x_{i}) - f(x_{i-1})}{\delta x} \right) = \frac{f(x_{i+1}) - f(x_{i-1})}{2\delta x}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./figures/fig_derivative.png" class="img-fluid figure-img"></p>
+<figcaption>Numerical derivatives. The central difference allows the most accurate derivative and can be considered as the mean derivative of the forward and the backward difference approximation.</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li>Numerically compute and plot the forward derivative of <span class="math inline">\(f(x) = \sin(5 \pi x)/ (1 + x^2)\)</span> within interval <span class="math inline">\([-3, 3]\)</span>. Ignore the issue at the last point.</li>
+<li>Do the same for the central difference, do you find any difference for small values of <span class="math inline">\(N\)</span>?</li>
+</ol>
+</section>
+<section id="solve-a-system-of-equations" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="solve-a-system-of-equations"><span class="header-section-number">15.3</span> Solve a system of equations</h2>
+<p>Solve the following system of equations in <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span>:</p>
+<p><span class="math display">\[
+\left\{
+\begin{aligned}
+x + y &amp; = 0 \\
+x + y + z &amp; = 5 \\
+2x - z  &amp; = -2 \\
+\end{aligned}
+\right.
+\]</span></p>
+<p>by converting it to a matrix equation:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+1 &amp; 1 &amp; 0\\
+1 &amp; 1 &amp; 1\\
+2 &amp; 0 &amp; -1\\
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+5\\
+-2
+\end{pmatrix}
+\]</span> And then multiplying both sides of the equation by the inverse matrix from the left.</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+1 &amp; 1 &amp; 0\\
+1 &amp; 1 &amp; 1\\
+2 &amp; 0 &amp; -1\\
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+1 &amp; 1 &amp; 0\\
+1 &amp; 1 &amp; 1\\
+2 &amp; 0 &amp; -1\\
+\end{pmatrix}
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 &amp; 1 &amp; 0\\
+1 &amp; 1 &amp; 1\\
+2 &amp; 0 &amp; -1\\
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+0\\
+5\\
+-2
+\end{pmatrix}
+\]</span> <span class="math display">\[
+\Rightarrow
+\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 &amp; 1 &amp; 0\\
+1 &amp; 1 &amp; 1\\
+2 &amp; 0 &amp; -1\\
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+0\\
+5\\
+-2
+\end{pmatrix}
+\]</span> Thereby calculate and print the values for <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span>. Verify by hand whether this is indeed a solution.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-knuth1984" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -738,10 +852,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./ex_classes.html" class="pagination-link" aria-label="Classes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Classes</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ex_python_console.html" class="pagination-link" aria-label="Expressions in the Python console">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Expressions in the Python console</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./solutions.html" class="pagination-link" aria-label="Solutions">
+        <span class="nav-page-text">Solutions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -750,4 +867,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_numerical_methods.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

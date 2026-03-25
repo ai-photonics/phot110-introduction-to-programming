@@ -14,10 +14,20 @@ book:
     - index.qmd
     #- intro.qmd
     - ex_python_console.qmd
-    #- ex_io_and_scripts.qmd
-    #- ex_conditional_statements.qmd
-    #- ex_for_and_while_loops.qmd
-    #- ex_lists.qmd
+    - ex_io_and_scripts.qmd
+    - ex_conditional_statements.qmd
+    - ex_for_and_while_loops.qmd
+    - ex_lists.qmd
+    - ex_turtle.qmd
+    - ex_sequences_and_operations.qmd
+    - ex_numpy_arrays.qmd
+    - ex_matplotlib.qmd
+    - ex_functions.qmd
+    - ex_error_handling.qmd
+    - ex_modules.qmd
+    - ex_dictionaries.qmd
+    - ex_classes.qmd
+    - ex_numerical_methods.qmd
     - solutions.qmd
     #- references.qmd
 

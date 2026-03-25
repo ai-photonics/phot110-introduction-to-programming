@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Michaël Barbier">
-<meta name="dcterms.date" content="2026-03-25">
 
-<title>PHOT 110: Introduction to programming</title>
+<title>13&nbsp; Dictionaries &amp; data tables (Pandas dataframes) – PHOT 110: Introduction to programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -52,7 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ex_python_console.html" rel="next">
+<link href="./ex_classes.html" rel="next">
+<link href="./ex_modules.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -108,7 +121,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ex_dictionaries.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dictionaries &amp; data tables (Pandas dataframes)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +168,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -233,7 +246,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex_dictionaries.html" class="sidebar-item-text sidebar-link">
+  <a href="./ex_dictionaries.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dictionaries &amp; data tables (Pandas dataframes)</span></span></a>
   </div>
 </li>
@@ -265,36 +278,26 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#creating-a-dictionary-spring-2025" id="toc-creating-a-dictionary-spring-2025" class="nav-link active" data-scroll-target="#creating-a-dictionary-spring-2025"><span class="header-section-number">13.1</span> Creating a dictionary (Spring 2025)</a></li>
+  <li><a href="#convert-to-a-module-spring-2025" id="toc-convert-to-a-module-spring-2025" class="nav-link" data-scroll-target="#convert-to-a-module-spring-2025"><span class="header-section-number">13.2</span> Convert to a module (Spring 2025)</a></li>
+  <li><a href="#more-advanced-datasets-pandas-package" id="toc-more-advanced-datasets-pandas-package" class="nav-link" data-scroll-target="#more-advanced-datasets-pandas-package"><span class="header-section-number">13.3</span> More advanced datasets: Pandas package</a></li>
+  <li><a href="#download-a-dataset" id="toc-download-a-dataset" class="nav-link" data-scroll-target="#download-a-dataset"><span class="header-section-number">13.4</span> Download a dataset</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_dictionaries.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PHOT 110: Introduction to programming</h1>
-<p class="subtitle lead">Collected exercises, Spring semester (2024-now)</p>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dictionaries &amp; data tables (Pandas dataframes)</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Michaël Barbier </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 25, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -304,18 +307,65 @@ div.csl-indent {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This document contains the exercises of the PHOT110 - Introduction to Programming course, given at Izmir Institute of Technology to the students of the Photonics Department. The solutions for the problems can be found at the end of the book.</p>
-<p>For other course materials of the PHOT110 course please visit <a href="https://web.iyte.edu.tr/michaelbarbier/education_phot110.html" class="uri">https://web.iyte.edu.tr/michaelbarbier/education_phot110.html</a>.</p>
-<p><span class="citation" data-cites="knuth1984">Knuth (<a href="#ref-knuth1984" role="doc-biblioref">1984</a>)</span></p>
+<section id="creating-a-dictionary-spring-2025" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="creating-a-dictionary-spring-2025"><span class="header-section-number">13.1</span> Creating a dictionary (Spring 2025)</h2>
+<p>You can create a dictionary using curly brackets</p>
+<div id="5faea9b6" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>position <span class="op">=</span> {<span class="st">"x"</span>: <span class="dv">1</span>, <span class="st">"y"</span>: <span class="dv">1</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Perform the following tasks:</p>
+<ul>
+<li>Create a dictionary with four variables (position in space-time): “x”: 0, “y”: 1, “z”: 0, “t”: 0.</li>
+<li>Add this dictionary to an empty list.</li>
+<li>Then create a function that allows to add another dictionary of space-time coordinates</li>
+<li>Afterwards, create another function that allows you to convert the list of space-time coordinates to a single dictionary of 4 arrays x, y, z, and t, containing the coordinates.</li>
+</ul>
+</section>
+<section id="convert-to-a-module-spring-2025" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="convert-to-a-module-spring-2025"><span class="header-section-number">13.2</span> Convert to a module (Spring 2025)</h2>
+<p>Put the functionality of previous exercise in a module. Remember to use a separate script-file for the module.</p>
+<ul>
+<li>Test each of the functions of the module.</li>
+<li>Afterwards, try to import the module in a main script which plots the space-time coordinates in a 3D parametric curve plot.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_position(positions, x, y, z, t):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># code to add extend the list </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> positions</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_to_dict(positions):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># code to convert the list of </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># dictionaries into a dictionary of lists </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> coords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="more-advanced-datasets-pandas-package" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="more-advanced-datasets-pandas-package"><span class="header-section-number">13.3</span> More advanced datasets: Pandas package</h2>
+</section>
+<section id="download-a-dataset" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="download-a-dataset"><span class="header-section-number">13.4</span> Download a dataset</h2>
+<p>For this exercise you first need to install the python package <code>scikit-learn</code> (via <code>pip install scikit-learn</code>). Be aware that the module name inside the package is different, importing the package is via <code>import sklearn</code>. Then perform the following steps:</p>
+<ul>
+<li>Go to the <a href="https://scikit-learn.org/stable/index.html">Scikit-learn</a> website:</li>
+</ul>
+<div id="f7e0b6c9" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[2]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">sklearn</span><span class="ansi-blue-fg ansi-bold">.</span><span class="ansi-blue-fg ansi-bold">datasets</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">import</span> load_iris
+<span class="ansi-green-fg">      3</span> iris = load_iris()
+<span class="ansi-green-fg">      4</span> iris.head()
 
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-knuth1984" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'sklearn'</pre>
 </div>
 </div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -738,10 +788,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./ex_modules.html" class="pagination-link" aria-label="Python Custom Modules">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Python Custom Modules</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ex_python_console.html" class="pagination-link" aria-label="Expressions in the Python console">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Expressions in the Python console</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ex_classes.html" class="pagination-link" aria-label="Classes">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Classes</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -750,4 +803,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_dictionaries.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

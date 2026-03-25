@@ -11,9 +11,9 @@ Generate Fibonacci numbers, see the problem of previous section, and use the tur
 ```
 Hint: For drawing the next square, you want to go to the opposite corner and turn. Test out a couple of options till you get the correct pattern.
 
-![Fibonacci tiling: Spiral tiling with squares whose side lengths are successive Fibonacci numbers](./Fibonacci_Squares.svg){width=50%}
+![Fibonacci tiling: Spiral tiling with squares whose side lengths are successive Fibonacci numbers. From Wikipedia: By Romain - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=114415220](./figures/Fibonacci_Squares.svg){width=50%}
 
-After you have made this pattern, try to use AI-assisted code generation to do the same exercise and compare your manually written code witht the AI-generated code.
+After you have made this pattern, try to use AI-assisted code generation to do the same exercise and compare your manually written code with the AI-generated code.
 
 ## Fibonacci sunflower pattern with turtle 
 
@@ -27,10 +27,10 @@ x = r \cos(\theta),\qquad y = r \sin(\theta)
 $$
 See the below image for example output. Try to add more colors to the list of colors to change the appearance of the pattern.
 
-![Sunflower pattern](./sunflower.png){width=50%}
+![Sunflower pattern](./figures/sunflower.png){width=50%}
 
 ## Draw random dots with turtle
 
 Plot N random dots on the screen using the turtle module. The position the dots should be randomly generated (Gaussian distribution), and the color and size of each dot should also be randomly generated. You can use the `random` module to generate random numbers for the position, color, and size of the dots. For example, you can use `random.gauss(mu, sigma)` for a Gaussian distribution with mean `mu` and standard deviation `sigma`, `random.uniform(a, b)` to generate a random float between `a` and `b`, and `random.choice(list)` to randomly select an element from a list. Output could look something like the below image.
 
-![Random dots](./random_blobs.png){width=50%}
+![Random dots](./figures/random_blobs.png){width=50%}

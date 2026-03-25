@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Michaël Barbier">
-<meta name="dcterms.date" content="2026-03-25">
 
-<title>PHOT 110: Introduction to programming</title>
+<title>2&nbsp; Input, formatting output, and expressions in Python scripts – PHOT 110: Introduction to programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -52,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ex_python_console.html" rel="next">
+<link href="./ex_conditional_statements.html" rel="next">
+<link href="./ex_python_console.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -96,6 +75,35 @@ div.csl-indent {
   });
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -108,7 +116,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ex_io_and_scripts.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Input, formatting output, and expressions in Python scripts</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -155,7 +163,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -167,7 +175,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ex_io_and_scripts.html" class="sidebar-item-text sidebar-link">
+  <a href="./ex_io_and_scripts.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Input, formatting output, and expressions in Python scripts</span></span></a>
   </div>
 </li>
@@ -265,36 +273,32 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#sec-ex-bmi" id="toc-sec-ex-bmi" class="nav-link active" data-scroll-target="#sec-ex-bmi"><span class="header-section-number">2.1</span> Body Mass Index calculator</a></li>
+  <li><a href="#text-transformations" id="toc-text-transformations" class="nav-link" data-scroll-target="#text-transformations"><span class="header-section-number">2.2</span> Text transformations</a></li>
+  <li><a href="#tsiolkovsky-rocket-equation" id="toc-tsiolkovsky-rocket-equation" class="nav-link" data-scroll-target="#tsiolkovsky-rocket-equation"><span class="header-section-number">2.3</span> Tsiolkovsky rocket equation</a></li>
+  <li><a href="#formatted-table-unit-conversion" id="toc-formatted-table-unit-conversion" class="nav-link" data-scroll-target="#formatted-table-unit-conversion"><span class="header-section-number">2.4</span> Formatted table: unit conversion</a></li>
+  <li><a href="#glorifier-spring-2025" id="toc-glorifier-spring-2025" class="nav-link" data-scroll-target="#glorifier-spring-2025"><span class="header-section-number">2.5</span> Glorifier (Spring 2025)</a></li>
+  <li><a href="#repeat-words-spring-2025" id="toc-repeat-words-spring-2025" class="nav-link" data-scroll-target="#repeat-words-spring-2025"><span class="header-section-number">2.6</span> Repeat words (Spring 2025)</a></li>
+  <li><a href="#braking-distance-spring-2025" id="toc-braking-distance-spring-2025" class="nav-link" data-scroll-target="#braking-distance-spring-2025"><span class="header-section-number">2.7</span> Braking distance (Spring 2025)</a></li>
+  <li><a href="#velocity-measurement-by-radar-gun-spring-2025" id="toc-velocity-measurement-by-radar-gun-spring-2025" class="nav-link" data-scroll-target="#velocity-measurement-by-radar-gun-spring-2025"><span class="header-section-number">2.8</span> Velocity measurement by radar gun (Spring 2025)</a></li>
+  <li><a href="#chevaux-vapeur-car-tax-calculator-spring-2025" id="toc-chevaux-vapeur-car-tax-calculator-spring-2025" class="nav-link" data-scroll-target="#chevaux-vapeur-car-tax-calculator-spring-2025"><span class="header-section-number">2.9</span> Chevaux-Vapeur car tax calculator (Spring 2025)</a></li>
+  <li><a href="#formatted-table-of-numbers-spring-2025" id="toc-formatted-table-of-numbers-spring-2025" class="nav-link" data-scroll-target="#formatted-table-of-numbers-spring-2025"><span class="header-section-number">2.10</span> Formatted table of numbers (Spring 2025)</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_io_and_scripts.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PHOT 110: Introduction to programming</h1>
-<p class="subtitle lead">Collected exercises, Spring semester (2024-now)</p>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Input, formatting output, and expressions in Python scripts</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Michaël Barbier </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 25, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -304,18 +308,131 @@ div.csl-indent {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This document contains the exercises of the PHOT110 - Introduction to Programming course, given at Izmir Institute of Technology to the students of the Photonics Department. The solutions for the problems can be found at the end of the book.</p>
-<p>For other course materials of the PHOT110 course please visit <a href="https://web.iyte.edu.tr/michaelbarbier/education_phot110.html" class="uri">https://web.iyte.edu.tr/michaelbarbier/education_phot110.html</a>.</p>
-<p><span class="citation" data-cites="knuth1984">Knuth (<a href="#ref-knuth1984" role="doc-biblioref">1984</a>)</span></p>
-
-
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-knuth1984" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+<section id="sec-ex-bmi" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-ex-bmi"><span class="header-section-number">2.1</span> Body Mass Index calculator</h2>
+<p>Prompt a user for his/her height and length, then calculate his/her body mass index and print it to the screen. The body mass index is a rather inaccurate measure for body fat and is given by the formula: <span class="math inline">\(\textrm{BMI} = \textrm{weight}/\textrm{height}^2 \textrm{kg}/\textrm{m}^2\)</span> where the weight is in kilograms and height in meters.</p>
+<div id="afe2a611" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>Height (in cm): 179
+Weight (in kg): 75
+Your BMI = 23.41</code></pre>
 </div>
 </div>
+</section>
+<section id="text-transformations" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="text-transformations"><span class="header-section-number">2.2</span> Text transformations</h2>
+<p>Prompt the user for a sentence. The perform the following tasks:</p>
+<ol type="a">
+<li>Make all characters in the sentence upper case.</li>
+<li>Surround the sentence by double quotes.</li>
+<li>Append a question mark “?” to the sentence and print it <span class="math inline">\(n\)</span> times on the same line (where <span class="math inline">\(n\)</span> is a parameter).</li>
+<li>Print the words of the sentence on separate lines by replacing spaces by <code>\n</code> as a line separator (<code>\n</code> is the escape code to start a new line)</li>
+</ol>
+<div id="8b225080" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>Please provide a sentence: Apples are sometimes green
+(a) Uppercase sentence: APPLES ARE SOMETIMES GREEN
+(b) With quotes: "Apples are sometimes green"
+(c) Repeated 4 times: Apples are sometimes green? Apples are sometimes green? Apples are sometimes green? Apples are sometimes green? 
+(d) On separate lines:
+Apples
+are
+sometimes
+green</code></pre>
+</div>
+</div>
+</section>
+<section id="tsiolkovsky-rocket-equation" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="tsiolkovsky-rocket-equation"><span class="header-section-number">2.3</span> Tsiolkovsky rocket equation</h2>
+<p>To launch a satelite into a Lower Earth Orbit (LEO) a space rocket needs to reach an orbit velocity <span class="math inline">\(\Delta v\)</span> of approximately <span class="math inline">\(\Delta v \approx 7.8\)</span> km/s or <span class="math inline">\(28,080\)</span> km/h. The amount of fuel required depends on the mass of the empty rocket plus satelite and fuel via the Tsiolkovsky rocket equation:</p>
+<p><span class="math display">\[
+\Delta v = v_e \ln \frac{m_0}{m_f} \qquad\Rightarrow\qquad \frac{m_0}{m_f} = \frac{m_\textrm{rocket} + m_\textrm{satelite} + m_\textrm{fuel}}{m_\textrm{rocket} + m_\textrm{satelite}} = e^{\Delta v/v_e}
+\]</span></p>
+<p>Where <span class="math inline">\(m_0\)</span> is the initial mass of the rocket (and satelite) including propellant (fuel), <span class="math inline">\(m_f\)</span> is the final mass of the empty rocket (with satelite), and <span class="math inline">\(v_e = 2.5\)</span> km/s the effective exhaust velocity for this specific rocket.</p>
+<p>Prompt the user to give a masses of the satelite and the empty rocket to be launched (<span class="math inline">\(m_f\)</span>) and respond with the required fuel to reach the required <span class="math inline">\(\Delta v = 7.8\)</span> km/s.</p>
+</section>
+<section id="formatted-table-unit-conversion" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="formatted-table-unit-conversion"><span class="header-section-number">2.4</span> Formatted table: unit conversion</h2>
+<p>Prompt the user for a distance in meters. Then print a table with the distance in units of inches, feet, yard, and mile on the different rows. The units can be converted to metric units by: 1 inch = 2.54 cm, 1 foot = 12 inches, 1 yard = 3 feet, and 1 mile = 1,760 yards. Column 1 should represent the distance with two digits after the decimal point, in column 2 with scientific notation with 2 significant figures, and the last column the units. Use formatted strings to make sure the columns are equally wide.</p>
+</section>
+<section id="glorifier-spring-2025" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="glorifier-spring-2025"><span class="header-section-number">2.5</span> Glorifier (Spring 2025)</h2>
+<p>Prompt a user for his/her name. Print the sentence: “All hail [name of the user]” as a response.</p>
+</section>
+<section id="repeat-words-spring-2025" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="repeat-words-spring-2025"><span class="header-section-number">2.6</span> Repeat words (Spring 2025)</h2>
+<p>Prompt the user for a word. Print the word 8 times on one line with spaces in between and put an exclamation mark at the end.</p>
+</section>
+<section id="braking-distance-spring-2025" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="braking-distance-spring-2025"><span class="header-section-number">2.7</span> Braking distance (Spring 2025)</h2>
+<p>Prompt a user for the speed of a car. Calculate the braking distance on asfalt and concrete roads and print them. The (kinetic) friction constants for concrete and asphalt are given in following table:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Material</th>
+<th>Kinetic</th>
+<th>Static</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rubber on concrete (dry)</td>
+<td>0.68</td>
+<td>0.90</td>
+</tr>
+<tr class="even">
+<td>Rubber on concrete (wet)</td>
+<td>0.58</td>
+<td>-.–</td>
+</tr>
+<tr class="odd">
+<td>Rubber on asphalt (dry)</td>
+<td>0.72</td>
+<td>0.68</td>
+</tr>
+<tr class="even">
+<td>Rubber on asphalt (wet)</td>
+<td>0.53</td>
+<td>-.–</td>
+</tr>
+<tr class="odd">
+<td>Rubber on ice</td>
+<td>0.15</td>
+<td>0.15</td>
+</tr>
+</tbody>
+</table>
+<p>The braking distance <span class="math inline">\(D\)</span> for a car driving at a speed <span class="math inline">\(v\)</span> is determined by the perception-reaction time <span class="math inline">\(t_r \approx 1\)</span> of the driver and the friction coefficient of the road <span class="math inline">\(\mu\)</span> according to the following formula (<span class="math inline">\(g = 9.81\,m/s^2\)</span>):</p>
+<p><span class="math display">\[
+D = v t_r + \frac{v^{2}}{2 \mu g}
+\]</span></p>
+</section>
+<section id="velocity-measurement-by-radar-gun-spring-2025" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="velocity-measurement-by-radar-gun-spring-2025"><span class="header-section-number">2.8</span> Velocity measurement by radar gun (Spring 2025)</h2>
+<p>Traffic police officers can use a radar gun to measure the speed of a car. The difference in frequency <span class="math inline">\(f_t\)</span> send out by the radar gun and the received echo <span class="math inline">\(f_e\)</span> gives the Doppler frequency <span class="math inline">\(f_d = f_t - f_e\)</span>. This frequency is related to the velocity of the car by:</p>
+<p><span class="math display">\[
+f_{d} \approx 2 v \frac{f_t}{c'}
+\]</span></p>
+<p>where <span class="math inline">\(c' = c / 1.0003\)</span>. Suppose the radar device is operated in the K-band: <span class="math inline">\(f_t = 24\)</span> GHz. Calculate the Doppler beating frequency <span class="math inline">\(f_{d}\)</span> measured by the officer if you pass him with a speed <span class="math inline">\(v = 200\)</span> km/h.</p>
+</section>
+<section id="chevaux-vapeur-car-tax-calculator-spring-2025" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="chevaux-vapeur-car-tax-calculator-spring-2025"><span class="header-section-number">2.9</span> Chevaux-Vapeur car tax calculator (Spring 2025)</h2>
+<p>Automatically calculate the tax on cars in France (before 1957). For this, ask a user following properties of his/her car:</p>
+<ul>
+<li>Cylinder capacity of his/her car <span class="math inline">\(C\)</span> (e.g.&nbsp;1.3 liters)</li>
+<li>Maximum revolutions/minute <span class="math inline">\(\omega\)</span></li>
+</ul>
+<p>Then print the amount that the user should pay for his/her car. To calculate the tax use the following formula:</p>
+<p><span class="math display">\[
+  CV =  C K (60 \omega)
+\]</span></p>
+<p>where <span class="math inline">\(K\)</span> is for a four-cylinder engine: <span class="math inline">\(1.5 \times 10^{-4}\)</span>.</p>
+</section>
+<section id="formatted-table-of-numbers-spring-2025" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="formatted-table-of-numbers-spring-2025"><span class="header-section-number">2.10</span> Formatted table of numbers (Spring 2025)</h2>
+<p>Prompt the user for two floating point numbers and print a table with on the rows the numbers the number itself, the square, and the square root of the number and as columns the two resulting numbers and their sum. Use formatted strings to set the number of digits after the decimal point.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -738,10 +855,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./ex_python_console.html" class="pagination-link" aria-label="Expressions in the Python console">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Expressions in the Python console</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ex_python_console.html" class="pagination-link" aria-label="Expressions in the Python console">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Expressions in the Python console</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ex_conditional_statements.html" class="pagination-link" aria-label="Conditional Statements">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conditional Statements</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -750,4 +870,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_io_and_scripts.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
