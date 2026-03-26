@@ -1,0 +1,17 @@
+## Fibonacci square tiling with turtle
+
+```{#lst-ex-bmi .python filename="code/2026/ex_4_2.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_4_2.py >}}
+```
+
+## Fibonacci sunflower pattern with turtle 
+
+```{#lst-ex-bmi .python filename="code/2026/ex_4_3.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_4_3.py >}}
+```
+
+## Draw random dots with turtle
+
+```{#lst-ex-bmi .python filename="code/2026/ex_4_4.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2026/ex_4_4.py >}}
+```

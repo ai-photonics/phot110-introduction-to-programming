@@ -1,0 +1,18 @@
+## Making a tuple (Spring 2025)
+
+```{#lst-ex-bmi .python filename="code/2025/ex_5_1_tuples.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_5_1_tuples.py >}}
+```
+
+## String chemistry (Spring 2025)
+
+```{#lst-ex-bmi .python filename="code/2025/ex_5_2_string_chemistry.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_5_2_string_chemistry >}}
+```
+
+## Yoda-talk (Spring 2025)
+
+```{#lst-ex-bmi .python filename="code/2025/ex_5_3_yoda_talk.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_5_3_yoda_talk.py >}}
+```
+
