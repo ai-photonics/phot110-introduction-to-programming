@@ -344,7 +344,7 @@
     "href": "ex_sequences_and_operations.html#yoda-talk-spring-2025",
     "title": "7  Sequences and operations: Lists, Tuples, Strings",
     "section": "7.3 Yoda-talk (Spring 2025)",
-    "text": "7.3 Yoda-talk (Spring 2025)\nPrompt the user to give a sentence. Change the order of the words and print the new sentence. You can use following technique:\n\nSplit the sentence in words.\nMix up the order of the words (list of strings) by flipping every two word\nUse the join() method on the list of words to concatenate all strings in the list, so you obtain a single (mixed up) sentence again.\nPrint this mixed up sentence to the screen.\nTry to mix up the order of the words more by using the shuffle function of the random module instead, see the example below:\n\n\nimport random\n\nwords = [\"The\", \"force\", \"is\", \"strong\", \"in\", \"him\"]\nrandom.shuffle(words)\nprint(words)\n\n['is', 'strong', 'in', 'force', 'him', 'The']\n\n\nExample output:\n\n\nEnter a sentence: The force is strong in him\nis The in strong him force",
+    "text": "7.3 Yoda-talk (Spring 2025)\nPrompt the user to give a sentence. Change the order of the words and print the new sentence. You can use following technique:\n\nSplit the sentence in words.\nMix up the order of the words (list of strings) by flipping every two word\nUse the join() method on the list of words to concatenate all strings in the list, so you obtain a single (mixed up) sentence again.\nPrint this mixed up sentence to the screen.\nTry to mix up the order of the words more by using the shuffle function of the random module instead, see the example below:\n\n\nimport random\n\nwords = [\"The\", \"force\", \"is\", \"strong\", \"in\", \"him\"]\nrandom.shuffle(words)\nprint(words)\n\n['in', 'him', 'strong', 'The', 'is', 'force']\n\n\nExample output:\n\n\nEnter a sentence: The force is strong in him\nhim in is strong force The",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Sequences and operations: Lists, Tuples, Strings</span>"
     ]
@@ -580,6 +580,26 @@
     ]
   },
   {
+    "objectID": "ex_functions.html#intersections-of-two-low-degree-polynomials-spring-2026",
+    "href": "ex_functions.html#intersections-of-two-low-degree-polynomials-spring-2026",
+    "title": "10  Exercises on functions",
+    "section": "10.6 Intersections of two low-degree polynomials (Spring 2026)",
+    "text": "10.6 Intersections of two low-degree polynomials (Spring 2026)\nFind and plot the intersections of two given quadratic polynomials. Use a function to get the roots of a quadratic equation, and another function which uses the first function to get the coordinates of the intersection point(s). The plot the curves of two example polynomials and the intersections, see the output below.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Exercises on functions</span>"
+    ]
+  },
+  {
+    "objectID": "ex_functions.html#recursive-function-for-the-factorial-of-a-number-spring-2026",
+    "href": "ex_functions.html#recursive-function-for-the-factorial-of-a-number-spring-2026",
+    "title": "10  Exercises on functions",
+    "section": "10.7 Recursive function for the factorial of a number (Spring 2026)",
+    "text": "10.7 Recursive function for the factorial of a number (Spring 2026)\nCalculate the value of the factorial of a number in two different ways:\n\ndefining a function: standard_factorial(n) where you use a for loop as in a previous exercise.\ndefining a recursive function: recursive_factorial(n) where you define the factorial by recursively letting the function call itself.\n\n\n\nstandard_factorial(5) = 120\nrecursive_factorial(5) = 120",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Exercises on functions</span>"
+    ]
+  },
+  {
     "objectID": "ex_error_handling.html",
     "href": "ex_error_handling.html",
     "title": "11  Exercises on error handling",
@@ -714,7 +734,7 @@
     "href": "ex_classes.html#subclasses",
     "title": "14  Classes",
     "section": "14.2 Subclasses",
-    "text": "14.2 Subclasses\nFirst define a class: Ticket\n\nclass Ticket():\n    \"\"\"The Ticket class is defined for general transport vehicles\"\"\"\n    \n    # Attributes of the class\n    customer = \"your_name\"\n    price = 20\n\n    # Methods of the class\n    # ...\n\n\nAdd a constructor (__init__(self, customer, price, etc.)) for the class,\nThen add a method which\nThen create a derived class Metro (subclass), for which you add the following attributes:\n\n    valid_from_time = [get_the_current_date_time]\n    valid_until_time = [valid_from_time + 2 hours]\n\nAfterwards create an instance of your new Metro class and check whether the valid_until_time is correct.\n\nFor the date and time in Python you can use the built-in datetime package. See the example below:\n\nfrom datetime import datetime, timedelta\n\ncurrent_time = datetime.now()\ncurrent_time_str = current_time.strftime(\"%Y-%m-%d %H:%M:%S\")\nprint(\"It is now: \" + current_time_str)\n\nlater_time = current_time + timedelta(hours=3)\nlater_time_str = later_time.strftime(\"%H:%M:%S\")\nprint(\"Three hours later the time will be: \" + later_time_str)\n\nIt is now: 2026-03-25 20:26:53\nThree hours later the time will be: 23:26:53",
+    "text": "14.2 Subclasses\nFirst define a class: Ticket\n\nclass Ticket():\n    \"\"\"The Ticket class is defined for general transport vehicles\"\"\"\n    \n    # Attributes of the class\n    customer = \"your_name\"\n    price = 20\n\n    # Methods of the class\n    # ...\n\n\nAdd a constructor (__init__(self, customer, price, etc.)) for the class,\nThen add a method which\nThen create a derived class Metro (subclass), for which you add the following attributes:\n\n    valid_from_time = [get_the_current_date_time]\n    valid_until_time = [valid_from_time + 2 hours]\n\nAfterwards create an instance of your new Metro class and check whether the valid_until_time is correct.\n\nFor the date and time in Python you can use the built-in datetime package. See the example below:\n\nfrom datetime import datetime, timedelta\n\ncurrent_time = datetime.now()\ncurrent_time_str = current_time.strftime(\"%Y-%m-%d %H:%M:%S\")\nprint(\"It is now: \" + current_time_str)\n\nlater_time = current_time + timedelta(hours=3)\nlater_time_str = later_time.strftime(\"%H:%M:%S\")\nprint(\"Three hours later the time will be: \" + later_time_str)\n\nIt is now: 2026-04-01 22:33:35\nThree hours later the time will be: 01:33:35",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Classes</span>"
     ]

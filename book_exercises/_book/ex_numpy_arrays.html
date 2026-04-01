@@ -341,7 +341,7 @@ window.Quarto = {
 <h2 data-number="8.1" class="anchored" data-anchor-id="create-numpy-arrays-spring-2025"><span class="header-section-number">8.1</span> Create Numpy arrays (Spring 2025)</h2>
 <p>Unlike lists, <em>arrays</em> have a fixed length of elements, and all elements must have the same type (the elements of the array can be changed). We will use the Numpy package for arrays, <strong>Numpy arrays are much faster</strong> to access than lists.</p>
 <p>You can create Numpy arrays in various ways:</p>
-<div id="a9247c6e" class="cell" data-execution_count="1">
+<div id="22683d9f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>])  <span class="co"># a1 = array created from a "2D" list</span></span>
@@ -363,7 +363,7 @@ window.Quarto = {
 <section id="access-elements-in-numpy-arrays-spring-2025" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="access-elements-in-numpy-arrays-spring-2025"><span class="header-section-number">8.2</span> Access elements in Numpy arrays (Spring 2025)</h2>
 <p>Accessing elements of arrays is done in the same manner.</p>
-<div id="b05e9b9b" class="cell" data-execution_count="2">
+<div id="b2026345" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the 1th element of the array</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>element <span class="op">=</span> a1[i]</span>
@@ -382,7 +382,7 @@ window.Quarto = {
 <section id="different-ways-to-generate-the-x-values-with-numpy-spring-2025" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="different-ways-to-generate-the-x-values-with-numpy-spring-2025"><span class="header-section-number">8.3</span> Different ways to generate the x-values: with Numpy (Spring 2025)</h2>
 <p>Numpy is designed for numerical computations so it has built-in functions for the generation of coordinates within intervals ( see also <a href="https://numpy.org/doc/stable/user/how-to-partition.html#how-to-partition">https://numpy.org/doc/stable/user/how-to-partition.html#how-to-partition</a>). Numpy functions <code>arange()</code> and <code>linspace()</code> create regularly spaced coordinates within 1D intervals:</p>
-<div id="4d6eddae" class="cell" data-execution_count="3">
+<div id="bb66ac33" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy: suppress scientific notation for small numbers and use 3 digits</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(precision<span class="op">=</span><span class="dv">3</span>, suppress<span class="op">=</span><span class="va">True</span>) </span>
@@ -407,7 +407,7 @@ x2 = [-1.  -0.7 -0.4 -0.1  0.2  0.5  0.8  1.1  1.4  1.7  2. ]</code></pre>
 <section id="element-wise-operations-with-numpy-arrays-spring-2025" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="element-wise-operations-with-numpy-arrays-spring-2025"><span class="header-section-number">8.4</span> Element-wise operations with Numpy arrays (Spring 2025)</h2>
 <p>Numpy also provides element-wise operations on Numpy arrays. We can use this to generate for example y-coordinates:</p>
-<div id="76356a3f" class="cell" data-execution_count="4">
+<div id="3609b27b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy arrays provide element-wise operations</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x1<span class="op">**</span><span class="dv">2</span>  <span class="co">#  y contains squared array elements</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"y = </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -419,7 +419,7 @@ z = [-2.   -0.75  0.5   1.75  3.    4.25  5.5   6.75  8.    9.25 10.5  11.75]</c
 </div>
 </div>
 <p>Numpy also provides functions on Numpy arrays:</p>
-<div id="ddb4ab50" class="cell" data-execution_count="5">
+<div id="403853ca" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> np.exp(a1)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(res)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>a_degrees <span class="op">=</span> np.array([<span class="dv">45</span>, <span class="dv">60</span>, <span class="dv">30</span>, <span class="dv">180</span>, <span class="dv">90</span>])</span>
@@ -446,7 +446,7 @@ y &amp;= \frac{\sin(\pi x)}{x}\\
 <section id="expressions-with-numpy-arrays" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="expressions-with-numpy-arrays"><span class="header-section-number">8.5</span> Expressions with Numpy arrays</h2>
 <p>Import the Numpy library and/or functions and take <span class="math inline">\(x\)</span> now an array in interval <span class="math inline">\([-2, 2]\)</span>.</p>
-<div id="b7035126" class="cell" data-execution_count="6">
+<div id="aea2e95f" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

@@ -342,7 +342,7 @@ window.Quarto = {
 <section id="number-series" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="number-series"><span class="header-section-number">4.1</span> Number series</h2>
 <p>Print the values of <span class="math inline">\(1/n\)</span> for <span class="math inline">\(n \in [5, 10]\)</span>, each on a separate line. Use first a while loop, then try to use a for loop (which one is easier?). The output should look as follows:</p>
-<div id="77f82413" class="cell" data-execution_count="1">
+<div id="648ee059" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>1/5 = 0.2
 1/6 = 0.167
@@ -356,7 +356,7 @@ window.Quarto = {
 <section id="power-series" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="power-series"><span class="header-section-number">4.2</span> Power series</h2>
 <p>Consider the approximation of Eulers constant <span class="math inline">\(e = \sum_{n=0}^\infty \frac{1}{n!}\)</span>. Print the consecutive approximations where you only take the first <span class="math inline">\(1, 2, 3, 4, ...\)</span> terms into account and print each of them on a separate line to the console. Stop when the approximation only differs by <span class="math inline">\(0.001\)</span> or less from the real value of <span class="math inline">\(e = 2.7183\)</span> (make use of <code>math.e</code>, <code>math.factorial()</code>, and <code>math.fabs()</code>). The output should look as follows:</p>
-<div id="e9a49995" class="cell" data-execution_count="2">
+<div id="caa0a705" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>Euler's e = 2.7183 approximated to 1 terms =   1.0
 Euler's e = 2.7183 approximated to 2 terms =   2.0
@@ -376,7 +376,7 @@ Euler's e = 2.7183 approximated to 7 terms = 2.7181</code></pre>
 <li>Finally, use a <code>for</code> loop to print the odd numbers from 1 to 10 to the screen.</li>
 </ul>
 <p>As an example, the output of the last part should give:</p>
-<div id="b6f99b1a" class="cell" data-execution_count="4">
+<div id="9b89e11d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>Print odd numbers 1-10 using a for loop
 1
@@ -394,7 +394,7 @@ Euler's e = 2.7183 approximated to 7 terms = 2.7181</code></pre>
 <li>Repeat the same task but using a <code>for</code> loop (combine with a conditional statement). Remark that here the lazy evaluation of the <code>range()</code> function is also a benefit.</li>
 </ul>
 <p>Output of either script should have following output:</p>
-<div id="e79d7e59" class="cell" data-execution_count="5">
+<div id="a85ed915" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>1.0
 0.0625
@@ -411,7 +411,7 @@ Euler's e = 2.7183 approximated to 7 terms = 2.7181</code></pre>
 <section id="prime-numbers" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="prime-numbers"><span class="header-section-number">4.5</span> Prime numbers</h2>
 <p>Prompt the user for a positive integer number <span class="math inline">\(n\)</span>. Verify whether this number is prime (does not have any integer divisors except 1 and <span class="math inline">\(n\)</span>). For this you can loop over all numbers <span class="math inline">\(m \leq \sqrt{n}\)</span> and check whether <span class="math inline">\(n/m\)</span> is a natural number. Use <code>math.sqrt()</code> for the square root and the modulo operator <code>%</code> which gives the rest after division (e.g.&nbsp;<code>13 % 5 = 3</code>) to verify whether <span class="math inline">\(n\)</span> can be divided by <span class="math inline">\(m = 2, 3, 4, ...\)</span>. The output should look as follows:</p>
-<div id="cb28cc56" class="cell" data-execution_count="6">
+<div id="bbef0080" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Give a positive integer n: 169
 The number 169 can be divided by 13

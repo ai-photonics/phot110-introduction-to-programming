@@ -312,6 +312,8 @@ window.Quarto = {
   <li><a href="#intersection-of-two-lines-spring-2024" id="toc-intersection-of-two-lines-spring-2024" class="nav-link" data-scroll-target="#intersection-of-two-lines-spring-2024"><span class="header-section-number">10.3</span> Intersection of two lines (Spring 2024)</a></li>
   <li><a href="#intersection-of-many-lines-spring-2024" id="toc-intersection-of-many-lines-spring-2024" class="nav-link" data-scroll-target="#intersection-of-many-lines-spring-2024"><span class="header-section-number">10.4</span> Intersection of many lines (Spring 2024)</a></li>
   <li><a href="#drawing-the-koch-curve-spring-2025" id="toc-drawing-the-koch-curve-spring-2025" class="nav-link" data-scroll-target="#drawing-the-koch-curve-spring-2025"><span class="header-section-number">10.5</span> Drawing the Koch curve (Spring 2025)</a></li>
+  <li><a href="#intersections-of-two-low-degree-polynomials-spring-2026" id="toc-intersections-of-two-low-degree-polynomials-spring-2026" class="nav-link" data-scroll-target="#intersections-of-two-low-degree-polynomials-spring-2026"><span class="header-section-number">10.6</span> Intersections of two low-degree polynomials (Spring 2026)</a></li>
+  <li><a href="#recursive-function-for-the-factorial-of-a-number-spring-2026" id="toc-recursive-function-for-the-factorial-of-a-number-spring-2026" class="nav-link" data-scroll-target="#recursive-function-for-the-factorial-of-a-number-spring-2026"><span class="header-section-number">10.7</span> Recursive function for the factorial of a number (Spring 2026)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ai-photonics/phot110-intro-programming/blob/main/ex_functions.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
@@ -351,7 +353,7 @@ window.Quarto = {
 <section id="calculate-the-factorial-of-a-number-spring-2024" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="calculate-the-factorial-of-a-number-spring-2024"><span class="header-section-number">10.1</span> Calculate the factorial of a number (Spring 2024)</h2>
 <p>Calculate the value of the factorial of a number by defining a new function: <code>factorial(n)</code>. Use the following script as basis:</p>
-<div id="dc8b8e41" class="cell" data-execution_count="2">
+<div id="0c749c02" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>The value of 5! = 120</code></pre>
 </div>
@@ -385,7 +387,7 @@ m_2\, x_p + c_2 &amp;= m_1\, x_p + c_1\\
 y_p = m_1\, x_p + c_1
 \]</span> As example parameters of the lines: pick <span class="math inline">\(m_1 = 1/5\)</span> and <span class="math inline">\(m_2 = 7\)</span> as the direction coefficients, and <span class="math inline">\(c_1 = 2\)</span> and <span class="math inline">\(c_2 = -3\)</span> the off-sets at <span class="math inline">\(x = 0\)</span>.</p>
 <p>Convert the code to calculate the intersection point in following script into a function: <code>calc_intersection(m1, c1, m2, c2)</code> which returns <code>xp, yp</code>. Afterwards use your new function within this script.</p>
-<div id="6b72d295" class="cell" data-execution_count="3">
+<div id="5b421b65" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -399,7 +401,7 @@ y_p = m_1\, x_p + c_1
 <h2 data-number="10.4" class="anchored" data-anchor-id="intersection-of-many-lines-spring-2024"><span class="header-section-number">10.4</span> Intersection of many lines (Spring 2024)</h2>
 <p>Use the function that you created in previous exercise to calculate the intersection of a line with a list of other lines defined by:</p>
 <p>The output plot should look as follows:</p>
-<div id="dc395bc1" class="cell" data-execution_count="5">
+<div id="0cf3c4d7" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -431,6 +433,33 @@ y_p = m_1\, x_p + c_1
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>turtle.pencolor(<span class="st">"blue"</span>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>turtle.speed(<span class="dv">10</span>) <span class="co"># possible issue</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>koch(<span class="dv">100</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="intersections-of-two-low-degree-polynomials-spring-2026" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="intersections-of-two-low-degree-polynomials-spring-2026"><span class="header-section-number">10.6</span> Intersections of two low-degree polynomials (Spring 2026)</h2>
+<p>Find and plot the intersections of two given quadratic polynomials. Use a function to get the roots of a quadratic equation, and another function which uses the first function to get the coordinates of the intersection point(s). The plot the curves of two example polynomials and the intersections, see the output below.</p>
+<div id="90864e32" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ex_functions_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="recursive-function-for-the-factorial-of-a-number-spring-2026" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="recursive-function-for-the-factorial-of-a-number-spring-2026"><span class="header-section-number">10.7</span> Recursive function for the factorial of a number (Spring 2026)</h2>
+<p>Calculate the value of the factorial of a number in two different ways:</p>
+<ul>
+<li>defining a function: <code>standard_factorial(n)</code> where you use a for loop as in a previous exercise.</li>
+<li>defining a recursive function: <code>recursive_factorial(n)</code> where you define the factorial by recursively letting the function call itself.</li>
+</ul>
+<div id="85d3b611" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>standard_factorial(5) = 120
+recursive_factorial(5) = 120</code></pre>
+</div>
+</div>
 
 
 </section>

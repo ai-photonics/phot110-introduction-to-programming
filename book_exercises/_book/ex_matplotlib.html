@@ -354,7 +354,7 @@ x_i = A + i \cdot \frac{B-A}{N} = A + i \cdot\delta x \quad \text{with } i \in \
 </figure>
 </div>
 <p>Afterwards we calculate the y-coordinates from the x-coordinates: <span class="math inline">\(y_i = x_i^2\)</span>. Now that we have both coordinates we can plot the points with a line plot, which will connect the points with line pieces. The following code plots the curve <span class="math inline">\(y = x^2\)</span> within interval <span class="math inline">\([-1, 2]\)</span></p>
-<div id="bd908eb6" class="cell" data-execution_count="1">
+<div id="d5c56459" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -373,7 +373,7 @@ x_i = A + i \cdot \frac{B-A}{N} = A + i \cdot\delta x \quad \text{with } i \in \
 </ol>
 <p><strong>Different ways to generate the x-values: with Numpy</strong></p>
 <p>Numpy is designed for numerical computations so it has built-in functions for the generation of coordinates within intervals ( see also <a href="https://numpy.org/doc/stable/user/how-to-partition.html#how-to-partition">https://numpy.org/doc/stable/user/how-to-partition.html#how-to-partition</a>). Numpy functions <code>arange()</code> and <code>linspace()</code> create regularly spaced coordinates within 1D intervals:</p>
-<div id="a504d191" class="cell" data-execution_count="5">
+<div id="a498cf2c" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>x1 = [-1.   -0.75 -0.5  -0.25  0.    0.25  0.5   0.75  1.    1.25  1.5   1.75]
 x2 = [-1.  -0.7 -0.4 -0.1  0.2  0.5  0.8  1.1  1.4  1.7  2. ]</code></pre>
@@ -381,7 +381,7 @@ x2 = [-1.  -0.7 -0.4 -0.1  0.2  0.5  0.8  1.1  1.4  1.7  2. ]</code></pre>
 </div>
 <p>The created coordinates are in Numpy arrays (not lists). <strong>Numpy arrays are much faster</strong> to access than lists. But lists can change their size easily and contain mixed object types.</p>
 <p>Numpy also provides operations and functions on Numpy arrays. We can use this to generate for example the y-coordinates:</p>
-<div id="87ef7b94" class="cell" data-execution_count="6">
+<div id="1e49ab2e" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>y = [1.    0.562 0.25  0.062 0.    0.062 0.25  0.562 1.    1.562 2.25  3.062]
 z = [-2.   -0.75  0.5   1.75  3.    4.25  5.5   6.75  8.    9.25 10.5  11.75]</code></pre>
@@ -460,7 +460,7 @@ g(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi}\sigma} e^{- (x-\mu)^2 / 2\sigma^2}
 <p><span class="math display">\[
 f(x; x_0, \gamma) = \frac{1}{\pi} \frac{\gamma}{(x-x_0)^2 + \gamma^2}
 \]</span></p>
-<div id="06bb4ba9" class="cell" data-execution_count="7">
+<div id="50485fc9" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -498,7 +498,7 @@ y &amp;= \sin(f_y t)
 </figure>
 </div>
 <p>Output plot example</p>
-<div id="7a896950" class="cell" data-execution_count="8">
+<div id="58d97655" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -523,7 +523,7 @@ n_1 \sin(\theta_1) = n_2 \sin(\theta_2)
 \theta_2 = \arcsin \left( \frac{n_2}{n_1} \sin(\theta_2) \right)
 \]</span> Hint: Use Numpy arrays for the angles (np.linspace()), and Numpy functions: np.sin(), np.arcsin() (convert to radians by multiplying by a factor pi/180) or use the functions np.rad2deg and np.deg2rad to convert between the two.</p>
 <p>The output of your code should be similar to following plot:</p>
-<div id="15230db2" class="cell" data-execution_count="9">
+<div id="053cd303" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -551,7 +551,7 @@ n_1 \sin(\theta_1) = n_2 \sin(\theta_2)
 </ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>       fig.savefig(<span class="st">"./ex2_figure.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output should give you a similar plot to the one below:</p>
-<div id="969c3def" class="cell" data-execution_count="10">
+<div id="e7d295ce" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -574,7 +574,7 @@ n_1 \sin(\theta_1) = n_2 \sin(\theta_2)
 <li>to remove the extra decimals due to rounding errors, use <code>plt.legend(np.round(n2s, decimals=2))</code> to round the numbers before showing the legend.</li>
 </ul>
 <p>The output should give the below plot:</p>
-<div id="5aadbdb3" class="cell" data-execution_count="11">
+<div id="bba60d0f" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -604,7 +604,7 @@ y &amp;= b \sin(t)
 <li>use: <code>ax.set_aspect('equal', 'box')</code> to set the aspect ratio of the x and y axis equal</li>
 </ul>
 <p>The output of the script should give the following plot:</p>
-<div id="dfee2eb9" class="cell" data-execution_count="12">
+<div id="025e9726" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -626,7 +626,7 @@ y &amp;= r \sin(t)
 \end{aligned}
 \]</span> - Take the parameter <span class="math inline">\(n\)</span> for example <span class="math inline">\(n = 1/3\)</span> to have a typical curve</p>
 <p>The output plot should look as below:</p>
-<div id="5b90c182" class="cell" data-execution_count="13">
+<div id="b6886739" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -648,7 +648,7 @@ y &amp;= r \sin(t)
 <li>plot a histogram using <code>ax.hist(x_uniform, 100)</code></li>
 </ul>
 <p>The resulting plot should be:</p>
-<div id="fe00a1b9" class="cell" data-execution_count="14">
+<div id="3d2bddc2" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -671,7 +671,7 @@ y &amp;= r \sin(t)
 <li>plot them in a scatter plot using: <code>ax.scatter(xs, ys)</code></li>
 </ul>
 <p>The resulting output should look as below:</p>
-<div id="5a2a4334" class="cell" data-execution_count="15">
+<div id="2076358d" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -691,7 +691,7 @@ y &amp;= r \sin(t)
 <li>the cmap argument allows us to set the colormap used</li>
 </ul>
 <p>The resulting scatter plot should look as below:</p>
-<div id="85a26f14" class="cell" data-execution_count="16">
+<div id="ff444554" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -705,7 +705,7 @@ y &amp;= r \sin(t)
 <h2 data-number="9.11" class="anchored" data-anchor-id="d-domains-spring-2024"><span class="header-section-number">9.11</span> 2D domains (Spring 2024)</h2>
 <p>Use Numpy’s <code>arange()</code> function to create two intervals containing integers with e.g.&nbsp;<span class="math inline">\(x \in [0,10]\)</span> and <span class="math inline">\(y \in [0, 20]\)</span>, and make a 2D domain of them using the <code>xx, yy = np.meshgrid(x, y)</code> function. Plot the coordinates thus created using a scatter plot (<code>plt.scatter(xx, yy)</code>).</p>
 <p>The plot should similar to the following:</p>
-<div id="1a694fc9" class="cell" data-execution_count="17">
+<div id="56e08b51" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -725,7 +725,7 @@ z = f(x, y) = y \sin(2 \pi\, x)
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(xx, yy, zz, cmap<span class="op">=</span>cm.jet)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output should be similar as below:</p>
-<div id="2e53424f" class="cell" data-execution_count="18">
+<div id="3622b43b" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
