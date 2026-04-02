@@ -257,7 +257,7 @@ plt.show()
 
 ## Recursive function for the factorial of a number (Spring 2026)
 
-Calculate the value of the factorial of a number in two different ways: 
+Calculate the value of the factorial of a number: $N! = N\cdot(N-1)\cdot\dots\cdot 2 \cdot 1$ in two different ways: 
 
 - defining a function: `standard_factorial(n)` where you use a for loop as in a previous exercise.
 - defining a recursive function: `recursive_factorial(n)` where you define the factorial by recursively letting the function call itself.
@@ -294,3 +294,73 @@ N = 5
 print(f"standard_factorial({N}) = {standard_factorial(N)}")
 print(f"recursive_factorial({N}) = {recursive_factorial(N)}")
 ```
+
+## Recursive Laplace's determinant expansion
+
+The determinant of a matrix can be calculated via Laplace's expansion. For an example $3\times 3$ matrix and expansion along the first row we have:
+
+$$
+\begin{aligned}
+\det(M) &= \begin{vmatrix} 
+1 & -3 & -1 \\ 1 & 2 & -1 \\ 0 & 4 & 9 
+\end{vmatrix}\\
+&\\
+&= (-1)^{0} \cdot 1 \cdot \begin{vmatrix} 
+2 & -1 \\ 4 & 9 
+\end{vmatrix} 
++ (-1)^{1} \cdot (-3) \cdot \begin{vmatrix} 
+1 & -1 \\ 0 & 9 
+\end{vmatrix}
++ (-1)^{2} \cdot (-1) \cdot \begin{vmatrix} 
+1 & 2 \\ 0 & 4 
+\end{vmatrix}\\
+&\\
+&= 1 \cdot ( 2 \cdot 9 - (-1) \cdot 4) +3 \cdot ( 1 \cdot 9 - (-1) \cdot 0) - 
+1 \cdot ( 1 \cdot 4 - 2 \cdot 0)\\ 
+&\\
+&= 22 + 27 - 4 = 45
+\end{aligned}
+$$
+
+Implement Laplace's expansion on this example matrix by defining the recursive function `laplace(mat)` where `mat` is the matrix and call the function with the initial matrix defined as: 
+`mat = np.array([[1, -3, -1], [1, 2, -1], [0, 4, 9]])`. Then compare your function to the one of `np.linalg.det()`. The output of the script for this matrix should be:
+
+```{python}
+import numpy as np
+
+
+def laplace(mat):
+    n = mat.shape[0]
+    det = 0
+    if n > 1:
+        for j in range(n):
+            minor = np.delete(mat[1:, :], j, axis=1)
+            # print(minor)
+            det = det + (-1) ** j * mat[0, j] * laplace(minor)
+    else:
+        det = mat[0, 0]
+
+    return det
+
+
+# Define a matrix
+mat = np.array([[1, -3, -1], [1, 2, -1], [0, 4, 9]])
+
+# Calculate the determinant using our recursive function
+det = laplace(mat)
+print(f"Determinant calculated by our function: {det}")
+
+# Compare with Numpy's linalg.det() function
+det_numpy = np.linalg.det(mat)
+print(f"Determinant calculated by numpy: {det_numpy}")
+```
+
+## Fractal tree with turtle
+
+Tree structures have natural fractal structures, where branch thickness and length decreases. The younger ("deeper" in recursion) branches are thinner and shorter since they had less time to grow. Implement the tree structure shown below using the Python built-in Turtle package. There are various implementations possible: try to use 
+
+- a recursive function `tree(my_turtle, n, length, thickness)` where you keep track of the depth $n$, the length of the branch, and the thickness of the branch.
+- Create two branches (left and right) at a fixed angle. Use methods such as `my_turtle.goto(pos)`, `my_turtle.seth(angle)`, `pos = my_turtle.pos()`, `angle = my_turtle.heading()`, etc. to set and get position and orientation of the "turtle".
+
+![Fractal tree of recursion depth 11, branches at angles of 27 degrees, branch thickness and length decreasing by factor 3/4 with increasing depth.](./figures/tree_fractal.png){width=70%}
+

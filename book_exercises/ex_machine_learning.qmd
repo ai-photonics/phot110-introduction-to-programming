@@ -1,0 +1,16 @@
+# Machine learning
+
+Machine learning methods could be categorized under numerical algorithms, but are typically data-driven. Here we bundle some introductionary exercises which use mostly pure Python + Numpy to understand the working of the algorithms. Further, we will also compare with solutions that employ specialized packages such as `scikit-learn`, `Keras`, `pytorch`, `Jax`, etc.
+
+## Accessing datasets
+
+## 1D inference by least squares (Spring 2026)
+
+## CNN: Convolutional Neural Network (Spring 2026)
+
+CNN's are networks which are ideal for signal processing tasks, e.g. object recognition in images, peak detection in 1D signals. This is because the "convolutional" aspect makes the position of the o 
+
+## LSTM: Long Short-Term Memory network (Spring 2026)
+
+A LSTM is a Long Short-Term Memory network. 
+
