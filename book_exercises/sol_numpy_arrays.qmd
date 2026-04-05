@@ -1,56 +1,20 @@
 ## Create Numpy arrays (Spring 2025)
 
-Unlike lists, *arrays* have a fixed length of elements, and all elements must 
-have the same type (the elements of the array can be changed). We will use the 
-Numpy package for arrays, **Numpy arrays are much faster** to access than lists. 
-
-You can create Numpy arrays in various ways:
-
-```{python}
-#| echo: true
-#| output: false
-import numpy as np
-
-a1 = np.array([4, 2, 1])  # a1 = array created from a "2D" list
-print(f"a1 = {a1}")
-a2 = np.zeros((3, 1))     # a2 = 3x1 array (row-vector) with zeros
-print(f"a2 = {a2}")
-a3 = np.ones((4, 2))      # a3 = 4x2 array filled with ones
-print(f"a3 = {a3}")
-a4 = np.eye(2)            # a4 = 2x2 Identity matrix
-print(f"a4 = {a4}")
+```{#lst-ex-bmi .python filename="code/2025/ex_6_1_numpy.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_6_1_numpy.py >}}
 ```
-
-Perform the following tasks:
-
-- Convert the list: `[1, 2, 3]` to an array using the `np.array()` method.
-- Create an $3 \times 2$ array filled with zeros using `np.zeros(n, m)`, print the array.
-- Create an $1 \times 5$ array filled with ones using `np.ones(n, m)`, print the array.
 
 ## Access elements in Numpy arrays (Spring 2025)
 
-Accessing elements of arrays is done in the same manner.
-
-```{python}
-#| echo: true
-# Get the 1th element of the array
-i = 0
-element = a1[i]
-print(f"The element with index {i} = {element}")
+```{#lst-ex-bmi .python filename="code/2025/ex_6_2_numpy.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_6_2_numpy.py >}}
 ```
-
-Perform the following tasks:
-
-- Create a $3\times 3$ array and fill the last column with numbers 1, 2, 3
-- Extract the first row using the colon operator similar to lists
-- Print the diagonal numbers using a loop
 
 ## Different ways to generate the x-values: with Numpy (Spring 2025)
 
-
-- Create an array containing: `[1, 2, 3, 4, 5]`
-- Create an array using `np.linspace(start, stop, step)` with 20 elements equally spaced in the interval $[-2, 1]$
-- Create an array using `np.arange(start, stop, step)` with inter-element distance of 0.5 for the same interval $[-2, 1]$
+```{#lst-ex-bmi .python filename="code/2025/ex_6_3_numpy.py" code-line-numbers="false" line-height=0.5}
+{{< include ../code/2025/ex_6_3_numpy.py >}}
+```
 
 ## Element-wise operations with Numpy arrays (Spring 2025)
 

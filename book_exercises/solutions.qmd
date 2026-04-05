@@ -7,3 +7,13 @@
 {{< include sol_for_and_while_loops.qmd >}}
 
 {{< include sol_lists.qmd >}}
+
+{{< include sol_turtle.qmd >}}
+
+{{< include sol_sequences_and_operations.qmd >}}
+
+{{< include sol_numpy_arrays.qmd >}}
+
+{{< include sol_matplotlib.qmd >}}
+
+{{< include sol_functions.qmd >}}

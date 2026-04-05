@@ -7,18 +7,9 @@ a = np.arange(1, 6, 1)
 print(a)
 
 # Create an array using `np.linspace(start, stop, step)` with 20 elements equally spaced in the interval $[-2, 1]$
-# Create an array using `np.arange(start, stop, step)` with inter-element distance of 0.5 for the same interval $[-2, 1]$
-
-
-# Create a 3x3 array and fill the last column with numbers 1, 2, 3
-a = np.empty(shape=(3, 3))
-a[:, -1] = [1, 2, 3]
-print(a)
-
-# Extract the first row using the colon operator similar to lists
-b = a[0, :]
+b = np.linspace(-2, 1, 20)
 print(b)
 
-# Print the diagonal numbers using a loop
-for i in range(len(a)):
-    print(a[i, i])
+# Create an array using `np.arange(start, stop, step)` with inter-element distance of 0.5 for the same interval $[-2, 1]$
+c = np.arange(-2, 1, 0.5)
+print(c)
