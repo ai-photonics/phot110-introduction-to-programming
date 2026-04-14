@@ -1,0 +1,566 @@
+# Introduction
+
+These are the lecture notes of the introduction to programming course given to 1th year photonics students at IZTECH. The course book being used is Hans Petter Langtangen (5th edition)
+See @knuth84 for additional discussion of literate programming.
+
+We will provide the basics to solve scientific problems, i.e. implementing algorithms, or numerical methods in Python. A large part is dedicated to describing the Python syntax and how we can 
+
+Towards Python implementations
+
+![](./figures/slide_schema_3.png)
+
+## Python basics
+
+### Python program structure
+
+A Python script is a sequence of **statements** (algorithm steps), and **definitions** (functions, classes, …)
+
+-   Definitions are evaluated
+-   Statements are executed
+
+Executing a program:
+
+-   Execute statements **one by one** in the **Python Console**
+-   Statements **stored** as a sequence in a **script file**
+
+### The Python console
+
+Execute statements one by one in the Python Console
+
+``` {.python style="font-size:54px;" code-line-numbers="1|2|3|"}
+>>> print(6)
+6
+>>> a = 10
+>>>
+```
+
+Useful for:
+
+-   quick calculations
+-   testing the working of commands
+
+### Python scripts
+
+Statements stored in a script file
+
+``` {.python style="font-size:54px;"}
+a = 10
+b = 25
+prod = a * b
+print(f"{a} times {b} = {prod}")
+```
+
+```{python }
+#|echo: False
+a = 10
+b = 25
+prod = a * b
+print(f"{a} times {b} = {prod}")
+```
+
+Useful for:
+
+-   running a program multiple times
+-   incorrect lines can easily be found and corrected
+-   larger programs
+
+## Data objects
+
+-   In Python everything is a data object: numbers, text, functions, class instances, etc.
+-   Statements perform actions on data objects
+
+Data objects can be scalar:
+
+| Type       | Description         | (Example) values                     |
+|------------|---------------------|--------------------------------------|
+| `bool`     | Boolean value       | `True`, `False`                      |
+| `int`      | Integer numbers     | .. , `-2`, `-1`, `0`, `-1`, `-2`, .. |
+| `float`    | Floating point      | `3.56`, `23e-3`, `0.0079`            |
+| `NoneType` | Indicates no object | `None`                               |
+
+### Object type
+
+-   Every object has a type
+
+``` {.python style="font-size:54px;"}
+print(type(6.22e23))
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+print(type(6.22e23))
+```
+
+-   Possible to convert between certain types: type casting
+
+``` {.python style="font-size:54px;"}
+it_is_raining = True
+print(type(it_is_raining))
+an_integer = int(it_is_raining)
+print(type(an_integer))
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+it_is_raining = True
+print(type(it_is_raining))
+an_integer = int(it_is_raining)
+print(type(an_integer))
+```
+
+-   automatic type casting in some cases\
+    [`float` \<= `int * float`]{style="color:darkblue"}\
+    [`float` \<= `int + float`]{style="color:darkblue"}\
+    [`float` \<= `int / int`]{style="color:darkblue"}\
+
+``` {.python style="font-size:54px;"}
+a = 4
+b = 0.357
+print( f"Type of (a * b) = {type(a * b)}" )
+print( f"Type of (a / b) = {type(a / b)}" )
+print( f"Type of (a + b) = {type(a + b)}" )
+print( f"Type of (a / 25) = {type(a / 25)}" )
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+a = 4
+b = 0.357
+print( f"Type of (a * b) = {type(a * b)}" )
+print( f"Type of (a / b) = {type(a / b)}" )
+print( f"Type of (a + b) = {type(a + b)}" )
+print( f"Type of (a / 25) = {type(a / 25)}" )
+```
+
+### Variables
+
+A **variable** is a name bound to an **object**:
+
+-   the object is **assigned** to the variable
+-   In pseudo code indicated by $\leftarrow$
+
+In python assignment operator is the "=" sign:
+
+``` {.python style="font-size:54px;"}
+a_variable_name = 4.5
+```
+
+The variable can be re-assigned another value or object:
+
+``` {.python style="font-size:54px;"}
+v = 4
+v = v + 2                         # v becomes 6
+v = "Now v is assigned text"      # v has type str
+```
+
+## Expressions & Operators
+
+**Objects** can be combined by **operators** in **expressions**\
+Most used arithmetic operators:
+
+| symbol | description    | example      |
+|--------|----------------|--------------|
+| \*\*   | Power          | 3\*\*2 = 9   |
+| /      | Division       | 5 / 4 = 1.25 |
+| \*     | Multiplication | 3 \* 4 = 12  |
+| \+     | Addition       | 5 + 7 = 12   |
+| \-     | Subtraction    | 6 - 9 = -3   |
+| \%     | modulo         | 34 % 6 = 4   |
+
+
+Most used logic operators:
+
+| symbol     | description             | example                                |
+|--------------------|--------------------------|--------------------------|
+| `<`, `>`   | smaller/larger than     | `5 > 4` $\rightarrow$ `True`           |
+| `==`       | is equal to             | `3 == 6` $\rightarrow$ `False`         |
+| `<=`, `>=` | smaller/larger or equal | `5 <= 5` $\rightarrow$ `True`          |
+| `and`      | boolean AND             | `True and False` $\rightarrow$ `False` |
+| `or`       | boolean OR              | `True or False` $\rightarrow$ `True`   |
+| `not`      | boolean NOT             | `not True` $\rightarrow$ `False`       |
+
+
+### Structure of an expression
+
+An expression can be built with following rules:\
+
+-   `<expression>` $\overset{def}{=}$ `<object>` (an object is an expression)
+-   `<expression>` $\overset{def}{=}$ `<operator> <expression>`
+-   `<expression>` $\overset{def}{=}$ `<expression> <operator> <expression>`
+
+Expressions result into values and can be assigned to variables:
+
+``` {.python style="font-size:54px;"}
+x = 4
+y = 2*x**2 + 3*x - 5
+print(f"The value of y = {y}")
+```
+
+```{python}
+#| echo: false
+x = 4
+y = 2*x**2 + 3*x - 5
+print(f"The value of y = {y}")
+```
+
+### Operator precedence and brackets
+
+Precedence of operators is similar to mathematics.\
+List of precedence of operators can be found on the python.org website: https://docs.python.org/3/reference/expressions.html#operator-precedence
+
+Round brackets can be used to give priority
+
+``` {.python style="font-size:54px;"}
+x = 2
+y = (12 - x) / 10 
+print(f"The value of y = {y}")
+```
+
+```{python}
+#| echo: false
+x = 2
+y = (12 - x) / 10 
+print(f"The value of y = {y}")
+```
+
+## Text objects
+
+Text objects are called strings: the type is `str` A string is defined by using single or double quotes:
+
+``` {.python style="font-size:54px;"}
+"This is a string, single 'quotes' can be used here"
+'Here we can use double "quotes" inside it'
+```
+
+Strings can also cover multiple lines, for that we use triple quotes:
+
+``` {.python style="font-size:54px;"}
+""" This string runs over multiple lines.
+Another line starts here.
+And another one.
+"""
+```
+
+Also triple single quotes work as well.
+
+### Operators working on text objects
+
+Appending one string to another with the "+" operator:
+
+``` {.python style="font-size:54px;"}
+a_verb = "flies"
+print("The balloon" + a_verb)
+print("The balloon" + " " + a_verb)
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+a_verb = "flies"
+print("The balloon" + a_verb)
+print("The balloon" + " " + a_verb)
+```
+
+Multiplying strings:
+
+``` {.python style="font-size:54px;"}
+print(5 * "balloon ")
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+print(5 * "balloon ")
+```
+
+Casting a string to a number and vice versa:
+
+``` {.python style="font-size:54px;"}
+print(5 * int("100"))
+print(10 * str(50))
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+print(5 * int("100"))
+print(10 * str(50))
+```
+
+### Formatting strings and numbers
+
+A formatted string is a string with prefix `f` or `F`:
+
+``` {.python style="font-size:54px;"}
+the_radius = 25
+formatted_str = f"A circle with radius {the_radius} m"
+print(formatted_str)
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+the_radius = 25
+formatted_str = f"A circle with radius {the_radius} m"
+print(formatted_str)
+```
+
+More complex formatting:
+
+``` {.python style="font-size:54px;"}
+a = 1/6; b = 0.0145; c = 23e-6
+print(f"The product {a} x {b} = {a * b}")
+# Use format {variable:No_space.No_sign_digits}
+print(f"{a:8.2} x {b:8.2} = {a * b:8.2}")
+print(f"{a:8.2} x {c:8.2} = {a * c:8.2}")
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+a = 1/6; b = 0.0145; c = 23e-6
+print(f"The product {a} x {b} = {a * b}")
+print(f"{a:8.2} x {b:8.2} = {a * b:8.2}")
+print(f"{a:8.2} x {c:8.2} = {a * c:8.2}")
+```
+
+## Python reserved words or keywords
+
+-   A list of words **reserved** for Python
+-   You cannot name variables (or functions/classes) similar
+
+``` {.python style="font-size:54px;"}
+# List of keywords can be found in the keyword package
+import keyword
+
+print(keyword.kw_list)
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+# List of keywords can be found in the keyword package
+import keyword
+
+print(keyword.kwlist)
+```
+
+## input & output
+
+When not in interactive mode:
+
+-   `input()` can be used to ask user text input
+-   `print()` can be used to output text
+
+``` {.python style="font-size:40px;" code-line-numbers="1-3|5-10|12-13|"}
+# parameters
+pizza_price = 200
+extra_cheese_price = 20
+
+# input accepts a string parameter
+n_pizza = input("How many pizza's do you want: ")
+extra_cheese = input("""Do you want extra cheese?\n 
+    For yes press [1]\n
+    For no press [0]\n
+Enter your choice""")
+
+# Output to the user
+print("The total cost is {int(n_pizza * (pizza_price + extra_cheese)}")
+```
+
+## Indentation
+
+-   Is the amount of space preceding statements
+-   Indentation should be the same within a code block
+-   **Spaces** and **Tabs** are different
+-   Following code will give an `IndentationError: unexpected indent`
+
+``` {.python style="font-size:54px;"}
+a = 4
+b = 2
+ c = 3
+y = a * (b + c)
+```
+
+```{python style="font-size:54px;"}
+#| echo: false
+a = 4
+b = 2
+ c = 3
+y = a * (b + c)
+```
+
+## Import statements
+
+Python packages can be imported in multiple ways
+
+``` {.python style="font-size:40px;" code-line-numbers="1-5|7-11|13-16"}
+# import the package with its name
+import math
+
+area = 3**2 * math.pi
+print(f"Area of a circle with radius 3 = {area}")
+
+# import functions of the package separately
+from math import sin, cos, pi, sqrt
+
+angle = 23/180*pi
+formula = sqrt(2/3) * sin(angle) + cos(angle)
+
+# import packages or functions and rename them
+from math import sqrt as sr
+
+print(f"The square root of 2 = {sr(2)}")
+```
+
+# Tidy and Documented code
+
+## Tidy Writing style
+
+-   Writing **readable** code
+-   Clear and not too long variable names
+-   Use spaces in a consistent manner
+-   Use a Python code formatter such as **Black**:\
+    [https://github.com/psf/black]{link="https://github.com/psf/black"}
+-   Document code both with **comments** and **docstrings**
+
+## Comment lines
+
+-   Text of a line after a hash symbol is ignored
+-   The hash symbol can be in the beginning of the line:
+
+``` {.python style="font-size:54px;"}
+# A comment on a single line
+```
+
+Comments can explain the next line of code
+
+``` {.python style="font-size:54px;"}
+# Convert Matlab-indices to zero-based
+ind = m_index - 1
+```
+
+Or the comment can start after a statement
+
+``` {.python style="font-size:54px;"}
+y = 12 + x  # An inline comment: a hash symbol after 2 spaces
+```
+
+## Multi-line comments]{style="color:darkred; font-family: Calibri Light; font-size:48px; text-align: center; text-transform: uppercase;"}
+
+Multi-line strings can be used as comments, but
+
+-   they are not meant as comments (not ignored)
+-   they can become docstrings (documentation-strings)
+
+``` {.python style="font-size:54px;"}
+
+''' 
+This multi-line string is not assigned to a 
+variable, therefore doesn't influence your code 
+directly
+'''
+```
+
+## Docstrings
+
+-   Docstrings are multi-line strings providing documentation\
+-   They populate the `__doc__` variable
+-   The help() function uses the `__doc__` variable
+
+``` {.python style="font-size:54px;"}
+import math
+print(math.__doc__)
+```
+
+```{python}
+#| echo: false
+import math
+print(math.__doc__)
+```
+
+
+
+``` {.python style="font-size:54px;"}
+import math
+help(math.sin)
+```
+
+```{python}
+#| echo: false
+import math
+help(math.sin)
+```
+
+-   We will revisit Docstrings for functions and classes later.
+
+# Program Errors
+
+## Different error-types
+
+Different types of errors can be encountered
+
+-   **Syntax errors**: code inconsistent with the Python language, the code will not run (i.e. not start).\
+-   **Runtime errors**: exceptions occurring while the program runs, the code will crash.\
+-   **Semantic errors**: the code does not what was intended
+
+### Syntax error examples
+
+-   Usage of unknown identifiers (variable, function, class)
+
+``` {.python style="font-size:54px;"}
+positive_number = uint(45)
+```
+
+```{python}
+#| echo: false
+positive_number = uint(45)
+```
+
+-   Misaligned indentation
+
+``` {.python style="font-size:54px;"}
+a = 34
+ b = 5
+print(f"The sum is {a+b}")
+```
+
+```{python}
+#| echo: false
+a = 34
+ b = 5
+print(f"The sum is {a+b}")
+```
+
+-   Mistaken symbol ":" instead of ";"
+
+``` {.python style="font-size:54px;"}
+a = 3: b = 5
+```
+
+```{python}
+#| echo: false
+a = 3: b = 5
+```
+
+### Runtime error examples
+
+-   Division by zero
+
+``` {.python style="font-size:54px;"}
+fraction = 1 / 0
+```
+
+```{python}
+#| echo: false
+fraction = 1 / 0
+```
+
+-   Type mismatch
+
+``` {.python style="font-size:54px;"}
+netto_price = 230.50
+kdv_ratio = 0.21
+print("Price: " + netto_price + " + " + kdv_ratio + " kdv")
+```
+
+```{python}
+#| echo: false
+netto_price = 230.50
+kdv_ratio = 0.21
+print("Price: " + netto_price + " + " + kdv_ratio + " kdv")
+```
