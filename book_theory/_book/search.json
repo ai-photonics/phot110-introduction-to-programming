@@ -14,17 +14,37 @@
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "1.1 Python basics\nThis is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\nTowards Python implementations",
+    "text": "2 Python basics\nThese are the lecture notes of the introduction to programming course given to 1th year photonics students at IZTECH. The course book being used is Hans Petter Langtangen (5th edition) See Knuth (1984) for additional discussion of literate programming.\nHans Petter Langtangen https://hplgit.github.io/\nhttps://hplgit.github.io/scipro-primer/\nhttps://hplgit.github.io/scipro-primer/slides/index.html\nBook on Numerical Methods\nComputer science is the discipline which studies solving problems by designing and implementing algorithms executed on a computer. An algorithm is here a recipe or procedure containing simple steps to solve the problem and a stopping criterium which determines when the algorithm is finished and the solution found. When an algorithm is implemented on a computer in a computer language or programming language then we call the procedure a program. Here, we will provide the basics to solve scientific problems and implement numerical methods in Python. A large part is dedicated to describing the Python syntax, i.e. the grammar of this computer language.\nPython is an interpreted language, this means that the Python script is not first compiled to machine-code (an executable), but there is an interpreter (also a computer program) that executes the Python commands for us. This saves us the time and extra step to compile the script, but we need to have the Python interpreter installed and programs typically run slower. Later on, we will see that the last performance issue often can be mitigated by using highly optimized (and compiled) helper libraries for computationally heavy tasks, e.g. the Numpy and Scipy packages.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
-    "objectID": "intro.html#python-basics",
-    "href": "intro.html#python-basics",
+    "objectID": "intro.html#python-program-structure",
+    "href": "intro.html#python-program-structure",
     "title": "1  Introduction",
-    "section": "",
-    "text": "1.1.1 Python program structure\nA Python script is a sequence of statements (algorithm steps), and definitions (functions, classes, …)\n\nDefinitions are evaluated\nStatements are executed\n\nExecuting a program:\n\nExecute statements one by one in the Python Console\nStatements stored as a sequence in a script file\n\n\n\n1.1.2 The Python console\nExecute statements one by one in the Python Console\n&gt;&gt;&gt; print(6)\n6\n&gt;&gt;&gt; a = 10\n&gt;&gt;&gt;\nUseful for:\n\nquick calculations\ntesting the working of commands\n\n\n\n1.1.3 Python scripts\nStatements stored in a script file\na = 10\nb = 25\nprod = a * b\nprint(f\"{a} times {b} = {prod}\")\n\n\n10 times 25 = 250\n\n\nUseful for:\n\nrunning a program multiple times\nincorrect lines can easily be found and corrected\nlarger programs",
+    "section": "2.1 Python program structure",
+    "text": "2.1 Python program structure\nA Python script is a sequence of statements (algorithm steps), and definitions (functions, classes, …)\n\nDefinitions are evaluated, i.e. they can be used afterwards\nStatements are executed\n\nIn Python we can execute a program in two ways:\n\nExecute statements one by one in the Python Console, this is directly talking to the Python interpreter, or\nStatements stored as a sequence in a script file",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#the-python-console",
+    "href": "intro.html#the-python-console",
+    "title": "1  Introduction",
+    "section": "2.2 The Python console",
+    "text": "2.2 The Python console\nExecute statements one by one in the Python Console\n&gt;&gt;&gt; print(6)\n6\n&gt;&gt;&gt; a = 10\n&gt;&gt;&gt;\nUseful for:\n\nquick calculations\ntesting the working of commands",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#python-scripts",
+    "href": "intro.html#python-scripts",
+    "title": "1  Introduction",
+    "section": "2.3 Python scripts",
+    "text": "2.3 Python scripts\nStatements stored in a script file\na = 10\nb = 25\nprod = a * b\nprint(f\"{a} times {b} = {prod}\")\n\n\n10 times 25 = 250\n\n\nUseful for:\n\nrunning a program multiple times\nincorrect lines can easily be found and corrected\nlarger programs",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -33,8 +53,8 @@
     "objectID": "intro.html#data-objects",
     "href": "intro.html#data-objects",
     "title": "1  Introduction",
-    "section": "1.2 Data objects",
-    "text": "1.2 Data objects\n\nIn Python everything is a data object: numbers, text, functions, class instances, etc.\nStatements perform actions on data objects\n\nData objects can be scalar:\n\n\n\n\n\n\n\n\nType\nDescription\n(Example) values\n\n\n\n\nbool\nBoolean value\nTrue, False\n\n\nint\nInteger numbers\n.. , -2, -1, 0, -1, -2, ..\n\n\nfloat\nFloating point\n3.56, 23e-3, 0.0079\n\n\nNoneType\nIndicates no object\nNone\n\n\n\n\n1.2.1 Object type\n\nEvery object has a type\n\nprint(type(6.22e23))\n\n\n&lt;class 'float'&gt;\n\n\n\nPossible to convert between certain types: type casting\n\nit_is_raining = True\nprint(type(it_is_raining))\nan_integer = int(it_is_raining)\nprint(type(an_integer))\n\n\n&lt;class 'bool'&gt;\n&lt;class 'int'&gt;\n\n\n\nautomatic type casting in some cases\nfloat &lt;= int * float\nfloat &lt;= int + float\nfloat &lt;= int / int\n\n\na = 4\nb = 0.357\nprint( f\"Type of (a * b) = {type(a * b)}\" )\nprint( f\"Type of (a / b) = {type(a / b)}\" )\nprint( f\"Type of (a + b) = {type(a + b)}\" )\nprint( f\"Type of (a / 25) = {type(a / 25)}\" )\n\n\nType of (a * b) = &lt;class 'float'&gt;\nType of (a / b) = &lt;class 'float'&gt;\nType of (a + b) = &lt;class 'float'&gt;\nType of (a / 25) = &lt;class 'float'&gt;\n\n\n\n\n1.2.2 Variables\nA variable is a name bound to an object:\n\nthe object is assigned to the variable\nIn pseudo code indicated by \\(\\leftarrow\\)\n\nIn python assignment operator is the “=” sign:\na_variable_name = 4.5\nThe variable can be re-assigned another value or object:\nv = 4\nv = v + 2                         # v becomes 6\nv = \"Now v is assigned text\"      # v has type str",
+    "section": "2.4 Data objects",
+    "text": "2.4 Data objects\nIn Python everything is a data object: numbers, text, functions, class instances, etc. Python statements perform actions on data objects.\nData objects can be scalar, of a basic data type, or composite (combining some of the basic data types). Some scalar data objects are listed in the table below:\n\n\n\n\n\n\n\n\nType\nDescription\n(Example) values\n\n\n\n\nbool\nBoolean value\nTrue, False\n\n\nint\nInteger numbers\n.. , -2, -1, 0, -1, -2, ..\n\n\nfloat\nFloating point\n3.56, 23e-3, 0.0079\n\n\nNoneType\nIndicates no object\nNone\n\n\n\n\n2.4.1 Object type\nEvery object has a type, for example a decimal number has as type float:\nprint(type(6.22e23))\n\n\n&lt;class 'float'&gt;\n\n\nIt is possible to convert between certain types, this we call type casting. For example, a logical true (True) corresponds to an integer with value 1. While the logical false (False) would be casted into 0.\nit_is_raining = True\nprint(type(it_is_raining))\nan_integer = int(it_is_raining)\nprint(type(an_integer))\n\n\n&lt;class 'bool'&gt;\n&lt;class 'int'&gt;\n\n\nWhen doing specific operations between objects, objects can undergo automatic type casting. For example, when multiplying an integer with a decimal number, the product could become a decimal number, therefore the Python interpreter gives us the result as a decimal number (a float). When Python prints a decimal number it shows the decimal point, so we can understand what the result has as type. Some typical cases of automatic type casting are:\nfloat &lt;= int * float\nfloat &lt;= int + float\nfloat &lt;= int / int\n\nWe can see this in practice in following code:\na = 4\nb = 0.357\nprint( f\"Type of (a * b) = {type(a * b)}\" )\nprint( f\"Type of (a / b) = {type(a / b)}\" )\nprint( f\"Type of (a + b) = {type(a + b)}\" )\nprint( f\"Type of (a / 25) = {type(a / 25)}\" )\n\n\nType of (a * b) = &lt;class 'float'&gt;\nType of (a / b) = &lt;class 'float'&gt;\nType of (a + b) = &lt;class 'float'&gt;\nType of (a / 25) = &lt;class 'float'&gt;\n\n\nHere, the Python function type(a) gives the type of object with name a, and type(a * b) the type of the product a times b, etc.\n\n\n2.4.2 Variables\nTo be able to reuse values and to operate on them we use variables, that is, we assign a name to them. A variable is a name bound to an object:\n\nThe object is assigned to the variable,\nIn pseudo code indicated by \\(\\leftarrow\\)\n\nIn python the assignment operator is the “=” sign:\na_variable_name = 4.5\nThe variable can be re-assigned another value or object:\nv = 4\nv = v + 2                         # v becomes 6\nv = \"Now v is assigned text\"      # v has type str\nThe assignment operator is thus not the same as the “is equal to” operator from mathematics, this is especially clear when considering the statement v = v + 2 above.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -43,8 +63,8 @@
     "objectID": "intro.html#expressions-operators",
     "href": "intro.html#expressions-operators",
     "title": "1  Introduction",
-    "section": "1.3 Expressions & Operators",
-    "text": "1.3 Expressions & Operators\nObjects can be combined by operators in expressions\nMost used arithmetic operators:\n\n\n\nsymbol\ndescription\nexample\n\n\n\n\n**\nPower\n3**2 = 9\n\n\n/\nDivision\n5 / 4 = 1.25\n\n\n*\nMultiplication\n3 * 4 = 12\n\n\n+\nAddition\n5 + 7 = 12\n\n\n-\nSubtraction\n6 - 9 = -3\n\n\n%\nmodulo\n34 % 6 = 4\n\n\n\nMost used logic operators:\n\n\n\n\n\n\n\n\nsymbol\ndescription\nexample\n\n\n\n\n&lt;, &gt;\nsmaller/larger than\n5 &gt; 4 \\(\\rightarrow\\) True\n\n\n==\nis equal to\n3 == 6 \\(\\rightarrow\\) False\n\n\n&lt;=, &gt;=\nsmaller/larger or equal\n5 &lt;= 5 \\(\\rightarrow\\) True\n\n\nand\nboolean AND\nTrue and False \\(\\rightarrow\\) False\n\n\nor\nboolean OR\nTrue or False \\(\\rightarrow\\) True\n\n\nnot\nboolean NOT\nnot True \\(\\rightarrow\\) False\n\n\n\n\n1.3.1 Structure of an expression\nAn expression can be built with following rules:\n\n\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;object&gt; (an object is an expression)\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;operator&gt; &lt;expression&gt;\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;expression&gt; &lt;operator&gt; &lt;expression&gt;\n\nExpressions result into values and can be assigned to variables:\nx = 4\ny = 2*x**2 + 3*x - 5\nprint(f\"The value of y = {y}\")\n\n\nThe value of y = 39\n\n\n\n\n1.3.2 Operator precedence and brackets\nPrecedence of operators is similar to mathematics.\nList of precedence of operators can be found on the python.org website: https://docs.python.org/3/reference/expressions.html#operator-precedence\nRound brackets can be used to give priority\nx = 2\ny = (12 - x) / 10 \nprint(f\"The value of y = {y}\")\n\n\nThe value of y = 1.0",
+    "section": "2.5 Expressions & Operators",
+    "text": "2.5 Expressions & Operators\nObjects can be combined by operators in expressions. Typically we consider arithmetic operators and logical operators working on our basic object types (numbers and logical values), although we will see more complex operators later on.\nMost used arithmetic operators:\n\n\n\nsymbol\ndescription\nexample\n\n\n\n\n**\nPower\n3**2 = 9\n\n\n/\nDivision\n5 / 4 = 1.25\n\n\n*\nMultiplication\n3 * 4 = 12\n\n\n+\nAddition\n5 + 7 = 12\n\n\n-\nSubtraction\n6 - 9 = -3\n\n\n%\nmodulo\n34 % 6 = 4\n\n\n\nMost used logic operators:\n\n\n\n\n\n\n\n\nsymbol\ndescription\nexample\n\n\n\n\n&lt;, &gt;\nsmaller/larger than\n5 &gt; 4 \\(\\rightarrow\\) True\n\n\n==\nis equal to\n3 == 6 \\(\\rightarrow\\) False\n\n\n&lt;=, &gt;=\nsmaller/larger or equal\n5 &lt;= 5 \\(\\rightarrow\\) True\n\n\nand\nboolean AND\nTrue and False \\(\\rightarrow\\) False\n\n\nor\nboolean OR\nTrue or False \\(\\rightarrow\\) True\n\n\nnot\nboolean NOT\nnot True \\(\\rightarrow\\) False\n\n\n\n\n2.5.1 Structure of an expression\nAn expression can be built using following rules recursively:\n\n\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;object&gt; (an object is an expression)\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;operator&gt; &lt;expression&gt;\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;expression&gt; &lt;operator&gt; &lt;expression&gt;\n\nExpressions result into values and can be assigned to variables:\nx = 4\ny = 2*x**2 + 3*x - 5\nprint(f\"The value of y = {y}\")\n\n\nThe value of y = 39\n\n\n\n\n2.5.2 Operator precedence and brackets\nPrecedence of operators is similar to mathematics: taking a power has priority over multiplication(division) and multiplication(division) has priority over addition(subtraction). For equal priority we apply the operators from left to right.\nList of precedence of operators can be found on the python.org website: https://docs.python.org/3/reference/expressions.html#operator-precedence\nRound brackets can be used to give priority or add clarity:\nx = 2\ny = (12 - x) / 10 \nprint(f\"The value of y = {y}\")\n\n\nThe value of y = 1.0",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -53,8 +73,8 @@
     "objectID": "intro.html#text-objects",
     "href": "intro.html#text-objects",
     "title": "1  Introduction",
-    "section": "1.4 Text objects",
-    "text": "1.4 Text objects\nText objects are called strings: the type is str A string is defined by using single or double quotes:\n\"This is a string, single 'quotes' can be used here\"\n'Here we can use double \"quotes\" inside it'\nStrings can also cover multiple lines, for that we use triple quotes:\n\"\"\" This string runs over multiple lines.\nAnother line starts here.\nAnd another one.\n\"\"\"\nAlso triple single quotes work as well.\n\n1.4.1 Operators working on text objects\nAppending one string to another with the “+” operator:\na_verb = \"flies\"\nprint(\"The balloon\" + a_verb)\nprint(\"The balloon\" + \" \" + a_verb)\n\n\nThe balloonflies\nThe balloon flies\n\n\nMultiplying strings:\nprint(5 * \"balloon \")\n\n\nballoon balloon balloon balloon balloon \n\n\nCasting a string to a number and vice versa:\nprint(5 * int(\"100\"))\nprint(10 * str(50))\n\n\n500\n50505050505050505050\n\n\n\n\n1.4.2 Formatting strings and numbers\nA formatted string is a string with prefix f or F:\nthe_radius = 25\nformatted_str = f\"A circle with radius {the_radius} m\"\nprint(formatted_str)\n\n\nA circle with radius 25 m\n\n\nMore complex formatting:\na = 1/6; b = 0.0145; c = 23e-6\nprint(f\"The product {a} x {b} = {a * b}\")\n# Use format {variable:No_space.No_sign_digits}\nprint(f\"{a:8.2} x {b:8.2} = {a * b:8.2}\")\nprint(f\"{a:8.2} x {c:8.2} = {a * c:8.2}\")\n\n\nThe product 0.16666666666666666 x 0.0145 = 0.002416666666666667\n    0.17 x    0.015 =   0.0024\n    0.17 x  2.3e-05 =  3.8e-06",
+    "section": "2.6 Text objects",
+    "text": "2.6 Text objects\nText objects are called strings: the type is str A string is defined by using single or double quotes:\n\"This is a string, single 'quotes' can be used here\"\n'Here we can use double \"quotes\" inside it'\nStrings can also cover multiple lines, for that we use triple quotes:\n\"\"\" This string runs over multiple lines.\nAnother line starts here.\nAnd another one.\n\"\"\"\nAlso triple single quotes work as well.\n\n2.6.1 Operators working on text objects\nAppending one string to another with the “+” operator:\na_verb = \"flies\"\nprint(\"The balloon\" + a_verb)\nprint(\"The balloon\" + \" \" + a_verb)\n\n\nThe balloonflies\nThe balloon flies\n\n\nMultiplying strings:\nprint(5 * \"balloon \")\n\n\nballoon balloon balloon balloon balloon \n\n\nCasting a string to a number and vice versa:\nprint(5 * int(\"100\"))\nprint(10 * str(50))\n\n\n500\n50505050505050505050\n\n\n\n\n2.6.2 Formatting strings and numbers\nA formatted string is a string with prefix f or F:\nthe_radius = 25\nformatted_str = f\"A circle with radius {the_radius} m\"\nprint(formatted_str)\n\n\nA circle with radius 25 m\n\n\nMore complex formatting:\na = 1/6; b = 0.0145; c = 23e-6\nprint(f\"The product {a} x {b} = {a * b}\")\n# Use format {variable:No_space.No_sign_digits}\nprint(f\"{a:8.2} x {b:8.2} = {a * b:8.2}\")\nprint(f\"{a:8.2} x {c:8.2} = {a * c:8.2}\")\n\n\nThe product 0.16666666666666666 x 0.0145 = 0.002416666666666667\n    0.17 x    0.015 =   0.0024\n    0.17 x  2.3e-05 =  3.8e-06",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -63,8 +83,8 @@
     "objectID": "intro.html#python-reserved-words-or-keywords",
     "href": "intro.html#python-reserved-words-or-keywords",
     "title": "1  Introduction",
-    "section": "1.5 Python reserved words or keywords",
-    "text": "1.5 Python reserved words or keywords\n\nA list of words reserved for Python\nYou cannot name variables (or functions/classes) similar\n\n# List of keywords can be found in the keyword package\nimport keyword\n\nprint(keyword.kw_list)\n\n\n['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']",
+    "section": "2.7 Python reserved words or keywords",
+    "text": "2.7 Python reserved words or keywords\n\nA list of words reserved for Python\nYou cannot name variables (or functions/classes) similar\n\n# List of keywords can be found in the keyword package\nimport keyword\n\nprint(keyword.kw_list)\n\n\n['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -73,8 +93,8 @@
     "objectID": "intro.html#input-output",
     "href": "intro.html#input-output",
     "title": "1  Introduction",
-    "section": "1.6 input & output",
-    "text": "1.6 input & output\nWhen not in interactive mode:\n\ninput() can be used to ask user text input\nprint() can be used to output text\n\n# parameters\npizza_price = 200\nextra_cheese_price = 20\n\n# input accepts a string parameter\nn_pizza = input(\"How many pizza's do you want: \")\nextra_cheese = input(\"\"\"Do you want extra cheese?\\n \n    For yes press [1]\\n\n    For no press [0]\\n\nEnter your choice\"\"\")\n\n# Output to the user\nprint(\"The total cost is {int(n_pizza * (pizza_price + extra_cheese)}\")",
+    "section": "2.8 input & output",
+    "text": "2.8 input & output\nWhen not in interactive mode:\n\ninput() can be used to ask user text input\nprint() can be used to output text\n\n# parameters\npizza_price = 200\nextra_cheese_price = 20\n\n# input accepts a string parameter\nn_pizza = input(\"How many pizza's do you want: \")\nextra_cheese = input(\"\"\"Do you want extra cheese?\\n \n    For yes press [1]\\n\n    For no press [0]\\n\nEnter your choice\"\"\")\n\n# Output to the user\nprint(\"The total cost is {int(n_pizza * (pizza_price + extra_cheese)}\")",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -83,8 +103,8 @@
     "objectID": "intro.html#indentation",
     "href": "intro.html#indentation",
     "title": "1  Introduction",
-    "section": "1.7 Indentation",
-    "text": "1.7 Indentation\n\nIs the amount of space preceding statements\nIndentation should be the same within a code block\nSpaces and Tabs are different\nFollowing code will give an IndentationError: unexpected indent\n\na = 4\nb = 2\n c = 3\ny = a * (b + c)\n\n\n\n  Cell In[13], line 3\n    c = 3\n    ^\nIndentationError: unexpected indent",
+    "section": "2.9 Indentation",
+    "text": "2.9 Indentation\n\nIs the amount of space preceding statements\nIndentation should be the same within a code block\nSpaces and Tabs are different\nFollowing code will give an IndentationError: unexpected indent\n\na = 4\nb = 2\n c = 3\ny = a * (b + c)\n\n\n\n  Cell In[53], line 3\n    c = 3\n    ^\nIndentationError: unexpected indent",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -93,8 +113,8 @@
     "objectID": "intro.html#import-statements",
     "href": "intro.html#import-statements",
     "title": "1  Introduction",
-    "section": "1.8 Import statements",
-    "text": "1.8 Import statements\nPython packages can be imported in multiple ways\n# import the package with its name\nimport math\n\narea = 3**2 * math.pi\nprint(f\"Area of a circle with radius 3 = {area}\")\n\n# import functions of the package separately\nfrom math import sin, cos, pi, sqrt\n\nangle = 23/180*pi\nformula = sqrt(2/3) * sin(angle) + cos(angle)\n\n# import packages or functions and rename them\nfrom math import sqrt as sr\n\nprint(f\"The square root of 2 = {sr(2)}\")",
+    "section": "2.10 Import statements",
+    "text": "2.10 Import statements\nPython packages can be imported in multiple ways\n# import the package with its name\nimport math\n\narea = 3**2 * math.pi\nprint(f\"Area of a circle with radius 3 = {area}\")\n\n# import functions of the package separately\nfrom math import sin, cos, pi, sqrt\n\nangle = 23/180*pi\nformula = sqrt(2/3) * sin(angle) + cos(angle)\n\n# import packages or functions and rename them\nfrom math import sqrt as sr\n\nprint(f\"The square root of 2 = {sr(2)}\")",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -103,8 +123,8 @@
     "objectID": "intro.html#tidy-writing-style",
     "href": "intro.html#tidy-writing-style",
     "title": "1  Introduction",
-    "section": "2.1 Tidy Writing style",
-    "text": "2.1 Tidy Writing style\n\nWriting readable code\nClear and not too long variable names\nUse spaces in a consistent manner\nUse a Python code formatter such as Black:\nhttps://github.com/psf/black\nDocument code both with comments and docstrings",
+    "section": "3.1 Tidy Writing style",
+    "text": "3.1 Tidy Writing style\n\nWriting readable code\nClear and not too long variable names\nUse spaces in a consistent manner\nUse a Python code formatter such as Black:\nhttps://github.com/psf/black\nDocument code both with comments and docstrings",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -113,8 +133,8 @@
     "objectID": "intro.html#comment-lines",
     "href": "intro.html#comment-lines",
     "title": "1  Introduction",
-    "section": "2.2 Comment lines",
-    "text": "2.2 Comment lines\n\nText of a line after a hash symbol is ignored\nThe hash symbol can be in the beginning of the line:\n\n# A comment on a single line\nComments can explain the next line of code\n# Convert Matlab-indices to zero-based\nind = m_index - 1\nOr the comment can start after a statement\ny = 12 + x  # An inline comment: a hash symbol after 2 spaces",
+    "section": "3.2 Comment lines",
+    "text": "3.2 Comment lines\n\nText of a line after a hash symbol is ignored\nThe hash symbol can be in the beginning of the line:\n\n# A comment on a single line\nComments can explain the next line of code\n# Convert Matlab-indices to zero-based\nind = m_index - 1\nOr the comment can start after a statement\ny = 12 + x  # An inline comment: a hash symbol after 2 spaces",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -123,8 +143,8 @@
     "objectID": "intro.html#multi-line-comments",
     "href": "intro.html#multi-line-comments",
     "title": "1  Introduction",
-    "section": "2.3 Multi-line comments]",
-    "text": "2.3 Multi-line comments]\nMulti-line strings can be used as comments, but\n\nthey are not meant as comments (not ignored)\nthey can become docstrings (documentation-strings)\n\n\n''' \nThis multi-line string is not assigned to a \nvariable, therefore doesn't influence your code \ndirectly\n'''",
+    "section": "3.3 Multi-line comments",
+    "text": "3.3 Multi-line comments\nMulti-line strings can be used as comments, but\n\nthey are not meant as comments (not ignored)\nthey can become docstrings (documentation-strings)\n\n\n''' \nThis multi-line string is not assigned to a \nvariable, therefore doesn't influence your code \ndirectly\n'''",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -133,8 +153,8 @@
     "objectID": "intro.html#docstrings",
     "href": "intro.html#docstrings",
     "title": "1  Introduction",
-    "section": "2.4 Docstrings",
-    "text": "2.4 Docstrings\n\nDocstrings are multi-line strings providing documentation\n\nThey populate the __doc__ variable\nThe help() function uses the __doc__ variable\n\nimport math\nprint(math.__doc__)\n\n\nThis module provides access to the mathematical functions\ndefined by the C standard.\n\n\nimport math\nhelp(math.sin)\n\n\nHelp on built-in function sin in module math:\n\nsin(x, /)\n    Return the sine of x (measured in radians).\n\n\n\n\nWe will revisit Docstrings for functions and classes later.",
+    "section": "3.4 Docstrings",
+    "text": "3.4 Docstrings\n\nDocstrings are multi-line strings providing documentation\n\nThey populate the __doc__ variable\nThe help() function uses the __doc__ variable\n\nimport math\nprint(math.__doc__)\n\n\nThis module provides access to the mathematical functions\ndefined by the C standard.\n\n\nimport math\nhelp(math.sin)\n\n\nHelp on built-in function sin in module math:\n\nsin(x, /)\n    Return the sine of x (measured in radians).\n\n\n\n\nWe will revisit Docstrings for functions and classes later.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -143,8 +163,8 @@
     "objectID": "intro.html#different-error-types",
     "href": "intro.html#different-error-types",
     "title": "1  Introduction",
-    "section": "3.1 Different error-types",
-    "text": "3.1 Different error-types\nDifferent types of errors can be encountered\n\nSyntax errors: code inconsistent with the Python language, the code will not run (i.e. not start).\n\nRuntime errors: exceptions occurring while the program runs, the code will crash.\n\nSemantic errors: the code does not what was intended\n\n\n3.1.1 Syntax error examples\n\nUsage of unknown identifiers (variable, function, class)\n\npositive_number = uint(45)\n\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[16], line 1\n----&gt; 1 positive_number = uint(45)\n\nNameError: name 'uint' is not defined\n\n\n\n\nMisaligned indentation\n\na = 34\n b = 5\nprint(f\"The sum is {a+b}\")\n\n\n\n  Cell In[17], line 2\n    b = 5\n    ^\nIndentationError: unexpected indent\n\n\n\n\n\nMistaken symbol “:” instead of “;”\n\na = 3: b = 5\n\n\n\n  Cell In[18], line 1\n    a = 3: b = 5\n         ^\nSyntaxError: invalid syntax\n\n\n\n\n\n\n3.1.2 Runtime error examples\n\nDivision by zero\n\nfraction = 1 / 0\n\n\n\n---------------------------------------------------------------------------\nZeroDivisionError                         Traceback (most recent call last)\nCell In[19], line 1\n----&gt; 1 fraction = 1 / 0\n\nZeroDivisionError: division by zero\n\n\n\n\nType mismatch\n\nnetto_price = 230.50\nkdv_ratio = 0.21\nprint(\"Price: \" + netto_price + \" + \" + kdv_ratio + \" kdv\")\n\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[20], line 3\n      1 netto_price = 230.50\n      2 kdv_ratio = 0.21\n----&gt; 3 print(\"Price: \" + netto_price + \" + \" + kdv_ratio + \" kdv\")\n\nTypeError: can only concatenate str (not \"float\") to str\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "section": "4.1 Different error-types",
+    "text": "4.1 Different error-types\nDifferent types of errors can be encountered\n\nSyntax errors: code inconsistent with the Python language, the code will not run (i.e. not start).\n\nRuntime errors: exceptions occurring while the program runs, the code will crash.\n\nSemantic errors: the code does not what was intended\n\n\n4.1.1 Syntax error examples\n\nUsage of unknown identifiers (variable, function, class)\n\npositive_number = uint(45)\n\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[56], line 1\n----&gt; 1 positive_number = uint(45)\n\nNameError: name 'uint' is not defined\n\n\n\n\nMisaligned indentation\n\na = 34\n b = 5\nprint(f\"The sum is {a+b}\")\n\n\n\n  Cell In[57], line 2\n    b = 5\n    ^\nIndentationError: unexpected indent\n\n\n\n\n\nMistaken symbol “:” instead of “;”\n\na = 3: b = 5\n\n\n\n  Cell In[58], line 1\n    a = 3: b = 5\n         ^\nSyntaxError: invalid syntax\n\n\n\n\n\n\n4.1.2 Runtime error examples\n\nDivision by zero\n\nfraction = 1 / 0\n\n\n\n---------------------------------------------------------------------------\nZeroDivisionError                         Traceback (most recent call last)\nCell In[59], line 1\n----&gt; 1 fraction = 1 / 0\n\nZeroDivisionError: division by zero\n\n\n\n\nType mismatch\n\nnetto_price = 230.50\nkdv_ratio = 0.21\nprint(\"Price: \" + netto_price + \" + \" + kdv_ratio + \" kdv\")\n\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[60], line 3\n      1 netto_price = 230.50\n      2 kdv_ratio = 0.21\n----&gt; 3 print(\"Price: \" + netto_price + \" + \" + kdv_ratio + \" kdv\")\n\nTypeError: can only concatenate str (not \"float\") to str\n\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
