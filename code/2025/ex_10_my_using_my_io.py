@@ -1,11 +1,11 @@
-# This script shows functionality of the lecture_13_ex_my_io module.
+# This script shows functionality of the ex_10_my_io module.
 #
 # The lecture_13_ex_my_io module contains functions to manipulate
 # text-files. The name of the module is a bit complex, "my_io" would
 # be a more logical choice, but for our course we add the lecture info.
 
 # Import our module
-import script_ex_10_my_io as my_io
+import ex_10_my_io as my_io
 # Import os for the file path name
 import os
 

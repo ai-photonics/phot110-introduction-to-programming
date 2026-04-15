@@ -13,6 +13,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - source/python_basics.qmd
     #- ch_python_console.qmd
     #- ch_io_and_scripts.qmd
     #- ex_conditional_statements.qmd

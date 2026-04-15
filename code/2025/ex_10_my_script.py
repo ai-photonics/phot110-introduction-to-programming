@@ -1,7 +1,7 @@
 # This script tests the module behavior
 
 # Import our module
-import script_ex_10_my_module as my_module
+import ex_10_my_module as my_module
 
 x = 10
 y = 4

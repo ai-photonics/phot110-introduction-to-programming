@@ -23,6 +23,7 @@ book:
     - ex_numpy_arrays.qmd
     - ex_matplotlib.qmd
     - ex_functions.qmd
+    - ex_file_io.qmd
     - ex_error_handling.qmd
     - ex_modules.qmd
     - ex_dictionaries.qmd

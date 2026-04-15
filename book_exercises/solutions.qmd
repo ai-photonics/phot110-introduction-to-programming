@@ -17,3 +17,9 @@
 {{< include sol_matplotlib.qmd >}}
 
 {{< include sol_functions.qmd >}}
+
+{{< include sol_file_io.qmd >}}
+
+{{< include sol_error_handling.qmd >}}
+
+{{< include sol_modules.qmd >}}

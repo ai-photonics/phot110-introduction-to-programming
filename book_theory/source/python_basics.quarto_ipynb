@@ -1,0 +1,816 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Python basics\n",
+        "\n",
+        "Python is an interpreted language, this means that the Python script is not first compiled to machine-code (an executable), but there is an interpreter (also a computer program) that executes the Python commands for us. This saves us the time and extra step to compile the script, but we need to have the Python interpreter installed and programs typically run slower. Later on, we will see that the last performance issue often can be mitigated by using highly optimized (and compiled) helper libraries for computationally heavy tasks, e.g. the Numpy and Scipy packages.\n",
+        "\n",
+        "## Python program structure\n",
+        "\n",
+        "A Python script is a sequence of **statements** (algorithm steps), and **definitions** (functions, classes, …)\n",
+        "\n",
+        "-   Definitions are evaluated, i.e. they can be used afterwards\n",
+        "-   Statements are executed\n",
+        "\n",
+        "In Python we can execute a program in two ways:\n",
+        "\n",
+        "-   Execute statements **one by one** in the **Python Console**, this is directly talking to the Python interpreter, or\n",
+        "-   Statements **stored** as a sequence in a **script file**\n",
+        "\n",
+        "## The Python console\n",
+        "\n",
+        "Execute statements one by one in the Python Console\n",
+        "\n",
+        "``` {.python code-line-numbers=\"1|2|3|\"}\n",
+        ">>> print(6)\n",
+        "6\n",
+        ">>> a = 10\n",
+        ">>>\n",
+        "```\n",
+        "\n",
+        "Useful for:\n",
+        "\n",
+        "-   quick calculations\n",
+        "-   testing the working of commands\n",
+        "\n",
+        "\n",
+        "## Python scripts\n",
+        "\n",
+        "Statements stored in a script file\n",
+        "\n",
+        "``` {.python}\n",
+        "a = 10\n",
+        "b = 25\n",
+        "prod = a * b\n",
+        "print(f\"{a} times {b} = {prod}\")\n",
+        "```\n"
+      ],
+      "id": "2629e85e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#|echo: False\n",
+        "a = 10\n",
+        "b = 25\n",
+        "prod = a * b\n",
+        "print(f\"{a} times {b} = {prod}\")"
+      ],
+      "id": "3d19bbbb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Useful for:\n",
+        "\n",
+        "-   running a program multiple times\n",
+        "-   incorrect lines can easily be found and corrected\n",
+        "-   larger programs\n",
+        "\n",
+        "## Data objects\n",
+        "\n",
+        "In Python **everything is a data object**: numbers, text, functions, class instances, etc. \n",
+        "Python **statements** perform actions on data objects.\n",
+        "\n",
+        "Data objects can be scalar, of a basic data type, or composite (combining some of the basic data types). Some scalar data objects are listed in the table below:\n",
+        "\n",
+        "| Type       | Description         | (Example) values                     |\n",
+        "|------------|---------------------|--------------------------------------|\n",
+        "| `bool`     | Boolean value       | `True`, `False`                      |\n",
+        "| `int`      | Integer numbers     | .. , `-2`, `-1`, `0`, `-1`, `-2`, .. |\n",
+        "| `float`    | Floating point      | `3.56`, `23e-3`, `0.0079`            |\n",
+        "| `NoneType` | Indicates no object | `None`                               |\n",
+        "\n",
+        "### Object type\n",
+        "\n",
+        "Every object has a type, for example a decimal number has as type `float`:\n",
+        "\n",
+        "``` {.python}\n",
+        "print(type(6.22e23))\n",
+        "```\n"
+      ],
+      "id": "e8157bd2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "print(type(6.22e23))"
+      ],
+      "id": "0fd90761",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "It is possible to convert between certain types, this we call **type casting**. For example, a logical true (`True`) corresponds to an integer with value 1. While the logical false (`False`) would be casted into `0`.\n",
+        "\n",
+        "``` {.python}\n",
+        "it_is_raining = True\n",
+        "print(type(it_is_raining))\n",
+        "an_integer = int(it_is_raining)\n",
+        "print(type(an_integer))\n",
+        "```\n"
+      ],
+      "id": "6bbe6973"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "it_is_raining = True\n",
+        "print(type(it_is_raining))\n",
+        "an_integer = int(it_is_raining)\n",
+        "print(type(an_integer))"
+      ],
+      "id": "c464bbfe",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "When doing specific operations between objects, objects can undergo automatic type casting. For example, when multiplying an integer with a decimal number, the product could become a decimal number, therefore the Python interpreter gives us the result as a decimal number (a `float`). When Python prints a decimal number it shows the decimal point, so we can understand what the result has as type. Some typical cases of automatic type casting are:\n",
+        "\n",
+        "`float` <= `int * float`\\\n",
+        "`float` <= `int + float`\\\n",
+        "`float` <= `int / int`\\\n",
+        "\n",
+        "We can see this in practice in following code:\n",
+        "\n",
+        "``` {.python}\n",
+        "a = 4\n",
+        "b = 0.357\n",
+        "print( f\"Type of (a * b) = {type(a * b)}\" )\n",
+        "print( f\"Type of (a / b) = {type(a / b)}\" )\n",
+        "print( f\"Type of (a + b) = {type(a + b)}\" )\n",
+        "print( f\"Type of (a / 25) = {type(a / 25)}\" )\n",
+        "```\n"
+      ],
+      "id": "b9527aaf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "a = 4\n",
+        "b = 0.357\n",
+        "print( f\"Type of (a * b) = {type(a * b)}\" )\n",
+        "print( f\"Type of (a / b) = {type(a / b)}\" )\n",
+        "print( f\"Type of (a + b) = {type(a + b)}\" )\n",
+        "print( f\"Type of (a / 25) = {type(a / 25)}\" )"
+      ],
+      "id": "e9425d67",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Here, the Python function `type(a)` gives the type of object with name `a`, and `type(a * b)` the type of the product `a` times `b`, etc.\n",
+        "\n",
+        "### Variables\n",
+        "\n",
+        "To be able to reuse values and to operate on them we use variables, that is, we assign a name to them. A **variable** is a name bound to an **object**:\n",
+        "\n",
+        "-   The object is **assigned** to the variable,\n",
+        "-   In pseudo code indicated by $\\leftarrow$\n",
+        "\n",
+        "In python the assignment operator is the \"=\" sign:\n",
+        "\n",
+        "``` {.python}\n",
+        "a_variable_name = 4.5\n",
+        "```\n",
+        "\n",
+        "The variable can be re-assigned another value or object:\n",
+        "\n",
+        "``` {.python}\n",
+        "v = 4\n",
+        "v = v + 2                         # v becomes 6\n",
+        "v = \"Now v is assigned text\"      # v has type str\n",
+        "```\n",
+        "\n",
+        "The assignment operator is thus not the same as the \"is equal to\" operator from mathematics, this is especially clear when considering the statement `v = v + 2` above.\n",
+        "\n",
+        "## Expressions & Operators\n",
+        "\n",
+        "**Objects** can be combined by **operators** in **expressions**. Typically we consider arithmetic operators and logical operators working on our basic object types (numbers and logical values), although we will see more complex operators later on. \n",
+        "\n",
+        "Most used arithmetic operators:\n",
+        "\n",
+        "| symbol | description    | example      |\n",
+        "|--------|----------------|--------------|\n",
+        "| \\*\\*   | Power          | 3\\*\\*2 = 9   |\n",
+        "| /      | Division       | 5 / 4 = 1.25 |\n",
+        "| \\*     | Multiplication | 3 \\* 4 = 12  |\n",
+        "| \\+     | Addition       | 5 + 7 = 12   |\n",
+        "| \\-     | Subtraction    | 6 - 9 = -3   |\n",
+        "| \\%     | modulo         | 34 % 6 = 4   |\n",
+        "\n",
+        "Most used logic operators:\n",
+        "\n",
+        "| symbol     | description             | example                                |\n",
+        "|--------------------|--------------------------|--------------------------|\n",
+        "| `<`, `>`   | smaller/larger than     | `5 > 4` $\\rightarrow$ `True`           |\n",
+        "| `==`       | is equal to             | `3 == 6` $\\rightarrow$ `False`         |\n",
+        "| `<=`, `>=` | smaller/larger or equal | `5 <= 5` $\\rightarrow$ `True`          |\n",
+        "| `and`      | boolean AND             | `True and False` $\\rightarrow$ `False` |\n",
+        "| `or`       | boolean OR              | `True or False` $\\rightarrow$ `True`   |\n",
+        "| `not`      | boolean NOT             | `not True` $\\rightarrow$ `False`       |\n",
+        "\n",
+        "### Structure of an expression\n",
+        "\n",
+        "An expression can be built using following rules recursively:\\\n",
+        "\n",
+        "-   `<expression>` $\\overset{def}{=}$ `<object>` (an object is an expression)\n",
+        "-   `<expression>` $\\overset{def}{=}$ `<operator> <expression>`\n",
+        "-   `<expression>` $\\overset{def}{=}$ `<expression> <operator> <expression>`\n",
+        "\n",
+        "Expressions result into values and can be assigned to variables:\n",
+        "\n",
+        "``` {.python}\n",
+        "x = 4\n",
+        "y = 2*x**2 + 3*x - 5\n",
+        "print(f\"The value of y = {y}\")\n",
+        "```\n"
+      ],
+      "id": "9356e53e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "x = 4\n",
+        "y = 2*x**2 + 3*x - 5\n",
+        "print(f\"The value of y = {y}\")"
+      ],
+      "id": "7ae28c4a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Operator precedence and brackets\n",
+        "\n",
+        "Precedence of operators is similar to mathematics: taking a power has priority over multiplication(division) and multiplication(division) has priority over addition(subtraction). For equal priority we apply the operators from left to right.\\\n",
+        "List of precedence of operators can be found on the python.org website: https://docs.python.org/3/reference/expressions.html#operator-precedence\n",
+        "\n",
+        "Round brackets can be used to give priority or add clarity:\n",
+        "\n",
+        "``` {.python}\n",
+        "x = 2\n",
+        "y = (12 - x) / 10 \n",
+        "print(f\"The value of y = {y}\")\n",
+        "```\n"
+      ],
+      "id": "fd2df7cd"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "x = 2\n",
+        "y = (12 - x) / 10 \n",
+        "print(f\"The value of y = {y}\")"
+      ],
+      "id": "a20557f5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Text objects\n",
+        "\n",
+        "Text objects are called strings: the type is `str` A string is defined by using single or double quotes:\n",
+        "\n",
+        "``` {.python}\n",
+        "\"This is a string, single 'quotes' can be used here\"\n",
+        "'Here we can use double \"quotes\" inside it'\n",
+        "```\n",
+        "\n",
+        "Strings can also cover multiple lines, for that we use triple quotes:\n",
+        "\n",
+        "``` {.python}\n",
+        "\"\"\" This string runs over multiple lines.\n",
+        "Another line starts here.\n",
+        "And another one.\n",
+        "\"\"\"\n",
+        "```\n",
+        "\n",
+        "Also triple single quotes work as well.\n",
+        "\n",
+        "### Operators working on text objects\n",
+        "\n",
+        "Appending one string to another with the \"+\" operator:\n",
+        "\n",
+        "``` {.python}\n",
+        "a_verb = \"flies\"\n",
+        "print(\"The balloon\" + a_verb)\n",
+        "print(\"The balloon\" + \" \" + a_verb)\n",
+        "```\n"
+      ],
+      "id": "63676abf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "a_verb = \"flies\"\n",
+        "print(\"The balloon\" + a_verb)\n",
+        "print(\"The balloon\" + \" \" + a_verb)"
+      ],
+      "id": "7768dc31",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Multiplying strings:\n",
+        "\n",
+        "``` {.python}\n",
+        "print(5 * \"balloon \")\n",
+        "```\n"
+      ],
+      "id": "6f61176c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "print(5 * \"balloon \")"
+      ],
+      "id": "9d83545e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Casting a string to a number and vice versa:\n",
+        "\n",
+        "``` {.python}\n",
+        "print(5 * int(\"100\"))\n",
+        "print(10 * str(50))\n",
+        "```\n"
+      ],
+      "id": "12c24953"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "print(5 * int(\"100\"))\n",
+        "print(10 * str(50))"
+      ],
+      "id": "77f86e09",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Formatting strings and numbers\n",
+        "\n",
+        "A formatted string is a string with prefix `f` or `F`:\n",
+        "\n",
+        "``` {.python}\n",
+        "the_radius = 25\n",
+        "formatted_str = f\"A circle with radius {the_radius} m\"\n",
+        "print(formatted_str)\n",
+        "```\n"
+      ],
+      "id": "df49a20d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "the_radius = 25\n",
+        "formatted_str = f\"A circle with radius {the_radius} m\"\n",
+        "print(formatted_str)"
+      ],
+      "id": "707e48c8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "More complex formatting:\n",
+        "\n",
+        "``` {.python}\n",
+        "a = 1/6; b = 0.0145; c = 23e-6\n",
+        "print(f\"The product {a} x {b} = {a * b}\")\n",
+        "# Use format {variable:No_space.No_sign_digits}\n",
+        "print(f\"{a:8.2} x {b:8.2} = {a * b:8.2}\")\n",
+        "print(f\"{a:8.2} x {c:8.2} = {a * c:8.2}\")\n",
+        "```\n"
+      ],
+      "id": "138aeb18"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "a = 1/6; b = 0.0145; c = 23e-6\n",
+        "print(f\"The product {a} x {b} = {a * b}\")\n",
+        "print(f\"{a:8.2} x {b:8.2} = {a * b:8.2}\")\n",
+        "print(f\"{a:8.2} x {c:8.2} = {a * c:8.2}\")"
+      ],
+      "id": "07e9e378",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Python reserved words or keywords\n",
+        "\n",
+        "-   A list of words **reserved** for Python\n",
+        "-   You cannot name variables (or functions/classes) similar\n",
+        "\n",
+        "``` {.python}\n",
+        "# List of keywords can be found in the keyword package\n",
+        "import keyword\n",
+        "\n",
+        "print(keyword.kw_list)\n",
+        "```\n"
+      ],
+      "id": "c52e0210"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "# List of keywords can be found in the keyword package\n",
+        "import keyword\n",
+        "\n",
+        "print(keyword.kwlist)"
+      ],
+      "id": "9cf675f5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## input & output\n",
+        "\n",
+        "When not in interactive mode:\n",
+        "\n",
+        "-   `input()` can be used to ask user text input\n",
+        "-   `print()` can be used to output text\n",
+        "\n",
+        "``` {.python code-line-numbers=\"1-3|5-10|12-13|\"}\n",
+        "# parameters\n",
+        "pizza_price = 200\n",
+        "extra_cheese_price = 20\n",
+        "\n",
+        "# input accepts a string parameter\n",
+        "n_pizza = input(\"How many pizza's do you want: \")\n",
+        "extra_cheese = input(\"\"\"Do you want extra cheese?\\n \n",
+        "    For yes press [1]\\n\n",
+        "    For no press [0]\\n\n",
+        "Enter your choice\"\"\")\n",
+        "\n",
+        "# Output to the user\n",
+        "print(\"The total cost is {int(n_pizza * (pizza_price + extra_cheese)}\")\n",
+        "```\n",
+        "\n",
+        "## Indentation\n",
+        "\n",
+        "-   Is the amount of space preceding statements\n",
+        "-   Indentation should be the same within a code block\n",
+        "-   **Spaces** and **Tabs** are different\n",
+        "-   Following code will give an `IndentationError: unexpected indent`\n",
+        "\n",
+        "``` {.python}\n",
+        "a = 4\n",
+        "b = 2\n",
+        " c = 3\n",
+        "y = a * (b + c)\n",
+        "```\n"
+      ],
+      "id": "bae011d9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "a = 4\n",
+        "b = 2\n",
+        " c = 3\n",
+        "y = a * (b + c)"
+      ],
+      "id": "35dad0ea",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Import statements\n",
+        "\n",
+        "Python packages can be imported in multiple ways\n",
+        "\n",
+        "``` {.python code-line-numbers=\"1-5|7-11|13-16\"}\n",
+        "# import the package with its name\n",
+        "import math\n",
+        "\n",
+        "area = 3**2 * math.pi\n",
+        "print(f\"Area of a circle with radius 3 = {area}\")\n",
+        "\n",
+        "# import functions of the package separately\n",
+        "from math import sin, cos, pi, sqrt\n",
+        "\n",
+        "angle = 23/180*pi\n",
+        "formula = sqrt(2/3) * sin(angle) + cos(angle)\n",
+        "\n",
+        "# import packages or functions and rename them\n",
+        "from math import sqrt as sr\n",
+        "\n",
+        "print(f\"The square root of 2 = {sr(2)}\")\n",
+        "```\n",
+        "\n",
+        "## Tidy and Documented code\n",
+        "\n",
+        "A tidy writing style has many benefits beyond just being neat. We can defined it by adhering to following points:\n",
+        "\n",
+        "-   Writing **readable** code\n",
+        "-   Clear and not too long variable names\n",
+        "-   Use spaces in a consistent manner\n",
+        "-   Use a Python code formatter such as **Black**:\\\n",
+        "    [https://github.com/psf/black]{link=\"https://github.com/psf/black\"}\n",
+        "-   Document code both with **comments** and **docstrings**\n",
+        "\n",
+        "\n",
+        "### Comment lines\n",
+        "\n",
+        "-   Text of a line after a hash symbol is ignored\n",
+        "-   The hash symbol can be in the beginning of the line:\n",
+        "\n",
+        "``` {.python}\n",
+        "# A comment on a single line\n",
+        "```\n",
+        "\n",
+        "Comments can explain the next line of code\n",
+        "\n",
+        "``` {.python}\n",
+        "# Convert Matlab-indices to zero-based\n",
+        "ind = m_index - 1\n",
+        "```\n",
+        "\n",
+        "Or the comment can start after a statement\n",
+        "\n",
+        "``` {.python}\n",
+        "y = 12 + x  # An inline comment: a hash symbol after 2 spaces\n",
+        "```\n",
+        "\n",
+        "### Multi-line comments\n",
+        "\n",
+        "Multi-line strings can be used as comments, but\n",
+        "\n",
+        "-   they are not meant as comments (not ignored)\n",
+        "-   they can become docstrings (documentation-strings)\n",
+        "\n",
+        "``` {.python}\n",
+        "\n",
+        "''' \n",
+        "This multi-line string is not assigned to a \n",
+        "variable, therefore doesn't influence your code \n",
+        "directly\n",
+        "'''\n",
+        "```\n",
+        "\n",
+        "### Docstrings\n",
+        "\n",
+        "-   Docstrings are multi-line strings providing documentation\\\n",
+        "-   They populate the `__doc__` variable\n",
+        "-   The help() function uses the `__doc__` variable\n",
+        "\n",
+        "``` {.python}\n",
+        "import math\n",
+        "print(math.__doc__)\n",
+        "```\n"
+      ],
+      "id": "56fa1a33"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "import math\n",
+        "print(math.__doc__)"
+      ],
+      "id": "1264f8b8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "``` {.python}\n",
+        "import math\n",
+        "help(math.sin)\n",
+        "```\n"
+      ],
+      "id": "840b784e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "import math\n",
+        "help(math.sin)"
+      ],
+      "id": "6c7f8e10",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   We will revisit Docstrings for functions and classes later.\n",
+        "\n",
+        "## Program Errors\n",
+        "\n",
+        "Different types of errors can be encountered\n",
+        "\n",
+        "-   **Syntax errors**: code inconsistent with the Python language, the code will not run (i.e. not start).\\\n",
+        "-   **Runtime errors**: exceptions occurring while the program runs, the code will crash.\\\n",
+        "-   **Semantic errors**: the code does not what was intended. This type of errors is the hardest to track.\n",
+        "\n",
+        "### Syntax error examples\n",
+        "\n",
+        "-   Usage of unknown identifiers (variable, function, class)\n",
+        "\n",
+        "``` {.python}\n",
+        "positive_number = uint(45)\n",
+        "```\n"
+      ],
+      "id": "166f9cf2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "positive_number = uint(45)"
+      ],
+      "id": "00bd10d2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Misaligned indentation\n",
+        "\n",
+        "``` {.python}\n",
+        "a = 34\n",
+        " b = 5\n",
+        "print(f\"The sum is {a+b}\")\n",
+        "```\n"
+      ],
+      "id": "91e5efc8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "a = 34\n",
+        " b = 5\n",
+        "print(f\"The sum is {a+b}\")"
+      ],
+      "id": "d84456e6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Mistaken symbol \":\" instead of \";\"\n",
+        "\n",
+        "``` {.python}\n",
+        "a = 3: b = 5\n",
+        "```\n"
+      ],
+      "id": "d569bcb0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "a = 3: b = 5"
+      ],
+      "id": "cde2d1a5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Runtime error examples\n",
+        "\n",
+        "-   Division by zero\n",
+        "\n",
+        "``` {.python}\n",
+        "fraction = 1 / 0\n",
+        "```\n"
+      ],
+      "id": "f3cec0b6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "fraction = 1 / 0"
+      ],
+      "id": "f60602e7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "-   Type mismatch\n",
+        "\n",
+        "``` {.python}\n",
+        "netto_price = 230.50\n",
+        "kdv_ratio = 0.21\n",
+        "print(\"Price: \" + netto_price + \" + \" + kdv_ratio + \" kdv\")\n",
+        "```\n"
+      ],
+      "id": "1ca70ebf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| echo: false\n",
+        "netto_price = 230.50\n",
+        "kdv_ratio = 0.21\n",
+        "print(\"Price: \" + netto_price + \" + \" + kdv_ratio + \" kdv\")"
+      ],
+      "id": "2b72566f",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3",
+      "path": "/usr/local/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
