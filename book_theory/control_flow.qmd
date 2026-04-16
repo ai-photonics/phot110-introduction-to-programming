@@ -139,62 +139,65 @@ if age > 18:
 
 ## While Loop
 
--   Repeats code-block until the **condition** is **`False`**
+A **`while` loop** repeats a code-block until the **condition** is **`False`**
 
--   A **`while` loop** is used when:
-
-    -   we don't know how many iterations we need, and
-    -   we have a stopping criterium/condition
-
-    ``` python
+``` python
     while <condition>:
       <statement>
       <statement>
       <statement>
       ...
       <statement>
-    ```
+```
 
-## The while loop
+A **`while` loop** is used when:
 
--   Repeats code-block until the **condition** is **`False`**
+-   we don't know how many iterations we need, and
+-   we have a stopping criterium/condition
 
--   A **`while` loop** is used when:
+As an example we update a certain number $x \rightarrow x^2 - 3x$ in each iteration and stop if the number becomes larger or equal to 1000:
 
-    -   we don't know how many iterations we need, and
-    -   we have a stopping criterium/condition
+```{python}
+x = 1
+while x < 1000:
+  x = x ** 2 - 3 * x
+  print(x)
+print("End of the program")
+```
 
-    ```{python}
-    t = 0; t_max = 10
-    while t < t_max:
-      t = t + 3.86
-      print(f"The elapsed time is: {t:5.3} s")
-    print("End of the program")
-    ```
+Another a bit more complex example, we want to calculate the cumulative sums of the series $\sum_{n=1}^\infty \frac{1}{n^4}$ up to certain order $N$:
 
-## The while loop
+```{python}
+x = 0; dx = 1; dx_min = 0.001; n = 1
+while dx > dx_min:
+  dx = 1 / n ** 4
+  x = x + dx
+  print(f"The series up to order N = {n} is: {x:6.5}")
+  n = n + 1
+print("End of the program")
+```
 
--   Repeats code-block until the **condition** is **`False`**
+Notice that the while loop can get in an infinite loop! This can happen if the stopping criterium is not adequate.
 
--   Can get in an infinite loop !
+-   Stop the program with the stop button, in a terminal press key combination **`Ctrl`** + **`c`**
+-   Adapt the stopping criterium/condition
 
-    -   Stop the program with the stop button, in a terminal press key combination **`Ctrl`** + **`c`**
-    -   Adapt the stopping criterium/condition
+Try the following code to get in an infinite loop:
 
-    ``` python
-    n = 0
-    while n > -100:
-    n = n + 1
-    print(f"The current number is: {n}")
-    ```
+``` python
+n = 0
+while n > -100:
+  n = n + 1
+  print(f"The current number is: {n}")
+```
 
-# Python lists
+## Python lists
 
-## Lists of objects
+A Python list is a collection of objects with a certain order:
 
 -   A list can contain several objects
 -   The object types can be different
--   Lists are also objects
+-   Lists are also objects themselves
 
 ```{python}
 # A list with mixed object types
@@ -205,28 +208,18 @@ a_list_with_a_list = [5, 10.5, ["green", "red"], True]
 print(a_list_with_a_list)
 ```
 
-## Lists of objects
-
--   Length of the list is the number of elements applying the **`len()`** function: `len(a_list)`
--   The object types can be different
--   Lists are also objects
+The **length of the list** is the number of elements. Applying the **`len()`** function: `len(a_list)`, allows us to find the number of elements.
 
 ```{python}
-# A list with mixed object types
-my_list_of_objects = ["It's Monday", False, 34, 23.4]
-
-# Lists can be elements of a list
-a_list_with_a_list = [5, 10.5, ["green", "red"], True]
-print(a_list_with_a_list)
+number_of_objects = len(my_list_of_objects)
+print(number_of_objects)
 ```
 
-## Appending an element to a list
+There are many methods defined on lists, such as: Appending an element, removing an element, inserting an element, etc. 
 
--   Append an element to the end of a list
--   Length (number of elements) of the list increases with one
+When we **append** an element, the number of elements of the list increases with one:
 
 ```{python}
-# Printing the first and then the second element
 a_list = ["First", False, 34, 23.4]
 print(a_list)
 print(f"The length of the list = {len(a_list)}")
@@ -235,9 +228,8 @@ print(a_list)
 print(f"The length of the adapted list = {len(a_list)}")
 ```
 
-## More methods of list
+Notice that we use the dot-notation: `the_list.append(the_element)`:
 
--   We use the dot-notation: `the_list.append(the_element)`
 -   This notation is to call a method on an object
 -   We will see how to make our own methods (and classes) later in the chapter on object oriented programming
 -   There are more methods we can make use of, see <https://docs.python.org/3/tutorial/datastructures.html#more-on-lists>
@@ -249,12 +241,15 @@ a_list.insert(3, "inserted_string")   # Insert str
 print(a_list)                         # Print the list
 ```
 
-## Selecting elements in a list
+### Selecting elements in a list
 
--   Select an element of a list by its index
+We can select an element of a list by its index, this is, its place in the list.
+
 -   syntax for indexing: `a_list[element_index]`
 -   index is zero-based
 -   negative index starts from the end of the list
+
+Using the above rules we can select a specific element from the list, when using index 0 we will get the first element:
 
 ```{python}
 # Printing the first and then the second element
@@ -263,12 +258,7 @@ print(a_list[0])
 print(a_list[1])
 ```
 
-## Selecting elements in a list
-
--   Select an element of a list by its index
--   syntax for indexing: `a_list[element_index]`
--   index is zero-based
--   negative index starts from the end of the list
+Or selecting the last element using negative indexing:
 
 ```{python}
 # Using negative indexing
@@ -276,10 +266,9 @@ a_list = ["First", False, 34, 23.4]
 print(a_list[-1])
 ```
 
-## Slicing a list
+### Slicing a list
 
--   Selecting multiple elements is called **slicing**
--   syntax for slicing: `a_list[start:stop_exclusive]`
+We can also select multiple elements, this is called **slicing**, the syntax for slicing is: `a_list[start:stop_exclusive]` where we employ the colon-operator to separate the start and stop indices.
 
 ```{python}
 # A list with mixed object types
@@ -287,10 +276,7 @@ a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
 print(a_list[2:5])
 ```
 
-## Slicing a list
-
--   Selecting multiple elements is called **slicing**
--   syntax for slicing: `a_list[start:stop_exclusive]`
+The `start` index can be omitted, then the selection is from the first element with index 0. For example, we can select the first five elements:
 
 ```{python}
 # An empty start_index starts from the first index
@@ -298,17 +284,15 @@ a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
 print(a_list[:5])
 ```
 
+Likewise when the `stop` index is omitted, the selection is until (and including) the last element. For example, selecting all elements from the fourth element on can be done as:
+
 ```{python}
 # An empty end_index end at the last index
 a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
 print(a_list[3:])
 ```
 
-## Slicing a list
-
--   Selecting multiple elements is called **slicing**
--   syntax for slicing: `a_list[start:stop_exclusive]`
--   Additional step parameter: `a_list[start:stop_exclusive:step]`
+An additional **step** parameter can be used to skip elements: `a_list[start:stop_exclusive:step]`, again we use the colon-operator to separate the start/stop/step parameters. We can for example select every second element:
 
 ```{python}
 # Take every second element by stepping
@@ -316,7 +300,14 @@ a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
 print(a_list[1::2])
 ```
 
-# The for loop
+Or we can **reverse** the list by using a negative step:
+
+```{python}
+# Reverse the list by negative step
+a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
+print(a_list[::-1])
+```
+
 
 ## The for loop
 

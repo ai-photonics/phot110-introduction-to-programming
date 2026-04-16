@@ -1,0 +1,481 @@
+# Sequences: lists, ranges, tuples, strings
+
+We already briefly saw lists, ranges, and strings before, these data types fall actually under a common denominator: the sequence.
+
+## Lists of objects
+
+-   A list can contain several objects
+-   The object types can be different
+-   Lists are also objects
+
+```{python}
+# A list with mixed object types
+my_list_of_objects = ["It's Monday", False, 34, 23.4]
+
+# Lists can be elements of a list
+a_list_with_a_list = [5, 10.5, ["green", "red"], True]
+print(a_list_with_a_list)
+```
+
+## Lists of objects
+
+-   Length of the list is the number of elements applying the **`len()`** function: `len(a_list)`
+-   The object types can be different
+-   Lists are also objects
+
+```{python}
+# A list with mixed object types
+my_list_of_objects = ["It's Monday", False, 34, 23.4]
+
+# Lists can be elements of a list
+a_list_with_a_list = [5, 10.5, ["green", "red"], True]
+print(a_list_with_a_list)
+```
+
+## Appending an element to a list
+
+-   Append an element to the end of a list
+-   Length (number of elements) of the list increases with one
+
+```{python}
+# Printing the first and then the second element
+a_list = ["First", False, 34, 23.4]
+print(a_list)
+print(f"The length of the list = {len(a_list)}")
+a_list.append("extra_element")
+print(a_list)
+print(f"The length of the adapted list = {len(a_list)}")
+```
+
+## More methods of list
+
+-   We use the dot-notation: `the_list.append(the_element)`
+-   This notation is to call a method on an object
+-   We will see how to make our own methods (and classes) later in the chapter on object oriented programming
+-   There are more methods we can make use of, see <https://docs.python.org/3/tutorial/datastructures.html#more-on-lists>
+
+```{python}
+a_list = ["First", False, 34, 5, 34]  # Define the list
+a_list.remove(34)                     # Remove first 34
+a_list.insert(3, "inserted_string")   # Insert str
+print(a_list)                         # Print the list
+```
+
+## Selecting elements in a list
+
+-   Select an element of a list by its index
+-   syntax for indexing: `a_list[element_index]`
+-   index is zero-based
+-   negative index starts from the end of the list
+
+```{python}
+# Printing the first and then the second element
+a_list = ["First", False, 34, 23.4]
+print(a_list[0])
+print(a_list[1])
+```
+
+## Selecting elements in a list
+
+-   Select an element of a list by its index
+-   syntax for indexing: `a_list[element_index]`
+-   index is zero-based
+-   negative index starts from the end of the list
+
+```{python}
+# Using negative indexing
+a_list = ["First", False, 34, 23.4]
+print(a_list[-1])
+```
+
+## Slicing a list
+
+-   Selecting multiple elements is called **slicing**
+-   syntax for slicing: `a_list[start:stop_exclusive]`
+
+```{python}
+# A list with mixed object types
+a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
+print(a_list[2:5])
+```
+
+## Slicing a list
+
+-   Selecting multiple elements is called **slicing**
+-   syntax for slicing: `a_list[start:stop_exclusive]`
+
+```{python}
+# An empty start_index starts from the first index
+a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
+print(a_list[:5])
+```
+
+```{python}
+# An empty end_index end at the last index
+a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
+print(a_list[3:])
+```
+
+## Slicing a list
+
+-   Selecting multiple elements is called **slicing**
+-   syntax for slicing: `a_list[start:stop_exclusive]`
+-   Additional step parameter: `a_list[start:stop_exclusive:step]`
+
+```{python}
+# Take every second element by stepping
+a_list = [23, 45, 65, 78, 92, 100, 102, 105 ]
+print(a_list[1::2])
+```
+
+# Sequences: lists, ranges, tuples, strings
+
+## Sequences
+
+-   Sequences are **collections** of elements with an **order**
+-   **unordered collections** exist: **sets**
+-   The following types are sequences:
+    -   **`list`**, **`range`**, strings (**`str`**)
+    -   **tuple** (which we will see today), ...
+-   Common operations: indexing, slicing, `len()`, `.sort()`
+-   Can be mutable (adaptable) or immutable
+
+## Mutable vs. Immutable
+
+-   Every object has a **unique ID** (CPython: address in memory)
+
+```{python}
+i = 45 
+print(id(i))
+```
+
+::: fragment
+```{python}
+a_string = "Pretzel"
+a_list = [3, 105, 56]
+a_range = range(4)
+print(f"The ID of a_string: {a_string} = { id(a_string) }")
+print(f"The ID of a_list: {a_list} = { id(a_list) }")
+print(f"The ID of a_range: {a_range} = { id(a_range) }")
+```
+:::
+
+## Mutable vs. Immutable
+
+-   Numbers are immutable
+-   If you change them, the ID will change
+-   Even if you assign again the same variable name
+
+```{python}
+i = 45 
+print(id(i))
+i = i + 1
+print(id(i))
+```
+
+## Mutable vs. Immutable
+
+-   strings (`str`) are immutable
+-   Operations will provide a copy
+
+```{python}
+A = "Pretzel"
+B = A.upper()
+print(f"String A: {A} is still the same as A: {A}")
+print(f"String B: {B} is the uppercase version of A: {A}")
+print(f"ID of B: {id(B)} is not equal to ID of A: {id(A)}")
+```
+
+## Mutable vs. Immutable
+
+-   Lists are mutable
+-   Elements can change, added, removed, etc.
+
+```{python}
+a_list = [3, "car", 5]
+print(a_list)
+print(id(a_list))
+
+# Change 2nd element
+a_list[1] = "tree"
+print(a_list)
+print(id(a_list))
+```
+
+## Tuples are immutable lists
+
+Syntax to define a tuple:
+
+```{python}
+t = (3, "leaf", False)
+print(t)
+```
+
+::: fragment
+Cast another collection to tuple, e.g. from `list`:
+
+```{python}
+t = tuple([1, 3.23, 3, 5 + 6J])
+print(t)
+```
+:::
+
+::: fragment
+Tuples are immutable:
+
+```{python}
+t = tuple([1, 3.23, 3, 5 + 6J])
+t[0] = 2
+```
+:::
+
+## Tuples are immutable lists
+
+::: columns
+::: column
+**Lists** are mutable
+
+```{python}
+a_list = [3, "car", 5]
+print(a_list)
+
+# Change 2nd element
+a_list[1] = "tree"
+print(a_list)
+```
+:::
+
+::: {.fragment .column}
+**Tuples** are immutable
+
+```{python}
+a_tuple = (3, "car", 5)
+print(a_tuple)
+
+# Change 2nd element
+a_tuple[1] = "tree"
+print(a_tuple)
+```
+:::
+:::
+
+## Tuples are immutable lists
+
+::: columns
+::: column
+**Lists** are mutable
+
+```{python}
+a_list = [3, "car", 5]
+print(a_list)
+
+# Append element
+a_list.append(True)
+print(a_list)
+```
+:::
+
+::: {.fragment .column}
+**Tuples** are immutable
+
+```{python}
+a_tuple = (3, "car", 5)
+print(a_tuple)
+
+# Append element
+a_tuple.append(True)
+print(a_tuple)
+```
+:::
+:::
+
+## Overview of sequence types (so far)
+
+| Type    | mutable | item type   |
+|---------|---------|-------------|
+| `list`  | yes     | mixed types |
+| `tuple` | no      | mixed types |
+| `range` | no      | integers    |
+| `str`   | no      | characters  |
+
+Sequence operations are available according to mutability and type
+
+## Common sequence operations
+
+``` {.python code-line-numbers="1-1|2-2|3-3|4-4|-"}
+<bool> = el in s         # --> True/False
+<bool> = el not in s     # --> True/False
+s = s1 + s2              # concatenate s1 and s2
+s * n or n * s           # n times concatenation
+```
+
+::: fragment
+Examples
+
+```{python code-line-numbers="1-1|2-2|3-3|4-4|-"}
+print("a" in "Hallo")          # --> True/False
+print(9 not in range(4, 10))   # --> True/False
+print([100, 200] + [500, 20])  # concatenate s1 and s2
+print(("cat", "dog") * 3)      # n times concatenation
+```
+:::
+
+::: fragment
+Note: concatenation does not work for ranges
+:::
+
+## Common sequence operations
+
+``` python
+el = s[i]                # Select element i
+s = s[start:end+1:step]  # Slicing
+n = s.count[<el>]        # Count elements
+i = s.index[<el>]        # index first el
+```
+
+::: fragment
+For a tuple:
+
+```{python}
+s = ("Malta", "Corsica", "Lesvos", "Malta"); print(s)
+print(f"Third element of s: { s[2] }")
+print(f"Slice of s: { s[1:] }")
+print(f"'Malta' appears: { s.count('Malta') } times")
+print(f"First index of 'Malta': { s.index('Malta') }")
+```
+:::
+
+## Common sequence operations
+
+``` python
+el = s[i]                # Select element i
+s = s[start:end+1:step]  # Slicing
+n = s.count[<el>]        # Count elements
+i = s.index[<el>]        # index first el
+```
+
+For a list:
+
+```{python}
+s = ["Malta", "Corsica", "Lesvos", "Malta"]; print(s)
+print(f"Third element of s: { s[2] }")
+print(f"Slice of s: { s[1:] }")
+print(f"'Malta' appears: { s.count('Malta') } times")
+print(f"First index of 'Malta': { s.index('Malta') }")
+```
+
+## Sequence operations: only mutable
+
+List is the only mutable sequence (so far)
+
+``` python
+<list>[i] = <el>
+<list>.remove(<el>)        # remove first <el>
+<list>.insert(i, <el>)     # insert <el> at index i
+<el> = <list>.pop(i)       # return <el> at i and remove
+<list>.append(<el>)        # Or: <list> += <el>
+<list>.extend(<iterable>)  # Or: <list> += <iterable>
+<list>.sort()              # Sorts list in-place
+<list>.reverse()           # Reverses list in-place
+```
+
+## Sequence operations: only mutable
+
+Examples:
+
+```{python}
+fruits = ["banana", "orange", "pear", "peach"]
+nuts = ("almond", "walnut")
+
+fruits.remove("banana")    # remove first <el>
+fruits.insert(0, "mango")  # insert <el> at index i
+el = fruits.pop(3)         # return <el> at i and remove
+print(f"We popped {el}")
+fruits.append("mandarin")  # Or: <list> += <el>
+fruits.extend(nuts)        # Or: <list> += <iterable>
+fruits.sort()              # Sorts list in-place
+fruits.reverse()           # Reverses list in-place
+print(fruits)
+```
+
+## Sequence operations: also for immutable
+
+Items of immutable types cannot change $\Rightarrow$ return value
+
+``` python
+<list> = sorted(<collection>)  # Returns sorted
+<iter> = reversed(<list>)      # Returns reversed
+```
+
+::: {.fragment]
+Examples:
+
+```{python}
+#| output-location: fragment
+t = (3, 5, 7, 2, 1)
+t_sort = sorted(t)   # Returns sorted
+t_rev = reversed(t)  # Returns reversed
+print(t)
+print(t_sort)
+print(list(t_rev))
+```
+:::
+
+# Strings as special sequences
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+print("   Some_extra spaces ")
+print("   Some_extra spaces ".strip())
+print("_Some text...".strip('.'))
+```
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+# Split and join strings
+print("Split_on_underscore".split(sep="_"))
+print( ".".join(["program", "exe"]) )
+```
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+print("Ha" in "Hallo")          
+print("Ball".startswith("Bar")) 
+print("Bicycle".find("cyc"))    
+print("Bicycle".index("cyc"))   
+```
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+print("GOOD morning".lower())    
+print("GOOD morning".upper())      
+print("GOOD morning".capitalize()) 
+print("GOOD morning".title())      
+print("I like oranges".replace("oranges", "apples"))
+```
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+print(chr(68))  # Convert int to Unicode character.
+print(ord("A")) # Convert Unicode character to int.
+```

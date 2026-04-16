@@ -20,8 +20,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html",
-    "href": "source/python_basics.html",
+    "objectID": "python_basics.html",
+    "href": "python_basics.html",
     "title": "2  Python basics",
     "section": "",
     "text": "2.1 Python program structure\nPython is an interpreted language, this means that the Python script is not first compiled to machine-code (an executable), but there is an interpreter (also a computer program) that executes the Python commands for us. This saves us the time and extra step to compile the script, but we need to have the Python interpreter installed and programs typically run slower. Later on, we will see that the last performance issue often can be mitigated by using highly optimized (and compiled) helper libraries for computationally heavy tasks, e.g. the Numpy and Scipy packages.\nA Python script is a sequence of statements (algorithm steps), and definitions (functions, classes, …)\nIn Python we can execute a program in two ways:",
@@ -30,8 +30,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#python-program-structure",
-    "href": "source/python_basics.html#python-program-structure",
+    "objectID": "python_basics.html#python-program-structure",
+    "href": "python_basics.html#python-program-structure",
     "title": "2  Python basics",
     "section": "",
     "text": "Definitions are evaluated, i.e. they can be used afterwards\nStatements are executed\n\n\n\nExecute statements one by one in the Python Console, this is directly talking to the Python interpreter, or\nStatements stored as a sequence in a script file",
@@ -40,8 +40,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#the-python-console",
-    "href": "source/python_basics.html#the-python-console",
+    "objectID": "python_basics.html#the-python-console",
+    "href": "python_basics.html#the-python-console",
     "title": "2  Python basics",
     "section": "2.2 The Python console",
     "text": "2.2 The Python console\nExecute statements one by one in the Python Console\n&gt;&gt;&gt; print(6)\n6\n&gt;&gt;&gt; a = 10\n&gt;&gt;&gt;\nUseful for:\n\nquick calculations\ntesting the working of commands",
@@ -50,8 +50,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#python-scripts",
-    "href": "source/python_basics.html#python-scripts",
+    "objectID": "python_basics.html#python-scripts",
+    "href": "python_basics.html#python-scripts",
     "title": "2  Python basics",
     "section": "2.3 Python scripts",
     "text": "2.3 Python scripts\nStatements stored in a script file\na = 10\nb = 25\nprod = a * b\nprint(f\"{a} times {b} = {prod}\")\n\n\n10 times 25 = 250\n\n\nUseful for:\n\nrunning a program multiple times\nincorrect lines can easily be found and corrected\nlarger programs",
@@ -60,8 +60,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#data-objects",
-    "href": "source/python_basics.html#data-objects",
+    "objectID": "python_basics.html#data-objects",
+    "href": "python_basics.html#data-objects",
     "title": "2  Python basics",
     "section": "2.4 Data objects",
     "text": "2.4 Data objects\nIn Python everything is a data object: numbers, text, functions, class instances, etc. Python statements perform actions on data objects.\nData objects can be scalar, of a basic data type, or composite (combining some of the basic data types). Some scalar data objects are listed in the table below:\n\n\n\n\n\n\n\n\nType\nDescription\n(Example) values\n\n\n\n\nbool\nBoolean value\nTrue, False\n\n\nint\nInteger numbers\n.. , -2, -1, 0, -1, -2, ..\n\n\nfloat\nFloating point\n3.56, 23e-3, 0.0079\n\n\nNoneType\nIndicates no object\nNone\n\n\n\n\n2.4.1 Object type\nEvery object has a type, for example a decimal number has as type float:\nprint(type(6.22e23))\n\n\n&lt;class 'float'&gt;\n\n\nIt is possible to convert between certain types, this we call type casting. For example, a logical true (True) corresponds to an integer with value 1. While the logical false (False) would be casted into 0.\nit_is_raining = True\nprint(type(it_is_raining))\nan_integer = int(it_is_raining)\nprint(type(an_integer))\n\n\n&lt;class 'bool'&gt;\n&lt;class 'int'&gt;\n\n\nWhen doing specific operations between objects, objects can undergo automatic type casting. For example, when multiplying an integer with a decimal number, the product could become a decimal number, therefore the Python interpreter gives us the result as a decimal number (a float). When Python prints a decimal number it shows the decimal point, so we can understand what the result has as type. Some typical cases of automatic type casting are:\nfloat &lt;= int * float\nfloat &lt;= int + float\nfloat &lt;= int / int\n\nWe can see this in practice in following code:\na = 4\nb = 0.357\nprint( f\"Type of (a * b) = {type(a * b)}\" )\nprint( f\"Type of (a / b) = {type(a / b)}\" )\nprint( f\"Type of (a + b) = {type(a + b)}\" )\nprint( f\"Type of (a / 25) = {type(a / 25)}\" )\n\n\nType of (a * b) = &lt;class 'float'&gt;\nType of (a / b) = &lt;class 'float'&gt;\nType of (a + b) = &lt;class 'float'&gt;\nType of (a / 25) = &lt;class 'float'&gt;\n\n\nHere, the Python function type(a) gives the type of object with name a, and type(a * b) the type of the product a times b, etc.\n\n\n2.4.2 Variables\nTo be able to reuse values and to operate on them we use variables, that is, we assign a name to them. A variable is a name bound to an object:\n\nThe object is assigned to the variable,\nIn pseudo code indicated by \\(\\leftarrow\\)\n\nIn python the assignment operator is the “=” sign:\na_variable_name = 4.5\nThe variable can be re-assigned another value or object:\nv = 4\nv = v + 2                         # v becomes 6\nv = \"Now v is assigned text\"      # v has type str\nThe assignment operator is thus not the same as the “is equal to” operator from mathematics, this is especially clear when considering the statement v = v + 2 above.",
@@ -70,8 +70,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#expressions-operators",
-    "href": "source/python_basics.html#expressions-operators",
+    "objectID": "python_basics.html#expressions-operators",
+    "href": "python_basics.html#expressions-operators",
     "title": "2  Python basics",
     "section": "2.5 Expressions & Operators",
     "text": "2.5 Expressions & Operators\nObjects can be combined by operators in expressions. Typically we consider arithmetic operators and logical operators working on our basic object types (numbers and logical values), although we will see more complex operators later on.\nMost used arithmetic operators:\n\n\n\nsymbol\ndescription\nexample\n\n\n\n\n**\nPower\n3**2 = 9\n\n\n/\nDivision\n5 / 4 = 1.25\n\n\n*\nMultiplication\n3 * 4 = 12\n\n\n+\nAddition\n5 + 7 = 12\n\n\n-\nSubtraction\n6 - 9 = -3\n\n\n%\nmodulo\n34 % 6 = 4\n\n\n\nMost used logic operators:\n\n\n\n\n\n\n\n\nsymbol\ndescription\nexample\n\n\n\n\n&lt;, &gt;\nsmaller/larger than\n5 &gt; 4 \\(\\rightarrow\\) True\n\n\n==\nis equal to\n3 == 6 \\(\\rightarrow\\) False\n\n\n&lt;=, &gt;=\nsmaller/larger or equal\n5 &lt;= 5 \\(\\rightarrow\\) True\n\n\nand\nboolean AND\nTrue and False \\(\\rightarrow\\) False\n\n\nor\nboolean OR\nTrue or False \\(\\rightarrow\\) True\n\n\nnot\nboolean NOT\nnot True \\(\\rightarrow\\) False\n\n\n\n\n2.5.1 Structure of an expression\nAn expression can be built using following rules recursively:\n\n\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;object&gt; (an object is an expression)\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;operator&gt; &lt;expression&gt;\n&lt;expression&gt; \\(\\overset{def}{=}\\) &lt;expression&gt; &lt;operator&gt; &lt;expression&gt;\n\nExpressions result into values and can be assigned to variables:\nx = 4\ny = 2*x**2 + 3*x - 5\nprint(f\"The value of y = {y}\")\n\n\nThe value of y = 39\n\n\n\n\n2.5.2 Operator precedence and brackets\nPrecedence of operators is similar to mathematics: taking a power has priority over multiplication(division) and multiplication(division) has priority over addition(subtraction). For equal priority we apply the operators from left to right.\nList of precedence of operators can be found on the python.org website: https://docs.python.org/3/reference/expressions.html#operator-precedence\nRound brackets can be used to give priority or add clarity:\nx = 2\ny = (12 - x) / 10 \nprint(f\"The value of y = {y}\")\n\n\nThe value of y = 1.0",
@@ -80,8 +80,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#text-objects",
-    "href": "source/python_basics.html#text-objects",
+    "objectID": "python_basics.html#text-objects",
+    "href": "python_basics.html#text-objects",
     "title": "2  Python basics",
     "section": "2.6 Text objects",
     "text": "2.6 Text objects\nText objects are called strings: the type is str A string is defined by using single or double quotes:\n\"This is a string, single 'quotes' can be used here\"\n'Here we can use double \"quotes\" inside it'\nStrings can also cover multiple lines, for that we use triple quotes:\n\"\"\" This string runs over multiple lines.\nAnother line starts here.\nAnd another one.\n\"\"\"\nAlso triple single quotes work as well.\n\n2.6.1 Operators working on text objects\nAppending one string to another with the “+” operator:\na_verb = \"flies\"\nprint(\"The balloon\" + a_verb)\nprint(\"The balloon\" + \" \" + a_verb)\n\n\nThe balloonflies\nThe balloon flies\n\n\nMultiplying strings:\nprint(5 * \"balloon \")\n\n\nballoon balloon balloon balloon balloon \n\n\nCasting a string to a number and vice versa:\nprint(5 * int(\"100\"))\nprint(10 * str(50))\n\n\n500\n50505050505050505050\n\n\n\n\n2.6.2 Formatting strings and numbers\nA formatted string is a string with prefix f or F:\nthe_radius = 25\nformatted_str = f\"A circle with radius {the_radius} m\"\nprint(formatted_str)\n\n\nA circle with radius 25 m\n\n\nMore complex formatting:\na = 1/6; b = 0.0145; c = 23e-6\nprint(f\"The product {a} x {b} = {a * b}\")\n# Use format {variable:No_space.No_sign_digits}\nprint(f\"{a:8.2} x {b:8.2} = {a * b:8.2}\")\nprint(f\"{a:8.2} x {c:8.2} = {a * c:8.2}\")\n\n\nThe product 0.16666666666666666 x 0.0145 = 0.002416666666666667\n    0.17 x    0.015 =   0.0024\n    0.17 x  2.3e-05 =  3.8e-06",
@@ -90,8 +90,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#python-reserved-words-or-keywords",
-    "href": "source/python_basics.html#python-reserved-words-or-keywords",
+    "objectID": "python_basics.html#python-reserved-words-or-keywords",
+    "href": "python_basics.html#python-reserved-words-or-keywords",
     "title": "2  Python basics",
     "section": "2.7 Python reserved words or keywords",
     "text": "2.7 Python reserved words or keywords\n\nA list of words reserved for Python\nYou cannot name variables (or functions/classes) similar\n\n# List of keywords can be found in the keyword package\nimport keyword\n\nprint(keyword.kw_list)\n\n\n['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']",
@@ -100,8 +100,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#input-output",
-    "href": "source/python_basics.html#input-output",
+    "objectID": "python_basics.html#input-output",
+    "href": "python_basics.html#input-output",
     "title": "2  Python basics",
     "section": "2.8 input & output",
     "text": "2.8 input & output\nWhen not in interactive mode:\n\ninput() can be used to ask user text input\nprint() can be used to output text\n\n# parameters\npizza_price = 200\nextra_cheese_price = 20\n\n# input accepts a string parameter\nn_pizza = input(\"How many pizza's do you want: \")\nextra_cheese = input(\"\"\"Do you want extra cheese?\\n \n    For yes press [1]\\n\n    For no press [0]\\n\nEnter your choice\"\"\")\n\n# Output to the user\nprint(\"The total cost is {int(n_pizza * (pizza_price + extra_cheese)}\")",
@@ -110,8 +110,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#indentation",
-    "href": "source/python_basics.html#indentation",
+    "objectID": "python_basics.html#indentation",
+    "href": "python_basics.html#indentation",
     "title": "2  Python basics",
     "section": "2.9 Indentation",
     "text": "2.9 Indentation\n\nIs the amount of space preceding statements\nIndentation should be the same within a code block\nSpaces and Tabs are different\nFollowing code will give an IndentationError: unexpected indent\n\na = 4\nb = 2\n c = 3\ny = a * (b + c)\n\n\n\n  Cell In[13], line 3\n    c = 3\n    ^\nIndentationError: unexpected indent",
@@ -120,8 +120,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#import-statements",
-    "href": "source/python_basics.html#import-statements",
+    "objectID": "python_basics.html#import-statements",
+    "href": "python_basics.html#import-statements",
     "title": "2  Python basics",
     "section": "2.10 Import statements",
     "text": "2.10 Import statements\nPython packages can be imported in multiple ways\n# import the package with its name\nimport math\n\narea = 3**2 * math.pi\nprint(f\"Area of a circle with radius 3 = {area}\")\n\n# import functions of the package separately\nfrom math import sin, cos, pi, sqrt\n\nangle = 23/180*pi\nformula = sqrt(2/3) * sin(angle) + cos(angle)\n\n# import packages or functions and rename them\nfrom math import sqrt as sr\n\nprint(f\"The square root of 2 = {sr(2)}\")",
@@ -130,8 +130,8 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#tidy-and-documented-code",
-    "href": "source/python_basics.html#tidy-and-documented-code",
+    "objectID": "python_basics.html#tidy-and-documented-code",
+    "href": "python_basics.html#tidy-and-documented-code",
     "title": "2  Python basics",
     "section": "2.11 Tidy and Documented code",
     "text": "2.11 Tidy and Documented code\nA tidy writing style has many benefits beyond just being neat. We can defined it by adhering to following points:\n\nWriting readable code\nClear and not too long variable names\nUse spaces in a consistent manner\nUse a Python code formatter such as Black:\nhttps://github.com/psf/black\nDocument code both with comments and docstrings\n\n\n2.11.1 Comment lines\n\nText of a line after a hash symbol is ignored\nThe hash symbol can be in the beginning of the line:\n\n# A comment on a single line\nComments can explain the next line of code\n# Convert Matlab-indices to zero-based\nind = m_index - 1\nOr the comment can start after a statement\ny = 12 + x  # An inline comment: a hash symbol after 2 spaces\n\n\n2.11.2 Multi-line comments\nMulti-line strings can be used as comments, but\n\nthey are not meant as comments (not ignored)\nthey can become docstrings (documentation-strings)\n\n\n''' \nThis multi-line string is not assigned to a \nvariable, therefore doesn't influence your code \ndirectly\n'''\n\n\n2.11.3 Docstrings\n\nDocstrings are multi-line strings providing documentation\n\nThey populate the __doc__ variable\nThe help() function uses the __doc__ variable\n\nimport math\nprint(math.__doc__)\n\n\nThis module provides access to the mathematical functions\ndefined by the C standard.\n\n\nimport math\nhelp(math.sin)\n\n\nHelp on built-in function sin in module math:\n\nsin(x, /)\n    Return the sine of x (measured in radians).\n\n\n\n\nWe will revisit Docstrings for functions and classes later.",
@@ -140,13 +140,423 @@
     ]
   },
   {
-    "objectID": "source/python_basics.html#program-errors",
-    "href": "source/python_basics.html#program-errors",
+    "objectID": "python_basics.html#program-errors",
+    "href": "python_basics.html#program-errors",
     "title": "2  Python basics",
     "section": "2.12 Program Errors",
     "text": "2.12 Program Errors\nDifferent types of errors can be encountered\n\nSyntax errors: code inconsistent with the Python language, the code will not run (i.e. not start).\n\nRuntime errors: exceptions occurring while the program runs, the code will crash.\n\nSemantic errors: the code does not what was intended. This type of errors is the hardest to track.\n\n\n2.12.1 Syntax error examples\n\nUsage of unknown identifiers (variable, function, class)\n\npositive_number = uint(45)\n\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[16], line 1\n----&gt; 1 positive_number = uint(45)\n\nNameError: name 'uint' is not defined\n\n\n\n\nMisaligned indentation\n\na = 34\n b = 5\nprint(f\"The sum is {a+b}\")\n\n\n\n  Cell In[17], line 2\n    b = 5\n    ^\nIndentationError: unexpected indent\n\n\n\n\n\nMistaken symbol “:” instead of “;”\n\na = 3: b = 5\n\n\n\n  Cell In[18], line 1\n    a = 3: b = 5\n         ^\nSyntaxError: invalid syntax\n\n\n\n\n\n\n2.12.2 Runtime error examples\n\nDivision by zero\n\nfraction = 1 / 0\n\n\n\n---------------------------------------------------------------------------\nZeroDivisionError                         Traceback (most recent call last)\nCell In[19], line 1\n----&gt; 1 fraction = 1 / 0\n\nZeroDivisionError: division by zero\n\n\n\n\nType mismatch\n\nnetto_price = 230.50\nkdv_ratio = 0.21\nprint(\"Price: \" + netto_price + \" + \" + kdv_ratio + \" kdv\")\n\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[20], line 3\n      1 netto_price = 230.50\n      2 kdv_ratio = 0.21\n----&gt; 3 print(\"Price: \" + netto_price + \" + \" + kdv_ratio + \" kdv\")\n\nTypeError: can only concatenate str (not \"float\") to str",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python basics</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html",
+    "href": "control_flow.html",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "",
+    "text": "3.1 Conditional branching: if/elif/else\nIn computational algorithms the next steps taken can depend on certain conditions: this is called branching of the flow. Often this branching is designed such that a “loop” occurs in the control flow: in this situation a specific code-block will be repeated until some stopping condition (or for a finite amount of times). In Python there are specific constructs for this purpose:\nRun code-blocks according to a condition\nIf one wants to test for multiple conditions and act accordingly, the elif keyword acts as a else if. Multiple elif statements can follow an if, with an optional else:\nThe statements that follow the if clause should be indented and form the code-block that will be executed according to a condition. An if code-block is executed when the condition is True, for example:\nage = 46\nif age &gt;= 16:\n  print(\"You can drive a tractor\")  # if code-block\n\nYou can drive a tractor\nThe indented code-block can also contain multiple statements, which will be all executed when the condition is True:\nspeed_limit = 120\nspeed = 137\nif speed &gt; speed_limit:\n  speed_diff = speed - speed_limit\n  print(f\"You drive {speed_diff} km/h too fast\")\n\nYou drive 17 km/h too fast\nWhen the condition is False the if code-block will not be executed. In case an else code-block is added it will be executed when the condition is False:\nage = 11\nif age &gt; 18:\n  print(\"You can drive a car\")\nelse:\n  print(\"You should take the bus\")\n\nYou should take the bus\nIn case you want to cover more then two cases, i.e. you have multiple conditions, the elif keyword can be used. You can use it multiple times, and optionally still use an else clause in the end:\nage = 17\nif age &gt; 18:\n  print(\"You can drive a car\")\nelif age &gt; 16:\n  print(\"You can drive a tractor\")\nelif age &gt; 15:\n  print(\"You can drive a moped\")\nelse:\n  print(\"You can ride a bicycle\")\n\nYou can drive a tractor\nIn summary we can run code-blocks according to a condition\nBe careful with the indentation of the code-blocks otherwise your program will either exhibit unwanted behavior or will give an error, such as the following code:\nage = 19\nif age &gt; 18:\n    print(\"You can drive a car\")    # This line is indented differently\n  print(\"You can drive a bicycle\")\n  print(\"You can drive a tractor\")\n\n\n  File &lt;string&gt;:4\n    print(\"You can drive a bicycle\")\n                                    ^\nIndentationError: unindent does not match any outer indentation level",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#conditional-branching-ifelifelse",
+    "href": "control_flow.html#conditional-branching-ifelifelse",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "",
+    "text": "An if code-block is executed when the condition is True\n[Optional] An else code-block is executed when the condition is False\n\n\n\nif &lt;condition&gt;:\n    &lt;statement&gt;\n    ...\n\nif &lt;condition&gt;:\n    &lt;statement&gt;\n    ...\nelse:\n    &lt;statement&gt;\n    ...\n\n\n\n\n\nif &lt;condition&gt;:\n    &lt;statement&gt;\n    ...\nelif &lt;condition&gt;:\n    &lt;statement&gt;\n    ...\nelif &lt;condition&gt;:\n    &lt;statement&gt;\n    ...\nelse:\n    &lt;statement&gt;\n    ...\n\nif &lt;condition&gt;:\n    &lt;statement&gt;\n    ...\nelif &lt;condition&gt;:\n    &lt;statement&gt;\n    ...\nelif &lt;condition&gt;:\n    &lt;statement&gt;\n    ...\n\n\n\n\n\n\n\n\n\n\n\n\nif code-block is executed when the condition is True\nelse code-block is executed when the condition is False\nelif keyword acts as a else if\nThe indented code-blocks can contain multiple statements\nThe indentation should be the same within each code-block",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#while-loop",
+    "href": "control_flow.html#while-loop",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.2 While Loop",
+    "text": "3.2 While Loop\nA while loop repeats a code-block until the condition is False\n    while &lt;condition&gt;:\n      &lt;statement&gt;\n      &lt;statement&gt;\n      &lt;statement&gt;\n      ...\n      &lt;statement&gt;\nA while loop is used when:\n\nwe don’t know how many iterations we need, and\nwe have a stopping criterium/condition\n\nFor example, if we want to do a calculation, here the series \\(\\sum_{n=1}^\\infty \\frac{1}{n^4}\\) up to certain order \\(N\\):\n\nx = 0; dx = 1; dx_min = 0.001; n = 1\nwhile dx &gt; dx_min:\n  dx = 1 / n ** 4\n  x = x + dx\n  print(f\"The series up to order N = {n} is: {x:6.5}\")\n  n = n + 1\nprint(\"End of the program\")\n\nThe series up to order N = 1 is:    1.0\nThe series up to order N = 2 is: 1.0625\nThe series up to order N = 3 is: 1.0748\nThe series up to order N = 4 is: 1.0788\nThe series up to order N = 5 is: 1.0804\nThe series up to order N = 6 is: 1.0811\nEnd of the program\n\n\nThe while loop can get in an infinite loop! This can happen if the stopping criterium is not adequate.\n\nStop the program with the stop button, in a terminal press key combination Ctrl + c\nAdapt the stopping criterium/condition\n\nn = 0\nwhile n &gt; -100:\n  n = n + 1\n  print(f\"The current number is: {n}\")",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#python-lists",
+    "href": "control_flow.html#python-lists",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.3 Python lists",
+    "text": "3.3 Python lists\nA Python list is a collection of objects with a certain order:\n\nA list can contain several objects\nThe object types can be different\nLists are also objects themselves\n\n\n# A list with mixed object types\nmy_list_of_objects = [\"It's Monday\", False, 34, 23.4]\n\n# Lists can be elements of a list\na_list_with_a_list = [5, 10.5, [\"green\", \"red\"], True]\nprint(a_list_with_a_list)\n\n[5, 10.5, ['green', 'red'], True]\n\n\nThe length of the list is the number of elements. Applying the len() function: len(a_list), allows us to find the number of elements.\n\nnumber_of_objects = len(my_list_of_objects)\nprint(number_of_objects)\n\n4\n\n\nThere are many methods defined on lists, such as: Appending an element, removing an element, inserting an element, etc.\nWhen we append an element, the number of elements of the list increases with one:\n\na_list = [\"First\", False, 34, 23.4]\nprint(a_list)\nprint(f\"The length of the list = {len(a_list)}\")\na_list.append(\"extra_element\")\nprint(a_list)\nprint(f\"The length of the adapted list = {len(a_list)}\")\n\n['First', False, 34, 23.4]\nThe length of the list = 4\n['First', False, 34, 23.4, 'extra_element']\nThe length of the adapted list = 5\n\n\nNotice that we use the dot-notation: the_list.append(the_element):\n\nThis notation is to call a method on an object\nWe will see how to make our own methods (and classes) later in the chapter on object oriented programming\nThere are more methods we can make use of, see https://docs.python.org/3/tutorial/datastructures.html#more-on-lists\n\n\na_list = [\"First\", False, 34, 5, 34]  # Define the list\na_list.remove(34)                     # Remove first 34\na_list.insert(3, \"inserted_string\")   # Insert str\nprint(a_list)                         # Print the list\n\n['First', False, 5, 'inserted_string', 34]\n\n\n\n3.3.1 Selecting elements in a list\nWe can select an element of a list by its index, this is, its place in the list.\n\nsyntax for indexing: a_list[element_index]\nindex is zero-based\nnegative index starts from the end of the list\n\nUsing the above rules we can select a specific element from the list, when using index 0 we will get the first element:\n\n# Printing the first and then the second element\na_list = [\"First\", False, 34, 23.4]\nprint(a_list[0])\nprint(a_list[1])\n\nFirst\nFalse\n\n\nOr selecting the last element using negative indexing:\n\n# Using negative indexing\na_list = [\"First\", False, 34, 23.4]\nprint(a_list[-1])\n\n23.4\n\n\n\n\n3.3.2 Slicing a list\nWe can also select multiple elements, this is called slicing, the syntax for slicing is: a_list[start:stop_exclusive] where we employ the colon-operator to separate the start and stop indices.\n\n# A list with mixed object types\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[2:5])\n\n[65, 78, 92]\n\n\nThe start index can be omitted, then the selection is from the first element with index 0. For example, we can select the first five elements:\n\n# An empty start_index starts from the first index\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[:5])\n\n[23, 45, 65, 78, 92]\n\n\nLikewise when the stop index is omitted, the selection is until (and including) the last element. For example, selecting all elements from the fourth element on can be done as:\n\n# An empty end_index end at the last index\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[3:])\n\n[78, 92, 100, 102, 105]\n\n\nAn additional step parameter can be used to skip elements: a_list[start:stop_exclusive:step], again we use the colon-operator to separate the start/stop/step parameters. We can for example select every second element:\n\n# Take every second element by stepping\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[1::2])\n\n[45, 78, 100, 105]\n\n\nOr we can reverse the list by using a negative step:\n\n# Reverse the list by negative step\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[::-1])\n\n[105, 102, 100, 92, 78, 65, 45, 23]",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#the-for-loop",
+    "href": "control_flow.html#the-for-loop",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.4 The for loop",
+    "text": "3.4 The for loop\n\nTo iterate: to repeat a process\nA for loop can be used when:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\n\nfor &lt;element&gt; in &lt;list&gt;:\n    &lt;statement&gt;\n    &lt;statement&gt;\n    ...\n    &lt;statement&gt;",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#the-for-loop-1",
+    "href": "control_flow.html#the-for-loop-1",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.5 The for loop",
+    "text": "3.5 The for loop\n\nTo iterate: to repeat a process\nA for loop can be used when:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\n\n\n# Print all elements of a list\ndays = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\"]\nfor el in days:\n  print(el)\n\nMon\nTue\nWed\nThu\nFri",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#intermezzo-using-range",
+    "href": "control_flow.html#intermezzo-using-range",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.6 Intermezzo: using range()",
+    "text": "3.6 Intermezzo: using range()\n\nA range is a sequence type (like list) for integer numbers\nConstruct it using: range(start, stop_exclusive, step)\nIt is convenient for for loop\nSee also: https://docs.python.org/3/library/stdtypes.html#range\n\n\n# A list with mixed object types\na_range = range(1, 10, 2)  # Construct a range\nprint(a_range)             # Lazy evaluated\nprint(list(a_range))       # Converted to a list\n\nrange(1, 10, 2)\n[1, 3, 5, 7, 9]",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#the-for-loop-2",
+    "href": "control_flow.html#the-for-loop-2",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.7 The for loop",
+    "text": "3.7 The for loop\n\nTo iterate: to repeat a process\nA for loop can be used when:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\n\n\n# Use the range function to get a sequence of numbers\nfor i in range(1,10,2):\n  print(i)\n\n1\n3\n5\n7\n9",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#the-for-loop-3",
+    "href": "control_flow.html#the-for-loop-3",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.8 The for loop",
+    "text": "3.8 The for loop\n\nTo iterate: to repeat a process\nA for loop can be used when:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\n\n\n# Use the range function to get indices\ndays = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"]\nfor i in range(0,len(days),2):\n  print(days[i])\n\nMon\nWed\nFri\nSun",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#numerical-approx.-of-the-trajectory-of-a-ball",
+    "href": "control_flow.html#numerical-approx.-of-the-trajectory-of-a-ball",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.9 Numerical approx. of the trajectory of a ball",
+    "text": "3.9 Numerical approx. of the trajectory of a ball\n\n\nGravitation: \\(g=9.81\\) m/s\\(^2\\)\nAir resistance: ignore for a slow heavy ball\nhorizontal velocity is constant",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "control_flow.html#trajectory-of-a-ball",
+    "href": "control_flow.html#trajectory-of-a-ball",
+    "title": "3  Control flow: conditional branching and loops",
+    "section": "3.10 Trajectory of a ball",
+    "text": "3.10 Trajectory of a ball\n\n# Load library for sine and cosine\nimport math\n\n# Algorithm parameters in MKS units\nv0 = 6\nangle_in_degrees = 37\ng = 9.81\nx = 0; y = 1.20; t = 0\n\n# Calculate initial velocity in x \n#     and y directions\nangle = angle_in_degrees * math.pi/180\nvx = v0 * math.cos(angle)\nvy = v0 * math.sin(angle)\n\n# Initiate values at time t = 0\nx_values = list([x])\ny_values = list([y])\nt_values = list([t])\n\ndt = 0.1\nwhile (y &gt;= 0) and (t &lt; 10):\n  # update velocities (vx, vy), coords\n  #     (x, y), and time t\n  vy = vy - g*dt\n  y = y + vy*dt\n  x = x + vx*dt\n  t = t + dt\n  x_values.append(x)\n  y_values.append(y)\n  t_values.append(t)\n  print(f't = {t:.2f}: ({x:.2f},{y:.2f})')\n\nt = 0.10: (0.48,1.46)\nt = 0.20: (0.96,1.63)\nt = 0.30: (1.44,1.69)\nt = 0.40: (1.92,1.66)\nt = 0.50: (2.40,1.53)\nt = 0.60: (2.88,1.31)\nt = 0.70: (3.35,0.98)\nt = 0.80: (3.83,0.56)\nt = 0.90: (4.31,0.04)\nt = 1.00: (4.79,-0.58)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html",
+    "href": "sequences.html",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "",
+    "text": "4.1 Lists of objects\nWe already briefly saw lists, ranges, and strings before, these data types fall actually under a common denominator: the sequence.\n# A list with mixed object types\nmy_list_of_objects = [\"It's Monday\", False, 34, 23.4]\n\n# Lists can be elements of a list\na_list_with_a_list = [5, 10.5, [\"green\", \"red\"], True]\nprint(a_list_with_a_list)\n\n[5, 10.5, ['green', 'red'], True]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#lists-of-objects",
+    "href": "sequences.html#lists-of-objects",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "",
+    "text": "A list can contain several objects\nThe object types can be different\nLists are also objects",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#lists-of-objects-1",
+    "href": "sequences.html#lists-of-objects-1",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "4.2 Lists of objects",
+    "text": "4.2 Lists of objects\n\nLength of the list is the number of elements applying the len() function: len(a_list)\nThe object types can be different\nLists are also objects\n\n\n# A list with mixed object types\nmy_list_of_objects = [\"It's Monday\", False, 34, 23.4]\n\n# Lists can be elements of a list\na_list_with_a_list = [5, 10.5, [\"green\", \"red\"], True]\nprint(a_list_with_a_list)\n\n[5, 10.5, ['green', 'red'], True]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#appending-an-element-to-a-list",
+    "href": "sequences.html#appending-an-element-to-a-list",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "4.3 Appending an element to a list",
+    "text": "4.3 Appending an element to a list\n\nAppend an element to the end of a list\nLength (number of elements) of the list increases with one\n\n\n# Printing the first and then the second element\na_list = [\"First\", False, 34, 23.4]\nprint(a_list)\nprint(f\"The length of the list = {len(a_list)}\")\na_list.append(\"extra_element\")\nprint(a_list)\nprint(f\"The length of the adapted list = {len(a_list)}\")\n\n['First', False, 34, 23.4]\nThe length of the list = 4\n['First', False, 34, 23.4, 'extra_element']\nThe length of the adapted list = 5",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#more-methods-of-list",
+    "href": "sequences.html#more-methods-of-list",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "4.4 More methods of list",
+    "text": "4.4 More methods of list\n\nWe use the dot-notation: the_list.append(the_element)\nThis notation is to call a method on an object\nWe will see how to make our own methods (and classes) later in the chapter on object oriented programming\nThere are more methods we can make use of, see https://docs.python.org/3/tutorial/datastructures.html#more-on-lists\n\n\na_list = [\"First\", False, 34, 5, 34]  # Define the list\na_list.remove(34)                     # Remove first 34\na_list.insert(3, \"inserted_string\")   # Insert str\nprint(a_list)                         # Print the list\n\n['First', False, 5, 'inserted_string', 34]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#selecting-elements-in-a-list",
+    "href": "sequences.html#selecting-elements-in-a-list",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "4.5 Selecting elements in a list",
+    "text": "4.5 Selecting elements in a list\n\nSelect an element of a list by its index\nsyntax for indexing: a_list[element_index]\nindex is zero-based\nnegative index starts from the end of the list\n\n\n# Printing the first and then the second element\na_list = [\"First\", False, 34, 23.4]\nprint(a_list[0])\nprint(a_list[1])\n\nFirst\nFalse",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#selecting-elements-in-a-list-1",
+    "href": "sequences.html#selecting-elements-in-a-list-1",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "4.6 Selecting elements in a list",
+    "text": "4.6 Selecting elements in a list\n\nSelect an element of a list by its index\nsyntax for indexing: a_list[element_index]\nindex is zero-based\nnegative index starts from the end of the list\n\n\n# Using negative indexing\na_list = [\"First\", False, 34, 23.4]\nprint(a_list[-1])\n\n23.4",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#slicing-a-list",
+    "href": "sequences.html#slicing-a-list",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "4.7 Slicing a list",
+    "text": "4.7 Slicing a list\n\nSelecting multiple elements is called slicing\nsyntax for slicing: a_list[start:stop_exclusive]\n\n\n# A list with mixed object types\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[2:5])\n\n[65, 78, 92]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#slicing-a-list-1",
+    "href": "sequences.html#slicing-a-list-1",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "4.8 Slicing a list",
+    "text": "4.8 Slicing a list\n\nSelecting multiple elements is called slicing\nsyntax for slicing: a_list[start:stop_exclusive]\n\n\n# An empty start_index starts from the first index\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[:5])\n\n[23, 45, 65, 78, 92]\n\n\n\n# An empty end_index end at the last index\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[3:])\n\n[78, 92, 100, 102, 105]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#slicing-a-list-2",
+    "href": "sequences.html#slicing-a-list-2",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "4.9 Slicing a list",
+    "text": "4.9 Slicing a list\n\nSelecting multiple elements is called slicing\nsyntax for slicing: a_list[start:stop_exclusive]\nAdditional step parameter: a_list[start:stop_exclusive:step]\n\n\n# Take every second element by stepping\na_list = [23, 45, 65, 78, 92, 100, 102, 105 ]\nprint(a_list[1::2])\n\n[45, 78, 100, 105]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#sequences",
+    "href": "sequences.html#sequences",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.1 Sequences",
+    "text": "5.1 Sequences\n\nSequences are collections of elements with an order\nunordered collections exist: sets\nThe following types are sequences:\n\nlist, range, strings (str)\ntuple (which we will see today), …\n\nCommon operations: indexing, slicing, len(), .sort()\nCan be mutable (adaptable) or immutable",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#mutable-vs.-immutable",
+    "href": "sequences.html#mutable-vs.-immutable",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.2 Mutable vs. Immutable",
+    "text": "5.2 Mutable vs. Immutable\n\nEvery object has a unique ID (CPython: address in memory)\n\n\ni = 45 \nprint(id(i))\n\n4460516448\n\n\n\n\na_string = \"Pretzel\"\na_list = [3, 105, 56]\na_range = range(4)\nprint(f\"The ID of a_string: {a_string} = { id(a_string) }\")\nprint(f\"The ID of a_list: {a_list} = { id(a_list) }\")\nprint(f\"The ID of a_range: {a_range} = { id(a_range) }\")\n\nThe ID of a_string: Pretzel = 4495927424\nThe ID of a_list: [3, 105, 56] = 4496134784\nThe ID of a_range: range(0, 4) = 4662594128",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#mutable-vs.-immutable-1",
+    "href": "sequences.html#mutable-vs.-immutable-1",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.3 Mutable vs. Immutable",
+    "text": "5.3 Mutable vs. Immutable\n\nNumbers are immutable\nIf you change them, the ID will change\nEven if you assign again the same variable name\n\n\ni = 45 \nprint(id(i))\ni = i + 1\nprint(id(i))\n\n4460516448\n4460516480",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#mutable-vs.-immutable-2",
+    "href": "sequences.html#mutable-vs.-immutable-2",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.4 Mutable vs. Immutable",
+    "text": "5.4 Mutable vs. Immutable\n\nstrings (str) are immutable\nOperations will provide a copy\n\n\nA = \"Pretzel\"\nB = A.upper()\nprint(f\"String A: {A} is still the same as A: {A}\")\nprint(f\"String B: {B} is the uppercase version of A: {A}\")\nprint(f\"ID of B: {id(B)} is not equal to ID of A: {id(A)}\")\n\nString A: Pretzel is still the same as A: Pretzel\nString B: PRETZEL is the uppercase version of A: Pretzel\nID of B: 4662595280 is not equal to ID of A: 4495927424",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#mutable-vs.-immutable-3",
+    "href": "sequences.html#mutable-vs.-immutable-3",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.5 Mutable vs. Immutable",
+    "text": "5.5 Mutable vs. Immutable\n\nLists are mutable\nElements can change, added, removed, etc.\n\n\na_list = [3, \"car\", 5]\nprint(a_list)\nprint(id(a_list))\n\n# Change 2nd element\na_list[1] = \"tree\"\nprint(a_list)\nprint(id(a_list))\n\n[3, 'car', 5]\n4630765888\n[3, 'tree', 5]\n4630765888",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#tuples-are-immutable-lists",
+    "href": "sequences.html#tuples-are-immutable-lists",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.6 Tuples are immutable lists",
+    "text": "5.6 Tuples are immutable lists\nSyntax to define a tuple:\n\nt = (3, \"leaf\", False)\nprint(t)\n\n(3, 'leaf', False)\n\n\n\nCast another collection to tuple, e.g. from list:\n\nt = tuple([1, 3.23, 3, 5 + 6J])\nprint(t)\n\n(1, 3.23, 3, (5+6j))\n\n\n\n\nTuples are immutable:\n\nt = tuple([1, 3.23, 3, 5 + 6J])\nt[0] = 2\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 2\n      1 t = tuple([1, 3.23, 3, 5 + 6J])\n----&gt; 2 t[0] = 2\n\nTypeError: 'tuple' object does not support item assignment",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#tuples-are-immutable-lists-1",
+    "href": "sequences.html#tuples-are-immutable-lists-1",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.7 Tuples are immutable lists",
+    "text": "5.7 Tuples are immutable lists\n\n\nLists are mutable\n\na_list = [3, \"car\", 5]\nprint(a_list)\n\n# Change 2nd element\na_list[1] = \"tree\"\nprint(a_list)\n\n[3, 'car', 5]\n[3, 'tree', 5]\n\n\n\nTuples are immutable\n\na_tuple = (3, \"car\", 5)\nprint(a_tuple)\n\n# Change 2nd element\na_tuple[1] = \"tree\"\nprint(a_tuple)\n\n(3, 'car', 5)\n\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[20], line 5\n      2 print(a_tuple)\n      4 # Change 2nd element\n----&gt; 5 a_tuple[1] = \"tree\"\n      6 print(a_tuple)\n\nTypeError: 'tuple' object does not support item assignment",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#tuples-are-immutable-lists-2",
+    "href": "sequences.html#tuples-are-immutable-lists-2",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.8 Tuples are immutable lists",
+    "text": "5.8 Tuples are immutable lists\n\n\nLists are mutable\n\na_list = [3, \"car\", 5]\nprint(a_list)\n\n# Append element\na_list.append(True)\nprint(a_list)\n\n[3, 'car', 5]\n[3, 'car', 5, True]\n\n\n\nTuples are immutable\n\na_tuple = (3, \"car\", 5)\nprint(a_tuple)\n\n# Append element\na_tuple.append(True)\nprint(a_tuple)\n\n(3, 'car', 5)\n\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\nCell In[22], line 5\n      2 print(a_tuple)\n      4 # Append element\n----&gt; 5 a_tuple.append(True)\n      6 print(a_tuple)\n\nAttributeError: 'tuple' object has no attribute 'append'",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#overview-of-sequence-types-so-far",
+    "href": "sequences.html#overview-of-sequence-types-so-far",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.9 Overview of sequence types (so far)",
+    "text": "5.9 Overview of sequence types (so far)\n\n\n\nType\nmutable\nitem type\n\n\n\n\nlist\nyes\nmixed types\n\n\ntuple\nno\nmixed types\n\n\nrange\nno\nintegers\n\n\nstr\nno\ncharacters\n\n\n\nSequence operations are available according to mutability and type",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#common-sequence-operations",
+    "href": "sequences.html#common-sequence-operations",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.10 Common sequence operations",
+    "text": "5.10 Common sequence operations\n&lt;bool&gt; = el in s         # --&gt; True/False\n&lt;bool&gt; = el not in s     # --&gt; True/False\ns = s1 + s2              # concatenate s1 and s2\ns * n or n * s           # n times concatenation\n\nExamples\n\nprint(\"a\" in \"Hallo\")          # --&gt; True/False\nprint(9 not in range(4, 10))   # --&gt; True/False\nprint([100, 200] + [500, 20])  # concatenate s1 and s2\nprint((\"cat\", \"dog\") * 3)      # n times concatenation\n\nTrue\nFalse\n[100, 200, 500, 20]\n('cat', 'dog', 'cat', 'dog', 'cat', 'dog')\n\n\n\n\nNote: concatenation does not work for ranges",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#common-sequence-operations-1",
+    "href": "sequences.html#common-sequence-operations-1",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.11 Common sequence operations",
+    "text": "5.11 Common sequence operations\nel = s[i]                # Select element i\ns = s[start:end+1:step]  # Slicing\nn = s.count[&lt;el&gt;]        # Count elements\ni = s.index[&lt;el&gt;]        # index first el\n\nFor a tuple:\n\ns = (\"Malta\", \"Corsica\", \"Lesvos\", \"Malta\"); print(s)\nprint(f\"Third element of s: { s[2] }\")\nprint(f\"Slice of s: { s[1:] }\")\nprint(f\"'Malta' appears: { s.count('Malta') } times\")\nprint(f\"First index of 'Malta': { s.index('Malta') }\")\n\n('Malta', 'Corsica', 'Lesvos', 'Malta')\nThird element of s: Lesvos\nSlice of s: ('Corsica', 'Lesvos', 'Malta')\n'Malta' appears: 2 times\nFirst index of 'Malta': 0",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#common-sequence-operations-2",
+    "href": "sequences.html#common-sequence-operations-2",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.12 Common sequence operations",
+    "text": "5.12 Common sequence operations\nel = s[i]                # Select element i\ns = s[start:end+1:step]  # Slicing\nn = s.count[&lt;el&gt;]        # Count elements\ni = s.index[&lt;el&gt;]        # index first el\nFor a list:\n\ns = [\"Malta\", \"Corsica\", \"Lesvos\", \"Malta\"]; print(s)\nprint(f\"Third element of s: { s[2] }\")\nprint(f\"Slice of s: { s[1:] }\")\nprint(f\"'Malta' appears: { s.count('Malta') } times\")\nprint(f\"First index of 'Malta': { s.index('Malta') }\")\n\n['Malta', 'Corsica', 'Lesvos', 'Malta']\nThird element of s: Lesvos\nSlice of s: ['Corsica', 'Lesvos', 'Malta']\n'Malta' appears: 2 times\nFirst index of 'Malta': 0",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#sequence-operations-only-mutable",
+    "href": "sequences.html#sequence-operations-only-mutable",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.13 Sequence operations: only mutable",
+    "text": "5.13 Sequence operations: only mutable\nList is the only mutable sequence (so far)\n&lt;list&gt;[i] = &lt;el&gt;\n&lt;list&gt;.remove(&lt;el&gt;)        # remove first &lt;el&gt;\n&lt;list&gt;.insert(i, &lt;el&gt;)     # insert &lt;el&gt; at index i\n&lt;el&gt; = &lt;list&gt;.pop(i)       # return &lt;el&gt; at i and remove\n&lt;list&gt;.append(&lt;el&gt;)        # Or: &lt;list&gt; += &lt;el&gt;\n&lt;list&gt;.extend(&lt;iterable&gt;)  # Or: &lt;list&gt; += &lt;iterable&gt;\n&lt;list&gt;.sort()              # Sorts list in-place\n&lt;list&gt;.reverse()           # Reverses list in-place",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#sequence-operations-only-mutable-1",
+    "href": "sequences.html#sequence-operations-only-mutable-1",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.14 Sequence operations: only mutable",
+    "text": "5.14 Sequence operations: only mutable\nExamples:\n\nfruits = [\"banana\", \"orange\", \"pear\", \"peach\"]\nnuts = (\"almond\", \"walnut\")\n\nfruits.remove(\"banana\")    # remove first &lt;el&gt;\nfruits.insert(0, \"mango\")  # insert &lt;el&gt; at index i\nel = fruits.pop(3)         # return &lt;el&gt; at i and remove\nprint(f\"We popped {el}\")\nfruits.append(\"mandarin\")  # Or: &lt;list&gt; += &lt;el&gt;\nfruits.extend(nuts)        # Or: &lt;list&gt; += &lt;iterable&gt;\nfruits.sort()              # Sorts list in-place\nfruits.reverse()           # Reverses list in-place\nprint(fruits)\n\nWe popped peach\n['walnut', 'pear', 'orange', 'mango', 'mandarin', 'almond']",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#sequence-operations-also-for-immutable",
+    "href": "sequences.html#sequence-operations-also-for-immutable",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "5.15 Sequence operations: also for immutable",
+    "text": "5.15 Sequence operations: also for immutable\nItems of immutable types cannot change \\(\\Rightarrow\\) return value\n&lt;list&gt; = sorted(&lt;collection&gt;)  # Returns sorted\n&lt;iter&gt; = reversed(&lt;list&gt;)      # Returns reversed\n\nExamples:\n\nt = (3, 5, 7, 2, 1)\nt_sort = sorted(t)   # Returns sorted\nt_rev = reversed(t)  # Returns reversed\nprint(t)\nprint(t_sort)\nprint(list(t_rev))\n\n(3, 5, 7, 2, 1)\n[1, 2, 3, 5, 7]\n[1, 2, 7, 5, 3]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#string-specific-operations",
+    "href": "sequences.html#string-specific-operations",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "6.1 String specific operations",
+    "text": "6.1 String specific operations\n\nAside from the common sequence operations\nSpecific to characters and text\n\n\nprint(\"   Some_extra spaces \")\nprint(\"   Some_extra spaces \".strip())\nprint(\"_Some text...\".strip('.'))\n\n   Some_extra spaces \nSome_extra spaces\n_Some text",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#string-specific-operations-1",
+    "href": "sequences.html#string-specific-operations-1",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "6.2 String specific operations",
+    "text": "6.2 String specific operations\n\nAside from the common sequence operations\nSpecific to characters and text\n\n\n# Split and join strings\nprint(\"Split_on_underscore\".split(sep=\"_\"))\nprint( \".\".join([\"program\", \"exe\"]) )\n\n['Split', 'on', 'underscore']\nprogram.exe",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#string-specific-operations-2",
+    "href": "sequences.html#string-specific-operations-2",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "6.3 String specific operations",
+    "text": "6.3 String specific operations\n\nAside from the common sequence operations\nSpecific to characters and text\n\n\nprint(\"Ha\" in \"Hallo\")          \nprint(\"Ball\".startswith(\"Bar\")) \nprint(\"Bicycle\".find(\"cyc\"))    \nprint(\"Bicycle\".index(\"cyc\"))   \n\nTrue\nFalse\n2\n2",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#string-specific-operations-3",
+    "href": "sequences.html#string-specific-operations-3",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "6.4 String specific operations",
+    "text": "6.4 String specific operations\n\nAside from the common sequence operations\nSpecific to characters and text\n\n\nprint(\"GOOD morning\".lower())    \nprint(\"GOOD morning\".upper())      \nprint(\"GOOD morning\".capitalize()) \nprint(\"GOOD morning\".title())      \nprint(\"I like oranges\".replace(\"oranges\", \"apples\"))\n\ngood morning\nGOOD MORNING\nGood morning\nGood Morning\nI like apples",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
+    ]
+  },
+  {
+    "objectID": "sequences.html#string-specific-operations-4",
+    "href": "sequences.html#string-specific-operations-4",
+    "title": "4  Sequences: lists, ranges, tuples, strings",
+    "section": "6.5 String specific operations",
+    "text": "6.5 String specific operations\n\nAside from the common sequence operations\nSpecific to characters and text\n\n\nprint(chr(68))  # Convert int to Unicode character.\nprint(ord(\"A\")) # Convert Unicode character to int.\n\nD\n65",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
     ]
   }
 ]

@@ -13,7 +13,9 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - source/python_basics.qmd
+    - python_basics.qmd
+    - control_flow.qmd
+    - sequences.qmd
     #- ch_python_console.qmd
     #- ch_io_and_scripts.qmd
     #- ex_conditional_statements.qmd
@@ -30,7 +32,7 @@ comments:
 bibliography: references.bib
 
 execute:
-  echo: false
+  echo: true
   output: true
   warning: true
   error: true
