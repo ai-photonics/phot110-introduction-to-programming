@@ -311,10 +311,12 @@ print(a_list[::-1])
 
 ## The for loop
 
--   To iterate: to repeat a process
--   A **`for`** loop can be used when:
-    -   the number of **iterations** is known, or
-    -   we iterate over a list of elements
+Similar to the while loop, the **`for`** loop can be used to repeat a process. Unlike the while loop the for loop is meant for when either:
+
+-   the number of **iterations** is known, or
+-   we iterate over a list of elements
+
+The structure of the for loop to iterate over the elements of a list is as follows:
 
 ``` python
 for <element> in <list>:
@@ -324,12 +326,7 @@ for <element> in <list>:
     <statement>
 ```
 
-## The for loop
-
--   To iterate: to repeat a process
--   A **`for`** loop can be used when:
-    -   the number of **iterations** is known, or
-    -   we iterate over a list of elements
+For example, to iterate over the working days of the week and print them, we could use
 
 ```{python}
 # Print all elements of a list
@@ -338,26 +335,24 @@ for el in days:
   print(el)
 ```
 
-## Intermezzo: using range()
+### Repeating a process n times
 
--   A **`range`** is a sequence type (like `list`) for integer numbers
--   Construct it using: `range(start, stop_exclusive, step)`
--   It is convenient for **`for`** loop
+The for loop can also be used to repeat a process a known number of times. For this we replace the list by the **`range`** function, which can represent a "list" of numbers. The **`range`** function returns actually a sequence type (like `list`) for integer numbers, we can construct it as follows: `range(start, stop_exclusive, step)`, where:
+
+-   `start` is the first integer (default is zero), 
+-   `stop_exclusive` is the last integer, 
+-   `step` (default value is one), 
 -   See also: <https://docs.python.org/3/library/stdtypes.html#range>
 
+The `range()` does not give a list, but a "range" object: this object is more memory efficient, it only generates the integer numbers when asked for (imagine you want to do billions of iterations). We can cast a range object into a list though:
+
 ```{python}
-# A list with mixed object types
 a_range = range(1, 10, 2)  # Construct a range
 print(a_range)             # Lazy evaluated
 print(list(a_range))       # Converted to a list
 ```
 
-## The for loop
-
--   To iterate: to repeat a process
--   A **`for`** loop can be used when:
-    -   the number of **iterations** is known, or
-    -   we iterate over a list of elements
+We can use a range object directly in a for loop instead of the list to iterate over:
 
 ```{python}
 # Use the range function to get a sequence of numbers
@@ -365,12 +360,7 @@ for i in range(1,10,2):
   print(i)
 ```
 
-## The for loop
-
--   To iterate: to repeat a process
--   A **`for`** loop can be used when:
-    -   the number of **iterations** is known, or
-    -   we iterate over a list of elements
+Typically we also 
 
 ```{python}
 # Use the range function to get indices
