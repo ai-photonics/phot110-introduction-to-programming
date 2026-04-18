@@ -174,7 +174,7 @@
     "href": "control_flow.html#while-loop",
     "title": "3  Control flow: conditional branching and loops",
     "section": "3.2 While Loop",
-    "text": "3.2 While Loop\nA while loop repeats a code-block until the condition is False\n    while &lt;condition&gt;:\n      &lt;statement&gt;\n      &lt;statement&gt;\n      &lt;statement&gt;\n      ...\n      &lt;statement&gt;\nA while loop is used when:\n\nwe don’t know how many iterations we need, and\nwe have a stopping criterium/condition\n\nFor example, if we want to do a calculation, here the series \\(\\sum_{n=1}^\\infty \\frac{1}{n^4}\\) up to certain order \\(N\\):\n\nx = 0; dx = 1; dx_min = 0.001; n = 1\nwhile dx &gt; dx_min:\n  dx = 1 / n ** 4\n  x = x + dx\n  print(f\"The series up to order N = {n} is: {x:6.5}\")\n  n = n + 1\nprint(\"End of the program\")\n\nThe series up to order N = 1 is:    1.0\nThe series up to order N = 2 is: 1.0625\nThe series up to order N = 3 is: 1.0748\nThe series up to order N = 4 is: 1.0788\nThe series up to order N = 5 is: 1.0804\nThe series up to order N = 6 is: 1.0811\nEnd of the program\n\n\nThe while loop can get in an infinite loop! This can happen if the stopping criterium is not adequate.\n\nStop the program with the stop button, in a terminal press key combination Ctrl + c\nAdapt the stopping criterium/condition\n\nn = 0\nwhile n &gt; -100:\n  n = n + 1\n  print(f\"The current number is: {n}\")",
+    "text": "3.2 While Loop\nA while loop repeats a code-block until the condition is False\n    while &lt;condition&gt;:\n      &lt;statement&gt;\n      &lt;statement&gt;\n      &lt;statement&gt;\n      ...\n      &lt;statement&gt;\nA while loop is used when:\n\nwe don’t know how many iterations we need, and\nwe have a stopping criterium/condition\n\nAs an example we update a certain number \\(x \\rightarrow x^2 - 3x\\) in each iteration and stop if the number becomes larger or equal to 1000:\n\nx = 1\nwhile x &lt; 1000:\n  x = x ** 2 - 3 * x\n  print(x)\nprint(\"End of the program\")\n\n-2\n10\n70\n4690\nEnd of the program\n\n\nAnother a bit more complex example, we want to calculate the cumulative sums of the series \\(\\sum_{n=1}^\\infty \\frac{1}{n^4}\\) up to certain order \\(N\\):\n\nx = 0; dx = 1; dx_min = 0.001; n = 1\nwhile dx &gt; dx_min:\n  dx = 1 / n ** 4\n  x = x + dx\n  print(f\"The series up to order N = {n} is: {x:6.5}\")\n  n = n + 1\nprint(\"End of the program\")\n\nThe series up to order N = 1 is:    1.0\nThe series up to order N = 2 is: 1.0625\nThe series up to order N = 3 is: 1.0748\nThe series up to order N = 4 is: 1.0788\nThe series up to order N = 5 is: 1.0804\nThe series up to order N = 6 is: 1.0811\nEnd of the program\n\n\nNotice that the while loop can get in an infinite loop! This can happen if the stopping criterium is not adequate.\n\nStop the program with the stop button, in a terminal press key combination Ctrl + c\nAdapt the stopping criterium/condition\n\nTry the following code to get in an infinite loop:\nn = 0\nwhile n &gt; -100:\n  n = n + 1\n  print(f\"The current number is: {n}\")",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
     ]
@@ -194,67 +194,17 @@
     "href": "control_flow.html#the-for-loop",
     "title": "3  Control flow: conditional branching and loops",
     "section": "3.4 The for loop",
-    "text": "3.4 The for loop\n\nTo iterate: to repeat a process\nA for loop can be used when:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\n\nfor &lt;element&gt; in &lt;list&gt;:\n    &lt;statement&gt;\n    &lt;statement&gt;\n    ...\n    &lt;statement&gt;",
+    "text": "3.4 The for loop\nSimilar to the while loop, the for loop can be used to repeat a process. Unlike the while loop the for loop is meant for when either:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\nThe structure of the for loop to iterate over the elements of a list is as follows:\nfor &lt;element&gt; in &lt;list&gt;:\n    &lt;statement&gt;\n    &lt;statement&gt;\n    ...\n    &lt;statement&gt;\nFor example, to iterate over the working days of the week and print them, we could use\n\n# Print all elements of a list\ndays = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\"]\nfor el in days:\n  print(el)\n\nMon\nTue\nWed\nThu\nFri\n\n\n\n3.4.1 Repeating a process n times\nThe for loop can also be used to repeat a process a known number of times. For this we replace the list by the range function, which can represent a “list” of numbers. The range function returns actually a sequence type (like list) for integer numbers, we can construct it as follows: range(start, stop_exclusive, step), where:\n\nstart is the first integer (default is zero),\nstop_exclusive is the last integer,\nstep (default value is one),\nSee also: https://docs.python.org/3/library/stdtypes.html#range\n\nThe range() does not give a list, but a “range” object: this object is more memory efficient, it only generates the integer numbers when asked for (imagine you want to do billions of iterations). We can cast a range object into a list though:\n\na_range = range(1, 10, 2)  # Construct a range\nprint(a_range)             # Lazy evaluated\nprint(list(a_range))       # Converted to a list\n\nrange(1, 10, 2)\n[1, 3, 5, 7, 9]\n\n\nWe can use a range object directly in a for loop instead of the list to iterate over:\n\n# Use the range function to get a sequence of numbers\nfor i in range(1,10,2):\n  print(i)\n\n1\n3\n5\n7\n9\n\n\nUsing range we can also get the indices of a list. We can use the indices to print only the odd days of the week for example:\n\n# Use the range function to get indices\ndays = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"]\nfor i in range(0,len(days),2):\n  print(days[i])\n\nMon\nWed\nFri\nSun\n\n\nOr one could apply the same index to multiple lists:\n\n# Use the range function to get indices and apply to 2 lists\nnames = [\"Mehmet\", \"Ceren\", \"Nisan\", \"Derin\", \"Ahmet\", \"Ali\"]\nlengths = [\"189\", \"170\", \"182\", \"178\", \"177\", \"180\"]\nfor i in range(len(names)):\n  print(f\"{names[i]} is {lengths[i]} cm.\")\n\nMehmet is 189 cm.\nCeren is 170 cm.\nNisan is 182 cm.\nDerin is 178 cm.\nAhmet is 177 cm.\nAli is 180 cm.\n\n\nNotice that both lists need to have the same length and the elements should be corresponding to make sense.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
     ]
   },
   {
-    "objectID": "control_flow.html#the-for-loop-1",
-    "href": "control_flow.html#the-for-loop-1",
+    "objectID": "control_flow.html#example-the-trajectory-of-a-ball",
+    "href": "control_flow.html#example-the-trajectory-of-a-ball",
     "title": "3  Control flow: conditional branching and loops",
-    "section": "3.5 The for loop",
-    "text": "3.5 The for loop\n\nTo iterate: to repeat a process\nA for loop can be used when:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\n\n\n# Print all elements of a list\ndays = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\"]\nfor el in days:\n  print(el)\n\nMon\nTue\nWed\nThu\nFri",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
-    ]
-  },
-  {
-    "objectID": "control_flow.html#intermezzo-using-range",
-    "href": "control_flow.html#intermezzo-using-range",
-    "title": "3  Control flow: conditional branching and loops",
-    "section": "3.6 Intermezzo: using range()",
-    "text": "3.6 Intermezzo: using range()\n\nA range is a sequence type (like list) for integer numbers\nConstruct it using: range(start, stop_exclusive, step)\nIt is convenient for for loop\nSee also: https://docs.python.org/3/library/stdtypes.html#range\n\n\n# A list with mixed object types\na_range = range(1, 10, 2)  # Construct a range\nprint(a_range)             # Lazy evaluated\nprint(list(a_range))       # Converted to a list\n\nrange(1, 10, 2)\n[1, 3, 5, 7, 9]",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
-    ]
-  },
-  {
-    "objectID": "control_flow.html#the-for-loop-2",
-    "href": "control_flow.html#the-for-loop-2",
-    "title": "3  Control flow: conditional branching and loops",
-    "section": "3.7 The for loop",
-    "text": "3.7 The for loop\n\nTo iterate: to repeat a process\nA for loop can be used when:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\n\n\n# Use the range function to get a sequence of numbers\nfor i in range(1,10,2):\n  print(i)\n\n1\n3\n5\n7\n9",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
-    ]
-  },
-  {
-    "objectID": "control_flow.html#the-for-loop-3",
-    "href": "control_flow.html#the-for-loop-3",
-    "title": "3  Control flow: conditional branching and loops",
-    "section": "3.8 The for loop",
-    "text": "3.8 The for loop\n\nTo iterate: to repeat a process\nA for loop can be used when:\n\nthe number of iterations is known, or\nwe iterate over a list of elements\n\n\n\n# Use the range function to get indices\ndays = [\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"]\nfor i in range(0,len(days),2):\n  print(days[i])\n\nMon\nWed\nFri\nSun",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
-    ]
-  },
-  {
-    "objectID": "control_flow.html#numerical-approx.-of-the-trajectory-of-a-ball",
-    "href": "control_flow.html#numerical-approx.-of-the-trajectory-of-a-ball",
-    "title": "3  Control flow: conditional branching and loops",
-    "section": "3.9 Numerical approx. of the trajectory of a ball",
-    "text": "3.9 Numerical approx. of the trajectory of a ball\n\n\nGravitation: \\(g=9.81\\) m/s\\(^2\\)\nAir resistance: ignore for a slow heavy ball\nhorizontal velocity is constant",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
-    ]
-  },
-  {
-    "objectID": "control_flow.html#trajectory-of-a-ball",
-    "href": "control_flow.html#trajectory-of-a-ball",
-    "title": "3  Control flow: conditional branching and loops",
-    "section": "3.10 Trajectory of a ball",
-    "text": "3.10 Trajectory of a ball\n\n# Load library for sine and cosine\nimport math\n\n# Algorithm parameters in MKS units\nv0 = 6\nangle_in_degrees = 37\ng = 9.81\nx = 0; y = 1.20; t = 0\n\n# Calculate initial velocity in x \n#     and y directions\nangle = angle_in_degrees * math.pi/180\nvx = v0 * math.cos(angle)\nvy = v0 * math.sin(angle)\n\n# Initiate values at time t = 0\nx_values = list([x])\ny_values = list([y])\nt_values = list([t])\n\ndt = 0.1\nwhile (y &gt;= 0) and (t &lt; 10):\n  # update velocities (vx, vy), coords\n  #     (x, y), and time t\n  vy = vy - g*dt\n  y = y + vy*dt\n  x = x + vx*dt\n  t = t + dt\n  x_values.append(x)\n  y_values.append(y)\n  t_values.append(t)\n  print(f't = {t:.2f}: ({x:.2f},{y:.2f})')\n\nt = 0.10: (0.48,1.46)\nt = 0.20: (0.96,1.63)\nt = 0.30: (1.44,1.69)\nt = 0.40: (1.92,1.66)\nt = 0.50: (2.40,1.53)\nt = 0.60: (2.88,1.31)\nt = 0.70: (3.35,0.98)\nt = 0.80: (3.83,0.56)\nt = 0.90: (4.31,0.04)\nt = 1.00: (4.79,-0.58)",
+    "section": "3.5 Example: The trajectory of a ball",
+    "text": "3.5 Example: The trajectory of a ball\nIn science and engineering we often use numerical methods to analyse systems. As a practical example of using a while loop, let us calculate the trajectory \\((x(t), y(t))\\) of a ball numerically. The ball has an initial position \\((x(0), y(0)) = (0, 1.20)\\) (in meters) and velocity \\(v_0 = 6\\) m/s thrown under an angle of 37 degrees, see the figure below.\n\nWe consider following conditions:\n\nGravitation: \\(g=9.81\\) m/s\\(^2\\)\nAir resistance can be ignored for a “slow” heavy ball\nThe horizontal velocity is constant\n\nThe numerical algorithm adapts the ball’s velocity at small discrete time steps, and the resulting coordinates form an approximate trajectory. The code uses the while loop to calculate subsequent coordinates until the ball drops on the ground (the stopping criterium). See the code below.\n\n# Load library for sine and cosine\nimport math\n\n# Algorithm parameters in MKS units\nv0 = 6\nangle_in_degrees = 37\ng = 9.81\nx = 0; y = 1.20; t = 0\n\n# Calculate initial velocity in x \n#     and y directions\nangle = angle_in_degrees * math.pi/180\nvx = v0 * math.cos(angle)\nvy = v0 * math.sin(angle)\n\n# Initiate values at time t = 0\nx_values = list([x])\ny_values = list([y])\nt_values = list([t])\n\ndt = 0.1\nwhile (y &gt;= 0) and (t &lt; 10):\n  # update velocities (vx, vy), coords\n  #     (x, y), and time t\n  vy = vy - g*dt\n  y = y + vy*dt\n  x = x + vx*dt\n  t = t + dt\n  x_values.append(x)\n  y_values.append(y)\n  t_values.append(t)\n  print(f't = {t:.2f}: ({x:.2f},{y:.2f})')\n\nt = 0.10: (0.48,1.46)\nt = 0.20: (0.96,1.63)\nt = 0.30: (1.44,1.69)\nt = 0.40: (1.92,1.66)\nt = 0.50: (2.40,1.53)\nt = 0.60: (2.88,1.31)\nt = 0.70: (3.35,0.98)\nt = 0.80: (3.83,0.56)\nt = 0.90: (4.31,0.04)\nt = 1.00: (4.79,-0.58)",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Control flow: conditional branching and loops</span>"
     ]
@@ -374,7 +324,7 @@
     "href": "sequences.html#mutable-vs.-immutable",
     "title": "4  Sequences: lists, ranges, tuples, strings",
     "section": "5.2 Mutable vs. Immutable",
-    "text": "5.2 Mutable vs. Immutable\n\nEvery object has a unique ID (CPython: address in memory)\n\n\ni = 45 \nprint(id(i))\n\n4460516448\n\n\n\n\na_string = \"Pretzel\"\na_list = [3, 105, 56]\na_range = range(4)\nprint(f\"The ID of a_string: {a_string} = { id(a_string) }\")\nprint(f\"The ID of a_list: {a_list} = { id(a_list) }\")\nprint(f\"The ID of a_range: {a_range} = { id(a_range) }\")\n\nThe ID of a_string: Pretzel = 4495927424\nThe ID of a_list: [3, 105, 56] = 4496134784\nThe ID of a_range: range(0, 4) = 4662594128",
+    "text": "5.2 Mutable vs. Immutable\n\nEvery object has a unique ID (CPython: address in memory)\n\n\ni = 45 \nprint(id(i))\n\n4396266592\n\n\n\n\na_string = \"Pretzel\"\na_list = [3, 105, 56]\na_range = range(4)\nprint(f\"The ID of a_string: {a_string} = { id(a_string) }\")\nprint(f\"The ID of a_list: {a_list} = { id(a_list) }\")\nprint(f\"The ID of a_range: {a_range} = { id(a_range) }\")\n\nThe ID of a_string: Pretzel = 4431243152\nThe ID of a_list: [3, 105, 56] = 4431917120\nThe ID of a_range: range(0, 4) = 4598139520",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
     ]
@@ -384,7 +334,7 @@
     "href": "sequences.html#mutable-vs.-immutable-1",
     "title": "4  Sequences: lists, ranges, tuples, strings",
     "section": "5.3 Mutable vs. Immutable",
-    "text": "5.3 Mutable vs. Immutable\n\nNumbers are immutable\nIf you change them, the ID will change\nEven if you assign again the same variable name\n\n\ni = 45 \nprint(id(i))\ni = i + 1\nprint(id(i))\n\n4460516448\n4460516480",
+    "text": "5.3 Mutable vs. Immutable\n\nNumbers are immutable\nIf you change them, the ID will change\nEven if you assign again the same variable name\n\n\ni = 45 \nprint(id(i))\ni = i + 1\nprint(id(i))\n\n4396266592\n4396266624",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
     ]
@@ -394,7 +344,7 @@
     "href": "sequences.html#mutable-vs.-immutable-2",
     "title": "4  Sequences: lists, ranges, tuples, strings",
     "section": "5.4 Mutable vs. Immutable",
-    "text": "5.4 Mutable vs. Immutable\n\nstrings (str) are immutable\nOperations will provide a copy\n\n\nA = \"Pretzel\"\nB = A.upper()\nprint(f\"String A: {A} is still the same as A: {A}\")\nprint(f\"String B: {B} is the uppercase version of A: {A}\")\nprint(f\"ID of B: {id(B)} is not equal to ID of A: {id(A)}\")\n\nString A: Pretzel is still the same as A: Pretzel\nString B: PRETZEL is the uppercase version of A: Pretzel\nID of B: 4662595280 is not equal to ID of A: 4495927424",
+    "text": "5.4 Mutable vs. Immutable\n\nstrings (str) are immutable\nOperations will provide a copy\n\n\nA = \"Pretzel\"\nB = A.upper()\nprint(f\"String A: {A} is still the same as A: {A}\")\nprint(f\"String B: {B} is the uppercase version of A: {A}\")\nprint(f\"ID of B: {id(B)} is not equal to ID of A: {id(A)}\")\n\nString A: Pretzel is still the same as A: Pretzel\nString B: PRETZEL is the uppercase version of A: Pretzel\nID of B: 4431243248 is not equal to ID of A: 4431243152",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
     ]
@@ -404,7 +354,7 @@
     "href": "sequences.html#mutable-vs.-immutable-3",
     "title": "4  Sequences: lists, ranges, tuples, strings",
     "section": "5.5 Mutable vs. Immutable",
-    "text": "5.5 Mutable vs. Immutable\n\nLists are mutable\nElements can change, added, removed, etc.\n\n\na_list = [3, \"car\", 5]\nprint(a_list)\nprint(id(a_list))\n\n# Change 2nd element\na_list[1] = \"tree\"\nprint(a_list)\nprint(id(a_list))\n\n[3, 'car', 5]\n4630765888\n[3, 'tree', 5]\n4630765888",
+    "text": "5.5 Mutable vs. Immutable\n\nLists are mutable\nElements can change, added, removed, etc.\n\n\na_list = [3, \"car\", 5]\nprint(a_list)\nprint(id(a_list))\n\n# Change 2nd element\na_list[1] = \"tree\"\nprint(a_list)\nprint(id(a_list))\n\n[3, 'car', 5]\n4431468928\n[3, 'tree', 5]\n4431468928",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sequences: lists, ranges, tuples, strings</span>"
     ]

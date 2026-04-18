@@ -360,7 +360,7 @@ for i in range(1,10,2):
   print(i)
 ```
 
-Typically we also 
+Using range we can also get the indices of a list. We can use the indices to print only the odd days of the week for example:   
 
 ```{python}
 # Use the range function to get indices
@@ -369,15 +369,31 @@ for i in range(0,len(days),2):
   print(days[i])
 ```
 
-## Numerical approx. of the trajectory of a ball
+Or one could apply the same index to multiple lists:
+
+```{python}
+# Use the range function to get indices and apply to 2 lists
+names = ["Mehmet", "Ceren", "Nisan", "Derin", "Ahmet", "Ali"]
+lengths = ["189", "170", "182", "178", "177", "180"]
+for i in range(len(names)):
+  print(f"{names[i]} is {lengths[i]} cm.")
+```
+
+Notice that both lists need to have the same length and the elements should be corresponding to make sense.
+
+## Example: The trajectory of a ball
+
+In science and engineering we often use numerical methods to analyse systems. As a practical example of using a while loop, let us calculate the trajectory $(x(t), y(t))$ of a ball numerically. The ball has an initial position $(x(0), y(0)) = (0, 1.20)$ (in meters) and velocity $v_0 = 6$ m/s thrown under an angle of 37 degrees, see the figure below. 
 
 ![](./figures/fig_ball_throw_1.png)
 
--   Gravitation: $g=9.81$ m/s$^2$
--   Air resistance: ignore for a slow heavy ball
--   horizontal velocity is constant
+We consider following conditions:
 
-## Trajectory of a ball
+-   Gravitation: $g=9.81$ m/s$^2$
+-   Air resistance can be ignored for a "slow" heavy ball
+-   The horizontal velocity is constant
+
+The numerical algorithm adapts the ball's velocity at small discrete time steps, and the resulting coordinates form an approximate trajectory. The code uses the while loop to calculate subsequent coordinates until the ball drops on the ground (the stopping criterium). See the code below.
 
 ```{python}
 #| code-line-numbers: "|1-3|4-8|10-14|16-19|21-32"
