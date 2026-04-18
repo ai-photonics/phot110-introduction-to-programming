@@ -1,0 +1,15 @@
+```{python}
+def median(numbers):
+    numbers.sort()
+    n = len(numbers)
+    if (n % 2) == 1:
+        m = numbers[int((n + 1) / 2)]
+    else:
+        m = (numbers[int(n/2-1)] + numbers[int(n/2)]) / 2
+    return m
+
+
+number_list = [3, 4, 5, 2, 8, 1, 6, 7]
+med = median(number_list)
+print(f"The median of {number_list} is {med}")
+```

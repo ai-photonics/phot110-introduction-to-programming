@@ -191,6 +191,8 @@ while n > -100:
   print(f"The current number is: {n}")
 ```
 
+The most frequently used loop structure is actually not the `while` loop but the `for` loop. The `for` loop has the advantage that it can be run a specific number of times. But before we go to the `for` loop we will have a brief look at the `list` data type, since this is often used in conjunction with `for` loops when iterating over the elements of a `list`.
+
 ## Python lists
 
 A Python list is a collection of objects with a certain order:
@@ -337,14 +339,14 @@ for el in days:
 
 ### Repeating a process n times
 
-The for loop can also be used to repeat a process a known number of times. For this we replace the list by the **`range`** function, which can represent a "list" of numbers. The **`range`** function returns actually a sequence type (like `list`) for integer numbers, we can construct it as follows: `range(start, stop_exclusive, step)`, where:
+The for loop can also be used to repeat a process a known number of times. For this we replace the list by the **`range`** function, which can represent a "list" of numbers. The **`range`** function returns actually an object of type `range` (which belongs to the more general class of `sequence` just like `list`) for integer numbers, we can construct it as follows: `range(start, stop_exclusive, step)`, where:
 
 -   `start` is the first integer (default is zero), 
 -   `stop_exclusive` is the last integer, 
 -   `step` (default value is one), 
 -   See also: <https://docs.python.org/3/library/stdtypes.html#range>
 
-The `range()` does not give a list, but a "range" object: this object is more memory efficient, it only generates the integer numbers when asked for (imagine you want to do billions of iterations). We can cast a range object into a list though:
+The `range()` does not give a list of integers, but a `range` object: this object is more memory efficient, it only generates the integer numbers when asked for (imagine you want to do billions of iterations). We can cast a range object into a list though:
 
 ```{python}
 a_range = range(1, 10, 2)  # Construct a range
@@ -383,7 +385,7 @@ Notice that both lists need to have the same length and the elements should be c
 
 ## Example: The trajectory of a ball
 
-In science and engineering we often use numerical methods to analyse systems. As a practical example of using a while loop, let us calculate the trajectory $(x(t), y(t))$ of a ball numerically. The ball has an initial position $(x(0), y(0)) = (0, 1.20)$ (in meters) and velocity $v_0 = 6$ m/s thrown under an angle of 37 degrees, see the figure below. 
+In science and engineering we often use numerical methods to simulate systems. As a practical example of using a while loop, let us calculate the trajectory $(x(t), y(t))$ of a ball that is thrown numerically. The ball has an initial position $(x(0), y(0)) = (0, 1.20)$ (in meters) and velocity $v_0 = 6$ m/s thrown under an angle of 37 degrees, see the figure below. 
 
 ![](./figures/fig_ball_throw_1.png)
 
@@ -393,7 +395,7 @@ We consider following conditions:
 -   Air resistance can be ignored for a "slow" heavy ball
 -   The horizontal velocity is constant
 
-The numerical algorithm adapts the ball's velocity at small discrete time steps, and the resulting coordinates form an approximate trajectory. The code uses the while loop to calculate subsequent coordinates until the ball drops on the ground (the stopping criterium). See the code below.
+The numerical algorithm calculates the balls position at small discrete time steps and updates the ball's velocity at each time step. The resulting coordinates form an approximate trajectory. The code uses the while loop to calculate subsequent coordinates until the ball drops on the ground (the stopping criterium). See the code below.
 
 ```{python}
 #| code-line-numbers: "|1-3|4-8|10-14|16-19|21-32"
