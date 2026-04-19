@@ -1,0 +1,528 @@
+---
+title: "PHOT 110: Introduction to programming"
+subtitle: "LECTURE 07: Modules (Ch. 4.9)"
+author: "Michaël Barbier"
+date: today
+date-format: long
+execute:
+  echo: true
+  output: true
+  warning: true
+  error: true
+  code-overflow: wrap
+  code:
+    font-size: 54px
+format: 
+  revealjs:
+    fontsize: 36px
+    template-partials:
+      - title-slide.html
+    center-title-slide: true
+    margin: 0.05
+    #output-location: column-fragment
+    #smaller: true
+    footer: "[Lecture 07: Modules, script documentation, and executables (Ch. 4.9)]{style=color:darkred;}"
+    slide-number: true
+    show-slide-number: all
+    highlight-style: tango
+    #theme: simple
+    theme: [default, custom.scss]
+    #chalkboard: true
+    self-contained: true
+    embed-resources: true
+editor: source
+jupyter: python3
+---
+
+
+# Modules (Ch. 4.9)
+
+## Using modules
+
+- Import modules with the **`import`** keyword
+- Dot-notation to select sub-modules, objects, functions
+
+Example: `math` is a **module**
+
+``` {python}
+import math
+print(type(math))
+```
+
+
+## Dot-notation: select sub-modules, objects, functions
+
+- The `math` module contains **functions** and other **objects**
+
+::: {.fragment}
+Contains a variable with a value for $\pi$
+``` {python}
+math.pi
+```
+
+``` {python}
+type(math.pi)
+```
+
+:::
+
+::: {.fragment}
+
+Contains function $\sin()$
+``` {python}
+type(math.sin)
+```
+
+:::
+
+## Dot-notation: select sub-modules, objects, functions
+
+- `numpy` is a module
+
+``` {python}
+import numpy
+print(type(numpy))
+```
+
+::: {.fragment}
+
+- also contains functions, sub-modules, attributes
+
+``` {python}
+print(type(numpy.random))
+print(type(numpy.random.normal))
+print(type(numpy.pi))
+```
+
+:::
+
+
+## Beware: dot-notation for methods
+
+- A method is a function bound to an object
+- Called on an object: `object.method()`
+
+An example object is a list:
+
+``` {python}
+# list objects: reverse(), sort(), ...
+my_list = ["apple", 1, True, "five"]
+print(my_list)
+```
+
+::: {.fragment}
+
+Applying the method `reverse()` to change the object:
+
+``` {python}
+my_list.reverse()
+print(my_list)
+```
+
+:::
+
+
+
+## Beware: dot-notation for methods
+
+- A method is a function bound to an object
+- Called on an object: `object.method()`
+
+Another example object is a string:
+
+``` {python}
+# str objects: upper(), substring() ...
+my_string = "apple cake"
+print(my_string)
+```
+
+
+::: {.fragment}
+
+Applying the method `upper()` to obtain the string in all-caps:
+
+``` {python}
+all_caps_string = my_string.upper()
+print(all_caps_string)
+```
+
+:::
+
+
+## Beware: dot-notation for methods
+
+- A method is a function bound to an object
+- Called on an object: `object.method()`
+
+Another example object is a string:
+
+``` {python}
+# str objects: upper(), substring() ...
+my_string = "apple cake"
+print(my_string)
+```
+
+
+::: {.fragment}
+
+The method `replace()` can have arguments:
+
+``` {python}
+changed_string = my_string.replace("apple", "banana")
+print(changed_string)
+```
+
+:::
+
+# Creating modules
+
+
+## What is a module ? 
+
+- A **separate** Python script
+- Contains variables, **functions**, classes, etc.
+- Can be **imported**
+
+Example:
+
+:::: {.columns}
+
+::: {.column  width="50%"}
+
+``` {python}
+#| filename: "module_print.py"
+def print_dollar(text):
+  """ 
+  Print text surrounded 
+  by dollar symbols
+  """
+  print("$" + text + "$")
+```
+
+:::
+
+::: {.column  .fragment width="50%"}
+
+``` {.python filename="script.py"}
+# Import the module
+import module_print as mp
+
+# Use a function
+mp.print_dollar("x + 4")
+
+```
+
+``` {python}
+#| echo: false
+# Import the module
+def print_dollar(text):
+  """ 
+  Print text surrounded 
+  by dollar symbols
+  """
+  print("$" + text + "$")
+
+# Use a function
+print_dollar("x + 4")
+
+```
+
+
+:::
+
+::::
+
+## Another example of a module
+
+``` {python}
+#| code-line-numbers: "|3-8|10-12|14-16|"
+#| filename: "tranformations.py"
+import numpy as np
+
+def rotate(xys, angle):
+  """ Rotates points around the origin """
+  rot_matrix = np.array(
+    [[np.cos(angle), -np.sin(angle)], 
+    [np.sin(angle), np.cos(angle)]])
+  return np.dot(rot_matrix, xys)
+
+def translate(xys, displacement):
+  """ Translates points with a displacement vector """
+  return xys + displacement
+
+def scale(xys, scale):
+  """ Scale the point coordinates """
+  return xys * scale
+
+```
+
+## Using the module
+
+``` {.python filename="script.py"}
+# import our module
+import transformations as transfo
+
+shape = np.array([[1, 2, 1, -1, 0, 1], [0, 1, 2, 2, -3, 0]])
+rot_shape = transfo.rotate(shape, 1)
+plt.plot(shape[0,:], shape[1,:])
+plt.plot(rot_rot[0,:], rot_shape[1,:])
+plt.show()
+```
+
+``` {python}
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+# import our module
+import numpy as np
+
+def rotate(xys, angle):
+  """ Rotates points around the origin """
+  rot_matrix = np.array(
+    [[np.cos(angle), -np.sin(angle)], 
+    [np.sin(angle), np.cos(angle)]])
+  return np.dot(rot_matrix, xys)
+
+shape = np.array([[1, 2, 1, -1, 0, 1], [0, 1, 2, 2, -3, 0]])
+rot_shape = rotate(shape, 1)
+fig, ax = plt.subplots()
+fig.set_figheight(3)
+fig.set_figwidth(5)
+ax.plot(shape[0,:], shape[1,:])
+ax.plot(rot_shape[0,:], rot_shape[1,:])
+plt.show()
+
+```
+
+
+## Why use modules ?
+
+- **Re-use** function definitions over multiple scripts
+- **Readability**: One very long script is not readable: 
+  - Break up code in **independent parts**
+  - Further **structure your code**
+
+- Structure example, divide into:
+  - file input/output
+  - calculations
+  - plotting
+  - AND your main script as a separate file
+
+## Testing the functions in your module
+
+- When importing a module, its code is executed
+- Function definitions don't have side-effects
+
+\
+But ... any code that **prints**, **changes a variable**, **plots**, or outputs something would be executed on **import** !
+
+::: {.fragment}
+
+Solution: using the `__name__` variable
+
+:::
+
+## Using the `__name__` variable
+
+- `__name__` is always defined
+- `__name__` contains:
+  - name of the module (file name) if imported
+  - `"__main__"` if run as a script
+
+::: {.fragment}
+
+```{.python filename="my_module.py"}
+... module functions ...
+
+if __name__ == "__main__":
+  <statements>
+```
+
+:::
+
+## Using the `__name__` variable
+
+- `__name__` is always defined
+- `__name__` contains:
+  - name of the module (file name) if imported
+  - `"__main__"` if run as a script
+
+```{python}
+#| filename: "my_module.py"
+def increment(x):
+  return x + 1
+
+if __name__ == "__main__":
+  # Run the test functions
+  print(f"The value of 3 + 1 = {increment(3)}")
+```
+
+
+
+## Importing without `__name__ == "__main__"`
+
+``` {python }
+#| filename: "tranformations.py"
+#| output-location: slide
+import numpy as np
+import matplotlib.pyplot as plt
+
+def scale(xys, scale):
+  """ scales points by scale """
+  return xys * scale
+
+# Testing the scale function
+shape = np.array([[1, 2, 1, -1, 0, 1], [0, 1, 2, 2, -3, 0]])
+scaled_shape = scale(shape, 3)
+plt.plot(shape[0,:], shape[1,:])
+plt.plot(scaled_shape[0,:], scaled_shape[1,:])
+plt.show()
+```
+
+## Importing without `__name__ == "__main__"`
+
+```{.python filename="main_script"}
+import transformations
+print("Not doing anything except printing this !")
+```
+
+::: {.fragment}
+
+``` {python }
+#| filename: "tranformations.py"
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+
+def scale(xys, scale):
+  """ scales points by scale """
+  return xys * scale
+
+# Testing the scale function
+shape = np.array([[1, 2, 1, -1, 0, 1], [0, 1, 2, 2, -3, 0]])
+scaled_shape = scale(shape, 3)
+fig, ax = plt.subplots()
+fig.set_figheight(4)
+fig.set_figwidth(6)
+ax.plot(shape[0,:], shape[1,:])
+ax.plot(scaled_shape[0,:], scaled_shape[1,:])
+plt.show()
+```
+
+```{python}
+#| echo: false
+print("Not doing anything except printing this !")
+```
+
+:::
+
+## Avoiding side effects
+
+``` {.python filename="tranformations.py"}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def scale(xys, scale):
+  """ scales points by scale """
+  return xys * scale
+
+# Only execute tests if run as script
+if __name__ == "__main__":
+  shape = np.array([[1, 2, 1, -1, 0, 1], [0, 1, 2, 2, -3, 0]])
+  scaled_shape = scale(shape, 3)
+  plt.plot(shape[0,:], shape[1,:])
+  plt.plot(scaled_shape[0,:], scaled_shape[1,:])
+  plt.show()
+
+```
+
+## Documenting modules
+
+```{.python filename="transformations.py"}
+""" Geometrical transformations on points in 2D.
+
+Provides functionality for rotation, translation,
+or scaling of (x, y)-coordinates. Coordinates
+should be given as (2 x N) Numpy arrays where N
+is the number of points.
+
+Typical usage example:
+  points = np.array([[1, 4, 6],[2, 5, 3]])
+  scaled_points = scale(points, 3)
+"""
+import numpy as np
+
+# ... code of the module ...
+
+```
+
+
+# Creating an executable of your script
+
+## How to create an executable ?
+
+- Run a script as an **executable**
+  - without Python interpreter
+  - Directly runnable (by "double clicking")
+- Two good options (as of 2024)
+  - **Pyinstaller**
+  - **Nuitka** (up to Python version 3.11)
+- These compilers **incorporate the Python interpreter** within the executable $\rightarrow$ the resulting **executables are large**.
+
+## Using pyinstaller
+
+**Pyinstaller** works for (our) **Python version 3.12**.
+
+Follow the instructions below to create an executable:
+
+1. Make a new project for your script
+1. Copy your script in the new project (or write it)
+1. Install the dependencies (required packages)
+1. Install the pyinstaller package
+1. Execute below line (change the script file name to your own file name) in the **terminal**: 
+
+``` {.bash}
+pyinstaller --onefile your_script.py
+```
+
+
+# Python packages vs. modules
+
+## What is a Python package ?
+
+- **Collection of modules**
+- You can **import** the top-module
+- Prepared for **distribution** 
+  - **Sharing** your application
+  - Installing
+- Can be shared on the [Python Package Index: PyPI](https://pypi.org/)
+
+## Creating a Python package ?
+
+- **setup.py** as advised in the book is the old way, new way:
+
+- Write a pyproject.toml file to [package a Python project](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)
+- Easiest way: use Package and Dependency Managers:
+  - [Poetry](https://python-poetry.org/): works in PyCharm out-of-the-box, see the [PyCharm JetBrains page](https://www.jetbrains.com/help/pycharm/poetry.html)
+  - [Rye](https://rye.readthedocs.io/en/latest/index.html): has a plugin for PyCharm
+  - [PDM](https://pdm-project.org/latest/): works not well together with PyCharm yet
+
+## Example  .toml  file
+
+``` {.toml filename="pyproject.toml"}
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_package"
+authors = [{name = "Michael Barbier"},]
+description = "My package description"
+readme = "README.md"
+license = {text = "BSD-3-Clause"}
+dependencies = ["numpy",]
+
+[project.scripts]
+my-script = "my_package.module:function"
+
+```

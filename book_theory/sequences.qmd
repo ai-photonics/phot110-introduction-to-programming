@@ -10,7 +10,7 @@ We already briefly saw lists, ranges, and strings before, these data types fall 
 
 It is useful to know that these are all sequences because sequences have common operations: indexing, slicing, certain functions such as `len()`, and methods such as `.sort()`.
 
-The property of being mutable (adaptable) or immutable (fixed) is actually an important concept and determines which of the above mentioned common operations can be applied. Before we look at common operations of sequences, let us have a closer look at mutability.
+We can split sequences in two groups: those that are mutable (adaptable) and those that immutable (fixed). Mutability is actually an important concept and determines which of the above mentioned common operations can be applied. Before we look at common operations of sequences, let us have a closer look at mutability.
 
 ## Mutable versus Immutable
 
@@ -57,6 +57,8 @@ print(f"String B: {B} is the uppercase version of A: {A}")
 print(f"ID of B: {id(B)} is not equal to ID of A: {id(A)}")
 ```
 
+However, if you assign the new adapted string to the old variable name: `A = A.upper()`, then you will not have access to the initial string anymore.
+
 ### Lists are mutable
 
 Lists are mutable, their elements can change, added, removed, etc. Although the length of the list can change, the object will stay the same:
@@ -72,7 +74,7 @@ print(a_list)
 print(id(a_list))
 ```
 
-This has a consequence that whenever we adapt a list, we possibly lose the original elements. This is especially true when we use the list as an argument of a function, where this could form an unwanted side-effect of executing the function (we will see functions afterwards). However, even without using a function we can illustrate such side-effects, look at the following script, that calculates the median of a list of numbers.
+This has a consequence that whenever we adapt a list, we possibly lose the original elements. As an illustration of such side-effects, look at the following script, that calculates the median of a list of numbers.
 
 ```{python}
 # Input list of numbers
@@ -90,7 +92,38 @@ else:
 print(f"The median of {numbers} is {m}")
 ```
 
-Notice that the list is sorted after applying our method to obtain the `median`, and we lost the original order of the list. This is a side-effect. We actually could avoid this by using the function `sorted()` that returns a copy instead of the method `sort()` that sorts the elements in-place. Nevertheless, with a list you cannot be sure that it didn't get adapted without knowing what each step of the code exactly does.  
+Notice that the list is sorted after applying our approach to obtain the `median`, and we lost the original order of the list. This is a side-effect. We actually could avoid this by using the function `sorted()` that returns a copy instead of the method `sort()` that sorts the elements in-place:
+
+```{python}
+numbers_1 = [3, 4, 5, 2, 8, 1, 6, 7]
+sorted_numbers = sorted(numbers_1)
+print(f"sorted_numbers: {sorted_numbers}, but numbers_1: {numbers_1} has still original order" )
+numbers_2 = [3, 4, 5, 2, 8, 1, 6, 7]
+numbers_2.sort()
+print(f"numbers_2 is sorted in place: {numbers_2}")
+```
+
+Let's rewrite our little median algorithm using the `sorted()` function (this is not a method but a function):
+
+```{python}
+# Input list of numbers
+numbers = [3, 4, 5, 2, 8, 1, 6, 7]
+
+# Algorithm to find the median
+sorted_numbers = sorted(numbers)  # This line changed
+n = len(numbers)
+if (n % 2) == 1:
+    m = numbers[int((n + 1) / 2)]
+else:
+    m = (numbers[int(n/2-1)] + numbers[int(n/2)]) / 2
+
+# Output the results
+print(f"The median of {numbers} is {m}")
+```
+
+There are other methods that work "in-place" such as `s.reverse()` (reverses the order of elements of sequence `s` in-place), which have an alternative function: `reversed(s)`, that return a changed copy instead. This allows us to choose to either return a copy, albeit with possible large memory overhead, or do the operation in-place thereby losing the initial elements. Whatever approach you prefer, it is important to know whether a method/function **returns** an adapted copy of the object or it **adapts the object in-place**.
+
+Nevertheless, with a list you cannot be sure that it didn't get adapted without knowing what each step of the code exactly does.
 
 ## Tuples are immutable lists
 
@@ -224,7 +257,7 @@ fruits.reverse()           # Reverses list in-place
 print(fruits)
 ```
 
-## Sequence operations: also for immutable
+## Sequence operations: also for immutable types
 
 Items of immutable types cannot change $\Rightarrow$ return value
 

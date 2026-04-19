@@ -1,0 +1,802 @@
+---
+title: "PHOT 110: Introduction to programming"
+subtitle: "LECTURE 08: Arrays, vectors & linear algebra (Ch. 5)"
+author: "Michaël Barbier"
+date: today
+date-format: long
+latex-tinytex: true
+execute:
+  echo: true
+  output: true
+  warning: true
+  error: true
+  code-overflow: wrap
+  code:
+    font-size: 54px
+format: 
+  revealjs:
+    fontsize: 36px
+    template-partials:
+      - title-slide.html
+    center-title-slide: true
+    margin: 0.05
+    #output-location: column-fragment
+    #smaller: true
+    footer: "[Lecture 08: Arrays, vectors & linear algebra (Ch. 5)]{style=color:darkred;}"
+    slide-number: true
+    show-slide-number: all
+    highlight-style: tango
+    #theme: simple
+    theme: [default, custom.scss]
+    #chalkboard: true
+    self-contained: true
+    embed-resources: true
+editor: source
+jupyter: python3
+---
+
+# More on Arrays
+
+## Array definition
+
+-   Arrays have a fixed length
+-   Array elements have the same type
+-   We will use arrays from the Numpy library
+-   Optimized for numerical calculations
+
+::: fragment
+```{python}
+# Load the Numpy library
+import numpy as np
+
+a = np.array([1, 2, 4, 6, 5, 9])
+print(a)
+```
+:::
+
+## Are arrays faster than lists?
+
+-   Accessing array elements is easy & fast:
+-   Example: array "a" of N integers of size 64-bit
+    -   i$^{th}$ element is at memory-address: (address of a\[0\]) + $i \times 64$ bits
+    -   Copy/change M integers: memory chunk of $M \times 64$ bits
+
+::: fragment
+For a list: 
+
+- Size can **grow/shrink** & element **types vary** - Elements' address is in a look-up-table 
+- i$^{th}$ element is at memory-address at i$^{th}$ table row
+- Reading in memory/data chunks is difficult
+:::
+
+## Arrays are faster !
+
+**If you do not grow them !**
+
+$$
+[a_1, .. , a_N] \rightarrow [a_1, .. , a_N, a_{N+1}]
+$$
+
+-   Extending an array of $N$ elements with an extra element:
+    -   Creates a new array of $N+1$ elements
+    -   Copies the old array into the new
+    -   Puts the extra element value in the last position
+
+
+## Array initialization by casting
+
+```{python}
+import numpy as np
+
+a = np.array([1, 2, 4, 6, 5, 9])
+print(a)
+```
+
+\
+
+::: fragment
+```{python}
+a = np.array([[6, 0], [7, 4], [2, 9]])
+print(a)
+```
+:::
+
+## Array properties
+
+- Shape of the array
+- Array dimensions
+- Type of the elements
+  - Default: 64-bit floats
+  - Other options: "uint32": unsigned 32-bit integers
+- Remember: all elements are of same type !
+
+
+## Get array properties
+
+``` {python}
+print(a)
+```
+
+::: fragment
+Shape of an array $\rightarrow$ (rows, columns):
+``` {python}
+print(a.shape)
+```
+:::
+
+
+::: fragment
+Type of the elements:
+``` {python}
+print(a.dtype)
+```
+:::
+
+
+## Adapt array properties: element type
+
+``` {python}
+print(a)
+print(f"Type of the elements is: {a.dtype}")
+```
+
+::: fragment
+Change the type to complex 128-bit:
+``` {python}
+b = a.astype(np.complex128)
+print(b)
+print(f"Type of the elements is: {b.dtype}")
+```
+:::
+
+
+## Array initialization
+
+```{python}
+#| output-location: fragment
+a = np.zeros((4, 3))       # 2D array with zeros
+print(a)
+```
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.ones(4)             # 1D array with ones
+print(a)
+```
+:::
+
+## Array initialization
+
+```{python}
+#| output-location: fragment
+a = np.full((5, 3), 1.2)   # 2D array filled with a value
+print(a)
+```
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.full((3, 3), [0.2, 0.3, 1.7])   # 2D array with values
+print(a)
+```
+:::
+
+
+## Array initialization: similar shape
+
+```{python}
+#| output-location: fragment
+a = np.ones((2, 4))       # 2D array with zeros
+print(a)
+```
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.zeros_like(a)       # 2D array with zeros
+print(a)
+```
+:::
+
+
+## Array initialization: similar shape
+
+```{python}
+#| output-location: fragment
+b = np.full_like(a, 4.5)       # 2D array with zeros
+print()
+print(f"a = {a}")
+print()
+print(f"b = {b}")
+```
+
+## Empty array initialization
+
+```{python}
+#| echo: false
+a = np.array([1, 0.34, 0.546, 34.9, 5.34620, 9])
+a = np.array([3, 0.34, 0.546, 34.9, 5.34620, 9])
+a = np.array([4, 0.34, 0.546, 34.9, 5.34620, 9])
+```
+
+```{python}
+#| output-location: fragment
+a = np.empty((3, 2))      # empty is not empty !
+print(a)
+```
+
+::: fragment
+
+**Fill it** before using !
+
+```{python}
+#| output-location: fragment
+nx, ny = a.shape
+for i in range(nx):
+  for j in range(ny):
+    a[i, j] = i + 2*j
+print(a)
+```
+:::
+
+
+## Array initialization: intervals
+
+```{python}
+#| output-location: fragment
+a = np.arange(15)          # similar to range()
+print(a)
+```
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.arange(5, 7, 0.3)  # decimal float step
+print(a)
+```
+:::
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.linspace(0, 5, 11)  # linearly spaced interval
+print(a)
+```
+:::
+
+
+## 2D domains/intervals: meshgrid
+
+```{python}
+x = np.linspace(0, 5, 6)
+y = 2 ** np.linspace(0, 3, 4)
+xx, yy = np.meshgrid(x, y)
+```
+
+```{python}
+print(xx)
+```
+
+```{python}
+print(yy)
+```
+
+For more on domains see the [Numpy meshgrid howto](https://numpy.org/doc/stable/user/how-to-partition.html#meshgrid).
+
+## Higher dimensional arrays
+
+- Multi-dimensional N-D arrays have N axes
+
+::: fragment
+```{python}
+#| output-location: fragment
+tmp = np.array([[ 1,  2,  3],[ 4,  5,  6],[ 7,  8,  9]])
+a = np.array([tmp, 2*tmp, 3*tmp])
+print(a)
+```
+:::
+
+
+## Element selection & Array slicing
+
+- list element selection with `[i]`
+- list slicing operator: `[start:end+1:step]`
+
+``` {python}
+a = np.array([[ 1,  2,  3],[ 4,  5,  6],[ 7,  8,  9]])
+print(f"a[2, 0] = {a[2, 0]}")
+print(f"a[0:2:2, :] = {a[0:2:2, :]}")
+```
+
+\
+
+::: fragment
+Reduce single dimensions:
+
+``` {python}
+print(f"Squeezed a[0:2:2, :] = {np.squeeze(a[0:2:2, :])}")
+```
+:::
+
+## Adapting the array shape
+
+``` {python}
+a = np.array([[1,5,6,2],[5,3,8,9],[1,1,1,0]])
+print(a)
+```
+
+::: fragment
+Flattening the array ND $\rightarrow$ 1D
+``` {python}
+#| output-location: fragment
+print(a.flatten())
+```
+:::
+
+::: fragment
+Reshaping array
+``` {python}
+#| output-location: fragment
+print(a.reshape((2,6)))
+```
+:::
+
+
+
+## Array arithmetic operations
+
+-   similar to **arithmetic** operations on numbers
+-   element-wise
+-   shapes need to be compatible
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.array([2.5, 3, 4])   
+b = np.array([1, 0.1, 10])
+print(f"{a} + {b} = {a + b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b}")
+```
+:::
+
+
+## Array logic operations
+
+-   similar to **logic** operations on (boolean) numbers
+-   element-wise
+-   shapes need to be compatible
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.array([1, 3, 4])   
+b = np.array([1, 1, 10])
+print(f"{a} > {b} = {a > b}")
+print(f"{a} == {b} = {a == b}")
+```
+:::
+
+
+## Array mathematical functions
+
+- Apply mathematical functions similar to math library 
+- Numpy functions, for example: 
+    `math.sin()` $\rightarrow$ `np.sin()`
+
+::: fragment
+```{python}
+#| output-location: fragment
+print(f"sin({a}) = {np.sin(a)}")
+```
+:::
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+print(f"sqrt({a}) = {np.sqrt(a)}")
+```
+:::
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+print(f"exp({a}) = {np.exp(a)}")
+```
+:::
+
+
+# Linear algebra: Vectors
+
+## Vectors
+
+A vector is a 1D array, e.g. a column or a row vector:
+$$
+\vec{a} = \pmatrix{a_1\\a_2\\ \vdots \\ a_M} \qquad \vec{b} = \pmatrix{b_1 & b_2 & \dots & b_N}
+$$
+
+::: fragment
+A column vector:
+``` {python}
+a = np.array([[1],[3],[5]])
+print(a)
+```
+:::
+
+## Vectors
+
+A vector is a 1D array, e.g. a column or a row vector:
+$$
+\vec{a} = \pmatrix{a_1\\a_2\\ \vdots \\ a_M} \qquad \vec{b} = \pmatrix{b_1 & b_2 & \dots & b_N}
+$$
+
+A row vector:
+``` {python}
+b = np.array([2, 4, 6, 8])
+print(b)
+```
+
+
+## The scalar product (dot-product)
+
+The scalar product $\vec{a} \cdot \vec{b}$ is defined as **scalar** value
+
+$$
+\vec{a} \cdot \vec{b}  = |a| |b| \cos(\theta)
+$$
+
+with $\theta$ the angle between $a$ and $b$\
+
+**Alternative definition** of the scalar product $\vec{a} \cdot \vec{b}$:
+
+$$
+\vec{a} \cdot \vec{b} = \sum_{i=1}^d a_i \, b_i
+$$
+where $d$ is the dimension: 2D, 3D, ..., ND
+
+## The scalar product (dot-product)
+
+Scalar product $\vec{a} \cdot \vec{b}$ can be computed in Numpy using `np.dot`:
+
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.array([1, -1])   
+b = np.array([1.5, 2.5])
+s = np.dot(a, b)
+print(f"{a} . {b} = {s}")
+```
+:::
+
+\
+
+::: fragment
+Use `np.vdot` for complex-valued vectors, calculates $\vec{a}^* \cdot \vec{b}$:
+```{python}
+#| output-location: fragment
+a = np.array([-1 + 1j, 1 - 1j])   
+b = np.array([0, 2j])
+print(f"{np.conj(a)} . {b} = {np.vdot(a, b)}")
+```
+:::
+
+
+
+## The scalar product (dot-product)
+
+Scalar product $\vec{a} \cdot \vec{b}$ can be computed in Numpy using `np.dot`:
+
+
+```{python}
+a = np.array([1, -1])   
+b = np.array([1.5, 2.5])
+s = np.dot(a, b)
+print(f"{a} . {b} = {s}")
+```
+
+\
+
+::: fragment
+Higher dimensions than 3 possible:
+```{python}
+#| output-location: fragment
+a = np.array([-1, 2, 2, 2, 1])   
+b = np.array([0, 0, -3, 3, 2])   
+print(f"{a} . {b} = {np.dot(a, b)}")
+```
+:::
+
+## Norm of a vector
+
+- Norm of a vector is the length of a vector
+- Defined as square root of scalar product:
+
+$$
+|\vec{a}| = \sqrt{\vec{a}\cdot\vec{a}} = | \pmatrix{a_1 & a_1 & \dots & a_d} | = \sqrt{(\sum_{i=1}^d a_i^2)}
+$$
+
+::: fragment
+
+``` {python}
+import numpy.linalg as la
+a = np.array([1, 3, 0, 5])
+print(f"The norm of {a} = {la.norm(a)}")
+```
+
+:::
+
+## Vector products (cross-product)
+
+The vector product $\vec{a} \times \vec{b}$ is defined as vector $\vec{c}$ with
+
+- Norm $|\vec{a} \times \vec{b}|  = |a| |b| \sin(\theta)$
+- Perpendicular to surface spanned by $\vec{a}$ and $\vec{b}$
+
+::: fragment
+```{python}
+#| echo: false
+import matplotlib.pyplot as plt
+
+a = np.array([0.5, -0.7, -0.1])
+b = np.array([0.6, 0.8, 0.5])
+c = np.cross(a, b)
+#print(c)
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+ax.quiver(0, 0, 0, a[0], a[1], a[2], normalize=False, color="red")
+ax.quiver(0, 0, 0, b[0], b[1], b[2], normalize=False, color="blue")
+ax.quiver(0, 0, 0, c[0], c[1], c[2], length=1, normalize=False, color="magenta")
+ax.set_xlim([-1,1])
+ax.set_ylim([-1,1])
+ax.set_zlim([-1,1])
+plt.show()
+
+```
+:::
+
+
+## Vector products
+
+Alternative definition (suitable for computers):
+
+$$
+\begin{aligned}
+\vec{a} \times \vec{b} & = \det\pmatrix{
+  \vec{e_1} & \vec{e_2} & \vec{e_3}\\
+  a_1 &   a_2 & a_3 \\
+  b_1 &   b_2 & b_3 \\} \\
+  & \\
+  & = \begin{vmatrix}
+  a_2 &   a_3\\
+  b_2 &   b_3\\
+  \end{vmatrix}\vec{e_1} - 
+  \begin{vmatrix}
+  a_1 &   a_3\\
+  b_1 &   b_3\\
+  \end{vmatrix} \vec{e_2} +
+  \begin{vmatrix}
+  a_2 &   a_3\\
+  b_2 &   b_3\\
+  \end{vmatrix}
+  \vec{e_3} \\
+  & \\
+  & = (a_2 b_3 - a_3 b_2) \vec{e_1} - (a_1 b_3 - a_3 b_1) \vec{e_2} + (a_1 b_2 - a_2 b_1) \vec{e_2} \\
+\end{aligned}
+$$
+
+## Vector products
+
+Calculate $\vec{a} \times \vec{b}$ using the Numpy function `np.cross(a, b)`:
+
+\
+
+::: fragment
+```{python}
+a = np.array([1, -1/2, 1])
+b = np.array([1/2, 1, 1/2])
+c = np.cross(a, b)
+print(f"{a} x {b} = {c}")
+```
+:::
+
+
+
+# Linear algebra: Matrices
+
+
+## Array initialization: matrices
+
+```{python}
+#| output-location: fragment
+a = np.eye(3)             # 2D unity matrix
+print(a)
+```
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+# Constructing a matrix with "diagonals"
+a = np.diagflat([6, 5, 4], 1) + np.diagflat([1, 2, 3], -1)
+print(a)
+```
+:::
+
+
+## Matrix products
+
+The matrix product between matrices $A$ and $B$ is defined as
+
+$$
+\begin{aligned}
+A \cdot B & = \pmatrix{
+  a_{11} & a_{12} & a_{13}\\
+  a_{21} & a_{22} & a_{23}\\
+}
+\pmatrix{
+  b_{11} & b_{12} & b_{13}\\
+  b_{21} & b_{22} & b_{23}\\
+  b_{31} & b_{32} & b_{33}\\
+}\\
+&\\
+  & = \sum_{j} a_{ij} b_{jk}\\
+\end{aligned}
+$$
+
+- Rows of $A$ are multiplied by columns of $B$.
+- $A_{MN} \cdot B_{NK} \leftarrow$ No. columns of $A$ must equal No. rows of $B$ 
+
+## Matrix products
+
+The matrix product $A \cdot B$ using Numpy `np.matmul()`:
+
+``` {python}
+A = np.array([[1,-2,3],[0,2,4]])
+B = np.array([[1,-2,3],[0,2,4],[-1,1,0]])
+print(A)
+```
+
+``` {python}
+print(B)
+```
+
+::: fragment
+``` {python}
+#| output-location: fragment
+print(np.matmul(A, B))
+```
+:::
+
+## Matrix products
+
+Alternatives to `np.matmul(A, B)` for $A \cdot B$ using Numpy:
+
+  - `@` operator: `A @ B`, and
+  - `np.dot(A, B)`
+
+``` {python}
+#| output-location: fragment
+print(np.matmul(A, B))
+```
+
+::: fragment
+``` {python}
+#| output-location: fragment
+print(A @ B)
+```
+:::
+
+
+::: fragment
+``` {python}
+#| output-location: fragment
+print(np.dot(A, B))
+```
+:::
+
+
+## Determinant of a matrix
+
+The determinant of a matrix $A$:
+$$
+\begin{aligned}
+\det(A) & = \det\pmatrix{
+  a_{11} & a_{12} & a_{13}\\
+  a_{21} & a_{22} & a_{23} \\
+  a_{31} & a_{32} & a_{33} \\} \\
+  & \\
+  & = \begin{vmatrix}
+  a_{22} &   a_{23}\\
+  a_{32} &   a_{33}\\
+  \end{vmatrix} a_{11} - 
+  \begin{vmatrix}
+  a_{21} &   a_{23}\\
+  a_{31} &   a_{33}\\
+  \end{vmatrix} a_{12} + 
+  \begin{vmatrix}
+  a_{21} &   a_{22}\\
+  a_{31} &   a_{32}\\
+  \end{vmatrix} a_{13} \\ 
+  &\\
+  & = (a_{22} a_{33} - a_{23} a_{32}) a_{11} - \dots
+\\
+\end{aligned}
+$$
+
+## Determinant of a matrix
+
+Use Numpy `numpy.linalg.det()` function
+
+``` {python}
+import numpy.linalg as la
+A = np.array([[1,-2,3],[0,2,4],[-1,1,0]])
+print(A)
+```
+
+\
+Determinant is given by
+``` {python}
+print(f"Det(A) = {la.det(A)}")
+```
+
+## Inverse of a matrix
+
+The inverse $A^{-1}$ of a matrix $A$ is defined as:
+
+$$
+A^{-1} A  = A^{-1} A  = \mathbb{1}
+$$
+``` {python}
+import numpy.linalg as la
+A = np.array([[1,-2,3],[0,2,4],[-1,1,0]])
+print(A)
+print(f"Det(A) = {la.det(A)}")
+```
+
+## Inverse of a matrix
+
+The inverse $A^{-1}$ of a matrix $A$ is defined as:
+
+$$
+A^{-1} A  = A^{-1} A  = \mathbb{1}
+$$
+Since $\det(A) \neq 0 \rightarrow A^{-1}$ exists
+``` {python}
+Ainv = la.inv(A)
+print(Ainv)
+```
+
+## Inverse of a matrix
+
+The inverse $A^{-1}$ of a matrix $A$ is defined as:
+
+$$
+A^{-1} A  = A^{-1} A  = \mathbb{1}
+$$
+
+Verify $A^{-1} A  = \mathbb{1}$: 
+``` {python}
+np.dot(A, Ainv)
+```
+
+::: fragment
+``` {python}
+np.round(np.dot(A, Ainv), 5) # Round numerical errors
+```
+:::

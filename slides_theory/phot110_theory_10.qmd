@@ -1,0 +1,147 @@
+---
+title: "PHOT 110: Introduction to programming"
+subtitle: "LECTURE 10: Data, Dictionaries and Pandas (Ch. 6)"
+author: "Michaël Barbier"
+date: today
+date-format: long
+execute:
+  echo: true
+  output: true
+  warning: true
+  error: true
+  code-overflow: wrap
+  code:
+    font-size: 54px
+format: 
+  revealjs:
+    fontsize: 36px
+    template-partials:
+      - title-slide.html
+    center-title-slide: true
+    margin: 0.05
+    #output-location: column-fragment
+    #smaller: true
+    footer: "[Lecture 10: Data, Dictionaries and Pandas (Ch. 6)]{style=color:darkred;}"
+    slide-number: true
+    show-slide-number: all
+    highlight-style: tango
+    #theme: simple
+    theme: [default, custom.scss]
+    #chalkboard: true
+    self-contained: true
+    embed-resources: true
+editor: source
+jupyter: python3
+---
+
+
+# Structured data: Dictionaries
+
+## What is a dictionary ?
+
+A list of key-value pairs with unique keys
+
+``` {python}
+# Defining
+age = {"joe": 34, "tom": 20, "mary": 50}
+print(age)
+```
+
+\
+
+::: fragment
+
+``` {python}
+# Using dict as a constructor
+age = dict([("joe", 34), ("tom", 20), ("mary", 50)])
+print(age)
+```
+
+:::
+
+## Operations: indexing, adding, deleting
+
+``` {python}
+print(age["mary"])
+```
+
+\
+
+::: fragment
+
+``` {python}
+# Adding an element
+age["Mikal"] = 56
+print(age)
+```
+
+:::
+
+\
+
+::: fragment
+
+``` {python}
+# Deleting an element
+del age["joe"]
+print(age)
+```
+
+:::
+
+## Looping over a dictionary key-value pairs
+
+- methods `items()`, `keys()`, and `values()` extract key-value pairs, keys, and values of the dictionary
+- These can be used within loops:
+
+``` {python}
+for k, v in age.items():
+  print(k, v)
+```
+
+
+## Looping over a dictionary key-value pairs
+
+- methods `items()`, `keys()`, and `values()` extract key-value pairs, keys, and values of the dictionary
+- These can be used within loops:
+
+``` {python}
+for k in age.keys():
+  if k != "Mikal":
+    print(age[k])
+```
+
+## Looping over a dictionary key-value pairs
+
+- methods `items()`, `keys()`, and `values()` extract key-value pairs, keys, and values of the dictionary
+- These can be used within loops:
+
+``` {python}
+for v in age.values():
+  print(v)
+```
+
+
+## Dict comprehension
+
+Similar to list comprehension:
+
+``` {python}
+# List comprehension: creating a list
+squares = [x**2 for x in range(1, 5)]
+print(squares)
+```
+
+\
+
+::: fragment
+With dictionaries use curly brackets and the colon separator:
+
+``` {python}
+# Dict comprehension: creating a Dict / Dictionary
+numbers_and_squares = {x: x**2 for x in range(1, 5)}
+print(numbers_and_squares)
+```
+
+:::
+

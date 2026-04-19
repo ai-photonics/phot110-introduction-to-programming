@@ -1,0 +1,17 @@
+/*-- scss:defaults --*/
+
+$link-color: #42affa;
+$code-block-font-size: 0.8em;
+
+$presentation-h1-font-size: 76px;
+$presentation-h2-font-size: 48px;
+$presentation-heading-font: "Calibri Light";
+$presentation-heading-color: darkred;
+$presentation-heading-text-transform: uppercase;
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}

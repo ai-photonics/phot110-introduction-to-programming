@@ -1,0 +1,904 @@
+---
+title: "PHOT 110: Introduction to programming"
+subtitle: "LECTURE 04"
+author: "Michaël Barbier"
+date: today
+date-format: long
+execute:
+  echo: true
+  output: true
+  warning: true
+  error: true
+  code-overflow: wrap
+  code:
+    font-size: 54px
+format: 
+  revealjs:
+    fontsize: 36px
+    template-partials:
+      - title-slide.html
+    center-title-slide: true
+    margin: 0.05
+    #output-location: column-fragment
+    #smaller: true
+    footer: "[Lecture 04: for loops, sequences, enumerate, arrays]{style=color:darkred;}"
+    slide-number: true
+    show-slide-number: all
+    highlight-style: tango
+    #theme: simple
+    theme: [default, custom.scss]
+    #chalkboard: true
+    self-contained: true
+    embed-resources: true
+editor: source
+jupyter: python3
+---
+
+## Summary of **for** and **while**
+
+::: columns
+::: column
+**`while`** loop:
+
+-   repeat under condition
+-   we don't know how many iterations we need, and
+-   we have a stopping criterium
+
+``` python
+while <condition>:
+    <statement>
+    <statement>
+    ...
+    <statement>
+```
+:::
+
+::: column
+**`for`** loop:
+
+-   repeat a process
+-   number of **iterations** is known, or
+-   we iterate over a list of elements
+
+``` python
+for <el> in <list>:
+    <statement>
+    <statement>
+    ...
+    <statement>
+```
+:::
+:::
+
+## The for loop so far ...
+
+Iterate over a **sequence**: `list`, `range`, etc.
+
+```{python}
+for el in ["banana", "orange", "apple"]:
+  print(el)
+```
+
+::: fragment
+```{python}
+for el in range(3):
+  print(el)
+```
+:::
+
+::: fragment
+But ... We can actually iterate over other types: `string`, `set`, etc.
+:::
+
+## Outlook: for loops, sequences, and arrays
+
+-   sequences: lists, ranges, tuples
+-   strings as special sequences
+-   enumerate
+-   list comprehension
+-   break, continue, and pass
+-   arrays
+-   simple plots
+
+# Sequences: lists, ranges, tuples, strings
+
+## Sequences
+
+-   Sequences are **collections** of elements with an **order**
+-   **unordered collections** exist: **sets**
+-   The following types are sequences:
+    -   **`list`**, **`range`**, strings (**`str`**)
+    -   **tuple** (which we will see today), ...
+-   Common operations: indexing, slicing, `len()`, `.sort()`
+-   Can be mutable (adaptable) or immutable
+
+## Mutable vs. Immutable
+
+-   Every object has a **unique ID** (CPython: address in memory)
+
+```{python}
+i = 45 
+print(id(i))
+```
+
+::: fragment
+```{python}
+a_string = "Pretzel"
+a_list = [3, 105, 56]
+a_range = range(4)
+print(f"The ID of a_string: {a_string} = { id(a_string) }")
+print(f"The ID of a_list: {a_list} = { id(a_list) }")
+print(f"The ID of a_range: {a_range} = { id(a_range) }")
+```
+:::
+
+## Mutable vs. Immutable
+
+-   Numbers are immutable
+-   If you change them, the ID will change
+-   Even if you assign again the same variable name
+
+```{python}
+i = 45 
+print(id(i))
+i = i + 1
+print(id(i))
+```
+
+## Mutable vs. Immutable
+
+-   strings (`str`) are immutable
+-   Operations will provide a copy
+
+```{python}
+A = "Pretzel"
+B = A.upper()
+print(f"String A: {A} is still the same as A: {A}")
+print(f"String B: {B} is the uppercase version of A: {A}")
+print(f"ID of B: {id(B)} is not equal to ID of A: {id(A)}")
+```
+
+## Mutable vs. Immutable
+
+-   Lists are mutable
+-   Elements can change, added, removed, etc.
+
+```{python}
+a_list = [3, "car", 5]
+print(a_list)
+print(id(a_list))
+
+# Change 2nd element
+a_list[1] = "tree"
+print(a_list)
+print(id(a_list))
+```
+
+## Tuples are immutable lists
+
+Syntax to define a tuple:
+
+```{python}
+t = (3, "leaf", False)
+print(t)
+```
+
+::: fragment
+Cast another collection to tuple, e.g. from `list`:
+
+```{python}
+t = tuple([1, 3.23, 3, 5 + 6J])
+print(t)
+```
+:::
+
+::: fragment
+Tuples are immutable:
+
+```{python}
+t = tuple([1, 3.23, 3, 5 + 6J])
+t[0] = 2
+```
+:::
+
+## Tuples are immutable lists
+
+::: columns
+::: column
+**Lists** are mutable
+
+```{python}
+a_list = [3, "car", 5]
+print(a_list)
+
+# Change 2nd element
+a_list[1] = "tree"
+print(a_list)
+```
+:::
+
+::: {.fragment .column}
+**Tuples** are immutable
+
+```{python}
+a_tuple = (3, "car", 5)
+print(a_tuple)
+
+# Change 2nd element
+a_tuple[1] = "tree"
+print(a_tuple)
+```
+:::
+:::
+
+## Tuples are immutable lists
+
+::: columns
+::: column
+**Lists** are mutable
+
+```{python}
+a_list = [3, "car", 5]
+print(a_list)
+
+# Append element
+a_list.append(True)
+print(a_list)
+```
+:::
+
+::: {.fragment .column}
+**Tuples** are immutable
+
+```{python}
+a_tuple = (3, "car", 5)
+print(a_tuple)
+
+# Append element
+a_tuple.append(True)
+print(a_tuple)
+```
+:::
+:::
+
+## Overview of sequence types (so far)
+
+| Type    | mutable | item type   |
+|---------|---------|-------------|
+| `list`  | yes     | mixed types |
+| `tuple` | no      | mixed types |
+| `range` | no      | integers    |
+| `str`   | no      | characters  |
+
+Sequence operations are available according to mutability and type
+
+## Common sequence operations
+
+``` {.python code-line-numbers="1-1|2-2|3-3|4-4|-"}
+<bool> = el in s         # --> True/False
+<bool> = el not in s     # --> True/False
+s = s1 + s2              # concatenate s1 and s2
+s * n or n * s           # n times concatenation
+```
+
+::: fragment
+Examples
+
+```{python code-line-numbers="1-1|2-2|3-3|4-4|-"}
+print("a" in "Hallo")          # --> True/False
+print(9 not in range(4, 10))   # --> True/False
+print([100, 200] + [500, 20])  # concatenate s1 and s2
+print(("cat", "dog") * 3)      # n times concatenation
+```
+:::
+
+::: fragment
+Note: concatenation does not work for ranges
+:::
+
+## Common sequence operations
+
+``` python
+el = s[i]                # Select element i
+s = s[start:end+1:step]  # Slicing
+n = s.count[<el>]        # Count elements
+i = s.index[<el>]        # index first el
+```
+
+::: fragment
+For a tuple:
+
+```{python}
+s = ("Malta", "Corsica", "Lesvos", "Malta"); print(s)
+print(f"Third element of s: { s[2] }")
+print(f"Slice of s: { s[1:] }")
+print(f"'Malta' appears: { s.count('Malta') } times")
+print(f"First index of 'Malta': { s.index('Malta') }")
+```
+:::
+
+## Common sequence operations
+
+``` python
+el = s[i]                # Select element i
+s = s[start:end+1:step]  # Slicing
+n = s.count[<el>]        # Count elements
+i = s.index[<el>]        # index first el
+```
+
+For a list:
+
+```{python}
+s = ["Malta", "Corsica", "Lesvos", "Malta"]; print(s)
+print(f"Third element of s: { s[2] }")
+print(f"Slice of s: { s[1:] }")
+print(f"'Malta' appears: { s.count('Malta') } times")
+print(f"First index of 'Malta': { s.index('Malta') }")
+```
+
+## Sequence operations: only mutable
+
+List is the only mutable sequence (so far)
+
+``` python
+<list>[i] = <el>
+<list>.remove(<el>)        # remove first <el>
+<list>.insert(i, <el>)     # insert <el> at index i
+<el> = <list>.pop(i)       # return <el> at i and remove
+<list>.append(<el>)        # Or: <list> += <el>
+<list>.extend(<iterable>)  # Or: <list> += <iterable>
+<list>.sort()              # Sorts list in-place
+<list>.reverse()           # Reverses list in-place
+```
+
+## Sequence operations: only mutable
+
+Examples:
+
+```{python}
+fruits = ["banana", "orange", "pear", "peach"]
+nuts = ("almond", "walnut")
+
+fruits.remove("banana")    # remove first <el>
+fruits.insert(0, "mango")  # insert <el> at index i
+el = fruits.pop(3)         # return <el> at i and remove
+print(f"We popped {el}")
+fruits.append("mandarin")  # Or: <list> += <el>
+fruits.extend(nuts)        # Or: <list> += <iterable>
+fruits.sort()              # Sorts list in-place
+fruits.reverse()           # Reverses list in-place
+print(fruits)
+```
+
+## Sequence operations: also for immutable
+
+Items of immutable types cannot change $\Rightarrow$ return value
+
+``` python
+<list> = sorted(<collection>)  # Returns sorted
+<iter> = reversed(<list>)      # Returns reversed
+```
+
+::: {.fragment]
+Examples:
+
+```{python}
+#| output-location: fragment
+t = (3, 5, 7, 2, 1)
+t_sort = sorted(t)   # Returns sorted
+t_rev = reversed(t)  # Returns reversed
+print(t)
+print(t_sort)
+print(list(t_rev))
+```
+:::
+
+# Strings as special sequences
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+print("   Some_extra spaces ")
+print("   Some_extra spaces ".strip())
+print("_Some text...".strip('.'))
+```
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+# Split and join strings
+print("Split_on_underscore".split(sep="_"))
+print( ".".join(["program", "exe"]) )
+```
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+print("Ha" in "Hallo")          
+print("Ball".startswith("Bar")) 
+print("Bicycle".find("cyc"))    
+print("Bicycle".index("cyc"))   
+```
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+print("GOOD morning".lower())    
+print("GOOD morning".upper())      
+print("GOOD morning".capitalize()) 
+print("GOOD morning".title())      
+print("I like oranges".replace("oranges", "apples"))
+```
+
+## String specific operations
+
+-   Aside from the common sequence operations
+-   Specific to characters and text
+
+```{python}
+print(chr(68))  # Convert int to Unicode character.
+print(ord("A")) # Convert Unicode character to int.
+```
+
+# For loops revisited
+
+## For loop over sequences: also strings
+
+```{python}
+# Print all letters of a string
+for a in "Python 3.12":
+  print(a)
+```
+
+## For loop over sequences: also strings
+
+```{python}
+# Print all letters of a string reverse ordered
+for a in reversed("Python 3.12"):
+  print(a)
+```
+
+## For loop over elements with index ?
+
+-   loop over the index from range with len() giving the length of the sequence
+-   select elements with the index
+
+```{python}
+# Print elements in order with their index
+s = ["mouse", "chicken", "dog", "cow"]
+for i in range(len(s)):
+  print(f"The element with index: {i} = {s[i]}")
+```
+
+## For loop over elements with index ?
+
+-   alternative: use enumerate
+-   lazy evaluated (just as range)
+-   gives both index and element
+
+::: fragment
+```{python}
+# Print elements in order with their index
+s = ["mouse", "chicken", "dog", "cow"]
+for i, el in enumerate(s):
+  print(f"The element with index: {i} = {el}")
+```
+:::
+
+## flow control: continue
+
+**`continue`** skips a single iteration in `while` or `for` loop
+
+```{python}
+#| output-location: fragment
+# Print elements in order with their index
+numbers = [22, 20, 34, None, 25, 78]
+for i, el in enumerate(numbers):
+  if el is None:
+    continue
+  print(f"The element with index: {i} = {el}")
+```
+
+## flow control: break
+
+**`break`** stops the current `while` or `for` loop
+
+```{python}
+#| output-location: fragment
+# Print elements in order with their index
+numbers = [22, 20, 34, None, 25, 78]
+for i, el in enumerate(numbers):
+  if el is None:
+    break
+  print(f"The element with index: {i} = {el}")
+```
+
+## flow control: pass
+
+**`pass`** performs no action, purpose
+
+-   **clarify** inaction, provide **required** statement
+-   used for while, for, if, functions, classes, etc.
+
+```{python}
+#| output-location: fragment
+numbers = [2, 10, 5, 3, 4, 7, 9, 3, 1]
+count_high = 0; count_low = 0;
+for el in numbers:
+  if el > 8:
+    count_high += 1
+  elif el <= 4:
+    count_low += 1
+  else:
+    pass
+print(f"High: {count_high}, Low: {count_low}")
+```
+
+# List comprehensions
+
+## When a for loop is cumbersome
+
+-   to generate a simple list
+-   requires an index variable, can overwrite variable with same name
+
+::: fragment
+```{python}
+# Print powers of 2 up to 1024
+powers = []
+for n in range(11):
+  powers.append(2**n)
+print(powers)
+```
+:::
+
+::: fragment
+List comprehension
+
+```{python}
+powers = [2**n for n in range(11)]
+print(powers)
+```
+:::
+
+## When a for loop is cumbersome
+
+```{python}
+cs = []
+for x in [1,2,3]:
+    for y in [3,1,4]:
+        if  x != y:
+            cs.append((x, y))
+print(cs)
+```
+
+\
+List comprehension
+
+```{python}
+cs = [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+print(cs)
+```
+
+# Arrays
+
+## Array definition
+
+-   arrays have a fixed length
+-   array elements have the same type
+-   We will use arrays from the Numpy library
+-   Optimized for numerical calculations
+
+::: fragment
+```{python}
+# Load numpy for array
+import numpy as np
+
+a = np.array([1, 2, 4, 6, 5, 9])
+print(a)
+```
+:::
+
+## Array initialization
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+a = np.arange(15)          # similar to range()
+print(a)
+```
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.linspace(0, 5, 11)  # linearly spaced interval
+print(a)
+```
+:::
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.zeros((2, 3))       # 2D array with zeros
+print(a)
+```
+:::
+
+## Array operations
+
+-   similar to arithmetic/logic operations on numbers
+-   element-wise
+-   shapes need to be compatible
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+a = np.array([2.5, 3, 4])   
+b = np.array([1, 0.1, 10])
+print(f"{a} + {b} = {a + b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b}")
+```
+
+# Simple plots
+
+## Line plot
+
+We will see more complex plots later on. If you want to look ahead: <https://matplotlib.org/stable/users/explain/quick_start.html>
+
+```{python}
+#| output-location: slide
+# Import library for plotting and numerics
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define x and y coordinates
+x = np.linspace(-2, 2, 100)
+y = x**2
+
+# Plot a line between the coordinates
+plt.plot(x, y);
+
+```
+
+## Line plot
+
+```{python}
+#| output-location: fragment
+# Change the font-size
+import matplotlib as mpl
+mpl.rcParams['font.size'] = 18
+plt.plot(x, y);
+
+```
+
+## Line plot
+
+```{python}
+#| output-location: fragment
+# Add labels
+plt.xlabel("x (in m)", fontsize=20, color='red')
+plt.ylabel("y (in V)", fontsize=20, color='blue')
+plt.plot(x, y, color='green', linewidth=4);
+
+```
+
+## Scatter plot
+
+```{python}
+#| output-location: slide
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create the coordinate of a spiral
+angles = np.linspace(0, 5*np.pi, 100)
+radii = np.linspace(0, 4, 100)
+xs = radii * np.cos(angles)
+ys = radii * np.sin(angles)
+
+# Plot spiral points with increasing size and color-value
+plt.scatter(xs, ys, 10*radii, radii/4);
+
+```
+
+## Scatter plot
+
+```{python}
+#| output-location: slide
+# Plot spiral points with increasing size and color-value
+plt.scatter(xs, ys, 10*radii, radii/4)
+
+# Set the axis aspect ratio to equal
+ax = plt.gca()
+ax.set_aspect("equal");
+```
+
+# More advanced Looping structures
+
+## Looping multiple lists simultaneously
+
+- Loop can be over lists, arrays, sets, iterators, etc.
+- There are different options to loop over two "lists" (say `a` and `b`) of same length:
+  1. **`while`** loop
+  2. **`for`** loop with **`range(len(a))`**
+  3. **`for`** loop with **`enumerate(a)`**
+  4. **`for`** loop with **`zip(a, b)`**
+  5. **list comprehension** with **`zip(a, b)`**
+
+## Looping multiple lists simultaneously
+
+- Exercise with ellipses with parameters: `a` and `b` 
+$$
+\begin{aligned}
+x = a \cos(t)\\
+y = b \cos(t)
+\end{aligned}
+$$
+
+``` {python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+# the for loop allows to loop over a list or array:
+n_curves = 5
+t = np.linspace(0, 2*np.pi, 100)
+a = np.linspace(1, 2, n_curves)
+b = np.round(1 / a, 2)
+```
+
+## Looping multiple lists simultaneously
+
+``` {python}
+#| echo: false
+colors = plt.cm.jet(np.linspace(0, 1, n_curves))
+
+i = 0
+while i < len(a):
+  x = a[i] * np.cos(t)
+  y = b[i] * np.sin(t)
+  plt.plot(x, y, color = colors[i])
+  i = i + 1
+
+ax = plt.gca()
+ax.set_aspect('equal', 'box')
+plt.show()
+
+```
+
+## Looping multiple lists simultaneously
+
+- `len(a)` gives the length of the list
+
+``` {python}
+# Method 1 using while
+i = 0
+while i < len(a):
+  x = a[i] * np.cos(t)
+  y = b[i] * np.sin(t)
+  i = i + 1
+  # plt.plot(x, y)
+```
+
+## Looping multiple lists simultaneously
+
+- `len(a)` gives the length of the list
+
+``` {python}
+# Method 1 using while
+i = 0
+while i < len(a):
+  x = a[i] * np.cos(t)
+  y = b[i] * np.sin(t)
+  i = i + 1
+  # plt.plot(x, y)
+```
+
+- `range(len(a))` gives numbers from 0 to `len(a) - 1`
+
+``` {python}
+# Method 2 using range
+for i in range(len(a)):
+  x = a[i] * np.cos(t)
+  y = b[i] * np.sin(t)
+```
+
+## Looping multiple lists simultaneously
+
+- Asymmetric solution with enumerate
+- The parameters `a` and `b` are treated differently
+
+``` {python}
+# Method 3 using enumerate
+for i, ai in enumerate(a):
+  x = ai * np.cos(t)
+  y = b[i] * np.sin(t)
+```
+
+
+## Looping multiple lists simultaneously
+
+- `zip(a,b)` merges lists a and b as iterator of tuples `(a[i],b[i])`
+- An iterator is like a list, but lazy evaluated
+
+``` {python}
+print(list(zip(a, b)))
+```
+
+## Looping multiple lists simultaneously
+
+- `zip(a,b)` merges lists a and b as iterator of tuples `(a[i],b[i])`
+- An iterator is like a list, but lazy evaluated
+
+``` {python}
+print(list(zip(a, b)))
+```
+
+- usage in a `for` loop:
+
+``` {python}
+# Method 4 using zip()
+for ai, bi in zip(a, b):
+  x = ai * np.cos(t)
+  y = bi * np.sin(t)
+```
+
+
+## Looping multiple lists simultaneously
+
+- Does it make sense to us `enumerate()` ?
+- `enumerate()` makes a "list" of tuples
+- elements are the index and the tuples of `zip()`
+
+``` {python}
+print(list(enumerate(zip(a, b))))
+```
+
+``` {python}
+# Method 3 using enumerate
+for i, tuple_i in enumerate(zip(a, b)):
+  x = tuple_i[0] * np.cos(t)
+  y = tuple_i[1] * np.sin(t)
+```
+
+This looks cumbersome !
+
+## Looping multiple lists simultaneously
+
+- Or combining `range()` and `zip()`?
+
+``` {python}
+print(list(zip(range(len(a)), a, b)))
+```
+
+
+``` {python}
+# Method 3 using enumerate
+for i, ai, bi in zip(range(len(a)), a, b):
+  x = ai * np.cos(t)
+  y = bi * np.sin(t)
+```
+
+
+## Looping multiple lists simultaneously
+
+``` {python}
+# Method 5 using list comprehension with zip()
+[plt.plot(ai*np.cos(t), bi*np.sin(t)) for ai, bi in zip(a, b)];
+```

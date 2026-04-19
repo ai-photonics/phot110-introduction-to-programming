@@ -1,0 +1,681 @@
+---
+title: "PHOT 110: Introduction to programming"
+subtitle: "LECTURE 11: Object Oriented Programming: Classes (Ch. 7 & 9)"
+author: "Michaël Barbier"
+date: today
+date-format: long
+execute:
+  echo: true
+  output: true
+  warning: true
+  error: true
+  code-overflow: wrap
+  code:
+    font-size: 40px
+format: 
+  revealjs:
+    fontsize: 36px
+    template-partials:
+      - title-slide.html
+    center-title-slide: true
+    margin: 0.05
+    #output-location: column-fragment
+    #smaller: true
+    footer: "[Lecture 11: Object Oriented Programming: Classes (Ch. 7 & 9)]{style=color:darkred;}"
+    slide-number: true
+    show-slide-number: all
+    highlight-style: tango
+    #theme: simple
+    theme: [default, custom.scss]
+    #chalkboard: true
+    self-contained: true
+    embed-resources: true
+editor: source
+jupyter: python3
+---
+
+
+# Classes 
+
+
+## What is a class ?
+
+- Part of object-oriented programming
+- A class combines
+  - **Attributes** (parameters of the class), and
+  - **Methods** (functions of the class)
+- An **object** is an **instance** of a **class**
+
+::: fragment
+
+``` {python}
+text = "This is an object of class string"
+print(type(text))
+```
+
+:::
+
+## What is a class ?
+
+- Part of object-oriented programming
+- A class combines
+  - **Attributes** (parameters of the class), and
+  - **Methods** (functions of the class)
+- An **object** is an **instance** of a **class**
+
+``` {python}
+a_list = ["Green", "Yellow", "Orange"]
+print(a_list.__doc__)
+```
+
+
+
+## Class definition
+
+- **Attributes** (parameters of the class), and
+- **Methods** (functions of the class)
+
+::: fragment
+
+``` {python}
+class SimpleClass:
+
+    # An attribute 
+    secret = "4567"
+
+    # A method
+    def tell_the_secret(self):
+        return "The code = " + self.secret
+```
+
+:::
+
+## Classes & objects
+
+An **object** is an **instance** of a **class**
+
+``` {python}
+class SimpleClass:
+
+    secret = "4567"
+
+    def tell_the_secret(self):
+        return "The code = " + self.secret
+```
+
+\
+
+::: fragment
+
+``` {python}
+c = SimpleClass()
+print(c.secret)
+print(c.tell_the_secret())
+```
+
+:::
+
+## Constructors
+
+``` {python}
+class SimpleClass:
+
+    def __init__(self, code):
+        self.secret = str(code)
+
+    def tell_the_secret(self):
+        return "The code = " + self.secret
+```
+
+\
+
+::: fragment
+
+A constructor creates an **instance** of a **class** with **parameters**
+
+``` {python}
+c = SimpleClass(123456)
+print(c.tell_the_secret())
+```
+
+:::
+
+
+## A slightly more complex example class
+
+``` {python}
+class spaceship:
+
+  def __init__(self, pos_0, orient_0, image):
+    self.position = pos_0
+    self.orientation = orientation_0
+    self.image = image
+
+  def teleport(self, displacement):
+    self.position = self.position + displacement
+        
+  def test_collision(pos, R):
+    if (pos - self.position)**2  < R ** 2:
+      return True
+    return False
+```
+
+## Extra attributes
+
+``` {python}
+c = SimpleClass(512)
+print(c.tell_the_secret())
+
+# Define attributes after creation
+c.color = "Green"
+
+# Test the attribute is there
+print(c.color)
+
+```
+
+## Objects of a class
+
+Adding attributes per object
+
+``` {python}
+c1 = SimpleClass(123)
+c1.color = "Yellow"
+
+c2 = SimpleClass(456)
+c2.name = "Mehmet" 
+```
+
+\
+
+::: fragment
+
+``` {python}
+print("c1 says: " + c1.tell_the_secret())
+```
+
+\
+
+``` {python}
+print("c2 says: " + c2.tell_the_secret())
+```
+
+:::
+
+## Objects of a class
+
+Adding attributes per object
+
+``` {python}
+c1 = SimpleClass(123)
+c1.color = "Yellow"
+
+c2 = SimpleClass(456)
+c2.name = "Mehmet" 
+```
+
+\
+
+::: fragment
+
+``` {python}
+print(c1.color)
+```
+
+\
+
+``` {python}
+print(c2.color)
+```
+
+:::
+
+## Methods versus functions
+
+- Methods act on objects: You need an object!
+
+``` {python}
+a_list = [1, 2, 3]
+a_list.reverse()
+print(a_list)
+```
+
+- functions are not bound to an object
+
+```{python}
+a_list = [1, 2, 3]
+print(list(reversed(a_list)))
+```
+
+
+# Special methods
+
+## Special methods of a class
+
+Special methods use double underscores in their name:
+
+- Constructor: `__init__()`
+- Callable: `__call__()`
+- Printing a class instance: `__str__()`
+
+::: fragment
+
+**Operator overloading**: Using operators `+`, `-`, `*` between objects 
+
+- Not equal sign: `__ne__()`
+- Plus operator: `__add__()`
+
+:::
+
+## Callables
+
+- Especially for classes defining a formula
+- Call a class instance like a function
+
+::: fragment
+
+``` {python}
+class Formula:
+
+    def __init__(self, a):
+        self.a = a
+
+    def __call__(self, a, x):
+        return self.a * x
+```
+
+:::
+
+
+## Callables
+
+``` {python}
+class Formula:
+
+    def __init__(self, a):
+        self.a = a
+
+    def __call__(self, a, x):
+        return self.a * x
+```
+
+\
+
+::: fragment
+
+Formula is a class:
+
+``` {python}
+f = Formula(6)
+print(f)
+```
+
+:::
+
+
+## Callables
+
+``` {python}
+class Formula:
+
+    def __init__(self, a):
+        self.a = a
+
+    def __call__(self, a, x):
+        return self.a * x
+```
+
+\
+
+Formula can be called like a function:
+
+``` {python}
+f_called = f(6, 4)
+print(f_called)
+```
+
+
+## Telling how to print an instance: __str__()
+
+``` {python}
+class Formula:
+
+    def __init__(self, a):
+        self.a = a
+
+    def __str__(self):
+        return f"My special format: {self.a} + 5"
+```
+
+\
+
+::: fragment
+
+``` {python}
+f = Formula(6)
+print(f)
+```
+
+:::
+
+
+## Operator overloading
+
+Using for example "+" between custom class objects
+
+::: fragment
+
+``` {python}
+class Figure:
+
+    def __init__(self, a):
+        self.a = a
+
+    def __add__(self, a, x):
+        return self.a * x
+```
+
+:::
+
+
+# Class hierarchy
+
+## Example class 
+
+``` {python}
+class Vehicle:
+
+    location = None
+    city_list = ["Izmir", "Istanbul", "Bursa"]
+
+    def __init__(self, location):
+        self.location = str(location)
+
+    def drive_to_city(self, city):
+        self.location = city
+
+    def tell_current_location(self, city):
+        return self.location
+```
+
+
+## If you need something similar but not exactly the same
+
+Cargo delivery service: We want to transport goods
+
+  - A list of stock of goods in each city ? as an **attribute** ?
+  - A method `deliver()` ?
+
+::: fragment
+
+Bus transport of persons
+
+  - time tables
+  - number of seats
+  - ticket price per person
+
+:::
+
+## If you need something similar but not exactly the same
+
+Do we need to write code for a whole new class ?
+
+::: fragment
+
+- How to add functionality to the vehicle class ?
+- Change methods ?
+
+:::
+
+::: fragment
+
+**We can derive a class from another class**
+
+- Keeping the old functionality
+- Extending with new methods/attributes
+- Adapting methods
+
+:::
+
+
+## Family of classes
+
+
+``` {.python}
+class DerivedClass(BaseClass):
+    <statement>
+    ...
+    <statement>
+```
+
+
+## Example class 
+
+``` {python}
+class Vehicle:
+
+    city_list = ["Izmir", "Istanbul", "Bursa"]
+
+    def __init__(self, location):
+        self.city_list = ["Izmir", "Istanbul", "Bursa"]
+        self.location = location
+
+    def drive_to_city(self, city):
+        print(f"Driving from {self.location} to {city}")
+        self.location = city
+
+```
+
+\
+
+::: .fragment
+
+``` {python}
+car = Vehicle("Izmir")
+car.drive_to_city("Istanbul")
+```
+
+:::
+
+
+## Example class 
+
+``` {python}
+class Vehicle:
+
+    city_list = ["Izmir", "Istanbul", "Bursa"]
+
+    def __init__(self, location):
+        self.city_list = ["Izmir", "Istanbul", "Bursa"]
+        self.location = location
+
+    def drive_to_city(self, city):
+        print(f"Driving from {self.location} to {city}")
+        self.location = city
+
+```
+
+\
+
+``` {python}
+bus = Vehicle("Izmir")
+bus.drive_to_city("Istanbul")
+```
+
+
+## Derived classes
+
+Make a derived class (subclass)
+
+- Use `super()` to access BaseClass
+- Use `super().__init__()` to have BaseClass constructor
+
+``` {.python}
+class DerivedClass(BaseClass):
+
+    <attribute>
+    <attribute>
+
+    <method>
+    <method>
+    ...
+```
+
+
+## Derived classes
+
+``` {python}
+#| style: font-size:32px
+class Vehicle:
+
+    def __init__(self, location):
+        self.city_list = ["Izmir", "Istanbul", "Bursa"]
+        self.location = location
+
+    def drive_to_city(self, city):
+        print(f"Driving from {self.location} to {city}")
+        self.location = city
+```
+
+\
+
+::: .fragment
+
+``` {python}
+#| style: font-size:32px
+class Bus(Vehicle):
+  
+    def __init__(self, location, passengers):
+        super().__init__(location)
+        self.max_passengers = 4
+        self.passengers = passengers
+```
+
+:::
+
+
+## Derived classes
+
+``` {python}
+class Bus(Vehicle):
+  
+    def __init__(self, location, passengers):
+        super().__init__(location)
+        self.max_passengers = 4
+        self.passengers = passengers
+```
+
+\
+
+::: .fragment
+
+``` {python}
+bus = Bus("Izmir", ["Ahmet", "Zeynep"])
+bus.drive_to_city("Istanbul")
+```
+
+:::
+
+
+## Derived classes, use superclass method
+
+``` {python}
+#| style: font-size:32px
+class Bus(Vehicle):
+  
+    def __init__(self, location, passengers):
+        super().__init__(location)
+        self.max_passengers = 4
+        self.passengers = passengers
+
+    def accept_passenger(self, name):
+        if len(self.passengers) < self.max_passengers:
+            self.passengers.append(name)
+        else:
+            print("Sorry, the bus is full !")
+
+```
+
+\
+
+::: .fragment
+
+``` {python}
+#| style: font-size:32px
+bus = Bus("Izmir", ["Ahmet", "Zeynep"])
+bus.drive_to_city("Istanbul")
+```
+
+:::
+
+## Derived classes, use subclass method
+
+``` {python}
+#| style: font-size:32px
+class Bus(Vehicle):
+  
+    def __init__(self, location, passengers):
+        super().__init__(location)
+        self.max_passengers = 4
+        self.passengers = passengers
+
+    def accept_passenger(self, name):
+        if len(self.passengers) < self.max_passengers:
+            self.passengers.append(name)
+        else:
+            print("Sorry, the bus is full !")
+
+```
+
+\
+
+::: .fragment
+
+``` {python}
+#| style: font-size:32px
+bus = Bus("Izmir", ["Ahmet", "Zeynep"])
+bus.accept_passenger("Kemal"); print(bus.passengers)
+```
+
+:::
+
+## Derived classes, use subclass method
+
+::: .fragment
+
+``` {python}
+bus = Bus("Izmir", ["Ahmet", "Zeynep"])
+bus.accept_passenger("Mehmet")
+print(bus.passengers)
+```
+
+:::
+
+\
+
+::: .fragment
+
+``` {python}
+bus.accept_passenger("Rani")
+print(bus.passengers)
+```
+
+:::
+
+\
+
+::: .fragment
+
+``` {python}
+bus.accept_passenger("Bob")
+print(bus.passengers)
+```
+
+:::
+
+
+## Classes
+
+- For a more comprehensive overview of the possibilities of classes, see e.g. the video of the OpenCourseWare class: [CS50 course on Object Oriented Programming](https://cs50.harvard.edu/python/2022/weeks/8/)
+
+

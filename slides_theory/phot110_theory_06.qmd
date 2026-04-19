@@ -1,0 +1,459 @@
+---
+title: "PHOT 110: Introduction to programming"
+subtitle: "LECTURE 06"
+author: "Michaël Barbier"
+date: today
+date-format: long
+execute:
+  echo: true
+  output: true
+  warning: true
+  error: true
+  code-overflow: wrap
+  code:
+    font-size: 54px
+format: 
+  revealjs:
+    fontsize: 36px
+    template-partials:
+      - title-slide.html
+    center-title-slide: true
+    margin: 0.05
+    #output-location: column-fragment
+    #smaller: true
+    footer: "[Lecture 06: Input/Output and error-handling]{style=color:darkred;}"
+    slide-number: true
+    show-slide-number: all
+    highlight-style: tango
+    #theme: simple
+    theme: [default, custom.scss]
+    #chalkboard: true
+    self-contained: true
+    embed-resources: true
+editor: source
+jupyter: python3
+---
+
+
+# Handling runtime errors (Textbook Ch. 4)
+
+
+## Different kinds of errors
+
+Remember that we have different types of errors
+
+- Syntax errors: code inconsistent with the Python language, the code will not run (i.e. not start).
+- Runtime errors: exceptions occurring while the program runs, the code will crash.
+- Semantic errors: the code does not what was intended
+
+Try to make the following files error free:
+
+- `lecture_11_ex_errors_books.py`
+- `lecture_11_ex_errors_runtime.py`
+
+
+## Example: integer division
+
+Remember the function for division:
+
+```{.python code-line-numbers="|9-10"}
+def div(number, divisor):
+    """ divides n/m and returns the quotient and rest """
+    quotient = number // divisor
+    remainder = number % divisor
+
+    return quotient, remainder
+
+print("Division of n/m:")
+n = int(input("\tn = "))
+m = int(input("\tm = "))
+quotient, remainder = div(n, m)
+print(f"Dividing {n} by {m} = {quotient}, rest = {remainder}")
+```
+
+## User input and runtime errors
+
+- User input can be anything $\rightarrow$ runtime errors / crashes
+  - runtime errors 
+  - undefined behavior: no crash but wrong results
+
+``` {python}
+# input function returns a string
+# n_str = input("n = ")
+n_str = "5.6"
+n = int(n_str)
+print(f"Provided number n = {n} with type = {type(n)}")
+
+```
+
+## User input and runtime errors
+
+- User input can be anything $\rightarrow$ runtime errors / crashes
+  - runtime errors 
+  - undefined behavior: no crash but wrong results
+
+``` {python}
+# input function returns a string
+# n_str = input("n = ")
+n_str = "4,1"
+n = int(n_str)
+print(f"Provided number n = {n} with type = {type(n)}")
+
+```
+
+## User input and runtime errors
+
+- User input can be anything $\rightarrow$ runtime errors / crashes
+  - runtime errors 
+  - undefined behavior: no crash but wrong results
+
+``` {python}
+# input function returns a string
+# n_str = input("n = ")
+n_str = "4.00"
+n = int(n_str)
+print(f"Provided number n = {n} with type = {type(n)}")
+
+```
+
+## User input and runtime errors
+
+- User input can be anything $\rightarrow$ runtime errors / crashes
+  - runtime errors 
+  - undefined behavior: no crash but wrong results
+
+``` {python}
+# input function returns a string
+# n_str = input("n = ")
+n_str = "0x002A"
+n = int(n_str)
+print(f"Provided number n = {n} with type = {type(n)}")
+
+```
+
+## User input and runtime errors
+
+- User input can be anything $\rightarrow$ runtime errors / crashes
+  - runtime errors 
+  - undefined behavior: no crash but wrong results
+
+``` {python}
+# input function returns a string
+# n_str = input("n = ")
+n_str = "010"
+n = int(n_str)
+print(f"Provided number n = {n} with type = {type(n)}")
+
+```
+
+## User input and runtime errors
+
+- User input can be anything $\rightarrow$ runtime errors / crashes
+  - runtime errors 
+  - undefined behavior: no crash but wrong results
+
+``` {python}
+# input function returns a string
+# n_str = input("n = ")
+n_str = "5-2"
+n = int(n_str)
+print(f"Provided number n = {n} with type = {type(n)}")
+
+```
+
+
+## User input and runtime errors
+
+- User input can be anything $\rightarrow$ runtime errors / crashes
+  - runtime errors 
+  - undefined behavior: no crash but wrong results
+
+``` {python}
+print(f"The division {-9} / {4} = {-9 // 4} with remainder = {-9 % 4}")
+print(f"The division {9} / {-4} = {9 // -4} with remainder = {9 % -4}")
+```
+
+
+## User input and runtime errors
+
+- Two options to prevent runtime error crashes:
+  1. Anticipate any error: **Validate** the input data
+  1. **Handle** the error when it occurs 
+
+:::{.centered .highlight-red}
+Try to prevent the error by input validation?\
+Or handle the error "when it already occurred"?
+:::
+
+:::{.fragment .highlight-red}
+In Python preventing a problem is not always better than treating it !
+:::
+
+
+## Option (1): test input on validity
+
+- We can use `eval` function to evaluate a string expression
+- function `isinstance(object, type)` checks if an object is of type
+
+```{python}
+# n_str = input("provide a number for n = ")
+n_str = "1.3"
+n = eval(n_str)
+print(f"Provided number n = {n} with type = {type(n)}")
+# return validity
+if not isinstance(n, int):
+  print("Input is invalid !")
+```
+
+## Option (2): error handling
+
+- When a runtime error occurs Python raises an exception
+- To catch an error we use the `try` - `except` block
+  - Statements in the `try` block are executed until an 
+  exception is encountered
+  - The `except` block is executed on encountering an exception
+
+```{.python}
+try:
+  <statements>
+except:
+  <statements>
+```
+
+
+## Option (2): error handling
+
+- When a runtime error occurs Python raises an exception
+- To catch an error we use the `try` - `except` block
+  - Statements in the `try` block are executed until an 
+  exception is encountered
+  - The `except` block is executed on encountering an exception
+
+```{python}
+# n_str = input("provide a number for n = ")
+try:
+  n_str = "1.3"
+  n = int(n_str)
+except:
+  print("Input is invalid !")
+  
+```
+
+
+## Recovering from runtime errors
+
+- If the user input was invalid:
+  - Allow the user to **try again**
+  - **Specify the problem** to the user
+- Look at the Python script file:
+  `lecture_11_ex_errors_validate_input.py`
+
+## More complex error-handling
+
+``` {python}
+try:
+  n = int("3"); m = int("5.5")
+  quotient = n // m
+except ZeroDivisionError:
+  print("Can't divide by zero")
+except ValueError:
+  print("Please provide two integers")
+else:
+  print(f"quotient = {quotient}")
+finally:
+  # Always executed
+  print(f"You tried to divide n / m")
+```
+
+## More complex error-handling
+
+``` {python}
+try:
+  n = int("5"); m = int("0")
+  quotient = n // m
+except ZeroDivisionError:
+  print("Can't divide by zero")
+except ValueError:
+  print("Please provide two integers")
+else:
+  print(f"quotient = {quotient}")
+finally:
+  # Always executed
+  print(f"You tried to divide n / m")
+```
+
+## More complex error-handling
+
+``` {python}
+try:
+  n = int("6"); m = int("2")
+  quotient = n // m
+except ZeroDivisionError:
+  print("Can't divide by zero")
+except ValueError:
+  print("Please provide two integers")
+else:
+  print(f"quotient = {quotient}")
+finally:
+  # Always executed
+  print(f"You tried to divide n / m")
+```
+
+## More complex error-handling: `else`
+
+- `else` keyword allows to split the error handling of the `try` block:
+  - `try`-part which you want to catch errors **now**
+  - `else`-part which you have code that has its own error handling, or should crash if a problem occurs.
+
+## More complex error-handling: `finally`
+
+- Usage of `finally` is used to gracefully crash, examples would be: 
+  - you opened a file, a problem occurred but it needs to be **closed before stopping** 
+  - script saved temporary results: **clean up**
+
+
+# Input and Output
+
+## Input/Output with Python (I/O)
+
+- Command line arguments
+- We can read and writes files to and from the hard disk
+  - text files
+  - formatted text: xml, html, markdown, postscript
+  - multimedia: music, images, video
+
+## Input/Output with Python (I/O)
+
+- Command line arguments
+- We can read and writes files to and from the hard disk
+  - text files
+  - formatted text: xml, html, markdown, postscript
+  - multimedia: music, images, video
+- Interactive input events:
+  - keyboard and mouse
+  - we have to constantly "wait" for them? How?
+- Graphical user interfaces
+
+## Executing a script in the terminal or command line
+
+- Command line arguments can be found with `sys.argv` 
+- Code to print the arguments:
+
+``` {.python}
+import sys
+for i, arg in enumerate(sys.argv):
+  print(f"Argument {i} = {sys.argv[i]}")
+```
+
+- Look at the Python script file:
+  `lecture_11_ex_command_line.py`
+
+## Executing a script in the terminal or command line
+
+- More advanced argument handling using `argparse`
+  - define type of argument
+  - help description
+  - positional vs. named arguments
+- Look at the Python script file:\
+  `lecture_11_ex_argparse.py`
+
+## Reading files from the hard disk
+
+- Make sure the file path exists
+- Be careful with file path separators
+  - Unix/Linux uses `/` symbols (forward slash)
+  - Windows uses `\` symbols (backslash)
+  - The `\` separator should be escaped `\\` 
+
+```{.python}
+# Problem with file paths in Windows:
+file_path_in_windows = "C:\Users\mich\Documents\my_file.txt"
+file_path_in_linux = "/home/mich/Documents/my_file.txt"
+```
+
+Python expects `/` or `\\` as file separator !
+
+## Reading files from the hard disk
+
+- Make sure the file path exists
+- Be careful with file path separators
+  - Unix/Linux uses `/` symbols (forward slash)
+  - Windows uses `\` symbols (backslash)
+  - The `\` separator should be escaped `\\` 
+- While you occupy a file for reading/adapting it might not be accessible by others
+  - Important to close the file after finishing
+  - What happens if your script crashes while it was writing to a file?
+
+## Text files
+
+- Opening the file and closing after done
+- When do you use this method:
+  - Multiple separate read/write access
+  - for a longer time, doing complex actions
+
+```{python}
+file_path = "samples/sample_text_file.txt"
+file = open(file_path)
+print(file.read())
+file.close()
+```
+
+
+## Text files
+
+- Opening using the `with` keyword
+- Automatically closes the file after it
+
+```{python}
+file_path = "samples/sample_text_file.txt"
+with open(file_path) as file:
+  print(file.read())
+```
+
+
+## Handling files that don't exist
+
+- Opening using the `open` keyword
+- Ensure that file is closed afterwards by `finally`
+
+```{python}
+file_path = "samples/sample_text3_file.txt"
+try:
+  file = open(file_path, "r")
+  print(file.read())
+except FileNotFoundError:
+  print("The file does not exist")
+except:
+  print("Some issue occurred during file reading")
+finally:
+  file.close()
+```
+
+
+## Vector graphics: svg-files
+
+- Open the file in PyCharm
+
+```{python}
+file_path = "samples/sample_vector_graphics.svg"
+with open(file_path) as file:
+  print(file.read())
+```
+
+## Keyboard and mouse input
+
+- Install the package `pynput`
+- Look up the documentation to control keyboard and mouse, example:
+
+``` {.python}
+from pynput.mouse import Button, Controller
+
+mouse = Controller()
+
+# Read pointer position
+print(f"Mouse position is {mouse.position}")
+
+# Set pointer position
+mouse.position = (100, 200)
+print(f"Mouse moved to {mouse.position}")
+```

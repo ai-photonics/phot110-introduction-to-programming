@@ -230,11 +230,20 @@ print(a_list)
 print(f"The length of the adapted list = {len(a_list)}")
 ```
 
-Notice that we use the dot-notation: `the_list.append(the_element)`:
+### INTERMEZZO: Methods versus Functions
 
--   This notation is to call a method on an object
--   We will see how to make our own methods (and classes) later in the chapter on object oriented programming
--   There are more methods we can make use of, see <https://docs.python.org/3/tutorial/datastructures.html#more-on-lists>
+Notice that we use the dot-notation: `the_list.append(the_element)`. We already saw this notation in a different context: when using for example the square root function `sqrt()` of the `math` module:
+
+```{python}
+import math
+a = math.sqrt(2)  # This is a function
+print(f"The square root of 2 = {a}")
+```
+
+However, here this notation is not used to use a function of an imported package/module, here we use it to call a method on an object: we use the method `append()` on the list (the object). 
+
+We will see methods afterwards in more detail, but let us for now summarise We already saw multiple functions like: `print()`, `input()`, `len()`, etc. Methods are similar to functions but they are bound to an object. They can change the object on which they work (e.g. like `append()`) but don't have to. The manner in which we use a method is:
+
 
 ```{python}
 a_list = ["First", False, 34, 5, 34]  # Define the list
@@ -242,6 +251,12 @@ a_list.remove(34)                     # Remove first 34
 a_list.insert(3, "inserted_string")   # Insert str
 print(a_list)                         # Print the list
 ```
+
+There are more methods we can make use of, see <https://docs.python.org/3/tutorial/datastructures.html#more-on-lists>
+
+-   We will see how to make our own methods (and classes) later in the chapter on object oriented programming
+
+
 
 ### Selecting elements in a list
 
