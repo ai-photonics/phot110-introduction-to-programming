@@ -1,3 +1,229 @@
+## Program structures so far ...
+
+(0) **Calculator**: Only expressions, re-use previous result, no re-running
+(1) Scripts: **variables & expressions**: re-run same script, track and remove human mistakes
+(2) Branching (**`if`**, **`else`**): explicit logical expressions, execute code according to decisions
+(3) **`while`** and **`for`** Loops: Repeat code, according to condition
+(4) **Functions**: further re-use, abstraction of code, call whenever required, allows parameters
+
+## Functions
+
+-   are separate reusable pieces of code
+-   can be invoked or called from the script
+-   accept 0 or more parameters
+-   return an object(s) (possible `None`)
+
+## Function definition syntax
+
+![](./figures/slide_function_def.png)
+
+## Function declaration
+
+```{python}
+#| code-line-numbers: "|1-1|2-9|10-11|13-13|15-15|16-16"
+def area_ellipse(radius1, radius2):
+  """ 
+  area_ellipse calculates the area of an ellipse
+
+  Param radius1 (float): Largest radius
+  Param radius2 (float): Smalles radius
+  
+  Returns [float] A : area of the ellipse
+  """
+  pi = 3.1415
+  A = radius1 * radius2 * pi
+
+  return A
+
+area = area_ellipse(2, 3)
+print(f"The area of the ellipse is {area}")
+```
+
+## Return values
+
+-   Use the **`return`** keyword
+-   the value can be an expression
+-   Without **`return`**, function returns **`None`**
+-   Multiple outputs possible
+
+```{python}
+def add(a, b):
+  """ Sum a and b """
+  return a + b
+
+sum = add(2, 5)
+print(sum)
+```
+
+## Return values
+
+-   Use the **`return`** keyword
+
+```{python}
+def add(a, b):
+  """ Sum a and b """
+  sum = a + b
+  return sum
+
+sum = add(2, 5)
+print(sum)
+```
+
+## Return values
+
+-   Use the **`return`** keyword
+-   the value can be an expression
+
+```{python}
+def add(a, b):
+  """ Sum a and b """
+  return a + b
+
+sum = add(2, 5)
+print(sum)
+```
+
+## Return values
+
+-   Use the **`return`** keyword
+-   the value can be an expression
+-   Without **`return`**, function returns **`None`**
+
+```{python}
+def add(a, b):
+  """ Sum a and b """
+  a + b
+
+sum = add(2, 5)
+print(sum)
+```
+
+## Return values
+
+-   Use the **`return`** keyword
+-   the value can be an expression
+-   Without **`return`**, function returns **`None`**
+-   Multiple outputs possible
+
+```{python}
+def add(a, b):
+  """ Sum a and b and give extra outputs """
+  return a + b, "a second output", a - b
+
+out = add(2, 5)
+print(out)
+```
+
+## Unpacking multiple outputs
+
+```{python}
+import math
+
+def polar_to_carth(radius, angle):
+  """ polar_to_carth converts polar to carthesian """
+  x = radius*math.cos(angle)
+  y = radius*math.sin(angle)
+
+  return x, y
+
+x, y = polar_to_carth(3, math.pi/3)
+print(f"Polar (3, pi/3) = {(x, y)}")
+```
+
+## Multiple return statements possible
+
+```{python}
+def minimum(a, b):
+  """ Returns the minimum of two numbers """
+  if a <= b:
+    return a
+  else:
+    return b
+
+print(minimum(3.4, 6.5))
+```
+
+## Variable scope
+
+Script variables and function parameters can have the same name
+
+```{python}
+#| code-line-numbers: "|1-4|6-7|8-8|9-10|"
+def increment(a):
+  """ Increment number by 1 """
+  a = a + 1
+  return a
+
+# Define the variable in the script
+a = 5
+print("Variable a (before) = " + str(a))
+b = increment(a)
+print("Variable a (after) = " + str(a))
+print("Variable b = " + str(b))
+```
+
+## Variable scope
+
+-   Functions can use script variables from **outside** the function
+-   But **cannot** change those variables
+
+```{python}
+#| code-line-numbers: "|1-4|6-7|8-8|9-10|"
+def increment(a):
+  """ Increment number by 1 """
+  a = a + x
+  return a
+
+# Define the variable in the script
+a = 5
+x = 4
+print(increment(a))
+```
+
+## Variable scope
+
+-   Functions can use script variables from **outside** the function
+-   But **cannot** change those variables
+
+```{python}
+#| code-line-numbers: "|3-3|"
+def increment(a):
+  """ Increment number by 1 """
+  a = a + x
+  x = x + 3
+  return a
+
+# Define the variable in the script
+a = 5
+x = 4
+print(increment(a))
+```
+
+## Functions can call functions
+
+```{python}
+def minimum(a, b):
+  if a <= b:
+    return a
+  else:
+    return b
+
+def add(a, b, fct):
+  """ Sum a, b and minimum of both """
+  return a + b + fct(a, b) 
+
+a = 10; b = 2
+print(add(a, b, minimum))
+```
+
+
+
+
+
+## Side effects
+
+Functions can have side effects. When you provide mutable objects as arguments, e.g. lists or arrays, to a function, these objects can be adapted in-place. When these changes are undesired, we call them side effects. Let's consider the following function `median()` which calculates the median of a list of numbers. Because the function uses the in-place `sort()` method, the list is afterwards sorted and we lost the initial order:
+
 ```{python}
 def median(numbers):
     numbers.sort()
@@ -13,3 +239,34 @@ number_list = [3, 4, 5, 2, 8, 1, 6, 7]
 med = median(number_list)
 print(f"The median of {number_list} is {med}")
 ```
+
+In principle we could avoid this by using the `sorted()` function instead:
+
+```{python}
+def median(numbers):
+    numbers_sorted = sorted(numbers)
+    n = len(numbers)
+    if (n % 2) == 1:
+        m = numbers_sorted[int((n + 1) / 2)]
+    else:
+        m = (numbers_sorted[int(n/2-1)] + numbers_sorted[int(n/2)]) / 2
+    return m
+
+
+number_list = [3, 4, 5, 2, 8, 1, 6, 7]
+med = median(number_list)
+print(f"The median of {number_list} is {med}")
+```
+
+Avoiding side effects helps us to have less errors when writing code.
+However, the in-place method `sort()` uses less memory (no extra list) and is faster, especially for very large lists. So when using very large data objects, it is often better to use in-place methods (carefully documented).
+
+
+
+
+
+
+
+
+
+
