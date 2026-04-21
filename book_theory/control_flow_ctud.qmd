@@ -28,7 +28,7 @@ for el in ["banana", "orange", "apple"]:
   print(el)
 ```
 
-Or iterating over a tuple:
+but also iterating over a tuple is possible:
 
 ```{python}
 # Iterate over the elements in a list
@@ -44,7 +44,7 @@ for a in "Python 3.12":
   print(a)
 ```
 
-And we can apply the method or functions that are applicable to sequences:
+And we make use of the methods or functions that are applicable to sequences, for example reversing the elements:
 
 ```{python}
 # Print all letters of a string reverse ordered
@@ -54,7 +54,7 @@ for a in reversed("Python 3.12"):
 
 ## Enumerate
 
-Sometimes we want iterate over elements but also want to use their index. In that case we can use the `range()` function to get indices $i = 0, .., n-1$ for a sequence with $n$ elements. 
+In some cases we want to iterate over elements but also require their indices. In that case we can use the `range()` function to get indices $i = 0, .., n-1$ for a sequence with $n$ elements. 
 
 - To get the number of elements we use `n = len(<sequence>)` giving the length of the sequence, and
 - we select elements with the index
@@ -68,7 +68,7 @@ for i in range(len(s)):
   print(f"The element with index: {i} = {s[i]}")
 ```
 
-Using the above approach we lose the simplicity of iterating over all elements in a sequence. An alternative approach is to use **enumerate**. The `enumerate(<sequence>)` function:
+However, using the above approach we lost the simplicity of iterating over all elements in a sequence. An alternative approach is to use **enumerate**. The `enumerate(<sequence>)` function:
 
 -   gives both index and corresponding element,
 -   is lazy evaluated (just as range), reducing memory overhead.
@@ -85,23 +85,30 @@ for i, el in enumerate(s):
 
 ## flow control: continue, break, and pass
 
+In Python we have three extra keywords to adapt the behavior of a loop structure: continue, break, and pass.
 
+### Continue
 
-**`continue`** skips a single iteration in `while` or `for` loop
+**`continue`** skips a single iteration in a `while` or `for` loop, a typical use-case is to skip calculation when receiving a non-sensical input/parameter. In the example here we check whether a number is even or odd, which is not defined for `None` (maybe we had some corrupt data point):
 
 ```{python}
 #| output-location: fragment
 # Print elements in order with their index
-numbers = [22, 20, 34, None, 25, 78]
+numbers = [22, 21, 34, None, 25, 78]
 for i, el in enumerate(numbers):
   if el is None:
     continue
-  print(f"The element with index: {i} = {el}")
+  if parity = 
+  print(f"The element with index: {i} = {el} is {}")
 ```
 
-## flow control: break
+### Break
 
-**`break`** stops the current `while` or `for` loop
+**`break`** stops the current `while` or `for` loop, typical use case would be 
+
+- to interrupt the loop when errors start to occur,
+- to stop iterating when attaining certain outcome,
+-  stop iterating 
 
 ```{python}
 #| output-location: fragment
@@ -113,12 +120,20 @@ for i, el in enumerate(numbers):
   print(f"The element with index: {i} = {el}")
 ```
 
-## flow control: pass
 
-**`pass`** performs no action, purpose
 
--   **clarify** inaction, provide **required** statement
--   used for while, for, if, functions, classes, etc.
+```{python}
+#| output-location: fragment
+# Print elements in order with their index
+for i, el in enumerate(numbers):
+  if el is None:
+    break
+  print(f"The element with index: {i} = {el}")
+```
+
+### Pass
+
+**`pass`** performs no action, its purpose is to either **clarify inaction** or provide a **required** statement. The keyword `pass` can be used for while, for, if, functions, classes, etc. In the following example we are counting outliers (e.g. out of "normal" values in a blood test) and we add the `pass` keyword to clarify inaction: 
 
 ```{python}
 #| output-location: fragment
@@ -134,14 +149,24 @@ for el in numbers:
 print(f"High: {count_high}, Low: {count_low}")
 ```
 
-# List comprehensions
+In the next example we use `pass` in the `except` block of a `try/except` clause, because we don't want to perform any action in the except block, but we **require a statement** there, we cannot leave it empty.
 
-## When a for loop is cumbersome
+```{.python}
+try:
+  c = float(input("Number of participants: "))
+  ratio = 100 / c
+  print("Ratio: " + ratio)
+except:
+    # TODO: how to handle the case c = 0?
+    pass
+```
 
--   to generate a simple list
--   requires an index variable, can overwrite variable with same name
+The above situation occurs actually often when developing code: if you don't know yet how to handle a certain exception, but you already want to write the `try` block. You temporarily put a pass statement so you can already develop the rest of the code or even just test the working of the try block.
 
-::: fragment
+## List comprehensions
+
+Often we use a for loop just to grow a simple list, which not only requires multiple lines but also requires an index variable:
+
 ```{python}
 # Print powers of 2 up to 1024
 powers = []
@@ -149,18 +174,15 @@ for n in range(11):
   powers.append(2**n)
 print(powers)
 ```
-:::
 
-::: fragment
-List comprehension
+If we are not careful we can overwrite a variable with the same name as the index variable. To make the creation of list easier and less error-prone (and easier to optimize), Python provides a specific manner for this: **list comprehension**. List comprehension is an alternative, compact, and (most of the time) more performant way of generating such a list:
 
 ```{python}
 powers = [2**n for n in range(11)]
 print(powers)
 ```
-:::
 
-## When a for loop is cumbersome
+Basically we put brackets around a definition which pretty much looks like the for loop in one line. We can also add "filters". Look at the following example, where we combine numbers from two lists into a list of pairs but filter out the pairs where two elements are the same using an if clause:
 
 ```{python}
 cs = []
@@ -171,152 +193,15 @@ for x in [1,2,3]:
 print(cs)
 ```
 
-\
-List comprehension
+Writing the above using list comprehension gives us:
 
 ```{python}
 cs = [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
 print(cs)
 ```
 
-# Arrays
+Using list comprehension is often a good idea for relatively simple definitions. When the one-liner list comprehension becomes too complicated to read, it can be better to opt for the for loop approach. 
 
-## Array definition
-
--   arrays have a fixed length
--   array elements have the same type
--   We will use arrays from the Numpy library
--   Optimized for numerical calculations
-
-::: fragment
-```{python}
-# Load numpy for array
-import numpy as np
-
-a = np.array([1, 2, 4, 6, 5, 9])
-print(a)
-```
-:::
-
-## Array initialization
-
-```{python}
-#| output-location: fragment
-import numpy as np
-
-a = np.arange(15)          # similar to range()
-print(a)
-```
-
-\
-
-::: fragment
-```{python}
-#| output-location: fragment
-a = np.linspace(0, 5, 11)  # linearly spaced interval
-print(a)
-```
-:::
-
-\
-
-::: fragment
-```{python}
-#| output-location: fragment
-a = np.zeros((2, 3))       # 2D array with zeros
-print(a)
-```
-:::
-
-## Array operations
-
--   similar to arithmetic/logic operations on numbers
--   element-wise
--   shapes need to be compatible
-
-```{python}
-#| output-location: fragment
-import numpy as np
-
-a = np.array([2.5, 3, 4])   
-b = np.array([1, 0.1, 10])
-print(f"{a} + {b} = {a + b}")
-print(f"{a} * {b} = {a * b}")
-print(f"{a} / {b} = {a / b}")
-```
-
-# Simple plots
-
-## Line plot
-
-We will see more complex plots later on. If you want to look ahead: <https://matplotlib.org/stable/users/explain/quick_start.html>
-
-```{python}
-#| output-location: slide
-# Import library for plotting and numerics
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Define x and y coordinates
-x = np.linspace(-2, 2, 100)
-y = x**2
-
-# Plot a line between the coordinates
-plt.plot(x, y);
-
-```
-
-## Line plot
-
-```{python}
-#| output-location: fragment
-# Change the font-size
-import matplotlib as mpl
-mpl.rcParams['font.size'] = 18
-plt.plot(x, y);
-
-```
-
-## Line plot
-
-```{python}
-#| output-location: fragment
-# Add labels
-plt.xlabel("x (in m)", fontsize=20, color='red')
-plt.ylabel("y (in V)", fontsize=20, color='blue')
-plt.plot(x, y, color='green', linewidth=4);
-
-```
-
-## Scatter plot
-
-```{python}
-#| output-location: slide
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Create the coordinate of a spiral
-angles = np.linspace(0, 5*np.pi, 100)
-radii = np.linspace(0, 4, 100)
-xs = radii * np.cos(angles)
-ys = radii * np.sin(angles)
-
-# Plot spiral points with increasing size and color-value
-plt.scatter(xs, ys, 10*radii, radii/4);
-
-```
-
-## Scatter plot
-
-```{python}
-#| output-location: slide
-# Plot spiral points with increasing size and color-value
-plt.scatter(xs, ys, 10*radii, radii/4)
-
-# Set the axis aspect ratio to equal
-ax = plt.gca()
-ax.set_aspect("equal");
-```
 
 # More advanced Looping structures
 

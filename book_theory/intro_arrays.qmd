@@ -1,0 +1,140 @@
+# Arrays
+
+Arrays are another very import data type which can also be use to iterate over. Arrays also ordered collection of elements, but
+
+-   arrays have a fixed length
+-   array elements have the same type
+
+We will use arrays from the Numpy library (instead of Python's built-in array type), as they are optimized for numerical calculations. To use Numpy arrays we need to have the Numpy package installed and import it. 
+
+## Array initialization
+
+In the following example we cast a list into a Numpy array:
+
+```{python}
+# Load numpy for array
+import numpy as np
+
+a = np.array([1, 2, 4, 6, 5, 9])
+print(a)
+```
+
+We can also generate an array with increasing numbers using the Numpy function `arange()`, similar to `range()` for integers:
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+a = np.arange(15)          # similar to range()
+print(a)
+```
+
+Often we want to create arrays with equidistant values within a certain interval, say 
+
+
+```{python}
+#| output-location: fragment
+a = np.linspace(0, 5, 11)  # linearly spaced interval
+print(a)
+```
+
+There are other ways to initialize an array, an empty array can be created by using the Numpy function `zeros()`:
+
+```{python}
+# Load numpy for array
+import numpy as np
+
+a = np.zeros((2, 3))       # 2D array with zeros
+print(a)
+```
+
+
+## Array operations
+
+-   similar to arithmetic/logic operations on numbers
+-   element-wise
+-   shapes need to be compatible
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+a = np.array([2.5, 3, 4])   
+b = np.array([1, 0.1, 10])
+print(f"{a} + {b} = {a + b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b}")
+```
+
+# Simple plots
+
+## Line plot
+
+We will see more complex plots later on. If you want to look ahead: <https://matplotlib.org/stable/users/explain/quick_start.html>
+
+```{python}
+#| output-location: slide
+# Import library for plotting and numerics
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define x and y coordinates
+x = np.linspace(-2, 2, 100)
+y = x**2
+
+# Plot a line between the coordinates
+plt.plot(x, y);
+
+```
+
+## Line plot
+
+```{python}
+#| output-location: fragment
+# Change the font-size
+import matplotlib as mpl
+mpl.rcParams['font.size'] = 18
+plt.plot(x, y);
+
+```
+
+## Line plot
+
+```{python}
+#| output-location: fragment
+# Add labels
+plt.xlabel("x (in m)", fontsize=20, color='red')
+plt.ylabel("y (in V)", fontsize=20, color='blue')
+plt.plot(x, y, color='green', linewidth=4);
+
+```
+
+## Scatter plot
+
+```{python}
+#| output-location: slide
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create the coordinate of a spiral
+angles = np.linspace(0, 5*np.pi, 100)
+radii = np.linspace(0, 4, 100)
+xs = radii * np.cos(angles)
+ys = radii * np.sin(angles)
+
+# Plot spiral points with increasing size and color-value
+plt.scatter(xs, ys, 10*radii, radii/4);
+
+```
+
+## Scatter plot
+
+```{python}
+#| output-location: slide
+# Plot spiral points with increasing size and color-value
+plt.scatter(xs, ys, 10*radii, radii/4)
+
+# Set the axis aspect ratio to equal
+ax = plt.gca()
+ax.set_aspect("equal");
+```
