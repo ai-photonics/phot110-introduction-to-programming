@@ -233,7 +233,7 @@ def count_down(n):
 count_down(10):
 ```
 
-Recursive functions can be a little tricky to work with, notice how we can change the order of the numbers, transforming the function into counting up instead of down, by just putting the print statement behind the recursive call. This drastically changes what the function does:
+Recursive functions can be a little tricky to work with, notice how we can change the order of the numbers, transforming the function into **counting up** instead of **down**, by just putting the print statement behind the recursive call. This drastically changes what the function does:
 
 ```{python}
 def count_up(n):

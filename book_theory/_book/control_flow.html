@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-626149efe8f5d16e1d391ba177679bf0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -330,7 +330,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The statements that follow the <strong><code>if</code></strong> clause should be indented and form the <strong>code-block</strong> that will be executed according to a <strong>condition</strong>. An <strong><code>if</code></strong> code-block is executed when the condition is <code>True</code>, for example:</p>
-<div id="36daee61" class="cell" data-execution_count="1">
+<div id="fa9aa70e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">46</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;=</span> <span class="dv">16</span>:</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"You can drive a tractor"</span>)  <span class="co"># if code-block</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -339,7 +339,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The <strong>indented code-block</strong> can also contain multiple statements, which will be all executed when the condition is <code>True</code>:</p>
-<div id="67546b30" class="cell" data-execution_count="2">
+<div id="80a849f6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>speed_limit <span class="op">=</span> <span class="dv">120</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>speed <span class="op">=</span> <span class="dv">137</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> speed <span class="op">&gt;</span> speed_limit:</span>
@@ -350,7 +350,7 @@ window.Quarto = {
 </div>
 </div>
 <p>When the condition is <code>False</code> the <strong><code>if</code></strong> code-block will not be executed. In case an <strong><code>else</code></strong> code-block is added it will be executed when the condition is <strong><code>False</code></strong>:</p>
-<div id="a3e4ba21" class="cell" data-execution_count="3">
+<div id="b281879f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">11</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;</span> <span class="dv">18</span>:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"You can drive a car"</span>)</span>
@@ -361,7 +361,7 @@ window.Quarto = {
 </div>
 </div>
 <p>In case you want to cover more then two cases, i.e.&nbsp;you have multiple conditions, the <strong><code>elif</code></strong> keyword can be used. You can use it multiple times, and optionally still use an <strong><code>else</code></strong> clause in the end:</p>
-<div id="0810a637" class="cell" data-execution_count="4">
+<div id="65044a54" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">17</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;</span> <span class="dv">18</span>:</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"You can drive a car"</span>)</span>
@@ -384,7 +384,7 @@ window.Quarto = {
 <li>The indentation should be the same within each code-block</li>
 </ul>
 <p>Be careful with the indentation of the code-blocks otherwise your program will either exhibit unwanted behavior or will give an error, such as the following code:</p>
-<div id="3bd47ac6" class="cell" data-execution_count="5">
+<div id="f1f51aa8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">19</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;</span> <span class="dv">18</span>:</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"You can drive a car"</span>)    <span class="co"># This line is indented differently</span></span>
@@ -416,7 +416,7 @@ window.Quarto = {
 <li>we have a stopping criterium/condition</li>
 </ul>
 <p>As an example we update a certain number <span class="math inline">\(x \rightarrow x^2 - 3x\)</span> in each iteration and stop if the number becomes larger or equal to 1000:</p>
-<div id="eda90f27" class="cell" data-execution_count="6">
+<div id="0e69480d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> x <span class="op">&lt;</span> <span class="dv">1000</span>:</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> x</span>
@@ -431,7 +431,7 @@ End of the program</code></pre>
 </div>
 </div>
 <p>Another a bit more complex example, we want to calculate the cumulative sums of the series <span class="math inline">\(\sum_{n=1}^\infty \frac{1}{n^4}\)</span> up to certain order <span class="math inline">\(N\)</span>:</p>
-<div id="8fa5b012" class="cell" data-execution_count="7">
+<div id="cc1ea4df" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> dx <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> dx_min <span class="op">=</span> <span class="fl">0.001</span><span class="op">;</span> n <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> dx <span class="op">&gt;</span> dx_min:</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  dx <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> n <span class="op">**</span> <span class="dv">4</span></span>
@@ -469,7 +469,7 @@ End of the program</code></pre>
 <li>The object types can be different</li>
 <li>Lists are also objects themselves</li>
 </ul>
-<div id="fd0087fd" class="cell" data-execution_count="8">
+<div id="cf96b00e" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A list with mixed object types</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>my_list_of_objects <span class="op">=</span> [<span class="st">"It's Monday"</span>, <span class="va">False</span>, <span class="dv">34</span>, <span class="fl">23.4</span>]</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -481,7 +481,7 @@ End of the program</code></pre>
 </div>
 </div>
 <p>The <strong>length of the list</strong> is the number of elements. Applying the <strong><code>len()</code></strong> function: <code>len(a_list)</code>, allows us to find the number of elements.</p>
-<div id="809f6aa0" class="cell" data-execution_count="9">
+<div id="f229f883" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>number_of_objects <span class="op">=</span> <span class="bu">len</span>(my_list_of_objects)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(number_of_objects)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -490,7 +490,7 @@ End of the program</code></pre>
 </div>
 <p>There are many methods defined on lists, such as: Appending an element, removing an element, inserting an element, etc.</p>
 <p>When we <strong>append</strong> an element, the number of elements of the list increases with one:</p>
-<div id="3daa0622" class="cell" data-execution_count="10">
+<div id="568db42c" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="st">"First"</span>, <span class="va">False</span>, <span class="dv">34</span>, <span class="fl">23.4</span>]</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_list)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The length of the list = </span><span class="sc">{</span><span class="bu">len</span>(a_list)<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -507,7 +507,7 @@ The length of the adapted list = 5</code></pre>
 <section id="intermezzo-methods-versus-functions" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="intermezzo-methods-versus-functions"><span class="header-section-number">3.3.1</span> INTERMEZZO: Methods versus Functions</h3>
 <p>Notice that we use the dot-notation: <code>the_list.append(the_element)</code>. We already saw this notation in a different context: when using for example the square root function <code>sqrt()</code> of the <code>math</code> module:</p>
-<div id="01a3ad58" class="cell" data-execution_count="11">
+<div id="f1469c6f" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> math.sqrt(<span class="dv">2</span>)  <span class="co"># This is a function</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The square root of 2 = </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -517,7 +517,7 @@ The length of the adapted list = 5</code></pre>
 </div>
 <p>However, here this notation is not used to use a function of an imported package/module, here we use it to call a method on an object: we use the method <code>append()</code> on the list (the object).</p>
 <p>We will see methods afterwards in more detail, but let us for now summarise We already saw multiple functions like: <code>print()</code>, <code>input()</code>, <code>len()</code>, etc. Methods are similar to functions but they are bound to an object. They can change the object on which they work (e.g.&nbsp;like <code>append()</code>) but don’t have to. The manner in which we use a method is:</p>
-<div id="01c8b4cb" class="cell" data-execution_count="12">
+<div id="b02de1a1" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="st">"First"</span>, <span class="va">False</span>, <span class="dv">34</span>, <span class="dv">5</span>, <span class="dv">34</span>]  <span class="co"># Define the list</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>a_list.remove(<span class="dv">34</span>)                     <span class="co"># Remove first 34</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>a_list.insert(<span class="dv">3</span>, <span class="st">"inserted_string"</span>)   <span class="co"># Insert str</span></span>
@@ -540,7 +540,7 @@ The length of the adapted list = 5</code></pre>
 <li>negative index starts from the end of the list</li>
 </ul>
 <p>Using the above rules we can select a specific element from the list, when using index 0 we will get the first element:</p>
-<div id="15ad584a" class="cell" data-execution_count="13">
+<div id="712abdb8" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Printing the first and then the second element</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="st">"First"</span>, <span class="va">False</span>, <span class="dv">34</span>, <span class="fl">23.4</span>]</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_list[<span class="dv">0</span>])</span>
@@ -551,7 +551,7 @@ False</code></pre>
 </div>
 </div>
 <p>Or selecting the last element using negative indexing:</p>
-<div id="ea743f20" class="cell" data-execution_count="14">
+<div id="522baf1b" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using negative indexing</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="st">"First"</span>, <span class="va">False</span>, <span class="dv">34</span>, <span class="fl">23.4</span>]</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_list[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -563,7 +563,7 @@ False</code></pre>
 <section id="slicing-a-list" class="level3" data-number="3.3.3">
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="slicing-a-list"><span class="header-section-number">3.3.3</span> Slicing a list</h3>
 <p>We can also select multiple elements, this is called <strong>slicing</strong>, the syntax for slicing is: <code>a_list[start:stop_exclusive]</code> where we employ the colon-operator to separate the start and stop indices.</p>
-<div id="8b1b8660" class="cell" data-execution_count="15">
+<div id="71c2f059" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A list with mixed object types</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">100</span>, <span class="dv">102</span>, <span class="dv">105</span> ]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_list[<span class="dv">2</span>:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -572,7 +572,7 @@ False</code></pre>
 </div>
 </div>
 <p>The <code>start</code> index can be omitted, then the selection is from the first element with index 0. For example, we can select the first five elements:</p>
-<div id="255d6f5e" class="cell" data-execution_count="16">
+<div id="dcc6a016" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty start_index starts from the first index</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">100</span>, <span class="dv">102</span>, <span class="dv">105</span> ]</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_list[:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -581,7 +581,7 @@ False</code></pre>
 </div>
 </div>
 <p>Likewise when the <code>stop</code> index is omitted, the selection is until (and including) the last element. For example, selecting all elements from the fourth element on can be done as:</p>
-<div id="b9bb40d7" class="cell" data-execution_count="17">
+<div id="4c50b150" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty end_index end at the last index</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">100</span>, <span class="dv">102</span>, <span class="dv">105</span> ]</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_list[<span class="dv">3</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -590,7 +590,7 @@ False</code></pre>
 </div>
 </div>
 <p>An additional <strong>step</strong> parameter can be used to skip elements: <code>a_list[start:stop_exclusive:step]</code>, again we use the colon-operator to separate the start/stop/step parameters. We can for example select every second element:</p>
-<div id="32fe871d" class="cell" data-execution_count="18">
+<div id="248bee23" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take every second element by stepping</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">100</span>, <span class="dv">102</span>, <span class="dv">105</span> ]</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_list[<span class="dv">1</span>::<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -599,7 +599,7 @@ False</code></pre>
 </div>
 </div>
 <p>Or we can <strong>reverse</strong> the list by using a negative step:</p>
-<div id="1c65337a" class="cell" data-execution_count="19">
+<div id="149b9540" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reverse the list by negative step</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>a_list <span class="op">=</span> [<span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">65</span>, <span class="dv">78</span>, <span class="dv">92</span>, <span class="dv">100</span>, <span class="dv">102</span>, <span class="dv">105</span> ]</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_list[::<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -623,7 +623,7 @@ False</code></pre>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    ...</span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>statement<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For example, to iterate over the working days of the week and print them, we could use</p>
-<div id="57d6688b" class="cell" data-execution_count="20">
+<div id="f515626d" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print all elements of a list</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>, <span class="st">"Fri"</span>]</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> el <span class="kw">in</span> days:</span>
@@ -646,7 +646,7 @@ Fri</code></pre>
 <li>See also: <a href="https://docs.python.org/3/library/stdtypes.html#range" class="uri">https://docs.python.org/3/library/stdtypes.html#range</a></li>
 </ul>
 <p>The <code>range()</code> does not give a list of integers, but a <code>range</code> object: this object is more memory efficient, it only generates the integer numbers when asked for (imagine you want to do billions of iterations). We can cast a range object into a list though:</p>
-<div id="f845c609" class="cell" data-execution_count="21">
+<div id="7851ddbc" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>a_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">2</span>)  <span class="co"># Construct a range</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a_range)             <span class="co"># Lazy evaluated</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(a_range))       <span class="co"># Converted to a list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -656,7 +656,7 @@ Fri</code></pre>
 </div>
 </div>
 <p>We can use a range object directly in a for loop instead of the list to iterate over:</p>
-<div id="24be4010" class="cell" data-execution_count="22">
+<div id="9909c6af" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the range function to get a sequence of numbers</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">2</span>):</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -669,7 +669,7 @@ Fri</code></pre>
 </div>
 </div>
 <p>Using range we can also get the indices of a list. We can use the indices to print only the odd days of the week for example:</p>
-<div id="5e74664c" class="cell" data-execution_count="23">
+<div id="61a70427" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the range function to get indices</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>days <span class="op">=</span> [<span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>, <span class="st">"Fri"</span>, <span class="st">"Sat"</span>, <span class="st">"Sun"</span>]</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(days),<span class="dv">2</span>):</span>
@@ -682,7 +682,7 @@ Sun</code></pre>
 </div>
 </div>
 <p>Or one could apply the same index to multiple lists:</p>
-<div id="42651b4e" class="cell" data-execution_count="24">
+<div id="27a61824" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the range function to get indices and apply to 2 lists</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Mehmet"</span>, <span class="st">"Ceren"</span>, <span class="st">"Nisan"</span>, <span class="st">"Derin"</span>, <span class="st">"Ahmet"</span>, <span class="st">"Ali"</span>]</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>lengths <span class="op">=</span> [<span class="st">"189"</span>, <span class="st">"170"</span>, <span class="st">"182"</span>, <span class="st">"178"</span>, <span class="st">"177"</span>, <span class="st">"180"</span>]</span>
@@ -711,7 +711,7 @@ Ali is 180 cm.</code></pre>
 <li>The horizontal velocity is constant</li>
 </ul>
 <p>The numerical algorithm calculates the balls position at small discrete time steps and updates the ball’s velocity at each time step. The resulting coordinates form an approximate trajectory. The code uses the while loop to calculate subsequent coordinates until the ball drops on the ground (the stopping criterium). See the code below.</p>
-<div id="d3d76f65" class="cell" data-output-location="slide" data-execution_count="25">
+<div id="19ba4cce" class="cell" data-output-location="slide" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># Load library for sine and cosine</span></span>
 <span id="cb55-2"><a href="#cb55-2"></a><span class="im">import</span> math</span>
 <span id="cb55-3"><a href="#cb55-3"></a></span>

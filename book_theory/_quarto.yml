@@ -16,6 +16,7 @@ book:
     - python_basics.qmd
     - control_flow.qmd
     - sequences.qmd
+    - functions.qmd
     #- ch_python_console.qmd
     #- ch_io_and_scripts.qmd
     #- ex_conditional_statements.qmd

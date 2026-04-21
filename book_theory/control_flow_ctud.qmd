@@ -1,0 +1,492 @@
+# Advanced control flow
+
+In this chapter we will extend some of the concepts in control flow that we saw already before:
+
+-   for loops over sequences and sets,
+-   combining lists with zip,
+-   enumerate,
+-   list comprehension,
+-   break, continue, and pass
+
+## For loop over sequences
+
+For loops can iterate not only over lists or ranges but over the elements of more general collections of elements such sequences or sets: 
+
+``` python
+for <el> in <sequence>:
+    <statement>
+    <statement>
+    ...
+    <statement>
+```
+
+So we can iterate over elements of a list as we did before:
+
+```{python}
+# Iterate over the elements in a list
+for el in ["banana", "orange", "apple"]:
+  print(el)
+```
+
+Or iterating over a tuple:
+
+```{python}
+# Iterate over the elements in a list
+for el in ("banana", "orange", "apple"):
+  print(el)
+```
+
+A `string` is also a sequence where the strings characters are its elements, so we can also iterate over the characters:
+
+```{python}
+# Print all letters of a string
+for a in "Python 3.12":
+  print(a)
+```
+
+And we can apply the method or functions that are applicable to sequences:
+
+```{python}
+# Print all letters of a string reverse ordered
+for a in reversed("Python 3.12"):
+  print(a)
+```
+
+## Enumerate
+
+Sometimes we want iterate over elements but also want to use their index. In that case we can use the `range()` function to get indices $i = 0, .., n-1$ for a sequence with $n$ elements. 
+
+- To get the number of elements we use `n = len(<sequence>)` giving the length of the sequence, and
+- we select elements with the index
+
+See the following example:
+
+```{python}
+# Print elements in order with their index
+s = ("mouse", "chicken", "dog", "cow")
+for i in range(len(s)):
+  print(f"The element with index: {i} = {s[i]}")
+```
+
+Using the above approach we lose the simplicity of iterating over all elements in a sequence. An alternative approach is to use **enumerate**. The `enumerate(<sequence>)` function:
+
+-   gives both index and corresponding element,
+-   is lazy evaluated (just as range), reducing memory overhead.
+
+We can use the enumerate function in a for loop as in following example: 
+
+```{python}
+# Print elements in order with their index
+s = ["mouse", "chicken", "dog", "cow"]
+for i, el in enumerate(s):
+  print(f"The element with index: {i} = {el}")
+```
+
+
+## flow control: continue, break, and pass
+
+
+
+**`continue`** skips a single iteration in `while` or `for` loop
+
+```{python}
+#| output-location: fragment
+# Print elements in order with their index
+numbers = [22, 20, 34, None, 25, 78]
+for i, el in enumerate(numbers):
+  if el is None:
+    continue
+  print(f"The element with index: {i} = {el}")
+```
+
+## flow control: break
+
+**`break`** stops the current `while` or `for` loop
+
+```{python}
+#| output-location: fragment
+# Print elements in order with their index
+numbers = [22, 20, 34, None, 25, 78]
+for i, el in enumerate(numbers):
+  if el is None:
+    break
+  print(f"The element with index: {i} = {el}")
+```
+
+## flow control: pass
+
+**`pass`** performs no action, purpose
+
+-   **clarify** inaction, provide **required** statement
+-   used for while, for, if, functions, classes, etc.
+
+```{python}
+#| output-location: fragment
+numbers = [2, 10, 5, 3, 4, 7, 9, 3, 1]
+count_high = 0; count_low = 0;
+for el in numbers:
+  if el > 8:
+    count_high += 1
+  elif el <= 4:
+    count_low += 1
+  else:
+    pass
+print(f"High: {count_high}, Low: {count_low}")
+```
+
+# List comprehensions
+
+## When a for loop is cumbersome
+
+-   to generate a simple list
+-   requires an index variable, can overwrite variable with same name
+
+::: fragment
+```{python}
+# Print powers of 2 up to 1024
+powers = []
+for n in range(11):
+  powers.append(2**n)
+print(powers)
+```
+:::
+
+::: fragment
+List comprehension
+
+```{python}
+powers = [2**n for n in range(11)]
+print(powers)
+```
+:::
+
+## When a for loop is cumbersome
+
+```{python}
+cs = []
+for x in [1,2,3]:
+    for y in [3,1,4]:
+        if  x != y:
+            cs.append((x, y))
+print(cs)
+```
+
+\
+List comprehension
+
+```{python}
+cs = [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+print(cs)
+```
+
+# Arrays
+
+## Array definition
+
+-   arrays have a fixed length
+-   array elements have the same type
+-   We will use arrays from the Numpy library
+-   Optimized for numerical calculations
+
+::: fragment
+```{python}
+# Load numpy for array
+import numpy as np
+
+a = np.array([1, 2, 4, 6, 5, 9])
+print(a)
+```
+:::
+
+## Array initialization
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+a = np.arange(15)          # similar to range()
+print(a)
+```
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.linspace(0, 5, 11)  # linearly spaced interval
+print(a)
+```
+:::
+
+\
+
+::: fragment
+```{python}
+#| output-location: fragment
+a = np.zeros((2, 3))       # 2D array with zeros
+print(a)
+```
+:::
+
+## Array operations
+
+-   similar to arithmetic/logic operations on numbers
+-   element-wise
+-   shapes need to be compatible
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+a = np.array([2.5, 3, 4])   
+b = np.array([1, 0.1, 10])
+print(f"{a} + {b} = {a + b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b}")
+```
+
+# Simple plots
+
+## Line plot
+
+We will see more complex plots later on. If you want to look ahead: <https://matplotlib.org/stable/users/explain/quick_start.html>
+
+```{python}
+#| output-location: slide
+# Import library for plotting and numerics
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define x and y coordinates
+x = np.linspace(-2, 2, 100)
+y = x**2
+
+# Plot a line between the coordinates
+plt.plot(x, y);
+
+```
+
+## Line plot
+
+```{python}
+#| output-location: fragment
+# Change the font-size
+import matplotlib as mpl
+mpl.rcParams['font.size'] = 18
+plt.plot(x, y);
+
+```
+
+## Line plot
+
+```{python}
+#| output-location: fragment
+# Add labels
+plt.xlabel("x (in m)", fontsize=20, color='red')
+plt.ylabel("y (in V)", fontsize=20, color='blue')
+plt.plot(x, y, color='green', linewidth=4);
+
+```
+
+## Scatter plot
+
+```{python}
+#| output-location: slide
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create the coordinate of a spiral
+angles = np.linspace(0, 5*np.pi, 100)
+radii = np.linspace(0, 4, 100)
+xs = radii * np.cos(angles)
+ys = radii * np.sin(angles)
+
+# Plot spiral points with increasing size and color-value
+plt.scatter(xs, ys, 10*radii, radii/4);
+
+```
+
+## Scatter plot
+
+```{python}
+#| output-location: slide
+# Plot spiral points with increasing size and color-value
+plt.scatter(xs, ys, 10*radii, radii/4)
+
+# Set the axis aspect ratio to equal
+ax = plt.gca()
+ax.set_aspect("equal");
+```
+
+# More advanced Looping structures
+
+## Looping multiple lists simultaneously
+
+- Loop can be over lists, arrays, sets, iterators, etc.
+- There are different options to loop over two "lists" (say `a` and `b`) of same length:
+  1. **`while`** loop
+  2. **`for`** loop with **`range(len(a))`**
+  3. **`for`** loop with **`enumerate(a)`**
+  4. **`for`** loop with **`zip(a, b)`**
+  5. **list comprehension** with **`zip(a, b)`**
+
+## Looping multiple lists simultaneously
+
+- Exercise with ellipses with parameters: `a` and `b` 
+$$
+\begin{aligned}
+x = a \cos(t)\\
+y = b \cos(t)
+\end{aligned}
+$$
+
+``` {python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+# the for loop allows to loop over a list or array:
+n_curves = 5
+t = np.linspace(0, 2*np.pi, 100)
+a = np.linspace(1, 2, n_curves)
+b = np.round(1 / a, 2)
+```
+
+## Looping multiple lists simultaneously
+
+``` {python}
+#| echo: false
+colors = plt.cm.jet(np.linspace(0, 1, n_curves))
+
+i = 0
+while i < len(a):
+  x = a[i] * np.cos(t)
+  y = b[i] * np.sin(t)
+  plt.plot(x, y, color = colors[i])
+  i = i + 1
+
+ax = plt.gca()
+ax.set_aspect('equal', 'box')
+plt.show()
+
+```
+
+## Looping multiple lists simultaneously
+
+- `len(a)` gives the length of the list
+
+``` {python}
+# Method 1 using while
+i = 0
+while i < len(a):
+  x = a[i] * np.cos(t)
+  y = b[i] * np.sin(t)
+  i = i + 1
+  # plt.plot(x, y)
+```
+
+## Looping multiple lists simultaneously
+
+- `len(a)` gives the length of the list
+
+``` {python}
+# Method 1 using while
+i = 0
+while i < len(a):
+  x = a[i] * np.cos(t)
+  y = b[i] * np.sin(t)
+  i = i + 1
+  # plt.plot(x, y)
+```
+
+- `range(len(a))` gives numbers from 0 to `len(a) - 1`
+
+``` {python}
+# Method 2 using range
+for i in range(len(a)):
+  x = a[i] * np.cos(t)
+  y = b[i] * np.sin(t)
+```
+
+## Looping multiple lists simultaneously
+
+- Asymmetric solution with enumerate
+- The parameters `a` and `b` are treated differently
+
+``` {python}
+# Method 3 using enumerate
+for i, ai in enumerate(a):
+  x = ai * np.cos(t)
+  y = b[i] * np.sin(t)
+```
+
+
+## Looping multiple lists simultaneously
+
+- `zip(a,b)` merges lists a and b as iterator of tuples `(a[i],b[i])`
+- An iterator is like a list, but lazy evaluated
+
+``` {python}
+print(list(zip(a, b)))
+```
+
+## Looping multiple lists simultaneously
+
+- `zip(a,b)` merges lists a and b as iterator of tuples `(a[i],b[i])`
+- An iterator is like a list, but lazy evaluated
+
+``` {python}
+print(list(zip(a, b)))
+```
+
+- usage in a `for` loop:
+
+``` {python}
+# Method 4 using zip()
+for ai, bi in zip(a, b):
+  x = ai * np.cos(t)
+  y = bi * np.sin(t)
+```
+
+
+## Looping multiple lists simultaneously
+
+- Does it make sense to us `enumerate()` ?
+- `enumerate()` makes a "list" of tuples
+- elements are the index and the tuples of `zip()`
+
+``` {python}
+print(list(enumerate(zip(a, b))))
+```
+
+``` {python}
+# Method 3 using enumerate
+for i, tuple_i in enumerate(zip(a, b)):
+  x = tuple_i[0] * np.cos(t)
+  y = tuple_i[1] * np.sin(t)
+```
+
+This looks cumbersome !
+
+## Looping multiple lists simultaneously
+
+- Or combining `range()` and `zip()`?
+
+``` {python}
+print(list(zip(range(len(a)), a, b)))
+```
+
+
+``` {python}
+# Method 3 using enumerate
+for i, ai, bi in zip(range(len(a)), a, b):
+  x = ai * np.cos(t)
+  y = bi * np.sin(t)
+```
+
+
+## Looping multiple lists simultaneously
+
+``` {python}
+# Method 5 using list comprehension with zip()
+[plt.plot(ai*np.cos(t), bi*np.sin(t)) for ai, bi in zip(a, b)];
+```
