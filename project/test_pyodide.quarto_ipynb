@@ -1,0 +1,30 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: Python Example\n",
+        "format: live-html\n",
+        "---\n",
+        "\n",
+        "```{pyodide}\n",
+        "for x in range(5):\n",
+        "  print(x ** 2)\n",
+        "```"
+      ],
+      "id": "5cd92365"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3",
+      "path": "/usr/local/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
